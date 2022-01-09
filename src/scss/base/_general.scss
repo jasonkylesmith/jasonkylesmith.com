@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family-text;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  color: $dark;
+}
+
+p {
+}
+
+h1 {
+  font-family: $font-family-header;
+  font-size: $base-font-size * 2.25;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: $base-font-size * 1.65;
+}
+
+h3 {
+  font-weight: 800;
+  font-size: $base-font-size * 1.4;
+}
+
+h4 {
+  font-size: $base-font-size * 1.2;
+}
+
+h5 {
+  font-size: $base-font-size * 1;
+}
+
+h6 {
+  font-size: $base-font-size * 0.9;
+}
+
+ul {
+}
+
+ol {
+}
+
+lh {
+  font-size: $base-font-size * 1.05;
+  font-weight: 700;
+}
+
+li {
+}
+
+a,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: $purple;
+  font-weight: 600;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: $purple;
+    color: $purple;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out 0ms;
+  }
+
+  &:hover {
+    &::before {
+      transition: transform 250ms ease-in-out 0ms;
+      transform: scaleX(1);
+    }
+  }
+
+  &.btn {
+    display: block;
+    width: fit-content;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid $purple;
+    margin: 0.5rem 0;
+    padding: 2px 6px;
+    transition: background-color 250ms ease-in-out 0ms,
+      color 250ms ease-in-out 0ms;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &.btn:hover {
+    background-color: $purple;
+    color: $light;
+  }
+}
+
+a:hover {
+}
+
+a:focus {
+}
+
+blockquote {
+}
+
+.logo {
+  font-family: $font-family-header;
+}
+
+.icon {
+  height: 40px;
+}
+
+.copyright {
+  font-family: $font-family-header;
+}
+
+.small-text {
+  font-size: $base-font-size-small;
+}
