@@ -74,7 +74,8 @@ li {
 
 a,
 a:active,
-a:visited {
+a:visited,
+a:hover {
   text-decoration: none;
   color: $purple;
   font-weight: 600;
