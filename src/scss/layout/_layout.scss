@@ -6,10 +6,35 @@ header {
   }
 }
 
-.layout {
-  position: relative;
-  height: 100%;
-  width: 100%;
+nav {
+  font-size: $base-font-size * 1.4;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+  }
+}
+
+.layout-container {
   display: grid;
-  
+  grid-template-columns: minmax(256px, 1fr) 1fr 22fr;
+  grid-template-rows: auto;
+  grid-template-areas: "sidebar . content content content content content content content content content content content content content content content content content content content content content content ";
+}
+
+.sidebar {
+  width: max(300px, 25vw);
+
+  grid-area: sidebar;
+}
+
+.content {
+  border: 2px solid green;
+  padding-top: 1rem;
+  grid-area: content;
 }

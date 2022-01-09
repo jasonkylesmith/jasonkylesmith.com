@@ -13,6 +13,20 @@ body {
   color: $dark;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+blockquote,
+table {
+  margin-bottom: $margins;
+}
+
 p {
 }
 
@@ -76,12 +90,12 @@ a:visited {
     bottom: 0;
     left: 0;
     transform: scaleX(0);
-    transition: transform 250ms ease-in-out 0ms;
+    transition: transform $anim-duration ease-in-out 0ms;
   }
 
   &:hover {
     &::before {
-      transition: transform 250ms ease-in-out 0ms;
+      transition: transform $anim-duration ease-in-out 0ms;
       transform: scaleX(1);
     }
   }
@@ -93,10 +107,10 @@ a:visited {
     font-weight: 700;
     text-align: center;
     border: 2px solid $purple;
-    margin: 0.5rem 0;
-    padding: 2px 6px;
-    transition: background-color 250ms ease-in-out 0ms,
-      color 250ms ease-in-out 0ms;
+    margin-bottom: $margins;
+    padding: $btn-padding;
+    transition: background-color $anim-duration ease-in-out 0ms,
+      color $anim-duration ease-in-out 0ms;
 
     &::before {
       content: "";
