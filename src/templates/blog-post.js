@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
+import Tags from "../components/tags"
 import SEO from "../components/seo"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
@@ -11,6 +12,7 @@ export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
+      tags
       publishedDate(formatString: "Do MMMM, YYYY")
       featuredImage {
         title
@@ -41,6 +43,9 @@ export const query = graphql`
 `
 
 const BlogPost = props => {
+  const { title, publishedDate, featuredImage, tags, body } =
+    props.data.contentfulBlogPost
+
   const renderOptions = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p className="">{children}</p>,
@@ -89,32 +94,29 @@ const BlogPost = props => {
     },
   }
 
-  const bodyContent = renderRichText(
-    props.data.contentfulBlogPost.body,
-    renderOptions
-  )
+  const bodyContent = renderRichText(body, renderOptions)
 
   return (
     <Layout>
-      <SEO title={props.data.contentfulBlogPost.title} />
-      <Link to="/blog/">Visit the Blog Page</Link>
-      <div>
-        <h1>{props.data.contentfulBlogPost.title}</h1>
-        <span className="meta">
-          Posted on {props.data.contentfulBlogPost.publishedDate}
-        </span>
+      <SEO title={title} />
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-1 mt-4 mt-md-0">
+            <h1 className="blog-title">{title}</h1>
+            <span className="blog-date">{publishedDate}</span>
 
-        {props.data.contentfulBlogPost.featuredImage && (
-          <GatsbyImage
-            className="featured"
-            image={props.data.contentfulBlogPost.featuredImage.gatsbyImageData}
-            alt={props.data.contentfulBlogPost.title}
-          />
-        )}
-
-        <div>
-          <h1>Post Body</h1>
-          {bodyContent}
+            {featuredImage && (
+              <GatsbyImage
+                className="blog-featured"
+                image={featuredImage.gatsbyImageData}
+                alt={title}
+              />
+            )}
+            <div className="blog-tags">
+              <Tags tags={tags} disabled />
+            </div>
+            <div className="blog-body">{bodyContent}</div>
+          </div>
         </div>
       </div>
     </Layout>

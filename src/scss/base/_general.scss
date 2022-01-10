@@ -164,6 +164,17 @@ a:hover {
   }
 }
 
+nav {
+  a,
+  a:visited {
+    color: $dark;
+
+    &:hover {
+      color: $purple;
+    }
+  }
+}
+
 a:hover {
 }
 
