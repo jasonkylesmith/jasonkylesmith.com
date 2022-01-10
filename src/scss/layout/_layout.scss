@@ -28,8 +28,6 @@ nav {
 }
 
 .sidebar {
-  width: max(300px, 25vw);
-
   grid-area: sidebar;
 }
 
@@ -37,4 +35,25 @@ nav {
   border: 2px solid green;
   padding-top: 1rem;
   grid-area: content;
+}
+
+@media (max-width: 767.98px) {
+  .layout-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "content";
+  }
+
+  .content {
+    width: 100vw;
+  }
+
+  header {
+    padding: 0 0.5rem;
+  }
+
+  .mobile-header {
+    background-color: white;
+    border-bottom: 2px solid $dark;
+  }
 }
