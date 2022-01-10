@@ -47,6 +47,12 @@ module.exports = {
         forceFullSync: true,
       },
     },
+    {
+      resolve: `@mkitio/gatsby-theme-password-protect`,
+      options: {
+        password: `jason`,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
