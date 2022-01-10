@@ -103,13 +103,12 @@ a:hover {
   }
 
   &.btn {
-    display: block;
     width: fit-content;
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
     border: 2px solid $purple;
-    margin: $margins 0;
+    margin-bottom: $margins;
     padding: $btn-padding;
     transition: background-color $anim-duration ease-in-out 0ms,
       color $anim-duration ease-in-out 0ms;

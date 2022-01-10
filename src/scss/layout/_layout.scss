@@ -78,24 +78,9 @@ nav {
   z-index: -1;
 }
 
-.hero-text,
-.hero-pointer {
+.hero-text {
   width: 250px;
   margin-left: 0;
-}
-
-.hero-pointer {
-  position: absolute;
-  bottom: 20px;
-
-  .btn {
-    opacity: 0.5;
-    transition: opacity $anim-duration ease-in-out 0;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
 }
 
 @media (max-width: $max-width-sm) {
@@ -103,8 +88,7 @@ nav {
     left: -33%;
   }
 
-  .hero-text,
-  .hero-pointer {
+  .hero-text {
     margin-left: 0;
   }
 }
@@ -114,8 +98,7 @@ nav {
     left: 11%;
   }
 
-  .hero-text,
-  .hero-pointer {
+  .hero-text {
     margin-left: 0;
   }
 }
@@ -125,8 +108,7 @@ nav {
     left: 31%;
   }
 
-  .hero-text,
-  .hero-pointer {
+  .hero-text {
     margin-left: 10rem;
   }
 }

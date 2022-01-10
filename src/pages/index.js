@@ -23,18 +23,12 @@ const IndexPage = () => (
       <div className="hero-text">
         <h1 className="">Hi, I'm Jason.</h1>
         <p>Welcome to my collection of all the things I love to do.</p>
-        <p>
-          <a href="#" className="btn">
-            SEE MY RECENT WORK
-          </a>
-        </p>
-      </div>
-      <img src={heroImage} className="hero-image" />
-      <div className="hero-pointer">
-        <a href="#" className="btn scroll">
-          V
+
+        <a href="#" className="btn">
+          SEE MY RECENT WORK
         </a>
       </div>
+      <img src={heroImage} className="hero-image" />
     </div>
     <div className="mt-4">
       <h2>More Down Here!</h2>
