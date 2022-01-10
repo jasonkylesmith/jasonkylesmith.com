@@ -28,7 +28,7 @@ const IndexPage = () => (
           SEE MY RECENT WORK
         </a>
       </div>
-      <img src={heroImage} className="hero-image" />
+      <img src={heroImage} alt="stand in for myself" className="hero-image" />
     </div>
     <div className="mt-4">
       <h2>More Down Here!</h2>
