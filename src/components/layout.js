@@ -28,14 +28,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div
-        className="layout-container"
-        style={{
-          margin: `0 auto`,
-          maxWidth: `100vw`,
-          height: `100vh`,
-        }}
-      >
+      <div className="layout-container">
         {/* SIDEBAR WRAPPER*/}
 
         <div className="sidebar d-none d-md-block">

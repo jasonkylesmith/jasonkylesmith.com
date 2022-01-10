@@ -6,12 +6,15 @@
   padding: 0;
 }
 
+html {
+  width: 100vw;
+}
+
 body {
   font-family: $font-family-text;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
   color: $dark;
-  overflow-x: hidden;
 }
 
 p,
@@ -139,10 +142,6 @@ a:hover {
 
   &.icon {
     color: $dark;
-
-    svg {
-      margin-bottom: -15px;
-    }
 
     .icon {
       transform: scale(1);
