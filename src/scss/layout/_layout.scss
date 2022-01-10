@@ -32,12 +32,11 @@ nav {
 }
 
 .content {
-  border: 2px solid green;
   padding-top: 1rem;
   grid-area: content;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: $max-width-sm) {
   .layout-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -55,5 +54,79 @@ nav {
   .mobile-header {
     background-color: white;
     border-bottom: 2px solid $dark;
+  }
+}
+
+.hero {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h5,
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.hero-image {
+  position: absolute;
+  height: 100vh;
+  width: auto;
+  object-fit: cover;
+  left: 11%;
+  z-index: -1;
+}
+
+.hero-text,
+.hero-pointer {
+  width: 250px;
+  margin-left: 0;
+}
+
+.hero-pointer {
+  position: absolute;
+  bottom: 20px;
+
+  .btn {
+    opacity: 0.5;
+    transition: opacity $anim-duration ease-in-out 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: $max-width-sm) {
+  .hero-image {
+    left: -33%;
+  }
+
+  .hero-text,
+  .hero-pointer {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: $md) {
+  .hero-image {
+    left: 11%;
+  }
+
+  .hero-text,
+  .hero-pointer {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: $lg) {
+  .hero-image {
+    left: 31%;
+  }
+
+  .hero-text,
+  .hero-pointer {
+    margin-left: 10rem;
   }
 }

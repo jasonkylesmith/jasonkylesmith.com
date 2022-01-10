@@ -11,6 +11,7 @@ body {
   font-size: $base-font-size;
   font-weight: $base-font-weight;
   color: $dark;
+  overflow-x: hidden;
 }
 
 p,
@@ -108,10 +109,15 @@ a:hover {
     font-weight: 700;
     text-align: center;
     border: 2px solid $purple;
-    margin-bottom: $margins;
+    margin: $margins 0;
     padding: $btn-padding;
     transition: background-color $anim-duration ease-in-out 0ms,
       color $anim-duration ease-in-out 0ms;
+
+    &.scroll {
+      border: 2px solid $dark;
+      color: $dark;
+    }
 
     &::before {
       content: "";
@@ -126,6 +132,10 @@ a:hover {
   &.btn:hover {
     background-color: $purple;
     color: $light;
+
+    &.scroll {
+      background-color: $dark;
+    }
   }
 }
 
