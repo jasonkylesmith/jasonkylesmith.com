@@ -94,13 +94,11 @@ const BlogPost = props => {
     renderOptions
   )
 
-  console.log("Data: ", bodyContent)
-
   return (
     <Layout>
       <SEO title={props.data.contentfulBlogPost.title} />
       <Link to="/blog/">Visit the Blog Page</Link>
-      <div className="content">
+      <div>
         <h1>{props.data.contentfulBlogPost.title}</h1>
         <span className="meta">
           Posted on {props.data.contentfulBlogPost.publishedDate}
