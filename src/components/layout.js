@@ -10,9 +10,10 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import icon from "../images/hex-icon-plain.svg"
-import "./layout.css"
+
 import "../scss/main.scss"
+import Footer from "./footer"
+import Navigation from "./navigation"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -37,34 +38,16 @@ const Layout = ({ children }) => {
       >
         {/* SIDEBAR WRAPPER*/}
 
-        <div className="sidebar">
+        <div className="sidebar d-none d-md-block">
           <div className="container-fluid">
             <div className="row">
               <div className="col">
-                <div className="position-fixed d-flex flex-column justify-content-between vh-100">
-                  <header>
-                    <div className="logo-container">
-                      <img src={icon} className="icon" />
-                      <h1 className="logo">Jason Kyle Smith</h1>
-                    </div>
-                  </header>
+                <div className="position-fixed d-none d-md-flex flex-column justify-content-between vh-100">
+                  <Header version="desktop" />
 
-                  <nav>
-                    <ul>
-                      <li>home</li>
-                      <li>about me</li>
-                      <li>web development</li>
-                      <li>graphic design</li>
-                      <li>photography</li>
-                      <li>blog</li>
-                    </ul>
-                  </nav>
+                  <Navigation version="desktop" />
 
-                  <footer>
-                    <span className="copyright">
-                      © {new Date().getFullYear()}, Jason Kyle Smith
-                    </span>
-                  </footer>
+                  <Footer version="desktop" />
                 </div>
               </div>
             </div>
@@ -72,9 +55,15 @@ const Layout = ({ children }) => {
         </div>
 
         {/* CONTENT WRAPPER*/}
-        <div className="content">
+        <div className="content pt-0 pt-md-3">
           <div className="container-fluid">
             <div className="row">
+              <div className="d-flex d-md-none mobile-header px-0 sticky-top justify-content-between align-items-center">
+                <Header version="mobile" />
+                <div>
+                  <span> = </span>
+                </div>
+              </div>
               <div className="col">
                 <main>{children}</main>
               </div>
