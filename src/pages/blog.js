@@ -15,6 +15,7 @@ const Blog = () => {
             title
             id
             slug
+            featured
             publishedDate(formatString: "Do MMMM, YYYY")
             featuredImage {
               title
@@ -35,12 +36,30 @@ const Blog = () => {
     }
   `)
 
+  const { edges } = data.allContentfulBlogPost
+  const featuredPost = edges.filter(edge => edge.node.featured === "yes")[0]
+    .node
+
+  const nonFeaturedPosts = edges.filter(edge => edge.node.featured !== "yes")
+  console.log(nonFeaturedPosts)
+
   return (
     <Layout>
       <Seo title="Blog" />
-      <p>
-        <Link to="/">Go back to the homepage</Link>
+      {featuredPost.featuredImage && (
+        <GatsbyImage
+          className="featured"
+          image={featuredPost.featuredImage.gatsbyImageData}
+          alt={featuredPost.title}
+        />
+      )}
+      <h2>
+        <Link to={`/blog/${featuredPost.slug}`}>{featuredPost.title}</Link>
+      </h2>
+      <p className="excerpt">
+        {featuredPost.excerpt.childMarkdownRemark.excerpt}
       </p>
+
       <ul className="posts">
         {data.allContentfulBlogPost.edges.map(edge => {
           return (
