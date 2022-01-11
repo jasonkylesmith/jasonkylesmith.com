@@ -11,6 +11,7 @@ const Blog = () => {
       allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
         edges {
           node {
+            contentful_id
             title
             id
             slug

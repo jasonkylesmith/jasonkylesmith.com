@@ -38,3 +38,21 @@
 .blog-tag:first-of-type {
   margin-left: 0;
 }
+
+.post-nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: $margins;
+
+  .post-nav-wrapper {
+    width: 45%;
+    display: flex;
+    align-items: center;
+
+    a {
+      margin: 0 1rem;
+    }
+  }
+}
