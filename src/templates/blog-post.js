@@ -66,7 +66,6 @@ export const query = graphql`
           contentful_id
         }
       }
-      distinct(field: contentful_id)
     }
   }
 `
@@ -75,9 +74,13 @@ const BlogPost = props => {
   const { title, publishedDate, featuredImage, tags, body, contentful_id } =
     props.data.contentfulBlogPost
 
-  const { edges, distinct } = props.data.allContentfulBlogPost
-  const currentEdge = edges[distinct.indexOf(contentful_id)]
-  const navEdges = { prev: currentEdge.previous, next: currentEdge.next }
+  const { edges } = props.data.allContentfulBlogPost
+
+  const currentEdge = edges.filter(
+    edge => edge.node.contentful_id === contentful_id
+  )
+
+  const navEdges = { prev: currentEdge[0].previous, next: currentEdge[0].next }
 
   const renderOptions = {
     renderNode: {
@@ -136,7 +139,7 @@ const BlogPost = props => {
         <div className="row">
           <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-1 mt-4 mt-md-0">
             <FontAwesomeIcon icon={["fas", "chevron-left"]} size="sm" />{" "}
-            <Link to="/Blog/">Blog</Link>
+            <Link to="/blog/">Blog</Link>
             <h1 className="blog-title">{title}</h1>
             <span className="blog-date">{publishedDate}</span>
             {featuredImage && (

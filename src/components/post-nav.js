@@ -9,7 +9,6 @@ import { fas } from "@fortawesome/free-solid-svg-icons"
 library.add(fab, fas)
 
 const PostNav = props => {
-  console.log("Props", props.edges)
   const { edges } = props
 
   return (
