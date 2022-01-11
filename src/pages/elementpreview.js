@@ -4,6 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Blockquote from "../components/blockquote"
 
 const IndexPage = () => (
   <Layout>
@@ -28,35 +29,30 @@ const IndexPage = () => (
       dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum
       facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
     </p>
-
     <p>
       <a href="#" target="_new">
         Normal Link in Normal Paragraph
       </a>
     </p>
-
     <p className="small-text">
       <a href="#" target="_new">
         Normal Link in Small Text Paragraph
       </a>
     </p>
-
     <a href="#" target="_new" className="btn">
       Button Link
     </a>
-
-    <blockquote>This is a blockquote.</blockquote>
-
+    {/*     <blockquote>This is a blockquote.</blockquote>
+     */}{" "}
+    <Blockquote quote="This is a blockquote." author="A guy" />
     <ul>
       <lh>Unordered List Header</lh>
       <li>Unordered List Item</li>
     </ul>
-
     <ol>
       <lh>Ordered List Header</lh>
       <li>Ordered List Item</li>
     </ol>
-
     <table>
       <tr>
         <th>Table Header 1</th>

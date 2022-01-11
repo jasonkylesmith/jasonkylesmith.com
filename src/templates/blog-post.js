@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
+import Blockquote from "../components/blockquote"
 
 export const query = graphql`
   query ($slug: String!) {
@@ -56,8 +57,8 @@ const BlogPost = props => {
       [BLOCKS.HEADING_5]: (node, children) => <h5 className="">{children}</h5>,
       [BLOCKS.HEADING_6]: (node, children) => <h6 className="">{children}</h6>,
       [BLOCKS.QUOTE]: (node, children) => (
-        <div className="">
-          <blockquote>{children}</blockquote>
+        <div className="blockquote align-self-center m-0 mb-4">
+          <Blockquote quote={children} />
         </div>
       ),
       [BLOCKS.OL_LIST]: (node, children) => <ol className="">{children}</ol>,
@@ -72,7 +73,7 @@ const BlogPost = props => {
           <GatsbyImage
             image={node.data.target.gatsbyImageData}
             alt={node.data.target.title}
-            className=""
+            className="blog-image"
           />
         )
       },
@@ -115,7 +116,7 @@ const BlogPost = props => {
             <div className="blog-tags">
               <Tags tags={tags} disabled />
             </div>
-            <div className="blog-body">{bodyContent}</div>
+            <div className="blog-body d-flex flex-column">{bodyContent}</div>
           </div>
         </div>
       </div>

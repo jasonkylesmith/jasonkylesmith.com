@@ -102,6 +102,7 @@ a:hover {
 
   &:hover {
     &::before {
+      height: 2px;
       transition: transform $anim-duration ease-in-out 0ms;
       transform: scaleX(1);
     }
@@ -112,6 +113,7 @@ a:hover {
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
+    color: $purple;
     border: 2px solid $purple;
     margin-bottom: $margins;
     padding: $btn-padding;
@@ -179,6 +181,44 @@ a:hover {
 }
 
 a:focus {
+}
+
+.blockquote {
+  position: relative;
+  padding: 0 2rem;
+  margin: $margins + 1rem 0;
+  margin-top: $margins;
+  width: fit-content;
+  text-align: center;
+
+  blockquote {
+    display: inline;
+
+    &::before,
+    &::after {
+      position: absolute;
+      color: $purple;
+      font-size: $base-font-size * 5;
+    }
+
+    &::before {
+      content: "“";
+      top: -50px;
+      left: 0;
+    }
+
+    &::after {
+      content: "”";
+      bottom: -90px;
+      right: 0;
+    }
+  }
+
+  span {
+    padding-left: 0;
+    font-size: $base-font-size-small;
+    font-style: italic;
+  }
 }
 
 blockquote {
