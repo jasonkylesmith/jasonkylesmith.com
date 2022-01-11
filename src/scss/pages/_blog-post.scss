@@ -1,5 +1,5 @@
 .blog-title {
-  margin-bottom: -12px;
+  margin-bottom: -8px;
 }
 
 .blog-date {
@@ -56,4 +56,14 @@
       margin: 0 1rem;
     }
   }
+}
+
+.post-excerpt-wrapper {
+  padding: 0 $margins;
+  margin-bottom: $margins;
+  border-left: 4px solid $purple;
+}
+
+.post-featured-wrapper {
+  width: min(90%, 800px);
 }
