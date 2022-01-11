@@ -41,35 +41,71 @@ const Navigation = props => {
     )
   } else {
     return (
-      <nav>
+      <nav className="mobile-nav">
         <ul>
           <li>
-            <Link to="/" className="">
+            <Link
+              to="/"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
               home
             </Link>
           </li>
           <li>
-            <Link to="/" className="">
+            <Link
+              to="/"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
               about me
             </Link>
           </li>
           <li>
-            <Link to="/" className="">
+            <Link
+              to="/"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
               web development
             </Link>
           </li>
           <li>
-            <Link to="/" className="">
+            <Link
+              to="/"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
               graphic design
             </Link>
           </li>
           <li>
-            <Link to="/" className="">
+            <Link
+              to="/"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
               photography
             </Link>
           </li>
           <li>
-            <Link to="/blog/" className="">
+            <Link
+              to="/blog/"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
               blog
             </Link>
           </li>

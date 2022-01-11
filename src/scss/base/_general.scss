@@ -175,6 +175,23 @@ nav {
       color: $purple;
     }
   }
+
+  &.mobile-nav {
+    text-align: center;
+    width: 100%;
+
+    a,
+    a:visited {
+      color: white;
+
+      &:hover {
+        &::after,
+        &::before {
+          background-color: white;
+        }
+      }
+    }
+  }
 }
 
 a:hover {

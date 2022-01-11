@@ -1,6 +1,7 @@
 import * as React from "react"
 import { useState } from "react"
 import useScrollBlock from "./helpers/useScrollBlock"
+import Navigation from "./navigation"
 
 const MenuIcon = props => {
   const [blockScroll, allowScroll] = useScrollBlock()
@@ -38,7 +39,9 @@ const MenuIcon = props => {
         <span></span>
       </div>
       {menuOpen && (
-        <div id="mobile-menu" className={`${modalOpen && "open"}`}></div>
+        <div id="mobile-menu" className={`${modalOpen && "open"}`}>
+          <Navigation version="mobile" menuClick={handleMenuClick} />
+        </div>
       )}
     </>
   )
