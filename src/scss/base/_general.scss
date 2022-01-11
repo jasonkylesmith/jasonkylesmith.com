@@ -164,6 +164,21 @@ a:hover {
       }
     }
   }
+
+  &.logo-link {
+    color: $dark;
+    &::before {
+      height: 0;
+      width: 0;
+    }
+
+    &:hover {
+      &::before {
+        height: 0;
+        width: 0;
+      }
+    }
+  }
 }
 
 nav {
@@ -244,6 +259,14 @@ blockquote {
 .logo {
   font-family: $font-family-header;
   margin: 0;
+  padding: 0.5rem 0 0.3rem 0;
+  width: min(250px, 100%);
+}
+
+@media (max-width: 342px) {
+  .logo {
+    display: none;
+  }
 }
 
 .icon {

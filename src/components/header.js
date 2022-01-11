@@ -1,16 +1,19 @@
 import * as React from "react"
 import icon from "../images/hex-icon-plain.svg"
 import MenuIcon from "./menu-icon"
+import { Link } from "gatsby"
 
 const Header = props => {
   if (props.version === "desktop") {
     return (
       <header>
         <div className="logo-container">
-          <div>
-            <img src={icon} className="icon" alt="Purple Hexagon Icon" />
-            <h1 className="logo">Jason Kyle Smith</h1>
-          </div>
+          <Link to="/" className="logo-link">
+            <div>
+              <img src={icon} className="icon" alt="Purple Hexagon Icon" />
+              <h1 className="logo">Jason Kyle Smith</h1>
+            </div>
+          </Link>
         </div>
       </header>
     )
@@ -18,10 +21,12 @@ const Header = props => {
     return (
       <header>
         <div className="logo-container">
-          <div>
-            <img src={icon} className="icon" alt="Purple Hexagon Icon" />
-            <h1 className="logo">Jason Kyle Smith</h1>
-          </div>
+          <Link to="/" className="logo-link">
+            <div>
+              <img src={icon} className="icon" alt="Purple Hexagon Icon" />
+              <h1 className="logo">Jason Kyle Smith</h1>
+            </div>
+          </Link>
 
           <MenuIcon />
         </div>
