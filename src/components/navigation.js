@@ -1,16 +1,41 @@
 import * as React from "react"
+import { Link } from "gatsby"
 
 const Navigation = props => {
   if (props.version === "desktop") {
     return (
       <nav className="d-none d-md-block">
         <ul>
-          <li>home</li>
-          <li>about me</li>
-          <li>web development</li>
-          <li>graphic design</li>
-          <li>photography</li>
-          <li>blog</li>
+          <li>
+            <Link to="/" className="">
+              home
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="">
+              about me
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="">
+              web development
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="">
+              graphic design
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="">
+              photography
+            </Link>
+          </li>
+          <li>
+            <Link to="/blog/" className="">
+              blog
+            </Link>
+          </li>
         </ul>
       </nav>
     )
@@ -18,12 +43,36 @@ const Navigation = props => {
     return (
       <nav>
         <ul>
-          <li>home</li>
-          <li>about me</li>
-          <li>web development</li>
-          <li>graphic design</li>
-          <li>photography</li>
-          <li>blog</li>
+          <li>
+            <Link to="/" className="">
+              home
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="">
+              about me
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="">
+              web development
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="">
+              graphic design
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="">
+              photography
+            </Link>
+          </li>
+          <li>
+            <Link to="/blog/" className="">
+              blog
+            </Link>
+          </li>
         </ul>
       </nav>
     )
