@@ -1,8 +1,18 @@
 header {
   .logo-container {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+      align-items: center;
+
+      .logo {
+        margin-left: 1rem;
+      }
+    }
   }
 }
 
@@ -53,12 +63,14 @@ nav {
   }
 
   header {
-    padding: 0 0.5rem;
+    padding: 0;
+    width: 100%;
   }
 
   .mobile-header {
     background-color: white;
     border-bottom: 2px solid $dark;
+    padding: 0.8rem 1rem;
   }
 }
 

@@ -112,9 +112,7 @@ const BlogPost = props => {
           />
         )
       },
-      [INLINES.EMBEDDED_ENTRY]: node => {
-        console.log("Embedded Entry: ", node)
-      },
+      [INLINES.EMBEDDED_ENTRY]: node => {},
       [INLINES.HYPERLINK]: (node, children) => {
         return (
           <a href={node.data.uri} className="">

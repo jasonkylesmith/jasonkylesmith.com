@@ -41,7 +41,6 @@ const Blog = () => {
     .node
 
   const nonFeaturedPosts = edges.filter(edge => edge.node.featured !== "yes")
-  console.log(nonFeaturedPosts)
 
   return (
     <Layout>
