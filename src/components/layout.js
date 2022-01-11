@@ -57,6 +57,9 @@ const Layout = ({ children }) => {
               <div className="col">
                 <main>{children}</main>
               </div>
+              <div className="">
+                <Footer version="mobile" />
+              </div>
             </div>
           </div>
         </div>
