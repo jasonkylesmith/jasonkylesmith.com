@@ -51,11 +51,8 @@ const Layout = ({ children }) => {
         <div className="content pt-0 pt-md-3">
           <div className="container-fluid">
             <div className="row">
-              <div className="d-flex d-md-none mobile-header px-0 sticky-top justify-content-between align-items-center">
+              <div className="d-flex d-md-none mobile-header sticky-top align-items-center">
                 <Header version="mobile" />
-                <div>
-                  <span> = </span>
-                </div>
               </div>
               <div className="col">
                 <main>{children}</main>
