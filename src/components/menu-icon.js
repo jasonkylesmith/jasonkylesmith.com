@@ -10,10 +10,12 @@ const MenuIcon = props => {
 
   const handleMenuClick = () => {
     if (!menuOpen) {
-      blockScroll()
       setMenuOpen(!menuOpen)
       setTimeout(() => {
         setModalOpen(!modalOpen)
+        setTimeout(() => {
+          blockScroll()
+        }, 200)
       }, 50)
     } else {
       allowScroll()
