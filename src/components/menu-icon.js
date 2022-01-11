@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useState } from "react"
+import Footer from "./footer"
 import useScrollBlock from "./helpers/useScrollBlock"
 import Navigation from "./navigation"
 
@@ -41,8 +42,14 @@ const MenuIcon = props => {
         <span></span>
       </div>
       {menuOpen && (
-        <div id="mobile-menu" className={`${modalOpen && "open"}`}>
-          <Navigation version="mobile" menuClick={handleMenuClick} />
+        <div
+          id="mobile-menu"
+          className={`${
+            modalOpen && "open"
+          } d-flex flex-column justify-content-center`}
+        >
+          <Navigation version="menu" menuClick={handleMenuClick} />
+          <Footer version="menu" />
         </div>
       )}
     </>

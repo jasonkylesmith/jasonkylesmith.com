@@ -77,6 +77,23 @@ nav {
   }
 }
 
+footer {
+  &.menu {
+    position: absolute;
+    bottom: 0;
+
+    a,
+    a:visited,
+    a:active {
+      &:hover {
+        .icon {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
 .hero {
   h1,
   h2,

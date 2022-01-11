@@ -195,6 +195,16 @@ nav {
     text-align: center;
     width: 100%;
 
+    .menu {
+      .icon {
+        .icon {
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+
     a,
     a:visited {
       color: white;
