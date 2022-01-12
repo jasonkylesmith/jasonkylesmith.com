@@ -61,7 +61,7 @@ const Footer = props => {
     )
   } else if (props.version === "mobile") {
     return (
-      <footer className="d-flex flex-column align-items-center">
+      <footer className="d-flex flex-column align-items-center d-md-none">
         <div>
           <a
             href="https://www.linkedin.com/in/jasonkylesmith"
