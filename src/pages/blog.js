@@ -27,7 +27,7 @@ const Blog = () => {
             }
             excerpt {
               childMarkdownRemark {
-                excerpt(pruneLength: 150)
+                excerpt(pruneLength: 360)
               }
             }
           }
