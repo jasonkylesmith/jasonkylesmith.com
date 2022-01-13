@@ -64,6 +64,21 @@ h6 {
   font-size: $base-font-size * 0.9;
 }
 
+h1 + ol,
+h2 + ol,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol,
+h1 + ul,
+h2 + ul,
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul {
+  margin-top: -$margins;
+}
+
 ul {
 }
 
@@ -161,7 +176,6 @@ a:hover {
       .icon {
         transform: scale(1.3);
         color: $purple;
-        
       }
     }
   }
