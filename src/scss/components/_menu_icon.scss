@@ -1,3 +1,8 @@
+/**
+ * Inspired by/Modified from Jesse Couch "Menu 'Hamburger' Icon Animations
+ * https://codepen.io/designcouch/pen/Atyop
+*/
+
 $menu-span-top: 0px;
 $menu-span-middle: 10px;
 $menu-span-bottom: 20px;
@@ -6,7 +11,6 @@ $menu-anim-duration: 200ms;
 #menu-icon {
   width: 30px;
   height: 25px;
-  margin-right: 1rem;
   position: relative;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);

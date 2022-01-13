@@ -4,6 +4,7 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    min-height: 60px;
 
     div {
       display: flex;
@@ -69,8 +70,27 @@ nav {
 
   .mobile-header {
     background-color: white;
-    border-bottom: 2px solid $dark;
+    border-bottom: 1px solid $dark;
     padding: 0.8rem 1rem;
+    -webkit-box-shadow: $shadow-standard;
+    box-shadow: $shadow-standard;
+  }
+}
+
+footer {
+  &.menu {
+    position: absolute;
+    bottom: 0;
+
+    a,
+    a:visited,
+    a:active {
+      &:hover {
+        .icon {
+          color: white;
+        }
+      }
+    }
   }
 }
 

@@ -12,13 +12,32 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allContentfulProject {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }
   `)
 
   response.data.allContentfulBlogPost.edges.forEach(edge => {
+    if (edge.node.slug !== "demo-post") {
+      createPage({
+        path: `/blog/${edge.node.slug}`,
+        component: path.resolve("./src/templates/blog-post.js"),
+        context: {
+          slug: edge.node.slug,
+        },
+      })
+    }
+  })
+
+  response.data.allContentfulProject.edges.forEach(edge => {
     createPage({
-      path: `/blog/${edge.node.slug}`,
-      component: path.resolve("./src/templates/blog-post.js"),
+      path: `/projects/${edge.node.slug}`,
+      component: path.resolve("./src/templates/project.js"),
       context: {
         slug: edge.node.slug,
       },
