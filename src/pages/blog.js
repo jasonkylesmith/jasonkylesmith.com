@@ -17,6 +17,7 @@ const Blog = () => {
             slug
             featured
             publishedDate(formatString: "Do MMMM, YYYY")
+            fullDate: publishedDate
             featuredImage {
               title
               gatsbyImageData(
@@ -37,10 +38,17 @@ const Blog = () => {
   `)
 
   const { edges } = data.allContentfulBlogPost
-  const featuredPost = edges.filter(edge => edge.node.featured === "yes")[0]
-    .node
 
-  const nonFeaturedPosts = edges.filter(edge => edge.node.featured !== "yes")
+  const filteredEdges = edges.filter(edge => edge.node.slug !== "demo-post")
+  // Filter out posts to be published in the future .filter(edge => new Date(edge.node.fullDate) <= new Date())
+
+  const featuredPost = filteredEdges.filter(
+    edge => edge.node.featured === "yes"
+  )[0].node
+
+  const nonFeaturedPosts = filteredEdges.filter(
+    edge => edge.node.featured !== "yes"
+  )
 
   return (
     <Layout>
@@ -74,26 +82,60 @@ const Blog = () => {
               )}
             </div>
             <div>
-              {nonFeaturedPosts &&
-                nonFeaturedPosts.map((post, index) => {
-                  return (
-                    <div
-                      key={`${post.node.contentful_id}${index}`}
-                      className="post-excerpt-wrapper"
-                    >
-                      <h2 className="">{post.node.title}</h2>
-                      {post.node.excerpt && (
-                        <p className="excerpt">
-                          {post.node.excerpt.childMarkdownRemark.excerpt}
-                        </p>
-                      )}
+              {nonFeaturedPosts && (
+                <div className="row">
+                  {nonFeaturedPosts.map((post, index) => {
+                    return (
+                      <div
+                        key={`${post.node.contentful_id}${index}`}
+                        className="col-12"
+                      >
+                        {post.node.featuredImage && (
+                          <div className="post-excerpt-wrapper">
+                            <div>
+                              <GatsbyImage
+                                className=""
+                                image={post.node.featuredImage.gatsbyImageData}
+                                alt={post.node.title}
+                              />
+                            </div>
+                            <h2 className="">{post.node.title}</h2>
+                            {post.node.excerpt && (
+                              <p className="excerpt">
+                                {post.node.excerpt.childMarkdownRemark.excerpt}
+                              </p>
+                            )}
 
-                      <Link to={`/blog/${post.node.slug}`} className="btn">
-                        Read More
-                      </Link>
-                    </div>
-                  )
-                })}
+                            <Link
+                              to={`/blog/${post.node.slug}`}
+                              className="btn"
+                            >
+                              Read More
+                            </Link>
+                          </div>
+                        )}
+                        {!post.node.featuredImage && (
+                          <div className="post-excerpt-wrapper">
+                            <h2 className="">{post.node.title}</h2>
+                            {post.node.excerpt && (
+                              <p className="excerpt">
+                                {post.node.excerpt.childMarkdownRemark.excerpt}
+                              </p>
+                            )}
+
+                            <Link
+                              to={`/blog/${post.node.slug}`}
+                              className="btn"
+                            >
+                              Read More
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>

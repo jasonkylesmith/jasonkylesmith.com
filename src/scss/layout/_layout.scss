@@ -118,6 +118,10 @@ footer {
 .hero-text {
   width: 250px;
   margin-left: 0;
+
+  h1 + p {
+    margin-top: -$margins;
+  }
 }
 
 @media (max-width: $max-width-sm) {
