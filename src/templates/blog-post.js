@@ -45,11 +45,15 @@ export const query = graphql`
               formats: [AUTO, WEBP, AVIF]
             )
             title
+            description
           }
         }
       }
     }
-    allContentfulBlogPost(sort: { fields: publishedDate }) {
+    allContentfulBlogPost(
+      filter: { slug: { ne: "demo-post" } }
+      sort: { fields: publishedDate }
+    ) {
       edges {
         next {
           slug
@@ -105,11 +109,18 @@ const BlogPost = props => {
       },
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         return (
-          <GatsbyImage
-            image={node.data.target.gatsbyImageData}
-            alt={node.data.target.title}
-            className="blog-image"
-          />
+          <>
+            <GatsbyImage
+              image={node.data.target.gatsbyImageData}
+              alt={node.data.target.title}
+              className="blog-image"
+            />
+            {node.data.target.description !== "" && (
+              <p className="blog-image-caption">
+                {node.data.target.description}
+              </p>
+            )}
+          </>
         )
       },
       [INLINES.EMBEDDED_ENTRY]: node => {},

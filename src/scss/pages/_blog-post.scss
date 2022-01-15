@@ -15,6 +15,11 @@
   margin-bottom: $margins;
 }
 
+.blog-image + .blog-image-caption {
+  margin-top: -$margins;
+  font-size: $base-font-size-small * 0.8;
+}
+
 .blog-body {
   /* border-top: 4px solid $purple; */
   /* border-bottom: 4px solid $purple; */
@@ -81,5 +86,5 @@
 }
 
 .post-featured-wrapper {
-  width: min(90%, 800px);
+  /* width: min(90%, 800px); */
 }
