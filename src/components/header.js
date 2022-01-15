@@ -10,8 +10,8 @@ const Header = props => {
         <div className="logo-container">
           <Link to="/" className="logo-link">
             <div>
-              <img src={icon} className="icon" alt="Purple Hexagon Icon" />
-              <h1 className="logo">Jason Kyle Smith</h1>
+              {/* <img src={icon} className="icon" alt="Purple Hexagon Icon" /> */}
+              <h1 className="logo m-0">Jason Kyle Smith</h1>
             </div>
           </Link>
         </div>
@@ -23,8 +23,8 @@ const Header = props => {
         <div className="logo-container">
           <Link to="/" className="logo-link">
             <div>
-              <img src={icon} className="icon" alt="Purple Hexagon Icon" />
-              <h1 className="logo">Jason Kyle Smith</h1>
+              {/* <img src={icon} className="icon" alt="Purple Hexagon Icon" /> */}
+              <h1 className="logo m-0">Jason Kyle Smith</h1>
             </div>
           </Link>
 

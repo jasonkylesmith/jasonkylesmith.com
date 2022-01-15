@@ -3,7 +3,7 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const response = await graphql(`
+  /*   const response = await graphql(`
     query {
       allContentfulBlogPost {
         edges {
@@ -21,9 +21,9 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
+  `) */
 
-  response.data.allContentfulBlogPost.edges
+  /*   response.data.allContentfulBlogPost.edges
     // Filter out posts to be published in the future .filter(edge => new Date(edge.node.publishedDate) <= new Date())
     .forEach(edge => {
       if (edge.node.slug !== "demo-post") {
@@ -45,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: edge.node.slug,
       },
     })
-  })
+  }) */
 
   createPage({
     path: "/using-dsg",

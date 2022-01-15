@@ -17,7 +17,7 @@ import PostNav from "../components/post-nav"
 
 library.add(fab, fas)
 
-export const query = graphql`
+/* export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       contentful_id
@@ -72,10 +72,10 @@ export const query = graphql`
       }
     }
   }
-`
+` */
 
 const BlogPost = props => {
-  const { title, publishedDate, featuredImage, tags, body, contentful_id } =
+  /* const { title, publishedDate, featuredImage, tags, body, contentful_id } =
     props.data.contentfulBlogPost
 
   const { edges } = props.data.allContentfulBlogPost
@@ -169,7 +169,7 @@ const BlogPost = props => {
         </div>
       </div>
     </Layout>
-  )
+  ) */
 }
 
 export default BlogPost
