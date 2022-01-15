@@ -36,7 +36,7 @@ const WebDevelopment = props => {
                 projects, things to do solo that will let me learn and
                 experience at my own pace.
               </p>
-              <h4>Key Projects</h4>
+              <h4>Target Projects</h4>
               <ul>
                 <li>jasonkylesmith.com Portfolio Website</li>
                 <li>Discord Bot</li>
