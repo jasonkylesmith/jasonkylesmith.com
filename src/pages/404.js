@@ -31,7 +31,7 @@ const Nav404 = props => {
     <div className="post-nav ">
       <div className="post-nav-wrapper justify-content-end">
         <FontAwesomeIcon icon={["fas", "chevron-left"]} />
-        <button className="btn-link" onCLick={() => navigate(-1)}>
+        <button className="btn-link" onClick={() => navigate(-1)}>
           Go Back
         </button>
       </div>
