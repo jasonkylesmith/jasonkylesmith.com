@@ -1,0 +1,27 @@
+.author-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: flex-start;
+
+  border-left: 4px solid $purple;
+
+  .icon {
+    margin-top: -$margins;
+  }
+}
+
+.author-image-wrapper {
+  padding: 0 $margins;
+  padding-top: 0px;
+  img {
+    max-height: 100px;
+    width: auto;
+  }
+}
+
+.author-description {
+  padding: 0px $margins;
+}
