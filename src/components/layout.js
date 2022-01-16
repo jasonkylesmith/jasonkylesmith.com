@@ -35,7 +35,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className="layout-container">
-        <div className="hero-text w-100 h-100 position-absolute m-0 d-flex flex-column justify-content-center align-items-center">
+        <div
+          className="hero-text w-100 position-absolute m-0 d-flex flex-column justify-content-center align-items-center"
+          style={{ height: "99vh" }}
+        >
           <h1>Jason Kyle Smith</h1>
           <p>Coming Soon</p>
           <div className="position-absolute" style={{ bottom: "1rem" }}>
