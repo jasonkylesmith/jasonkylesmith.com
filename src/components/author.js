@@ -10,9 +10,7 @@ const Author = props => {
         </div>
         <div className="author-description">
           <p>
-            Jason is the author of this post. Jason is the author of this post.
-            Jason is the author of this post. Jason is the author of this post.
-            Jason is the author of this post. Jason is the author of this post.
+            
           </p>
           <SocialIcons />
         </div>
