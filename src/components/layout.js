@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
         <div className="hero-text w-100 h-100 position-absolute m-0 d-flex flex-column justify-content-center align-items-center">
           <h1>Jason Kyle Smith</h1>
           <p>Coming Soon</p>
-          <div className="position-absolute" style={{ bottom: 0 }}>
+          <div className="position-absolute" style={{ bottom: "1rem" }}>
             <a
               href="https://www.linkedin.com/in/jasonkylesmith"
               target="_new"
