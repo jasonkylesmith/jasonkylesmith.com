@@ -18,6 +18,7 @@ import Navigation from "./navigation"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
+import Seo from "./seo"
 
 library.add(fab)
 
@@ -34,6 +35,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Seo title="Coming Soon" />
       <div className="layout-container">
         <div
           className="hero-text w-100 position-absolute m-0 d-flex flex-column justify-content-center align-items-center"

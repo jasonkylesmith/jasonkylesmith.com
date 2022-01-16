@@ -25,6 +25,8 @@ function Seo({ description, lang, meta, title }) {
     `
   )
 
+  console.log("I am here")
+
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
 
