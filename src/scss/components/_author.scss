@@ -14,14 +14,31 @@
 }
 
 .author-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 0 $margins;
   padding-top: 0px;
+
   img {
     max-height: 100px;
     width: auto;
+    margin-bottom: $margins;
+  }
+
+  div {
+    display: flex;
+    margin-top: $margins;
+    justify-content: center;
+  }
+}
+
+.author-name {
+  h6 {
+    margin: 0;
   }
 }
 
 .author-description {
-  padding: 0px $margins;
+  padding: 0 $margins 0 0;
 }
