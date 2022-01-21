@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import { navigate } from "gatsby"
+import DoubleColumnHightlight from "../components/gallery/double-column-highlight"
 
 library.add(fab)
 
@@ -15,7 +16,7 @@ const WebDevelopment = props => {
       <Seo title="Web Development" />
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-1 mt-4 mt-md-0 d-flex flex-column justify-content-center">
+          <div className="col-12 col-md-11 offset-md-1 mt-4 mt-md-0 d-flex flex-column justify-content-center">
             <div className="align-self-start">
               <h1 className="m-0">Web Development</h1>
               <p>
@@ -75,6 +76,7 @@ const WebDevelopment = props => {
                 />
               </div>
             </div>
+            <DoubleColumnHightlight />
           </div>
         </div>
       </div>
