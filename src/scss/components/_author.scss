@@ -20,7 +20,6 @@
   padding-right: $margins;
 
   img {
-    max-height: 150px;
     width: auto;
   }
 
@@ -47,6 +46,10 @@
 @media (max-width: $max-width-md) {
   .author-container {
     flex-direction: column;
+
+    .author-image-wrapper {
+      display: none;
+    }
 
     img {
       display: none;

@@ -1,23 +1,50 @@
 import * as React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
+
 import SocialIcons from "./social-icons"
 
 const Author = props => {
+  const data = useStaticQuery(graphql`
+    query {
+      contentfulAuthor(name: { eq: "Jason Smith" }) {
+        contentful_id
+        sys {
+          type
+          contentType {
+            sys {
+              id
+            }
+          }
+        }
+        name
+        description
+        photo {
+          gatsbyImageData(
+            width: 200
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+          description
+        }
+      }
+    }
+  `)
+
+  const { name, description, photo } = data.contentfulAuthor
+
   return (
     <>
       <div className="author-container">
         <div className="author-image-wrapper">
-          <img src="http://picsum.photos/200/" />
+          <GatsbyImage image={photo.gatsbyImageData} alt={photo.description} />
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div className="author-name">
-            <h6>Jason Smith</h6>
+            <h6>{name}</h6>
           </div>
           <div className="author-description">
-            <p className="small">
-              Web developer, photographer, designer, father / husband, video
-              game enthusiast, B-level wallyball player, and all around average
-              guy.
-            </p>
+            <p className="small">{description}</p>
             <div>
               <SocialIcons />
             </div>
