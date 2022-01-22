@@ -47,7 +47,7 @@ const Project = props => {
 
   return (
     <Layout>
-      <SEO title={`${title}`} />
+      <SEO title={title} />
     </Layout>
   )
 }
