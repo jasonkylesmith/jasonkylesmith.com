@@ -86,8 +86,10 @@ footer {
     a:visited,
     a:active {
       &:hover {
-        .icon {
-          color: white;
+        &.icon {
+          .icon {
+            color: white;
+          }
         }
       }
     }

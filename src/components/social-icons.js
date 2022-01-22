@@ -14,11 +14,7 @@ const SocialIcons = props => {
         target="_new"
         className="icon"
       >
-        <FontAwesomeIcon
-          icon={["fab", "linkedin"]}
-          className="me-1 icon"
-          viewBox="0 0 448 1"
-        />
+        <FontAwesomeIcon icon={["fab", "linkedin"]} className="me-1 icon" />
       </a>
       <a
         href="https://www.github.com/jasonkylesmith"
@@ -28,7 +24,6 @@ const SocialIcons = props => {
         <FontAwesomeIcon
           icon={["fab", "github-square"]}
           className="mx-1 icon"
-          viewBox="0 0 448 1"
         />
       </a>
       <a
@@ -39,7 +34,6 @@ const SocialIcons = props => {
         <FontAwesomeIcon
           icon={["fab", "twitter-square"]}
           className="mx-1 icon"
-          viewBox="0 0 448 1"
         />
       </a>
       <a
@@ -50,7 +44,6 @@ const SocialIcons = props => {
         <FontAwesomeIcon
           icon={["fab", "instagram-square"]}
           className="mx-1 icon"
-          viewBox="0 0 448 1"
         />
       </a>
     </>

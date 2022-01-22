@@ -7,9 +7,6 @@ const Author = props => {
       <div className="author-container">
         <div className="author-image-wrapper">
           <img src="http://picsum.photos/200/" />
-          <div>
-            <SocialIcons />
-          </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div className="author-name">
@@ -21,6 +18,9 @@ const Author = props => {
               game enthusiast, B-level wallyball player, and all around average
               guy.
             </p>
+            <div>
+              <SocialIcons />
+            </div>
           </div>
         </div>
       </div>
