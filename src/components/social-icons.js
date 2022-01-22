@@ -30,8 +30,6 @@ const SocialIcons = props => {
 
   const { linkedIn, twitter, gitHub, instagram } = data.contentfulAuthor
 
-  console.log(data.contentfulAuthor)
-
   return (
     <>
       <a href={linkedIn} target="_new" className="icon">
