@@ -14,6 +14,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import Blockquote from "../components/blockquote"
 import PostNav from "../components/post-nav"
+import Author from "../components/author"
 
 library.add(fab, fas)
 
@@ -163,6 +164,7 @@ const BlogPost = props => {
             </div>
             <div className="blog-body d-flex flex-column">
               {bodyContent}
+              <Author />
               <PostNav edges={navEdges} />
             </div>
           </div>

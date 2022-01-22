@@ -11,7 +11,7 @@ const PostNav = props => {
   const { edges } = props
 
   return (
-    <div className="post-nav">
+    <div className="post-nav mt-2 mb-5">
       {edges.prev && (
         <div className="post-nav-wrapper">
           <FontAwesomeIcon icon={["fas", "chevron-left"]} />{" "}
