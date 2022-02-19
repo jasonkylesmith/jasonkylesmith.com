@@ -1,9 +1,9 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  width: max(40%, 300px);
+  width: 100%;
   height: 350px;
-  margin: $margins;
+  margin: $margins calc($margins/2);
   border: 2px solid $dark;
   border-radius: $border-radii;
   transition: transform $anim-duration ease-in-out,
@@ -86,5 +86,19 @@
       transform: translateY(0px);
       opacity: 1;
     }
+  }
+}
+
+@media (min-width: $max-width-lg) {
+  .project-card {
+    width: 40%;
+    margin: $margins;
+  }
+}
+
+@media (min-width: $max-width-xl) {
+  .project-card {
+    width: 45%;
+    margin: $margins;
   }
 }
