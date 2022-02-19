@@ -7,6 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import { navigate } from "gatsby"
 import DoubleColumnHightlight from "../components/gallery/double-column-highlight"
+import ProjectPreviewCard from "../components/gallery/project-preview-card"
 
 library.add(fab)
 
@@ -16,7 +17,19 @@ const WebDevelopment = props => {
       <Seo title="Web Development" />
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-11 offset-md-1 mt-4 mt-md-0 d-flex flex-column justify-content-center">
+          <div className="col-12 col-md-11 offset-md-1 mt-4 mt-md-0 d-flex flex-column">
+            <h1>Web Development</h1>
+            <div
+              className="d-flex flex-row justify-content-center align-items-center"
+              style={{ flexWrap: "wrap" }}
+            >
+              <ProjectPreviewCard />
+              <ProjectPreviewCard />
+              <ProjectPreviewCard />
+              <ProjectPreviewCard />
+            </div>
+
+            {/* 
             <div className="align-self-start">
               <h1 className="m-0">Web Development</h1>
               <p>
@@ -44,7 +57,7 @@ const WebDevelopment = props => {
                 <li>Discord Bot</li>
                 <li>A Client Website</li>
                 <li>React Native Applicaation</li>
-              </ul>
+              </ul> 
             </div>
             <div className="row">
               <div className="col-12">
@@ -77,6 +90,7 @@ const WebDevelopment = props => {
               </div>
             </div>
             <DoubleColumnHightlight />
+             */}
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ $purple: #663cf0;
 $dark: #1f1f1f;
 $light: #f6f3ff;
 
+$purple-overlay: rgba(102, 60, 240, 0.5);
+
 // TYPOGRAPHY
 
 $font-family-header: "Bebas Neue", serif;
@@ -24,6 +26,11 @@ $anim-duration: 250ms;
 // SHADOWS
 
 $shadow-standard: 0px 4px 15px -10px $dark;
+$shadow-large: 0px 4px 25px -10px $dark;
+
+// FEATURES
+
+$border-radii: 20px;
 
 // BREAKPOINTS
 
