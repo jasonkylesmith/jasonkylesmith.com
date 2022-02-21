@@ -21,7 +21,7 @@ const Navigation = props => {
               web development
             </Link>
           </li>
-          <li>
+          {/*           <li>
             <Link to="/" className="">
               graphic design
             </Link>
@@ -30,7 +30,7 @@ const Navigation = props => {
             <Link to="/" className="">
               photography
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/blog/" className="">
               blog
@@ -76,7 +76,7 @@ const Navigation = props => {
               web development
             </Link>
           </li>
-          <li>
+          {/*  <li>
             <Link
               to="/"
               className=""
@@ -97,7 +97,7 @@ const Navigation = props => {
             >
               photography
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               to="/blog/"

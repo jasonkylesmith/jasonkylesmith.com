@@ -338,3 +338,11 @@ blockquote {
 .small-text {
   font-size: $base-font-size-small;
 }
+
+.asset-title + .subtitle {
+  margin-top: -1.5rem;
+}
+
+.subtitle {
+  font-size: $base-font-size-small;
+}

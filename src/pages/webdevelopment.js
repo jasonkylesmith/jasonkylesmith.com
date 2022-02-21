@@ -5,16 +5,54 @@ import Seo from "../components/seo"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
+import { graphql, navigate, useStaticQuery } from "gatsby"
+import DoubleColumnHightlight from "../components/gallery/double-column-highlight"
+import ProjectPreviewCard from "../components/gallery/project-preview-card"
 
 library.add(fab)
 
 const WebDevelopment = props => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulProject {
+        edges {
+          node {
+            contentful_id
+            slug
+            title
+            excerpt {
+              excerpt
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const { edges } = data.allContentfulProject
+
   return (
     <Layout>
       <Seo title="Web Development" />
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-1 mt-4 mt-md-0 d-flex flex-column justify-content-center">
+          <div className="col-12 col-md-11 offset-md-1 mt-4 mt-md-0 d-flex flex-column">
+            <h1>Web Development</h1>
+            <div
+              className="d-flex flex-row justify-content-between align-items-center"
+              style={{ flexWrap: "wrap" }}
+            >
+              {edges.map((node, index) => {
+                return (
+                  <ProjectPreviewCard
+                    node={node}
+                    key={`${node.title}${index}`}
+                  />
+                )
+              })}
+            </div>
+
+            {/* 
             <div className="align-self-start">
               <h1 className="m-0">Web Development</h1>
               <p>
@@ -42,7 +80,7 @@ const WebDevelopment = props => {
                 <li>Discord Bot</li>
                 <li>A Client Website</li>
                 <li>React Native Applicaation</li>
-              </ul>
+              </ul> 
             </div>
             <div className="row">
               <div className="col-12">
@@ -74,6 +112,8 @@ const WebDevelopment = props => {
                 />
               </div>
             </div>
+            <DoubleColumnHightlight />
+             */}
           </div>
         </div>
       </div>

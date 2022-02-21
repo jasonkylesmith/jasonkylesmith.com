@@ -1,0 +1,118 @@
+.project-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 350px;
+  margin: $margins 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  border-radius: $border-radii;
+  transition: transform $anim-duration ease-in-out,
+    box-shadow $anim-duration ease-in-out;
+  transform: scale(1);
+  box-shadow: $shadow-standard;
+
+  background-color: $dark;
+  color: $light;
+
+  .body {
+    flex: 1;
+    border-radius: $border-radii $border-radii 0 0;
+    position: relative;
+    width: 100%;
+    padding: $margins;
+  }
+
+  .blocker {
+    position: absolute;
+    border-radius: $border-radii $border-radii 0 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: background-color $anim-duration ease-in-out;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: $border-radii $border-radii 0 0;
+  }
+
+  .body-text {
+    opacity: 0;
+    left: 0;
+    top: 0;
+    border-radius: $border-radii;
+    position: absolute;
+    transition: transform $anim-duration ease-in-out 50ms,
+      opacity $anim-duration ease-in-out 50ms;
+    transform: translateY(200px);
+    padding: $margins;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid $purple-darker;
+    width: 100%;
+    padding: calc($margins/10) $margins;
+    background-color: $purple;
+    border-radius: 0 0 $border-radii $border-radii;
+  }
+
+  .icons {
+    display: flex;
+    flex-direction: row;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.025);
+    box-shadow: $shadow-large;
+
+    .body {
+    }
+
+    .blocker {
+      background-color: $purple-overlay;
+    }
+
+    .body-text {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+  }
+}
+
+@media (min-width: $max-width-lg) {
+  .project-card {
+    width: 40%;
+    margin: $margins;
+  }
+}
+
+@media (min-width: $max-width-xl) {
+  .project-card {
+    width: 45%;
+    margin: $margins;
+  }
+}
