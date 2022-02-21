@@ -40,8 +40,6 @@ export const query = graphql`
 `
 
 const Project = props => {
-  console.log(props)
-
   const { title, description, tags, client, tools } =
     props.data.contentfulProject
 
