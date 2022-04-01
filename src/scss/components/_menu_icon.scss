@@ -1,0 +1,104 @@
+/**
+ * Inspired by/Modified from Jesse Couch "Menu 'Hamburger' Icon Animations
+ * https://codepen.io/designcouch/pen/Atyop
+*/
+
+$menu-span-top: 0px;
+$menu-span-middle: 10px;
+$menu-span-bottom: 20px;
+$menu-anim-duration: 200ms;
+
+#menu-icon {
+  width: 30px;
+  height: 25px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  z-index: 10;
+  justify-self: end;
+}
+
+#menu-icon span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: $purple;
+
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+#menu-icon span:nth-child(1) {
+  top: $menu-span-top;
+}
+
+#menu-icon span:nth-child(2),
+#menu-icon span:nth-child(3) {
+  top: $menu-span-middle;
+}
+
+#menu-icon span:nth-child(4) {
+  top: $menu-span-bottom;
+}
+
+#menu-icon.open span:nth-child(1) {
+  top: $menu-span-middle;
+  width: 0%;
+  left: 50%;
+}
+
+#menu-icon.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#menu-icon.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#menu-icon.open span:nth-child(4) {
+  top: $menu-span-middle;
+  width: 0%;
+  left: 50%;
+}
+
+#menu-icon.open span {
+  background: white;
+}
+
+#mobile-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: $purple;
+  opacity: 0;
+  transition: opacity $menu-anim-duration ease-in-out 0ms;
+  z-index: 5;
+
+  &.open {
+    opacity: 1;
+  }
+}

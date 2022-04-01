@@ -9,16 +9,38 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            publishedDate
+          }
+        }
+      }
+      allContentfulProject {
+        edges {
+          node {
+            slug
           }
         }
       }
     }
   `)
 
-  response.data.allContentfulBlogPost.edges.forEach(edge => {
+  response.data.allContentfulBlogPost.edges
+    // Filter out posts to be published in the future .filter(edge => new Date(edge.node.publishedDate) <= new Date())
+    .forEach(edge => {
+      if (edge.node.slug !== "demo-post") {
+        createPage({
+          path: `/blog/${edge.node.slug}`,
+          component: path.resolve("./src/templates/blog-post.js"),
+          context: {
+            slug: edge.node.slug,
+          },
+        })
+      }
+    })
+
+  response.data.allContentfulProject.edges.forEach(edge => {
     createPage({
-      path: `/blog/${edge.node.slug}`,
-      component: path.resolve("./src/templates/blog-post.js"),
+      path: `/projects/${edge.node.slug}`,
+      component: path.resolve("./src/templates/project.js"),
       context: {
         slug: edge.node.slug,
       },

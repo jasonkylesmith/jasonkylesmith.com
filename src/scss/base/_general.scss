@@ -6,11 +6,17 @@
   padding: 0;
 }
 
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   font-family: $font-family-text;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
   color: $dark;
+  overflow-x: hidden;
 }
 
 p,
@@ -33,6 +39,7 @@ p {
 h1 {
   font-family: $font-family-header;
   font-size: $base-font-size * 2.25;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -47,15 +54,33 @@ h3 {
 }
 
 h4 {
+  font-weight: 700;
   font-size: $base-font-size * 1.2;
 }
 
 h5 {
+  font-weight: 700;
   font-size: $base-font-size * 1;
 }
 
 h6 {
+  font-weight: 700;
   font-size: $base-font-size * 0.9;
+}
+
+h1 + ol,
+h2 + ol,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol,
+h1 + ul,
+h2 + ul,
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul {
+  margin-top: -$margins;
 }
 
 ul {
@@ -96,22 +121,28 @@ a:hover {
 
   &:hover {
     &::before {
+      height: 2px;
       transition: transform $anim-duration ease-in-out 0ms;
       transform: scaleX(1);
     }
   }
 
   &.btn {
-    display: block;
     width: fit-content;
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
+    color: $purple;
     border: 2px solid $purple;
     margin-bottom: $margins;
     padding: $btn-padding;
     transition: background-color $anim-duration ease-in-out 0ms,
       color $anim-duration ease-in-out 0ms;
+
+    &.scroll {
+      border: 2px solid $dark;
+      color: $dark;
+    }
 
     &::before {
       content: "";
@@ -126,13 +157,154 @@ a:hover {
   &.btn:hover {
     background-color: $purple;
     color: $light;
+
+    &.scroll {
+      background-color: $dark;
+    }
+  }
+
+  &.icon {
+    color: $dark;
+
+    .icon {
+      transform: scale(1);
+      transition: transform $anim-duration ease-in-out 0ms;
+    }
+
+    &::before {
+      width: 0;
+      height: 0;
+    }
+
+    &:hover {
+      .icon {
+        transform: scale(1.3);
+        color: $purple;
+      }
+    }
+  }
+
+  &.logo-link {
+    color: $dark;
+    &::before {
+      height: 0;
+      width: 0;
+    }
+
+    &:hover {
+      &::before {
+        height: 0;
+        width: 0;
+      }
+    }
   }
 }
 
-a:hover {
+.btn-link,
+.btn-link:active,
+.btn-link:visited,
+.btn-link:hover {
+  text-decoration: none;
+  color: $purple;
+  font-weight: 600;
+  position: relative;
+  padding: 0;
+  margin: 0 1rem;
+  border: 0;
+  background-color: transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: $purple;
+    color: $purple;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform $anim-duration ease-in-out 0ms;
+  }
+
+  &:hover {
+    &::before {
+      color: $purple;
+      height: 2px;
+      transition: transform $anim-duration ease-in-out 0ms;
+      transform: scaleX(1);
+    }
+  }
 }
 
-a:focus {
+nav {
+  a,
+  a:visited {
+    color: $dark;
+
+    &:hover {
+      color: $purple;
+    }
+  }
+
+  &.mobile-nav {
+    text-align: center;
+    width: 100%;
+
+    .icon {
+      &:hover {
+      }
+    }
+
+    a,
+    a:visited {
+      color: white;
+
+      &:hover {
+        &::after,
+        &::before {
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+
+.blockquote {
+  position: relative;
+  padding: 0 2rem;
+  margin: $margins + 1rem 0;
+  margin-top: $margins;
+  width: fit-content;
+  text-align: center;
+
+  blockquote {
+    display: inline;
+
+    &::before,
+    &::after {
+      position: absolute;
+      color: $purple;
+      font-size: $base-font-size * 5;
+    }
+
+    &::before {
+      content: "“";
+      top: -50px;
+      left: 0;
+    }
+
+    &::after {
+      content: "”";
+      bottom: -90px;
+      right: 0;
+    }
+  }
+
+  span {
+    padding-left: 0;
+    font-size: $base-font-size-small;
+    font-style: italic;
+  }
 }
 
 blockquote {
@@ -140,10 +312,23 @@ blockquote {
 
 .logo {
   font-family: $font-family-header;
+  margin: 0;
+  padding: 0.5rem 0 0.3rem 0;
+  width: min(250px, 100%);
+}
+
+@media (max-width: 342px) {
+  .logo {
+    display: none;
+  }
+}
+
+.logo-icon {
+  height: 40px;
 }
 
 .icon {
-  height: 40px;
+  transform-origin: center;
 }
 
 .copyright {

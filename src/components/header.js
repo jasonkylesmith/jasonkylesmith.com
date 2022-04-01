@@ -1,42 +1,38 @@
 import * as React from "react"
-import PropTypes from "prop-types"
+import icon from "../images/hex-icon-plain.svg"
+import MenuIcon from "./menu-icon"
 import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const Header = props => {
+  if (props.version === "desktop") {
+    return (
+      <header>
+        <div className="logo-container">
+          <Link to="/" className="logo-link">
+            <div>
+              <img src={icon} className="logo-icon" alt="Purple Hexagon Icon" />
+              <h1 className="logo">Jason Kyle Smith</h1>
+            </div>
+          </Link>
+        </div>
+      </header>
+    )
+  } else {
+    return (
+      <header>
+        <div className="logo-container">
+          <Link to="/" className="logo-link">
+            <div>
+              <img src={icon} className="logo-icon" alt="Purple Hexagon Icon" />
+              <h1 className="logo">Jason Kyle Smith</h1>
+            </div>
+          </Link>
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
+          <MenuIcon />
+        </div>
+      </header>
+    )
+  }
 }
 
 export default Header
