@@ -8,7 +8,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons"
 
 import Layout from "../components/layout"
 import Tags from "../components/tags"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
@@ -144,7 +144,7 @@ const BlogPost = props => {
 
   return (
     <Layout>
-      <SEO title={title} />
+      <Seo title={title} />
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-1 mt-4 mt-md-0">

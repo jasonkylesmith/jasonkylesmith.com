@@ -20,6 +20,13 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allContentfulGallery {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }
   `)
 
@@ -41,6 +48,16 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/projects/${edge.node.slug}`,
       component: path.resolve("./src/templates/project.js"),
+      context: {
+        slug: edge.node.slug,
+      },
+    })
+  })
+
+  response.data.allContentfulGallery.edges.forEach(edge => {
+    createPage({
+      path: `/galleries/${edge.node.slug}`,
+      component: path.resolve("./src/templates/gallery.js"),
       context: {
         slug: edge.node.slug,
       },

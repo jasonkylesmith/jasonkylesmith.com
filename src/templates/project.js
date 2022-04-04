@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Tags from "../components/tags"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 export const query = graphql`
@@ -45,7 +45,7 @@ const Project = props => {
 
   return (
     <Layout>
-      <SEO title={title} />
+      <Seo title={title} />
     </Layout>
   )
 }
