@@ -1,6 +1,8 @@
 .block-left-float {
+  min-height: 200px;
   .main-img {
     float: left;
     margin-right: 1rem;
+    max-width: 40%;
   }
 }
