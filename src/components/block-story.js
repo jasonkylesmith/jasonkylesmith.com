@@ -1,20 +1,19 @@
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
+import { textRender } from "./helpers/richTextRenderHelper"
 
 const BlockStory = props => {
   const { imageFloat, image, text } = props.block
   const { gatsbyImageData, description } = image
 
   return (
-    <div className="block-left-float">
+    <div className={`block-${imageFloat}-float`}>
       <GatsbyImage
         image={gatsbyImageData}
         alt={description}
         className="main-img"
       />
-      <div>
-        <h2>Header 2 Title</h2>
-      </div>
+      <div>{textRender(text)}</div>
     </div>
   )
 }

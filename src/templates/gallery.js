@@ -6,6 +6,8 @@ import Tags from "../components/tags"
 import Seo from "../components/seo"
 import { GatsbyImage } from "gatsby-plugin-image"
 import BlockStory from "../components/block-story"
+import BlockGallery from "../components/block-gallery"
+import BlockFeature from "../components/block-feature"
 
 export const query = graphql`
   query ($slug: String!) {
@@ -13,6 +15,63 @@ export const query = graphql`
       contentful_id
       name
       blocks {
+        ... on ContentfulBlockFeature {
+          id
+          name
+          variant
+          blockItems {
+            ... on ContentfulBlockItemImage {
+              id
+              sys {
+                contentType {
+                  sys {
+                    id
+                  }
+                }
+              }
+              image {
+                gatsbyImageData
+                description
+              }
+            }
+            ... on ContentfulBlockItemText {
+              id
+              sys {
+                contentType {
+                  sys {
+                    id
+                  }
+                }
+              }
+              text {
+                raw
+              }
+            }
+          }
+          sys {
+            contentType {
+              sys {
+                id
+              }
+            }
+          }
+        }
+        ... on ContentfulBlockGallery {
+          id
+          name
+          images {
+            id
+            gatsbyImageData
+          }
+          variant
+          sys {
+            contentType {
+              sys {
+                id
+              }
+            }
+          }
+        }
         ... on ContentfulBlockStory {
           id
           name
@@ -50,100 +109,19 @@ const Gallery = props => {
       <h1>{"test"}</h1>
       {blocks.map(block => {
         const { id } = block.sys.contentType.sys
-        return id === "blockStory" && <BlockStory block={block} />
-      })}
-      {/* Gallery Tests */}
-      <div className="block-left-float">
-        <img src="https://picsum.photos/300/400" className="main-img" />
-        <div>
-          <h2>Header 2 Title</h2>
-          <h6>Header 6 Subtitle</h6>
-          <p>
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text.
-          </p>
-          <p>
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text.
-          </p>
-          <p>
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text.
-          </p>
-        </div>
-      </div>
 
-      <div className="block-lg-landscape-bottom-text">
-        <img src="https://picsum.photos/1920/1080" className="main-img" />
-        <div>
-          <h2>Header 2 Title</h2>
-          <h6>Header 6 Subtitle</h6>
-          <p>
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text. This is
-            body text. This is body text. This is body text. This is body text.
-            This is body text. This is body text. This is body text.
-          </p>
-        </div>
-      </div>
+        if (id === "blockStory") {
+          return <BlockStory block={block} key={block.id} />
+        }
+
+        if (id === "blockFeature") {
+          return <BlockFeature block={block} key={block.id} />
+        }
+
+        if (id === "blockGallery") {
+          return <BlockGallery block={block} key={block.id} />
+        }
+      })}
     </Layout>
   )
 }
