@@ -1,10 +1,30 @@
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
+import Gallery from "react-photo-gallery"
 
 const BlockGallery = props => {
   const { images, variant } = props.block
+  const customSizes = [
+    "(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw",
+  ]
 
-  console.log(variant)
+  let photoArray = []
+  photoArray = images.map(image => {
+    const { url } = image.file
+    const { height, width } = image.file.details.image
+    const { srcSet, sizes } = image.gatsbyImageData.images.sources[0]
+    console.log(srcSet)
+
+    return {
+      src: `https:${url}`,
+      height: height / 2,
+      width: width / 2,
+      srcSet,
+      customSizes,
+    }
+  })
+
+  console.log(photoArray)
 
   let galleryClass
   let galleryWrapperClass = ""
@@ -35,24 +55,38 @@ const BlockGallery = props => {
       maxItems = 3
       galleryWrapperClass = "one-to-two-wrapper"
       break
+    default:
   }
 
   return (
-    <div className={`block-gallery-${galleryClass} block-gallery`}>
-      {images.map((image, index) => {
-        if (index < maxItems) {
-          return (
-            <div className="grid-wrapper">
-              <GatsbyImage
-                image={image.gatsbyImageData}
-                key={images.id}
-                imgClassName={`${galleryClass}-img`}
-              />
-            </div>
-          )
-        }
+    <>
+      <Gallery
+        photos={photoArray}
+        direction={"column"}
+        margin={10}
+        columns={5}
+      />
+      {/* <div className={`${galleryClass} block-gallery-grid`}>
+     
+      {images.map(image => {
+        const { height, width } = image.file.details.image
+        const imgAspect =
+          height > width ? "portrait" : height < width ? "landscape" : "square"
+
+        return (
+          <div className={`block-gallery-wrapper-${galleryClass}`}>
+            <GatsbyImage
+              image={image.gatsbyImageData}
+              key={images.id}
+              imgClassName={`block-gallery-img`}
+              className={`block-gallery-item ${imgAspect}`}
+              objectPosition="50% 50%"
+            />
+          </div>
+        )
       })}
-    </div>
+    </div> */}
+    </>
   )
 }
 

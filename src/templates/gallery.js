@@ -62,6 +62,15 @@ export const query = graphql`
           images {
             id
             gatsbyImageData
+            file {
+              url
+              details {
+                image {
+                  height
+                  width
+                }
+              }
+            }
           }
           variant
           sys {
@@ -106,7 +115,6 @@ const Gallery = props => {
   return (
     <Layout>
       <Seo title={"test"} />
-      <h1>{"test"}</h1>
       {blocks.map(block => {
         const { id } = block.sys.contentType.sys
 
