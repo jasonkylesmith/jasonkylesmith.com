@@ -3,7 +3,16 @@
   min-height: 250px;
 
   .main-img {
-    max-width: 250px;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: $max-width-md) {
+  .block-left-float,
+  .block-right-float {
+    .main-img {
+      max-width: 40%;
+    }
   }
 }
 
@@ -100,5 +109,29 @@ div[class^="block-gallery-wrapper-"] {
       height: 90%;
       width: auto;
     }
+  }
+}
+
+.portrait-duo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: $max-width-sm) {
+  .portrait-duo {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.portrait-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: $max-width-sm) {
+  .portrait-trio {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

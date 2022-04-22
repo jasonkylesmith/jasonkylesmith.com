@@ -61,7 +61,10 @@ export const query = graphql`
           name
           images {
             id
-            gatsbyImageData
+            gatsbyImageData(
+              breakpoints: [200, 400, 600, 800, 1000, 1600]
+              sizes: "(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw"
+            )
             file {
               url
               details {
@@ -114,20 +117,35 @@ const Gallery = props => {
 
   return (
     <Layout>
-      <Seo title={"test"} />
+      <Seo title={name} />
       {blocks.map(block => {
         const { id } = block.sys.contentType.sys
 
         if (id === "blockStory") {
-          return <BlockStory block={block} key={block.id} />
+          return (
+            <div>
+              <BlockStory block={block} key={block.id} />
+              <hr />
+            </div>
+          )
         }
 
         if (id === "blockFeature") {
-          return <BlockFeature block={block} key={block.id} />
+          return (
+            <div>
+              <BlockFeature block={block} key={block.id} />
+              <hr />
+            </div>
+          )
         }
 
         if (id === "blockGallery") {
-          return <BlockGallery block={block} key={block.id} />
+          return (
+            <div>
+              <BlockGallery block={block} key={block.id} />
+              <hr />
+            </div>
+          )
         }
       })}
     </Layout>

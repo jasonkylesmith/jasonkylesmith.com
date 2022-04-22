@@ -7,17 +7,19 @@ const BlockStory = props => {
   const { gatsbyImageData, description } = image
 
   return (
-    <div className={`block-${imageFloat}-float`}>
-      <div className="text-center">
-        <GatsbyImage
-          image={gatsbyImageData}
-          alt={description}
-          className={`main-img text-center ${
-            imageFloat === "left" ? "float-sm-start" : "float-sm-end"
-          }`}
-        />
+    <div className={`block-${imageFloat}-float row mt-4`}>
+      <div className="col-12">
+        <div className="text-center">
+          <GatsbyImage
+            image={gatsbyImageData}
+            alt={description}
+            className={`main-img text-center ${
+              imageFloat === "left" ? "float-sm-start" : "float-sm-end"
+            }`}
+          />
+        </div>
+        <div className="order-1 order-sm-2">{textRender(text)}</div>
       </div>
-      <div className="order-1 order-sm-2">{textRender(text)}</div>
     </div>
   )
 }

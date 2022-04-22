@@ -45,8 +45,32 @@ export const renderOptions = {
     },
     [INLINES.EMBEDDED_ENTRY]: node => {},
     [INLINES.HYPERLINK]: (node, children) => {
+      let url = node.data.uri
+      let urlArr
+      let linkType = "_blank"
+
+      if (url.slice(0, 5) === "https") {
+        url = url.substring(8)
+      }
+
+      if (url.slice(0, 4) === "http") {
+        url = url.substring(7)
+      }
+
+      urlArr = url.split("/")
+      if (
+        urlArr[0] === "www.jasonkylesmith.com" ||
+        urlArr[0] === "jasonkylesmith.com"
+      ) {
+        linkType = "_self"
+      }
+
+      // split divided by '/'
+      // if first split = www.jasonkylesmith.com or jasonkylesmith.com, then internal link
+      // else external link
+
       return (
-        <a href={node.data.uri} className="">
+        <a href={node.data.uri} className="" target={linkType}>
           {node.content[0].value}
         </a>
       )
