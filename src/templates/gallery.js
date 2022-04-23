@@ -33,6 +33,8 @@ export const query = graphql`
                 gatsbyImageData
                 description
               }
+              caption
+              includeCaption
             }
             ... on ContentfulBlockItemText {
               id
@@ -125,7 +127,6 @@ const Gallery = props => {
           return (
             <div>
               <BlockStory block={block} key={block.id} />
-              <hr />
             </div>
           )
         }
@@ -134,7 +135,6 @@ const Gallery = props => {
           return (
             <div>
               <BlockFeature block={block} key={block.id} />
-              <hr />
             </div>
           )
         }
@@ -143,7 +143,6 @@ const Gallery = props => {
           return (
             <div>
               <BlockGallery block={block} key={block.id} />
-              <hr />
             </div>
           )
         }

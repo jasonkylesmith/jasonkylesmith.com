@@ -4,23 +4,26 @@ import { Link } from "gatsby"
 const Navigation = props => {
   if (props.version === "desktop") {
     return (
-      <nav className="d-none d-md-block">
+      <nav className="d-none d-md-block desktop-nav">
         <ul>
           <li>
             <Link to="/" className="">
               home
             </Link>
           </li>
+          <li> - </li>
           <li>
             <Link to="/" className="">
               about me
             </Link>
           </li>
+          <li> - </li>
           <li>
             <Link to="/webdevelopment" className="">
               web development
             </Link>
           </li>
+          <li> - </li>
           {/*           <li>
             <Link to="/" className="">
               graphic design

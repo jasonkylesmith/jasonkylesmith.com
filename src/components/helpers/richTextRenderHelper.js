@@ -65,10 +65,6 @@ export const renderOptions = {
         linkType = "_self"
       }
 
-      // split divided by '/'
-      // if first split = www.jasonkylesmith.com or jasonkylesmith.com, then internal link
-      // else external link
-
       return (
         <a href={node.data.uri} className="" target={linkType}>
           {node.content[0].value}

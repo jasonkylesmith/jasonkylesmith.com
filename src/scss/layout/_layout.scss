@@ -4,14 +4,12 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    min-height: 60px;
 
     div {
       display: flex;
       align-items: center;
 
       .logo {
-        margin-left: 1rem;
       }
     }
   }
@@ -28,6 +26,14 @@ nav {
 
   li {
     margin: 0;
+  }
+}
+
+nav.desktop-nav {
+  font-size: $base-font-size * 1.2;
+
+  ul li {
+    display: inline;
   }
 }
 

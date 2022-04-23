@@ -13,7 +13,7 @@ const BlockFeature = props => {
     case "Portrait Solo":
       maxItems = 1
       containerClass = "portrait-solo"
-      blockClasses = "col-12 mb-4"
+      blockClasses = "col-12"
       break
     case "Portrait Duo":
       maxItems = 2
@@ -28,17 +28,17 @@ const BlockFeature = props => {
     case "Landscape Solo":
       maxItems = 1
       containerClass = "landscape-solo"
-      blockClasses = "col-12 mb-4"
+      blockClasses = "col-12"
       break
     case "Landscape Duo":
       maxItems = 2
       containerClass = "landscape-duo"
-      blockClasses = "col-12 mb-4"
+      blockClasses = "col-12"
       break
     case "Landscape Trio":
       maxItems = 3
       containerClass = "landscape-trio"
-      blockClasses = "col-12 mb-4"
+      blockClasses = "col-12"
       break
   }
 
@@ -76,12 +76,15 @@ const BlockFeature = props => {
 
 const BlockImage = props => {
   const { blockClasses } = props
-  const { image, description } = props.item
+  const { image, description, includeCaption, caption } = props.item
   const { gatsbyImageData } = image
+
+  console.log(props.item)
 
   return (
     <div className={`${blockClasses}`}>
       <GatsbyImage image={gatsbyImageData} alt={description} />
+      {includeCaption && <span>{caption}</span>}
     </div>
   )
 }
