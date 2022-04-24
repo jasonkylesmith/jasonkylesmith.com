@@ -1,0 +1,99 @@
+import { GatsbyImage } from "gatsby-plugin-image"
+import React from "react"
+import { textRender } from "./helpers/richTextRenderHelper"
+
+const BlockFeature = props => {
+  const { blockItems, variant } = props.block
+
+  let maxItems
+  let containerClass
+  let blockClasses
+
+  switch (variant) {
+    case "Portrait Solo":
+      maxItems = 1
+      containerClass = "portrait-solo"
+      blockClasses = "col-12"
+      break
+    case "Portrait Duo":
+      maxItems = 2
+      containerClass = "portrait-duo"
+      blockClasses = "col-12 col-md-6 mb-4"
+      break
+    case "Portrait Trio":
+      maxItems = 3
+      containerClass = "portrait-trio"
+      blockClasses = "col-12 col-sm-6 col-md-4 mb-4"
+      break
+    case "Landscape Solo":
+      maxItems = 1
+      containerClass = "landscape-solo"
+      blockClasses = "col-12"
+      break
+    case "Landscape Duo":
+      maxItems = 2
+      containerClass = "landscape-duo"
+      blockClasses = "col-12"
+      break
+    case "Landscape Trio":
+      maxItems = 3
+      containerClass = "landscape-trio"
+      blockClasses = "col-12"
+      break
+  }
+
+  return (
+    <div className={`row justify-content-around`}>
+      {blockItems.map((item, index) => {
+        const { id } = item.sys.contentType.sys
+
+        if (index < maxItems) {
+          if (id === "blockItemImage") {
+            return (
+              <BlockImage
+                item={item}
+                key={item.id}
+                blockClasses={blockClasses}
+              />
+            )
+          }
+          if (id === "blockItemText") {
+            return (
+              <BlockText
+                item={item}
+                key={item.id}
+                blockClasses={blockClasses}
+              />
+            )
+          }
+        }
+
+        return <></>
+      })}
+    </div>
+  )
+}
+
+const BlockImage = props => {
+  const { blockClasses } = props
+  const { image, description, includeCaption, caption } = props.item
+  const { gatsbyImageData } = image
+
+  console.log(props.item)
+
+  return (
+    <div className={`${blockClasses}`}>
+      <GatsbyImage image={gatsbyImageData} alt={description} />
+      {includeCaption && <span>{caption}</span>}
+    </div>
+  )
+}
+
+const BlockText = props => {
+  const { blockClasses } = props
+  const { text } = props.item
+
+  return <div className={`${blockClasses}`}>{textRender(text)}</div>
+}
+
+export default BlockFeature

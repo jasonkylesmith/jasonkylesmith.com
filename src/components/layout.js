@@ -28,40 +28,22 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div className="layout-container">
-        {/* SIDEBAR WRAPPER*/}
+      {/* CONTENT WRAPPER*/}
 
-        <div className="sidebar d-none d-md-block">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col">
-                <div className="position-fixed d-none d-md-flex flex-column justify-content-between vh-100">
-                  <Header version="desktop" />
-
-                  <Navigation version="desktop" />
-
-                  <Footer version="desktop" />
-                </div>
-              </div>
-            </div>
-          </div>
+      <div
+        className="container-fluid d-flex flex-column justify-content-between"
+        style={{ height: "100vh" }}
+      >
+        <div className="row">
+          <Header version="desktop" />
+          <Header version="mobile" />
         </div>
-
-        {/* CONTENT WRAPPER*/}
-        <div className="content pt-0 pt-md-3">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="d-flex d-md-none mobile-header sticky-top align-items-center">
-                <Header version="mobile" />
-              </div>
-              <div className="col">
-                <main>{children}</main>
-              </div>
-              <div className="">
-                <Footer version="mobile" />
-              </div>
-            </div>
-          </div>
+        <div className="row flex-fill">
+          <main>{children}</main>
+        </div>
+        <div className="row">
+          <Footer version="desktop" />
+          <Footer version="mobile" />
         </div>
       </div>
     </>

@@ -1,15 +1,17 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Blockquote from "../components/blockquote"
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>This is an H1</h1>
+const IndexPage = () => {
+  return (
+    <Layout>
+      <Seo title="Home" />
+
+      {/* <h1>This is an H1</h1>
     <h2>This is an H2</h2>
     <h3>This is an H3</h3>
     <h4>This is an H4</h4>
@@ -42,8 +44,6 @@ const IndexPage = () => (
     <a href="#" target="_new" className="btn">
       Button Link
     </a>
-    {/*     <blockquote>This is a blockquote.</blockquote>
-     */}{" "}
     <Blockquote quote="This is a blockquote." author="A guy" />
     <ul>
       <lh>Unordered List Header</lh>
@@ -65,8 +65,9 @@ const IndexPage = () => (
     </table>
     <p>
       <Link to="/blog/">Go to Blog</Link> <br />
-    </p>
-  </Layout>
-)
+    </p> */}
+    </Layout>
+  )
+}
 
 export default IndexPage

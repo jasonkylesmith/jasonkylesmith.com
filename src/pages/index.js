@@ -19,19 +19,22 @@ const IndexPage = () => (
         </a>
       </p>
     </div> */}
-    <div className="d-flex flex-column vh-100 justify-content-center">
+    <div
+      className="d-flex flex-column justify-content-center"
+      style={{ height: "85vh" }}
+    >
       <div className="hero-text">
         <h1 className="">Hi, I'm Jason.</h1>
-        <p>Welcome to my collection of all the things I love to do.</p>
+        <p>
+          I'm a photographer in southeast Michigan specializing in portraiture
+          and nature photography.
+        </p>
 
         <a href="#" className="btn">
-          SEE MY RECENT WORK
+          CAN I TAKE YOUR PORTRAIT?
         </a>
       </div>
-      <img src={heroImage} alt="stand in for myself" className="hero-image" />
-    </div>
-    <div className="mt-4">
-      <h2>More Down Here!</h2>
+      {/* <img src={heroImage} alt="stand in for myself" className="hero-image" /> */}
     </div>
   </Layout>
 )

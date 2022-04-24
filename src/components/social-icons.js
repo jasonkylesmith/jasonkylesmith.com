@@ -30,19 +30,8 @@ const SocialIcons = props => {
 
   const { linkedIn, twitter, gitHub, instagram } = data.contentfulAuthor
 
-  console.log(data.contentfulAuthor)
-
   return (
-    <>
-      <a href={linkedIn} target="_new" className="icon">
-        <FontAwesomeIcon icon={["fab", "linkedin"]} className="me-1 icon" />
-      </a>
-      <a href={gitHub} target="_new" className="icon">
-        <FontAwesomeIcon
-          icon={["fab", "github-square"]}
-          className="mx-1 icon"
-        />
-      </a>
+    <div>
       <a href={twitter} target="_new" className="icon">
         <FontAwesomeIcon
           icon={["fab", "twitter-square"]}
@@ -55,7 +44,7 @@ const SocialIcons = props => {
           className="mx-1 icon"
         />
       </a>
-    </>
+    </div>
   )
 }
 

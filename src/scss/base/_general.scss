@@ -313,7 +313,7 @@ blockquote {
 .logo {
   font-family: $font-family-header;
   margin: 0;
-  padding: 0.5rem 0 0.3rem 0;
+  padding: 0;
   width: min(250px, 100%);
 }
 
@@ -336,5 +336,13 @@ blockquote {
 }
 
 .small-text {
+  font-size: $base-font-size-small;
+}
+
+.asset-title + .subtitle {
+  margin-top: -1.5rem;
+}
+
+.subtitle {
   font-size: $base-font-size-small;
 }
