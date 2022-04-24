@@ -19,22 +19,6 @@ const Navigation = props => {
           </li>
           <li> - </li>
           <li>
-            <Link to="/webdevelopment" className="">
-              web development
-            </Link>
-          </li>
-          <li> - </li>
-          {/*           <li>
-            <Link to="/" className="">
-              graphic design
-            </Link>
-          </li>
-          <li>
-            <Link to="/" className="">
-              photography
-            </Link>
-          </li> */}
-          <li>
             <Link to="/blog/" className="">
               blog
             </Link>
@@ -68,39 +52,7 @@ const Navigation = props => {
               about me
             </Link>
           </li>
-          <li>
-            <Link
-              to="/webdevelopment"
-              className=""
-              onClick={() => {
-                props.menuClick()
-              }}
-            >
-              web development
-            </Link>
-          </li>
-          {/*  <li>
-            <Link
-              to="/"
-              className=""
-              onClick={() => {
-                props.menuClick()
-              }}
-            >
-              graphic design
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/"
-              className=""
-              onClick={() => {
-                props.menuClick()
-              }}
-            >
-              photography
-            </Link>
-          </li> */}
+
           <li>
             <Link
               to="/blog/"

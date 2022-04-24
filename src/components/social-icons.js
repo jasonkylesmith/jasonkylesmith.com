@@ -32,15 +32,6 @@ const SocialIcons = props => {
 
   return (
     <div>
-      <a href={linkedIn} target="_new" className="icon">
-        <FontAwesomeIcon icon={["fab", "linkedin"]} className="me-1 icon" />
-      </a>
-      <a href={gitHub} target="_new" className="icon">
-        <FontAwesomeIcon
-          icon={["fab", "github-square"]}
-          className="mx-1 icon"
-        />
-      </a>
       <a href={twitter} target="_new" className="icon">
         <FontAwesomeIcon
           icon={["fab", "twitter-square"]}
