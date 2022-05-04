@@ -24,6 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            category
           }
         }
       }
@@ -56,7 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   response.data.allContentfulGallery.edges.forEach(edge => {
     createPage({
-      path: `/galleries/${edge.node.slug}`,
+      path: `/${edge.node.category}/${edge.node.slug}`,
       component: path.resolve("./src/templates/gallery.js"),
       context: {
         slug: edge.node.slug,

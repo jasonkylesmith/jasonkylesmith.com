@@ -5,6 +5,11 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { GatsbyImage } from "gatsby-plugin-image"
 
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import Tags from "../components/tags"
+
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -18,12 +23,15 @@ const Blog = () => {
             featured
             publishedDate(formatString: "Do MMMM, YYYY")
             fullDate: publishedDate
+            tags
             featuredImage {
               title
               gatsbyImageData(
-                width: 800
+                layout: FULL_WIDTH
+                resizingBehavior: CROP
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
+                aspectRatio: 2
               )
             }
             excerpt {
@@ -42,56 +50,167 @@ const Blog = () => {
   const filteredEdges = edges.filter(edge => edge.node.slug !== "demo-post")
   // Filter out posts to be published in the future .filter(edge => new Date(edge.node.fullDate) <= new Date())
 
-  const featuredPost = filteredEdges.filter(
+  const featuredPosts = filteredEdges.filter(
     edge => edge.node.featured === "yes"
-  )[0].node
+  )
 
   const nonFeaturedPosts = filteredEdges.filter(
     edge => edge.node.featured !== "yes"
   )
 
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    lazyLoad: true,
+    autoplaySpeed: 7500,
+    speed: 250,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    className: "center",
+    centerMode: true,
+    centerPadding: "60px",
+    cssEase: "linear",
+    arrows: false,
+    appendDots: dots => <ul> {dots}</ul>,
+    fade: true,
+  }
+
   return (
     <Layout>
       <Seo title="Blog" />
 
-      <div className="container">
-        <div className="row">
-          <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-1 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center">
-            <div className="align-self-start">
-              <h1>Blog</h1>
-            </div>
+      {/*       <div className="row">
+        <div className="col-12 mt-4 mt-md-0 d-flex flex-column">
+          <div className="align-self-start">
+            <h1>Blog</h1>
+          </div>
+        </div>
+      </div> */}
 
-            <div className="post-featured-wrapper">
-              {featuredPost && (
-                <>
-                  {featuredPost.featuredImage && (
+      {/* <div className="row my-4">
+        <div className="col-10 offset-1 mb-4">
+          <Slider {...sliderSettings}>
+            {featuredPosts?.map((post, index) => {
+              const { title, featuredImage, excerpt, publishedDate, slug } =
+                post.node
+
+              return (
+                <Link to={"/blog/{$slug}"}>
+                  <div style={{ maxHeight: "400px" }}>
                     <GatsbyImage
-                      className="blog-featured"
-                      image={featuredPost.featuredImage.gatsbyImageData}
-                      alt={featuredPost.title}
+                      image={featuredImage?.gatsbyImageData}
+                      alt={title}
+                      objectFit={"cover"}
+                      objectPosition={"bottom"}
+                      imgStyle={{}}
+                      style={{ maxHeight: "400px" }}
                     />
-                  )}
-                  <h2 className="blog-title">{featuredPost.title}</h2>
-                  <p className="excerpt">
-                    {featuredPost.excerpt.childMarkdownRemark.excerpt}
-                  </p>
-                  <Link to={`/blog/${featuredPost.slug}`} className="btn">
-                    READ MORE
-                  </Link>
-                </>
-              )}
+                    <div className="row">
+                      <div className="col-12 col-md-8">
+                        <h4 className="text-black">{title}</h4>
+                      </div>
+                      <div className="col-12 col-md-4">
+                        <p className="small text-md-end text-black">
+                          {publishedDate}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
+          </Slider>
+        </div>
+      </div>
+
+      {nonFeaturedPosts && (
+        <div className="row mt-4">
+          <div className="col-10 offset-1">
+            <div className="row">
+              {nonFeaturedPosts.map((post, index) => {
+                return (
+                  <div
+                    className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 offset-xl-1 mb-4"
+                    style={{ border: "2px solid purple" }}
+                  >
+                    {post.node.featuredImage && (
+                      <Link to={`/blog/${post.node.slug}`} className="">
+                        <div className="">
+                          <div>
+                            <GatsbyImage
+                              className=""
+                              image={post.node.featuredImage.gatsbyImageData}
+                              alt={post.node.title}
+                            />
+                          </div>
+                          <h5 className="text-black m-0">{post.node.title}</h5>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                )
+              })}
             </div>
+          </div>
+        </div>
+      )} */}
+
+      <div className="row mt-4 px-2">
+        <div className="col-12 col-lg-10 offset-lg-1">
+          <div className="row">
+            {filteredEdges.map((post, index) => {
+              console.log(post.node)
+
+              return (
+                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
+                  {post.node.featuredImage && (
+                    <Link to={`/blog/${post.node.slug}`} className="">
+                      <div className="">
+                        <div className="position-relative">
+                          <GatsbyImage
+                            className=""
+                            image={post.node.featuredImage.gatsbyImageData}
+                            alt={post.node.title}
+                          />
+                          <Tags tags={post.node.tags} />
+                        </div>
+                        <div className="">
+                          <h4 className="text-black mt-1 mb-0">
+                            {post.node.title}
+                          </h4>
+                          <span className="text-black small fw-normal">
+                            {post.node.publishedDate}
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* <div
+        className="container-fluid px-0"
+        style={{ border: "2px solid pink" }}
+      >
+        <div className="row">
+          <div className="col-10 offset-1 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center">
             <div>
               {nonFeaturedPosts && (
-                <div className="row">
+                <div className="row" style={{ border: "2px solid pink" }}>
                   {nonFeaturedPosts.map((post, index) => {
                     return (
                       <div
                         key={`${post.node.contentful_id}${index}`}
+                        style={{ border: "2px solid pink" }}
                         className="col-12"
                       >
                         {post.node.featuredImage && (
-                          <div className="post-excerpt-wrapper">
+                          <div className="">
                             <div>
                               <GatsbyImage
                                 className=""
@@ -139,7 +258,7 @@ const Blog = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </Layout>
   )
 }

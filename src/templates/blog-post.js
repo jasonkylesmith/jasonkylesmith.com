@@ -28,7 +28,8 @@ export const query = graphql`
       featuredImage {
         title
         gatsbyImageData(
-          width: 1000
+          layout: CONSTRAINED
+          aspectRatio: 2.5
           placeholder: BLURRED
           formats: [AUTO, WEBP, AVIF]
         )
@@ -145,20 +146,21 @@ const BlogPost = props => {
   return (
     <Layout>
       <Seo title={title} />
-      <div className="container">
-        <div className="row">
-          <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-1 mt-4 mt-md-0">
-            <FontAwesomeIcon icon={["fas", "chevron-left"]} size="sm" />{" "}
-            <Link to="/blog/">Blog</Link>
+      <div className="container-fluid p-0 mt-4">
+        <div className="row p-0">
+          <div className="col-sm-8 offset-sm-2">
+            {/* <FontAwesomeIcon icon={["fas", "chevron-left"]} size="sm" />{" "}
+            <Link to="/blog/">Blog</Link> */}
+            {featuredImage && (
+              <div className="w-100 d-flex">
+                <GatsbyImage
+                  image={featuredImage.gatsbyImageData}
+                  alt={title}
+                />
+              </div>
+            )}
             <h1 className="blog-title">{title}</h1>
             <span className="blog-date">{publishedDate}</span>
-            {featuredImage && (
-              <GatsbyImage
-                className="blog-featured"
-                image={featuredImage.gatsbyImageData}
-                alt={title}
-              />
-            )}
             <div className="blog-tags">
               <Tags tags={tags} disabled />
             </div>

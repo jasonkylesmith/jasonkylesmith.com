@@ -29,7 +29,7 @@ const PostNav = props => {
             slug={edges.next.slug}
             title={edges.next.title}
             direction="Next"
-          />{" "}
+          />
           <FontAwesomeIcon icon={["fas", "chevron-right"]} />
         </div>
       )}
