@@ -5,11 +5,15 @@
   justify-content: flex-start;
   align-content: center;
   align-items: flex-start;
-  padding-left: $margins;
+
   margin-bottom: $margins;
-  border-left: 4px solid $purple;
 
   .icon {
+  }
+
+  img {
+    padding-left: $margins/2;
+    border-left: 4px solid $purple;
   }
 }
 

@@ -43,16 +43,19 @@
 }
 
 .blog-tag {
-  margin: 0 0.5rem;
+  position: absolute;
+  margin: 0 0;
   padding: 0 0.3rem;
   color: white;
   font-size: $base-font-size-small * 0.8;
-  background-color: $purple;
-  border: 2px solid $purple;
+  background-color: $dark;
+  border: 2px solid $dark;
+  bottom: 0.3rem;
+  right: 0.3rem;
 
   &.tags-disabled {
     background-color: $dark;
-    border: 2px solid $dark;
+    border: 0px solid $dark;
   }
 }
 
@@ -64,11 +67,11 @@
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   margin-bottom: $margins;
 
   .post-nav-wrapper {
-    width: 50%;
+    width: max(300px, 100px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,4 +90,7 @@
 
 .post-featured-wrapper {
   /* width: min(90%, 800px); */
+}
+
+.blog-featured {
 }
