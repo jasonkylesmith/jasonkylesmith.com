@@ -124,40 +124,16 @@ footer {
 }
 
 .hero-text {
-  width: 250px;
   margin-left: 0;
+  max-width: 600px;
 
   h1 + p {
     margin-top: -$margins;
   }
 }
 
-@media (max-width: $max-width-sm) {
-  .hero-image {
-    left: -33%;
-  }
-
+@media (max-width: $max-width-xs) {
   .hero-text {
-    margin-left: 0;
-  }
-}
-
-@media (min-width: $md) {
-  .hero-image {
-    left: 11%;
-  }
-
-  .hero-text {
-    margin-left: 0;
-  }
-}
-
-@media (min-width: $lg) {
-  .hero-image {
-    left: 31%;
-  }
-
-  .hero-text {
-    margin-left: 10rem;
+    max-width: 70%;
   }
 }

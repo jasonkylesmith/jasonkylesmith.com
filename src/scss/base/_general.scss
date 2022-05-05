@@ -350,3 +350,14 @@ blockquote {
 .text-dark {
   color: $dark !important;
 }
+
+.slider-div {
+  height: 80vh;
+  width: 100vw;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
