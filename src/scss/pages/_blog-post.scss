@@ -48,11 +48,14 @@
 
 .blog-tag {
   margin: 0 0;
+  margin-left: 0.5rem;
   padding: 0 0.3rem;
+  padding-bottom: 0.1rem;
   color: white;
   font-size: $base-font-size-small * 0.8;
   background-color: $dark;
   border: 2px solid $dark;
+  vertical-align: center;
 
   &.tags-disabled {
     background-color: $dark;
@@ -60,8 +63,8 @@
   }
 }
 
-.blog-title + .blog-tags {
-  margin-top: 0rem;
+.blog-date + .blog-tags {
+  margin-top: -1rem;
   position: relative;
 }
 

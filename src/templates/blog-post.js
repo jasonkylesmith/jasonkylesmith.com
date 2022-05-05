@@ -28,7 +28,9 @@ export const query = graphql`
       featuredImage {
         title
         gatsbyImageData(
+          quality: 100
           layout: CONSTRAINED
+          resizingBehavior: CROP
           aspectRatio: 2.5
           placeholder: BLURRED
           formats: [AUTO, WEBP, AVIF]
@@ -42,7 +44,7 @@ export const query = graphql`
             contentful_id
             __typename
             gatsbyImageData(
-              width: 1000
+              quality: 100
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )
@@ -161,10 +163,9 @@ const BlogPost = props => {
             )}
             <h1 className="blog-title">{title}</h1>
 
+            <span className="blog-date">{publishedDate}</span>
             <Tags tags={tags} />
 
-            <span className="blog-date">{publishedDate}</span>
-            <div className="blog-tags"></div>
             <div className="blog-body d-flex flex-column">
               {bodyContent}
               <Author />
