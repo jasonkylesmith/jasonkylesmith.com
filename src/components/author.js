@@ -45,7 +45,7 @@ const Author = props => {
           </div>
           <div className="author-description">
             <p className="small">{description}</p>
-            <div>
+            <div style={{ marginLeft: "-.25rem" }}>
               <SocialIcons />
             </div>
           </div>

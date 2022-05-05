@@ -129,8 +129,14 @@ const BlogPost = props => {
       },
       [INLINES.EMBEDDED_ENTRY]: node => {},
       [INLINES.HYPERLINK]: (node, children) => {
+        const target = node.data.uri
+          .toLowerCase()
+          .includes("jasonkylesmith.com")
+          ? "_self"
+          : "_blank"
+
         return (
-          <a href={node.data.uri} className="">
+          <a href={node.data.uri} className="" target={target}>
             {node.content[0].value}
           </a>
         )
