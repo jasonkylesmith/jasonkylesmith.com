@@ -173,13 +173,17 @@ const Blog = () => {
                             image={post.node.featuredImage.gatsbyImageData}
                             alt={post.node.title}
                           />
+
                           <Tags tags={post.node.tags} />
                         </div>
                         <div className="">
-                          <h4 className="text-black mt-1 mb-0">
+                          <h4 className="text-dark mt-1 mb-0">
                             {post.node.title}
                           </h4>
-                          <span className="text-black small fw-normal">
+                          <span
+                            className="text-dark small fw-normal"
+                            style={{ fontSize: "14px" }}
+                          >
                             {post.node.publishedDate}
                           </span>
                         </div>

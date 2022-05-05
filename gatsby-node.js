@@ -65,6 +65,16 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  /*   response.data.allContentfulGallery.edges.forEach(edge => {
+    createPage({
+      path: `/${edge.node.category}`,
+      component: path.resolve(`./src/templates/${edge.node.category}.js`),
+      context: {
+        slug: edge.node.slug,
+      },
+    })
+  }) */
+
   createPage({
     path: "/using-dsg",
     component: require.resolve("./src/templates/using-dsg.js"),

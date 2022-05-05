@@ -40,23 +40,29 @@
 
 .blog-tags {
   margin-top: 0.5rem;
+  margin-left: 0.25rem;
+  position: absolute;
+  bottom: 0.3rem;
+  right: 0.3rem;
 }
 
 .blog-tag {
-  position: absolute;
   margin: 0 0;
   padding: 0 0.3rem;
   color: white;
   font-size: $base-font-size-small * 0.8;
   background-color: $dark;
   border: 2px solid $dark;
-  bottom: 0.3rem;
-  right: 0.3rem;
 
   &.tags-disabled {
     background-color: $dark;
     border: 0px solid $dark;
   }
+}
+
+.blog-title + .blog-tags {
+  margin-top: 0rem;
+  position: relative;
 }
 
 .blog-tag:first-of-type {

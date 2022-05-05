@@ -152,7 +152,7 @@ const BlogPost = props => {
             {/* <FontAwesomeIcon icon={["fas", "chevron-left"]} size="sm" />{" "}
             <Link to="/blog/">Blog</Link> */}
             {featuredImage && (
-              <div className="w-100 d-flex">
+              <div className="w-100 d-flex position-relative">
                 <GatsbyImage
                   image={featuredImage.gatsbyImageData}
                   alt={title}
@@ -160,10 +160,11 @@ const BlogPost = props => {
               </div>
             )}
             <h1 className="blog-title">{title}</h1>
+
+            <Tags tags={tags} />
+
             <span className="blog-date">{publishedDate}</span>
-            <div className="blog-tags">
-              <Tags tags={tags} disabled />
-            </div>
+            <div className="blog-tags"></div>
             <div className="blog-body d-flex flex-column">
               {bodyContent}
               <Author />
