@@ -120,33 +120,39 @@ const Gallery = props => {
   return (
     <Layout>
       <Seo title={name} />
-      {blocks.map(block => {
-        const { id } = block.sys.contentType.sys
+      <div className="container-fluid p-0 mt-4">
+        <div className="row p-0">
+          <div className="col-sm-8 offset-sm-2">
+            {blocks.map(block => {
+              const { id } = block.sys.contentType.sys
 
-        if (id === "blockStory") {
-          return (
-            <div>
-              <BlockStory block={block} key={block.id} />
-            </div>
-          )
-        }
+              if (id === "blockStory") {
+                return (
+                  <div>
+                    <BlockStory block={block} key={block.id} />
+                  </div>
+                )
+              }
 
-        if (id === "blockFeature") {
-          return (
-            <div>
-              <BlockFeature block={block} key={block.id} />
-            </div>
-          )
-        }
+              if (id === "blockFeature") {
+                return (
+                  <div>
+                    <BlockFeature block={block} key={block.id} />
+                  </div>
+                )
+              }
 
-        if (id === "blockGallery") {
-          return (
-            <div>
-              <BlockGallery block={block} key={block.id} />
-            </div>
-          )
-        }
-      })}
+              if (id === "blockGallery") {
+                return (
+                  <div>
+                    <BlockGallery block={block} key={block.id} />
+                  </div>
+                )
+              }
+            })}
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }

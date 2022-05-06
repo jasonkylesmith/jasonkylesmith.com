@@ -1,7 +1,17 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
 const Navigation = props => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulGallery {
+        distinct(field: category)
+      }
+    }
+  `)
+
+  const { distinct } = data.allContentfulGallery
+
   if (props.version === "desktop") {
     return (
       <nav className="d-none d-md-block desktop-nav">
@@ -18,6 +28,18 @@ const Navigation = props => {
             </Link>
           </li>
           <li> - </li>
+          {distinct?.map(category => {
+            return (
+              <>
+                <li>
+                  <Link to={`/${category.toLowerCase().replace(/\s+/g, "")}`}>
+                    {category.toLowerCase()}
+                  </Link>
+                </li>
+                <li> - </li>
+              </>
+            )
+          })}
           <li>
             <Link to="/blog/" className="">
               blog
@@ -52,7 +74,20 @@ const Navigation = props => {
               about me
             </Link>
           </li>
-
+          {distinct?.map(category => {
+            return (
+              <li>
+                <Link
+                  to={`/${category.toLowerCase().replace(/\s+/g, "")}`}
+                  onClick={() => {
+                    props.menuClick()
+                  }}
+                >
+                  {category.toLowerCase()}
+                </Link>
+              </li>
+            )
+          })}
           <li>
             <Link
               to="/blog/"

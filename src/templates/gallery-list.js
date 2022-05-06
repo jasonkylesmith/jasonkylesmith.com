@@ -14,6 +14,17 @@ export const query = graphql`
           name
           slug
           category
+          featuredImage {
+            title
+            gatsbyImageData(
+              quality: 100
+              layout: CONSTRAINED
+              resizingBehavior: FILL
+              aspectRatio: 2.5
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
+          }
         }
       }
     }
@@ -21,21 +32,50 @@ export const query = graphql`
 `
 
 const GalleryList = props => {
+  console.log(props)
   const { edges } = props.data.allContentfulGallery
-
-  console.log(edges)
+  const { category } = props.pageContext
 
   return (
     <Layout>
-      <Seo title="Gallery list" />
+      <Seo title={`${category} Galleries`} />
 
-      {/* 
       <div className="row mt-4 px-2">
         <div className="col-12 col-lg-10 offset-lg-1">
           <div className="row">
-            {filteredEdges.map((post, index) => {
-              console.log(post.node)
+            {edges.map((gallery, index) => {
+              const { name, category, featuredImage, slug } = gallery.node
+              const { gatsbyImageData, title } = featuredImage
+              console.log(gallery.node)
 
+              return (
+                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
+                  <Link
+                    to={`/${category
+                      .toLowerCase()
+                      .replace(/\s+/g, "")}/${slug}`}
+                    className=""
+                  >
+                    <div className="">
+                      <div className="position-relative">
+                        <GatsbyImage
+                          className=""
+                          image={gatsbyImageData}
+                          alt={title}
+                        />
+                      </div>
+                      <div className="">
+                        <h4 className="text-dark mt-1 mb-0">{name}</h4>
+                        <span
+                          className="text-dark small fw-normal"
+                          style={{ fontSize: "14px" }}
+                        ></span>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              )
+              /* 
               return (
                 <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
                   {post.node.featuredImage && (
@@ -65,12 +105,11 @@ const GalleryList = props => {
                     </Link>
                   )}
                 </div>
-              )
+              ) */
             })}
           </div>
         </div>
       </div>
- */}
     </Layout>
   )
 }

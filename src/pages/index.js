@@ -34,15 +34,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Seo title="Home" />
-      {/*     <div className="d-flex flex-column vh-100 justify-content-center hero">
-      <h1 className="">Hi, I'm Jason.</h1>
-      <p>Welcome to my collection of all the things I love to do.</p>
-      <p>
-        <a href="#" className="btn">
-          SEE MY RECENT WORK
-        </a>
-      </p>
-    </div> */}
+
       <div className="row p-0 position-relative mt-2">
         <div
           className="col-12 d-flex justify-content-center align-items-center"
@@ -58,13 +50,10 @@ const IndexPage = () => {
           >
             <div className="p-0">
               <h1 className="">Hi, I'm Jason.</h1>
-              <p className="pe-2">
-                I'm a photographer in southeast Michigan specializing in
-                portraiture.
-              </p>
+              <p className="pe-2">I take pictures of things sometimes.</p>
 
               <a href="#" className="btn mb-0">
-                CAN I TAKE YOUR PORTRAIT?
+                Call to action here!
               </a>
             </div>
             <div className="p-0 d-none d-sm-block flex-grow-1">
@@ -73,9 +62,6 @@ const IndexPage = () => {
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
               />
             </div>
-            {/*             <div className="" style={{ maxHeight: "250px" }}>
-
-            </div> */}
           </div>
         </div>
 
@@ -83,7 +69,6 @@ const IndexPage = () => {
           className="p-0"
           style={{
             height: "85vh",
-
             position: "absolute",
             top: 0,
             left: 0,
@@ -105,29 +90,9 @@ const IndexPage = () => {
             </div>
           </Slider>
         </div>
-
-        {/*  */}
       </div>
     </Layout>
   )
 }
 
 export default IndexPage
-
-{
-  /* <div className="hero-text">
-        <h1 className="">Hi, I'm Jason.</h1>
-        <p>
-          I'm a photographer in southeast Michigan specializing in portraiture
-          and nature photography.
-        </p>
-
-        <a href="#" className="btn">
-          CAN I TAKE YOUR PORTRAIT?
-        </a>
-      </div> */
-}
-
-{
-  /* <img src={heroImage} alt="stand in for myself" className="hero-image" /> */
-}
