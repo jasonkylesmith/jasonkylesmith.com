@@ -43,7 +43,7 @@ const BlockFeature = props => {
   }
 
   return (
-    <div className={`row justify-content-around`}>
+    <div className={`row justify-content-around align-items-center`}>
       {blockItems.map((item, index) => {
         const { id } = item.sys.contentType.sys
 

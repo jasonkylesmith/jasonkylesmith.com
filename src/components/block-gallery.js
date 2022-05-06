@@ -15,7 +15,7 @@ const BlockGallery = props => {
 
   switch (variant) {
     case "All Small":
-      columns = 5
+      columns = 6
       break
     case "All Medium":
       break
@@ -46,8 +46,8 @@ const BlockGallery = props => {
 
     return {
       // src: `https:${url}`,
-      height: height / 2,
-      width: width / 2,
+      height: height,
+      width: width,
       srcSet,
       sizes,
     }
@@ -91,26 +91,17 @@ const BlockGallery = props => {
       }}
     >
       <Gallery photos={photoArray} direction={"column"} margin={10} />
-      {/* <div className={`${galleryClass} block-gallery-grid`}>
-     
-      {images.map(image => {
-        const { height, width } = image.file.details.image
-        const imgAspect =
-          height > width ? "portrait" : height < width ? "landscape" : "square"
-
-        return (
-          <div className={`block-gallery-wrapper-${galleryClass}`}>
-            <GatsbyImage
-              image={image.gatsbyImageData}
-              key={images.id}
-              imgClassName={`block-gallery-img`}
-              className={`block-gallery-item ${imgAspect}`}
-              objectPosition="50% 50%"
-            />
-          </div>
-        )
-      })}
-    </div> */}
+      {/*       <div
+        style={{
+          width: "500px",
+          height: "500px",
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-250px, -250px)",
+          border: "2px solid pink",
+        }}
+      /> */}
     </div>
   )
 }
