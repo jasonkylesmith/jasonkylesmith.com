@@ -58,7 +58,7 @@ const IndexPage = () => {
             </div>
             <div className="p-0 d-none d-sm-block flex-grow-1">
               <img
-                src="http://picsum.photos/250"
+                src="https://picsum.photos/250"
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
               />
             </div>
