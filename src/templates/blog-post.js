@@ -157,8 +157,6 @@ const BlogPost = props => {
       <div className="container-fluid p-0 mt-4">
         <div className="row p-0">
           <div className="col-sm-8 offset-sm-2">
-            {/* <FontAwesomeIcon icon={["fas", "chevron-left"]} size="sm" />{" "}
-            <Link to="/blog/">Blog</Link> */}
             {featuredImage && (
               <div className="w-100 d-flex position-relative">
                 <GatsbyImage
