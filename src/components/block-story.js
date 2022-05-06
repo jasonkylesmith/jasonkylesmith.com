@@ -7,7 +7,7 @@ const BlockStory = props => {
   const { gatsbyImageData, description } = image
 
   return (
-    <div className={`block-${imageFloat}-float row mt-4`}>
+    <div className={`block-${imageFloat}-float row mt-4 mb-4`}>
       <div className="col-12">
         <div className="text-center">
           <GatsbyImage

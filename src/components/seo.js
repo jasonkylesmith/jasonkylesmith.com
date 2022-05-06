@@ -58,7 +58,7 @@ function Seo({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: `@jayisawebdev`,
+          content: `@jasonkylesmith`,
         },
         {
           name: `twitter:title`,
