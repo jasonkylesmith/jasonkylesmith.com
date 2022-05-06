@@ -21,6 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allContentfulGallery {
+        distinct(field: category)
         edges {
           node {
             slug
@@ -65,15 +66,15 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  /*   response.data.allContentfulGallery.edges.forEach(edge => {
+  response.data.allContentfulGallery.distinct.forEach(category => {
     createPage({
-      path: `/${edge.node.category}`,
-      component: path.resolve(`./src/templates/${edge.node.category}.js`),
+      path: `/${category}`,
+      component: path.resolve("./src/templates/gallery-list.js"),
       context: {
-        slug: edge.node.slug,
+        category: category,
       },
     })
-  }) */
+  })
 
   createPage({
     path: "/using-dsg",

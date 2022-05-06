@@ -58,9 +58,9 @@ const IndexPage = () => {
           >
             <div className="p-0">
               <h1 className="">Hi, I'm Jason.</h1>
-              <p>
+              <p className="pe-2">
                 I'm a photographer in southeast Michigan specializing in
-                portraiture and nature photography.
+                portraiture.
               </p>
 
               <a href="#" className="btn mb-0">
