@@ -79,8 +79,6 @@ const BlockImage = props => {
   const { image, description, includeCaption, caption } = props.item
   const { gatsbyImageData } = image
 
-  console.log(props.item)
-
   return (
     <div className={`${blockClasses} mb-4`}>
       <GatsbyImage image={gatsbyImageData} alt={description} />

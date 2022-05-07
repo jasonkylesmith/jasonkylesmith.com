@@ -32,7 +32,6 @@ export const query = graphql`
 `
 
 const GalleryList = props => {
-  console.log(props)
   const { edges } = props.data.allContentfulGallery
   const { category } = props.pageContext
 
@@ -46,7 +45,6 @@ const GalleryList = props => {
             {edges.map((gallery, index) => {
               const { name, category, featuredImage, slug } = gallery.node
               const { gatsbyImageData, title } = featuredImage
-              console.log(gallery.node)
 
               return (
                 <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">

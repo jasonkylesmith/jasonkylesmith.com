@@ -161,8 +161,6 @@ const Blog = () => {
         <div className="col-12 col-lg-10 offset-lg-1">
           <div className="row">
             {filteredEdges.map((post, index) => {
-              console.log(post.node)
-
               return (
                 <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
                   {post.node.featuredImage && (
