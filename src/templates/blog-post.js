@@ -156,7 +156,7 @@ const BlogPost = props => {
       <Seo title={title} />
       <div className="container-fluid p-0 mt-4">
         <div className="row p-0">
-          <div className="col-sm-8 offset-sm-2">
+          <div className="col-md-8 offset-md-2">
             {featuredImage && (
               <div className="w-100 d-flex position-relative">
                 <GatsbyImage

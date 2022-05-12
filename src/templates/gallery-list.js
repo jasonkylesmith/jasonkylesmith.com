@@ -20,7 +20,7 @@ export const query = graphql`
               quality: 100
               layout: CONSTRAINED
               resizingBehavior: FILL
-              aspectRatio: 2.5
+              aspectRatio: 2
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )
@@ -40,8 +40,11 @@ const GalleryList = props => {
       <Seo title={`${category} Galleries`} />
 
       <div className="row mt-4 px-2">
-        <div className="col-12 col-lg-10 offset-lg-1">
+        <div className="col-12 col-lg-12">
           <div className="row">
+            <div className="col-12 p-0">
+              <h1>Photo Stories</h1>
+            </div>
             {edges.map((gallery, index) => {
               const { name, category, featuredImage, slug } = gallery.node
               const { gatsbyImageData, title } = featuredImage
@@ -58,6 +61,7 @@ const GalleryList = props => {
                       <div className="position-relative">
                         <GatsbyImage
                           className=""
+                          imgStyle={{ borderRadius: ".25rem" }}
                           image={gatsbyImageData}
                           alt={title}
                         />

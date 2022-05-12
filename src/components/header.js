@@ -16,7 +16,8 @@ const Header = props => {
               <Link to="/" className="logo-link">
                 <div>
                   {/* <img src={icon} className="logo-icon" alt="Purple Hexagon Icon" /> */}
-                  <h1 className="logo">Jason Kyle Smith</h1>
+                  <span className="logo">Jason Kyle Smith</span>
+                  {/* <h1 className="logo">Jason Kyle Smith</h1> */}
                 </div>
               </Link>
             </div>
