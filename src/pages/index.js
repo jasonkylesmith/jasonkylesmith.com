@@ -29,6 +29,7 @@ const IndexPage = () => {
     pauseOnFocus: false,
     pauseOnDotsHover: false,
     swipe: false,
+    variableWidth: true,
   }
 
   return (
