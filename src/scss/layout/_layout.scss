@@ -125,7 +125,6 @@ footer {
 
 .hero-text {
   margin-left: 0;
-  margin-bottom: 3rem;
   max-width: 600px;
 
   h1 + p {
@@ -135,6 +134,6 @@ footer {
 
 @media (max-width: $max-width-xs) {
   .hero-text {
-    max-width: 70%;
+    /* max-width: 100%; */
   }
 }

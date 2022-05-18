@@ -13,13 +13,6 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allContentfulProject {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
       allContentfulGallery {
         distinct(field: category)
         edges {
@@ -45,16 +38,6 @@ exports.createPages = async ({ graphql, actions }) => {
         })
       }
     })
-
-  response.data.allContentfulProject.edges.forEach(edge => {
-    createPage({
-      path: `/projects/${edge.node.slug}`,
-      component: path.resolve("./src/templates/project.js"),
-      context: {
-        slug: edge.node.slug,
-      },
-    })
-  })
 
   response.data.allContentfulGallery.edges.forEach(edge => {
     createPage({

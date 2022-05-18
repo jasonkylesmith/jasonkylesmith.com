@@ -7,7 +7,7 @@ import SocialIcons from "./social-icons"
 const Author = props => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulAuthor(name: { eq: "Jason Smith" }) {
+      contentfulAuthor(name: { eq: "Jason Kyle Smith" }) {
         contentful_id
         sys {
           type
