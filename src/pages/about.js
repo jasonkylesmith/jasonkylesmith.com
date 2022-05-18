@@ -9,7 +9,7 @@ import Seo from "../components/seo"
 import Slider from "react-slick"
 
 const AboutPage = () => {
-  const sliderSettings = {
+  const aboutSliderSettings = {
     slidesToShow: 3,
     swipeToSlide: true,
     centerMode: true,
@@ -28,7 +28,7 @@ const AboutPage = () => {
         <div className="row p-0">
           <div className="col-md-8 offset-md-2">
             <div className="row mb-4">
-              <div className=" col-12 col-md-5 mb-4 mb-md-0">
+              <div className=" col-12 col-lg-5 order-1 order-lg-0">
                 <h1 className="blog-title">Hi, I'm Jason!</h1>
                 <p>
                   I'm a photographer from Southeast Michigan and I love to
@@ -47,17 +47,18 @@ const AboutPage = () => {
                   Call to action here!
                 </a>
               </div>
-              <div className="col-12 col-md-7">
+              <div className="col-12 col-lg-7 order-0 order-lg-1  mb-4 mb-lg-0">
                 <img
                   src="https://picsum.photos/600/400"
                   className="img-fluid"
+                  style={{ objectFit: "cover" }}
                 />
               </div>
             </div>
 
             <div className="row">
               <div className="col">
-                <Slider {...sliderSettings}>
+                <Slider {...aboutSliderSettings}>
                   <div className="about-slider">
                     <img
                       src="https://picsum.photos/300/200"
