@@ -7,7 +7,7 @@ module.exports = {
     title: `Jason Kyle Smith`,
     description: `Jason Kyle Smith is a creative from the Metro Detroit area focusing on photography and web development.`,
     author: `Jason Kyle Smith`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    siteUrl: `https://www.jasonkylesmith.com`,
   },
   plugins: [
     `gatsby-plugin-fontawesome-css`,
