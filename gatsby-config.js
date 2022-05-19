@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Jason Kyle Smith`,
-    description: `Jason Kyle Smith is a creative from the Metro Detroit area focusing on web development, graphic design, and photography.`,
+    description: `Jason Kyle Smith is a creative from the Metro Detroit area focusing on photography and web development.`,
     author: `Jason Kyle Smith`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },

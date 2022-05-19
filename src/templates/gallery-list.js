@@ -37,7 +37,7 @@ const GalleryList = props => {
 
   return (
     <Layout>
-      <Seo title={`${category} Galleries`} />
+      <Seo title={`${category}`} />
 
       <div className="row mt-4 px-2">
         <div className="col-12 col-lg-12">

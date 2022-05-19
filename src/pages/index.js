@@ -78,7 +78,7 @@ const IndexPage = () => {
         >
           <Slider {...sliderSettings}>
             <div className="slider-div">
-              <img src="https://picsum.photos/1300/600" />
+              <img src="https://picsum.photos/1300/600" loading="lazy" />
             </div>
             <div className="slider-div">
               <img src="https://picsum.photos/1301/601" loading="lazy" />

@@ -16,16 +16,6 @@ import Footer from "./footer"
 import Navigation from "./navigation"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
       {/* CONTENT WRAPPER*/}
