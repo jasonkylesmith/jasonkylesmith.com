@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
 
       <div
         className="container-fluid d-flex flex-column justify-content-between"
-        style={{ height: "100vh" }}
+        style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}
       >
         <div className="row">
           <Header version="desktop" />
