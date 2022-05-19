@@ -7,6 +7,7 @@ import heroImage from "../images/standinportrait.png"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Slider from "react-slick"
+import Testamonial from "../components/testamonial"
 
 const IndexPage = () => {
   const sliderSettings = {
@@ -62,6 +63,36 @@ const IndexPage = () => {
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
               />
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12 d-flex justify-content-center mb-4">
+            <Testamonial
+              author="Jason Kyle Smith"
+              subtitle="Software Engineer with Moonello"
+              body="Jason really is great at talking with himself. I know this very well, given that I am he."
+              quote="This guy know's his schnozes!"
+              image="https://picsum.photos/200"
+            />
+          </div>
+          <div className="col-12 d-flex justify-content-center mb-4">
+            <Testamonial
+              author="Jason Kyle Smith"
+              subtitle="Software Engineer with Moonello"
+              body="Jason really is great at talking with himself. I know this very well, given that I am he."
+              quote="This guy know's his schnozes!"
+              image="https://picsum.photos/200"
+              variant="right"
+            />
+          </div>
+          <div className="col-12 d-flex justify-content-center mb-4">
+            <Testamonial
+              author="Jason Kyle Smith"
+              subtitle="Software Engineer with Moonello"
+              body="Jason really is great at talking with himself. I know this very well, given that I am he."
+              quote="This guy know's his schnozes!"
+              image="https://picsum.photos/200"
+            />
           </div>
         </div>
 

@@ -1,5 +1,5 @@
 import * as React from "react"
-import icon from "../images/hex-icon-plain.svg"
+
 import MenuIcon from "./menu-icon"
 import { Link } from "gatsby"
 import Navigation from "./navigation"
@@ -17,9 +17,7 @@ const Header = props => {
                 <div className="logo-container col-12">
                   <Link to="/" className="logo-link">
                     <div>
-                      {/* <img src={icon} className="logo-icon" alt="Purple Hexagon Icon" /> */}
                       <span className="logo">Jason Kyle Smith</span>
-                      {/* <h1 className="logo">Jason Kyle Smith</h1> */}
                     </div>
                   </Link>
                 </div>
