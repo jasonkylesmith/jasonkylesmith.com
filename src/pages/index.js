@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 import heroImage from "../images/standinportrait.png"
@@ -7,9 +7,35 @@ import heroImage from "../images/standinportrait.png"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Slider from "react-slick"
-import Testamonial from "../components/testamonial"
+import Testimonial from "../components/Testimonial"
 
 const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulTestimonial(limit: 3) {
+        edges {
+          node {
+            client
+            quote
+            subtitle
+            image {
+              gatsbyImageData(
+                width: 200
+                placeholder: BLURRED
+                formats: [AUTO, WEBP]
+                quality: 100
+              )
+              description
+            }
+            body
+          }
+        }
+      }
+    }
+  `)
+
+  const { edges: testimonials } = data.allContentfulTestimonial
+
   const sliderSettings = {
     dots: false,
     infinite: true,
@@ -53,7 +79,7 @@ const IndexPage = () => {
               <h1 className="">Hi, I'm Jason.</h1>
               <p className="pe-4">I take pictures of things sometimes.</p>
 
-              <a href="#" className="btn mb-0">
+              <a href="https://#" className="btn mb-0">
                 Call to action here!
               </a>
             </div>
@@ -61,39 +87,22 @@ const IndexPage = () => {
               <img
                 src="https://picsum.photos/250"
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                alt="stand in"
               />
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-12 d-flex justify-content-center mb-4">
-            <Testamonial
-              author="Jason Kyle Smith"
-              subtitle="Software Engineer with Moonello"
-              body="Jason really is great at talking with himself. I know this very well, given that I am he."
-              quote="This guy know's his schnozes!"
-              image="https://picsum.photos/200"
-            />
-          </div>
-          <div className="col-12 d-flex justify-content-center mb-4">
-            <Testamonial
-              author="Jason Kyle Smith"
-              subtitle="Software Engineer with Moonello"
-              body="Jason really is great at talking with himself. I know this very well, given that I am he."
-              quote="This guy know's his schnozes!"
-              image="https://picsum.photos/200"
-              variant="right"
-            />
-          </div>
-          <div className="col-12 d-flex justify-content-center mb-4">
-            <Testamonial
-              author="Jason Kyle Smith"
-              subtitle="Software Engineer with Moonello"
-              body="Jason really is great at talking with himself. I know this very well, given that I am he."
-              quote="This guy know's his schnozes!"
-              image="https://picsum.photos/200"
-            />
-          </div>
+          {testimonials.map((testimonial, index) => {
+            return (
+              <div className="col-12 d-flex justify-content-center mb-4">
+                <Testimonial
+                  {...testimonial.node}
+                  variant={index % 2 === 1 ? "left" : "right"}
+                />
+              </div>
+            )
+          })}
         </div>
 
         <div
@@ -109,16 +118,32 @@ const IndexPage = () => {
         >
           <Slider {...sliderSettings}>
             <div className="slider-div">
-              <img src="https://picsum.photos/1300/600" loading="lazy" />
+              <img
+                src="https://picsum.photos/1300/600"
+                loading="lazy"
+                alt="stand in"
+              />
             </div>
             <div className="slider-div">
-              <img src="https://picsum.photos/1301/601" loading="lazy" />
+              <img
+                src="https://picsum.photos/1301/601"
+                loading="lazy"
+                alt="stand in"
+              />
             </div>
             <div className="slider-div">
-              <img src="https://picsum.photos/1302/602" loading="lazy" />
+              <img
+                src="https://picsum.photos/1302/602"
+                loading="lazy"
+                alt="stand in"
+              />
             </div>
             <div className="slider-div">
-              <img src="https://picsum.photos/1300/603" loading="lazy" />
+              <img
+                src="https://picsum.photos/1300/603"
+                loading="lazy"
+                alt="stand in"
+              />
             </div>
           </Slider>
         </div>
