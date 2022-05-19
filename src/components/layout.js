@@ -45,29 +45,7 @@ const Layout = ({ children }) => {
           <p>Coming Soon</p>
           <div className="position-absolute" style={{ bottom: "1rem" }}>
             <a
-              href="https://www.linkedin.com/in/jasonkylesmith"
-              target="_new"
-              className="icon"
-            >
-              <FontAwesomeIcon
-                icon={["fab", "linkedin"]}
-                className="me-1 icon"
-                viewBox="0 0 448 1"
-              />
-            </a>
-            <a
-              href="https://www.github.com/jasonkylesmith"
-              target="_new"
-              className="icon"
-            >
-              <FontAwesomeIcon
-                icon={["fab", "github-square"]}
-                className="mx-1 icon"
-                viewBox="0 0 448 1"
-              />
-            </a>
-            <a
-              href="https://www.twitter.com/jayisawebdev"
+              href="https://www.twitter.com/jasonkylesmith"
               target="_new"
               className="icon"
             >
@@ -78,7 +56,7 @@ const Layout = ({ children }) => {
               />
             </a>
             <a
-              href="https://www.instagram.com/jasonksmith84"
+              href="https://www.instagram.com/jasonkylesmithphoto"
               target="_new"
               className="icon"
             >
