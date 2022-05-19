@@ -27,7 +27,6 @@ const GalleryImage = props => {
         imgStyle={{ padding: checked ? 20 : 0 }}
         onClick={() => {
           setChecked(!checked)
-          console.log("Checked or Unchecked!")
         }}
       />
     </div>

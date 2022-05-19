@@ -19,8 +19,8 @@ const IndexPage = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     className: "slider-div",
-    centerMode: false,
-    centerPadding: "60px",
+    centerMode: true,
+    centerPadding: "0px",
     cssEase: "linear",
     arrows: false,
     appendDots: dots => <ul>{dots}</ul>,
@@ -37,7 +37,7 @@ const IndexPage = () => {
 
       <div className="row p-0 position-relative mt-2">
         <div
-          className="col-12 d-flex justify-content-center align-items-center"
+          className="col-12 d-flex justify-content-center align-items-center p-0"
           style={{ height: "85vh" }}
         >
           <div
@@ -50,7 +50,7 @@ const IndexPage = () => {
           >
             <div className="p-0">
               <h1 className="">Hi, I'm Jason.</h1>
-              <p className="pe-2">I take pictures of things sometimes.</p>
+              <p className="pe-4">I take pictures of things sometimes.</p>
 
               <a href="#" className="btn mb-0">
                 Call to action here!
@@ -69,24 +69,25 @@ const IndexPage = () => {
           className="p-0"
           style={{
             height: "85vh",
+
             position: "absolute",
             top: 0,
-            left: 0,
+            left: 12,
             zIndex: -1,
           }}
         >
           <Slider {...sliderSettings}>
             <div className="slider-div">
-              <img src="https://picsum.photos/3000/2000" loading="lazy" />
+              <img src="https://picsum.photos/1300/600" />
             </div>
             <div className="slider-div">
-              <img src="https://picsum.photos/3000/3001" loading="lazy" />
+              <img src="https://picsum.photos/1301/601" loading="lazy" />
             </div>
             <div className="slider-div">
-              <img src="https://picsum.photos/3000/3000" loading="lazy" />
+              <img src="https://picsum.photos/1302/602" loading="lazy" />
             </div>
             <div className="slider-div">
-              <img src="https://picsum.photos/3001/2000" loading="lazy" />
+              <img src="https://picsum.photos/1300/603" loading="lazy" />
             </div>
           </Slider>
         </div>

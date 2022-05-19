@@ -9,70 +9,83 @@ import Seo from "../components/seo"
 import Slider from "react-slick"
 
 const AboutPage = () => {
+  const aboutSliderSettings = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    centerMode: true,
+    arrows: false,
+    dots: true,
+    swipe: true,
+    infinite: true,
+    focusOnSelect: true,
+    rows: 1,
+  }
+
   return (
     <Layout>
-      <Seo title="Home" />
-
-      <div
-        className="row p-0 position-relative mt-2"
-        style={{ height: "85vh" }}
-      >
-        <div className="col-12 d-flex justify-content-center align-items-center">
-          <div className="row justify-content-center align-items-center pb-5">
-            <div
-              className="d-flex flex-lg-row flex-column col-12 "
-              style={{
-                backgroundColor: "rgba(255,255,255,.8)",
-                padding: "1rem",
-                borderRadius: ".25rem",
-              }}
-            >
-              <div className="p-0 d-flex align-items-end col-12 col-lg-6 order-2 order-lg-1">
-                <div>
-                  <h1 className="m-0">I'm Jason. Hi!</h1>
-                  <span className="small">Pleased to meet you!</span>
-                  <p className="pe-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Eu tincidunt tortor aliquam nulla facilisi cras.
-                    Semper eget duis at tellus. Nulla facilisi etiam dignissim
-                    diam. Sodales ut eu sem integer vitae justo. Aliquet
-                    sagittis id consectetur purus ut faucibus pulvinar
-                    elementum. Ullamcorper sit amet risus nullam eget felis
-                    eget. Ultricies lacus sed turpis tincidunt id aliquet risus
-                    feugiat. Duis at tellus at urna. Ut morbi tincidunt augue
-                    interdum velit euismod in pellentesque. Nisl suscipit
-                    adipiscing bibendum est ultricies. Elementum sagittis vitae
-                    et leo. In mollis nunc sed id semper risus in. Vel facilisis
-                    volutpat est velit egestas dui id. Mattis nunc sed blandit
-                    libero volutpat sed cras. Morbi enim nunc faucibus a
-                    pellentesque sit amet porttitor.
-                  </p>
-
-                  <a href="#" className="btn mb-0">
-                    Call to action here!
-                  </a>
-                </div>
+      <Seo title="About" />
+      <div className="container-fluid mt-4">
+        <div className="row">
+          <div className="col-md-8 offset-md-2">
+            <div className="row mb-4">
+              <div className=" col-12 col-lg-6 order-1 order-lg-0 ps-0 pe-2">
+                <h1 className="blog-title">Hi, I'm Jason!</h1>
+                <p>
+                  I'm a photographer from Southeast Michigan and I love to
+                  photograph just about everything. Capturing nature is my
+                  stress reliever, portrait and headshot photography is my
+                  bread-and-butter. I'm most inspired by the unique, the
+                  colorful, and the expressive sights of the world around me and
+                  strive to photograph my subjects true to how I see them.
+                </p>
+                <p>
+                  I am currently available to schedule for portrait and headshot
+                  sessions!
+                </p>
+                <a href="#" className="btn mb-0">
+                  Call to action here!
+                </a>
               </div>
-              <div className="p-0 col-12 col-lg-6 order-1 order-lg-2 d-none d-lg-flex">
+              <div className="col-12 col-lg-6 order-0 order-lg-1 mb-4 mb-lg-0">
                 <img
-                  src={heroImage}
-                  style={{
-                    objectFit: "contain",
-                    width: "100%",
-                    height: "100%",
-                  }}
+                  src="https://picsum.photos/600/400"
+                  className="img-fluid"
+                  style={{ objectFit: "cover" }}
                 />
               </div>
             </div>
-            <div
-              style={{
-                width: "600px",
-                padding: "1rem",
-                paddingBottom: "75%",
-              }}
-              className="hero-text col-12 col-lg-6 pb-5"
-            ></div>
+
+            <div className="row mb-4">
+              <div className="col ps-0 ">
+                <Slider {...aboutSliderSettings}>
+                  <div className="about">
+                    <img
+                      src="https://picsum.photos/300/200"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <div className="about">
+                    <img
+                      src="https://picsum.photos/300/200"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <div className="about">
+                    <img
+                      src="https://picsum.photos/300/200"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <div className="about">
+                    <img
+                      src="https://picsum.photos/300/200"
+                      className="img-fluid"
+                    />
+                  </div>
+                </Slider>
+              </div>
+            </div>
           </div>
         </div>
       </div>

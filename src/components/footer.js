@@ -10,10 +10,12 @@ library.add(fab)
 const Footer = props => {
   if (props.version === "desktop") {
     return (
-      <footer className="d-none d-md-flex align-items-center">
-        <span className="copyright d-none d-md-block">
-          © {new Date().getFullYear()}, Jason Kyle Smith
-        </span>
+      <footer className="d-none d-md-flex align-items-center row px-2">
+        <div className="col-md-8 offset-md-2">
+          <span className="copyright d-none d-md-block">
+            © {new Date().getFullYear()}, Jason Kyle Smith
+          </span>
+        </div>
       </footer>
     )
   } else if (props.version === "mobile") {
