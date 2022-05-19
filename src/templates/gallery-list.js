@@ -42,42 +42,44 @@ const GalleryList = props => {
       <div className="row mt-4 px-2">
         <div className="col-12 col-lg-12">
           <div className="row">
-            <div className="col-12 p-0">
+            <div className="col-md-8 offset-md-2">
               <h1>Photo Stories</h1>
             </div>
-            {edges.map((gallery, index) => {
-              const { name, category, featuredImage, slug } = gallery.node
-              const { gatsbyImageData, title } = featuredImage
+            <div className="col-md-8 offset-md-2">
+              <div className="row">
+                {edges.map((gallery, index) => {
+                  const { name, category, featuredImage, slug } = gallery.node
+                  const { gatsbyImageData, title } = featuredImage
 
-              return (
-                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
-                  <Link
-                    to={`/${category
-                      .toLowerCase()
-                      .replace(/\s+/g, "")}/${slug}`}
-                    className=""
-                  >
-                    <div className="">
-                      <div className="position-relative">
-                        <GatsbyImage
-                          className=""
-                          imgStyle={{ borderRadius: ".25rem" }}
-                          image={gatsbyImageData}
-                          alt={title}
-                        />
-                      </div>
-                      <div className="">
-                        <h4 className="text-dark mt-1 mb-0">{name}</h4>
-                        <span
-                          className="text-dark small fw-normal"
-                          style={{ fontSize: "14px" }}
-                        ></span>
-                      </div>
+                  return (
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
+                      <Link
+                        to={`/${category
+                          .toLowerCase()
+                          .replace(/\s+/g, "")}/${slug}`}
+                        className=""
+                      >
+                        <div className="">
+                          <div className="position-relative">
+                            <GatsbyImage
+                              className=""
+                              imgStyle={{ borderRadius: ".25rem" }}
+                              image={gatsbyImageData}
+                              alt={title}
+                            />
+                          </div>
+                          <div className="">
+                            <h4 className="text-dark mt-1 mb-0">{name}</h4>
+                            <span
+                              className="text-dark small fw-normal"
+                              style={{ fontSize: "14px" }}
+                            ></span>
+                          </div>
+                        </div>
+                      </Link>
                     </div>
-                  </Link>
-                </div>
-              )
-              /* 
+                  )
+                  /* 
               return (
                 <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
                   {post.node.featuredImage && (
@@ -108,7 +110,9 @@ const GalleryList = props => {
                   )}
                 </div>
               ) */
-            })}
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

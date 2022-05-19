@@ -11,14 +11,15 @@ import Slider from "react-slick"
 const AboutPage = () => {
   const aboutSliderSettings = {
     slidesToShow: 3,
+    slidesToScroll: 1,
     swipeToSlide: true,
     centerMode: true,
     arrows: false,
     dots: true,
     swipe: true,
     infinite: true,
-    variableWidth: true,
-    adaptiveHeight: true,
+    focusOnSelect: true,
+    rows: 1,
   }
 
   return (
@@ -47,7 +48,7 @@ const AboutPage = () => {
                   Call to action here!
                 </a>
               </div>
-              <div className="col-12 col-lg-7 order-0 order-lg-1  mb-4 mb-lg-0">
+              <div className="col-12 col-lg-7 order-0 order-lg-1 mb-4 mb-lg-0">
                 <img
                   src="https://picsum.photos/600/400"
                   className="img-fluid"
@@ -56,55 +57,30 @@ const AboutPage = () => {
               </div>
             </div>
 
-            <div className="row">
+            <div className="row mb-4">
               <div className="col">
                 <Slider {...aboutSliderSettings}>
-                  <div className="about-slider">
+                  <div>
                     <img
                       src="https://picsum.photos/300/200"
-                      loading="lazy"
                       className="img-fluid"
                     />
                   </div>
-                  <div className="about-slider">
+                  <div>
                     <img
                       src="https://picsum.photos/300/200"
-                      loading="lazy"
                       className="img-fluid"
                     />
                   </div>
-                  <div className="about-slider">
+                  <div>
                     <img
                       src="https://picsum.photos/300/200"
-                      loading="lazy"
                       className="img-fluid"
                     />
                   </div>
-                  <div className="about-slider">
+                  <div>
                     <img
                       src="https://picsum.photos/300/200"
-                      loading="lazy"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="about-slider">
-                    <img
-                      src="https://picsum.photos/300/200"
-                      loading="lazy"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="about-slider">
-                    <img
-                      src="https://picsum.photos/300/200"
-                      loading="lazy"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="about-slider">
-                    <img
-                      src="https://picsum.photos/300/200"
-                      loading="lazy"
                       className="img-fluid"
                     />
                   </div>

@@ -160,43 +160,47 @@ const Blog = () => {
       <div className="row mt-4 px-2">
         <div className="col-12 col-lg-12">
           <div className="row">
-            <div className="col-12 p-0">
+            <div className="col-md-8 offset-md-2">
               <h1>Blog Posts</h1>
             </div>
-            {filteredEdges.map((post, index) => {
-              return (
-                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
-                  {post.node.featuredImage && (
-                    <Link to={`/blog/${post.node.slug}`} className="">
-                      <div className="">
-                        <div className="position-relative">
-                          <GatsbyImage
-                            className=""
-                            imgStyle={{ borderRadius: ".25rem" }}
-                            imgClass="gallery-image"
-                            image={post.node.featuredImage.gatsbyImageData}
-                            alt={post.node.title}
-                          />
+            <div className="col-md-8 offset-md-2">
+              <div className="row">
+                {filteredEdges.map((post, index) => {
+                  return (
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
+                      {post.node.featuredImage && (
+                        <Link to={`/blog/${post.node.slug}`} className="">
+                          <div className="">
+                            <div className="position-relative">
+                              <GatsbyImage
+                                className=""
+                                imgStyle={{ borderRadius: ".25rem" }}
+                                imgClass="gallery-image"
+                                image={post.node.featuredImage.gatsbyImageData}
+                                alt={post.node.title}
+                              />
 
-                          <Tags tags={post.node.tags} />
-                        </div>
-                        <div className="">
-                          <h4 className="text-dark mt-1 mb-0">
-                            {post.node.title}
-                          </h4>
-                          <span
-                            className="text-dark small fw-normal"
-                            style={{ fontSize: "14px" }}
-                          >
-                            {post.node.publishedDate}
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-              )
-            })}
+                              <Tags tags={post.node.tags} />
+                            </div>
+                            <div className="">
+                              <h4 className="text-dark mt-1 mb-0">
+                                {post.node.title}
+                              </h4>
+                              <span
+                                className="text-dark small fw-normal"
+                                style={{ fontSize: "14px" }}
+                              >
+                                {post.node.publishedDate}
+                              </span>
+                            </div>
+                          </div>
+                        </Link>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

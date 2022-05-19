@@ -374,8 +374,11 @@ a {
   }
 }
 
-.about-slider {
-  img {
+.slick-slide {
+  div {
     padding: 0.5rem;
+  }
+  img {
+    /* padding: 0.5rem; */
   }
 }
