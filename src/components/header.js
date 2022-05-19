@@ -9,7 +9,7 @@ import SocialIcons from "./social-icons"
 const Header = props => {
   if (props.version === "desktop") {
     return (
-      <header className="d-none d-md-block px-3">
+      <header className="d-none d-md-block px-2">
         <div className="row justify-space-between">
           <div className="col-md-8 offset-md-2">
             <div className="row">

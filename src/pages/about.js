@@ -25,20 +25,19 @@ const AboutPage = () => {
   return (
     <Layout>
       <Seo title="About" />
-      <div className="container-fluid p-0 mt-4">
-        <div className="row p-0">
+      <div className="container-fluid mt-4">
+        <div className="row">
           <div className="col-md-8 offset-md-2">
             <div className="row mb-4">
-              <div className=" col-12 col-lg-5 order-1 order-lg-0">
+              <div className=" col-12 col-lg-6 order-1 order-lg-0 ps-0 pe-2">
                 <h1 className="blog-title">Hi, I'm Jason!</h1>
                 <p>
                   I'm a photographer from Southeast Michigan and I love to
-                  photograph just about everything. Travel and nature
-                  photography is my stress reliever, portrait and headshot
-                  photography is my bread-and-butter. I'm most inspired by the
-                  unique, the colorful, and the expressive sights of the world
-                  around me and strive to photograph my subjects true to how I
-                  see them.
+                  photograph just about everything. Capturing nature is my
+                  stress reliever, portrait and headshot photography is my
+                  bread-and-butter. I'm most inspired by the unique, the
+                  colorful, and the expressive sights of the world around me and
+                  strive to photograph my subjects true to how I see them.
                 </p>
                 <p>
                   I am currently available to schedule for portrait and headshot
@@ -48,7 +47,7 @@ const AboutPage = () => {
                   Call to action here!
                 </a>
               </div>
-              <div className="col-12 col-lg-7 order-0 order-lg-1 mb-4 mb-lg-0">
+              <div className="col-12 col-lg-6 order-0 order-lg-1 mb-4 mb-lg-0">
                 <img
                   src="https://picsum.photos/600/400"
                   className="img-fluid"
@@ -58,27 +57,27 @@ const AboutPage = () => {
             </div>
 
             <div className="row mb-4">
-              <div className="col">
+              <div className="col ps-0 ">
                 <Slider {...aboutSliderSettings}>
-                  <div>
+                  <div className="about">
                     <img
                       src="https://picsum.photos/300/200"
                       className="img-fluid"
                     />
                   </div>
-                  <div>
+                  <div className="about">
                     <img
                       src="https://picsum.photos/300/200"
                       className="img-fluid"
                     />
                   </div>
-                  <div>
+                  <div className="about">
                     <img
                       src="https://picsum.photos/300/200"
                       className="img-fluid"
                     />
                   </div>
-                  <div>
+                  <div className="about">
                     <img
                       src="https://picsum.photos/300/200"
                       className="img-fluid"
