@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
           <Header version="mobile" />
         </div>
         <div className="row flex-fill">
-          <main>{children}</main>
+          <main className="p-0">{children}</main>
         </div>
         <div className="row">
           <Footer version="desktop" />
