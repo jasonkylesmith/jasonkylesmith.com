@@ -7,14 +7,9 @@ const Testimonial = props => {
 
   if (variant === "left") {
     return (
-      <div
-        className="d-flex flex-row"
-        style={{ width: "50%", borderLeft: "2px solid black", height: "200px" }}
-      >
+      <div className="ms-2 ms-md-0 testimonial testimonial--left">
         {image && (
-          <div
-            style={{ width: "200px", marginLeft: "1rem", marginRight: "1rem" }}
-          >
+          <div className="testimonial__image">
             <GatsbyImage
               image={image.gatsbyImageData}
               alt={image.description}
@@ -23,50 +18,24 @@ const Testimonial = props => {
           </div>
         )}
 
-        {/* <img
-            src={`${image}`}
-            style={{ marginLeft: "1rem", marginRight: "1rem" }}
-            className="img-fluid"
-          /> */}
-        <div
-          style={{
-            flex: 1,
-            border: "0px dotted orange",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <div className="testimonial__content">
           {quote && (
             <div
+              className="testimonial__quote-container"
               style={{
-                display: "flex",
-                alignItems: "center",
                 flex: body && body.length > 0 ? 0 : 1,
               }}
             >
               <h3>"{quote}"</h3>
             </div>
           )}
-          {body && (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flex: 1,
-              }}
-            >
+          {false && (
+            <div className="testimonial__body-container">
               <p>{body}</p>
             </div>
           )}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "0px dotted pink",
-              alignItems: "flex-end",
-            }}
-          >
-            {client && <h5 style={{ margin: 0 }}>{client}</h5>}
+          <div className="testimonial__client-container">
+            {client && <h5>{client}</h5>}
             {subtitle && <span className="small">{subtitle}</span>}
           </div>
         </div>
@@ -74,60 +43,30 @@ const Testimonial = props => {
     )
   } else if (variant === "right") {
     return (
-      <div
-        className="d-flex flex-row"
-        style={{
-          width: "50%",
-          borderRight: "0px solid black",
-          height: "200px",
-        }}
-      >
-        <div
-          style={{
-            flex: 1,
-            border: "0px dotted orange",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+      <div className="ms-2 ms-md-0 testimonial testimonial--right">
+        <div className="testimonial__content">
           {quote && (
             <div
+              className="testimonial__quote-container"
               style={{
-                display: "flex",
-                alignItems: "center",
                 flex: body && body.length > 0 ? 0 : 1,
               }}
             >
               <h3>"{quote}"</h3>
             </div>
           )}
-          {body && (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flex: 1,
-              }}
-            >
+          {false && (
+            <div className="testimonial__body-container">
               <p>{body}</p>
             </div>
           )}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "0px dotted pink",
-              alignItems: "flex-end",
-            }}
-          >
-            {client && <h5 style={{ margin: 0 }}>{client}</h5>}
+          <div className="testimonial__client-container">
+            {client && <h5>{client}</h5>}
             {subtitle && <span className="small">{subtitle}</span>}
           </div>
         </div>
         {image && (
-          <div
-            style={{ width: "200px", marginLeft: "1rem", marginRight: "1rem" }}
-          >
+          <div className="testimonial__image">
             <GatsbyImage
               image={image.gatsbyImageData}
               alt={image.description}

@@ -154,7 +154,7 @@ const BlogPost = props => {
   return (
     <Layout>
       <Seo title={title} />
-      <div className="container-fluid p-0 mt-4">
+      <div className="container-fluid mt-4 px-2 px-md-0">
         <div className="row p-0">
           <div className="col-md-8 offset-md-2">
             {featuredImage && (
@@ -166,9 +166,10 @@ const BlogPost = props => {
               </div>
             )}
             <h1 className="blog-title">{title}</h1>
-
-            <span className="blog-date">{publishedDate}</span>
-            <Tags tags={tags} />
+            <div className="d-flex direction-row align-items-center">
+              <span className="blog-date">{publishedDate}</span>
+              <Tags tags={tags} />
+            </div>
 
             <div className="blog-body d-flex flex-column">
               {bodyContent}

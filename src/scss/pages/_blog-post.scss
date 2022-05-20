@@ -73,8 +73,14 @@
 }
 
 .blog-date + .blog-tags {
-  margin-top: -1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
   position: relative;
+
+  .blog-tag {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
 
 .blog-tag:first-of-type {

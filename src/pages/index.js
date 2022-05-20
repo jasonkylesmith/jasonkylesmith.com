@@ -27,7 +27,6 @@ const IndexPage = () => {
               )
               description
             }
-            body
           }
         }
       }
@@ -95,7 +94,7 @@ const IndexPage = () => {
         <div className="row">
           {testimonials.map((testimonial, index) => {
             return (
-              <div className="col-12 d-flex justify-content-center mb-4">
+              <div className="col col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-2 px-md-0">
                 <Testimonial
                   {...testimonial.node}
                   variant={index % 2 === 1 ? "left" : "right"}
