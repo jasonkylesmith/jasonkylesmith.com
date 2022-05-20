@@ -1,5 +1,5 @@
 import * as React from "react"
-import icon from "../images/hex-icon-plain.svg"
+
 import MenuIcon from "./menu-icon"
 import { Link } from "gatsby"
 import Navigation from "./navigation"
