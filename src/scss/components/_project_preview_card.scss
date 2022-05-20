@@ -61,10 +61,10 @@
   .footer {
     display: flex;
     justify-content: space-between;
-    border-top: 2px solid $purple-darker;
+    border-top: 2px solid $accent-darker;
     width: 100%;
     padding: calc($margins/10) $margins;
-    background-color: $purple;
+    background-color: $accent;
     border-radius: 0 0 $border-radii $border-radii;
   }
 
@@ -86,7 +86,7 @@
     }
 
     .blocker {
-      background-color: $purple-overlay;
+      background-color: $accent-overlay;
     }
 
     .body-text {

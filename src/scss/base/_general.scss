@@ -102,7 +102,7 @@ a:active,
 a:visited,
 a:hover {
   text-decoration: none;
-  color: $purple;
+  color: $accent;
   font-weight: 600;
   position: relative;
 
@@ -111,8 +111,8 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: $purple;
-    color: $purple;
+    background-color: $accent;
+    color: $accent;
     bottom: 0;
     left: 0;
     transform: scaleX(0);
@@ -132,8 +132,8 @@ a:hover {
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
-    color: $purple;
-    border: 2px solid $purple;
+    color: $accent;
+    border: 2px solid $accent;
     margin-bottom: $margins;
     padding: $btn-padding;
     transition: background-color $anim-duration ease-in-out 0ms,
@@ -155,7 +155,7 @@ a:hover {
   }
 
   &.btn:hover {
-    background-color: $purple;
+    background-color: $accent;
     color: $light;
 
     &.scroll {
@@ -179,7 +179,7 @@ a:hover {
     &:hover {
       .icon {
         transform: scale(1.3);
-        color: $purple;
+        color: $accent;
       }
     }
   }
@@ -205,7 +205,7 @@ a:hover {
 .btn-link:visited,
 .btn-link:hover {
   text-decoration: none;
-  color: $purple;
+  color: $accent;
   font-weight: 600;
   position: relative;
   padding: 0;
@@ -218,8 +218,8 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: $purple;
-    color: $purple;
+    background-color: $accent;
+    color: $accent;
     bottom: 0;
     left: 0;
     transform: scaleX(0);
@@ -228,7 +228,7 @@ a:hover {
 
   &:hover {
     &::before {
-      color: $purple;
+      color: $accent;
       height: 2px;
       transition: transform $anim-duration ease-in-out 0ms;
       transform: scaleX(1);
@@ -242,7 +242,7 @@ nav {
     color: $dark;
 
     &:hover {
-      color: $purple;
+      color: $accent;
     }
   }
 
@@ -283,7 +283,7 @@ nav {
     &::before,
     &::after {
       position: absolute;
-      color: $purple;
+      color: $accent;
       font-size: $base-font-size * 5;
     }
 

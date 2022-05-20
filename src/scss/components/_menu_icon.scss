@@ -30,7 +30,7 @@ $menu-anim-duration: 200ms;
   position: absolute;
   height: 5px;
   width: 100%;
-  background: $purple;
+  background: $accent;
 
   opacity: 1;
   left: 0;
@@ -93,7 +93,7 @@ $menu-anim-duration: 200ms;
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: $purple;
+  background-color: $accent;
   opacity: 0;
   transition: opacity $menu-anim-duration ease-in-out 0ms;
   z-index: 5;
