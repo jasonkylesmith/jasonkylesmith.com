@@ -1,11 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { fab } from "@fortawesome/free-brands-svg-icons"
-import { fas } from "@fortawesome/free-solid-svg-icons"
-
 import Layout from "../components/layout"
 import Tags from "../components/tags"
 import Seo from "../components/seo"
@@ -23,8 +18,7 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from "react-share"
-
-library.add(fab, fas)
+import ShareButtons from "../components/share-buttons"
 
 export const query = graphql`
   query ($slug: String!) {
@@ -189,45 +183,13 @@ const BlogPost = props => {
             <div className="d-flex direction-row align-items-center">
               <span className="blog-date">{publishedDate}</span>
               <Tags tags={tags} />
-              <FacebookShareButton
-                url={`https://preview.jasonkylesmith.com/blog/${slug}`}
 
-                /* hashtag="#hashtag" */
-              >
-                <div style={{ marginBottom: "1rem", paddingBottom: "0.1rem" }}>
-                  <FacebookIcon size={21.5} />
-                </div>
-              </FacebookShareButton>
-              <TwitterShareButton
-                url={`https://preview.jasonkylesmith.com/blog/${slug}`}
+              <ShareButtons
                 title={title}
-                via="jasonkylesmith"
-                /* hashtags={["hashtag"]} */
-              >
-                <div
-                  style={{
-                    marginBottom: "1rem",
-                    marginLeft: ".25rem",
-                    paddingBottom: "0.1rem",
-                  }}
-                >
-                  <TwitterIcon size={21.5} />
-                </div>
-              </TwitterShareButton>
-              <EmailShareButton
-                url={`https://preview.jasonkylesmith.com/blog/${slug}`}
-                subject={`${title} from jasonkylesmith.com`}
-              >
-                <div
-                  style={{
-                    marginBottom: "1rem",
-                    marginLeft: ".25rem",
-                    paddingBottom: "0.1rem",
-                  }}
-                >
-                  <EmailIcon size={21.5} bgStyle={{ fill: "#663cf0" }} />
-                </div>
-              </EmailShareButton>
+                slug={slug}
+                directory={"blog"}
+                sources={["Facebook", "Twitter", "Email", "Clipboard"]}
+              />
             </div>
 
             <div className="blog-body d-flex flex-column">

@@ -1,0 +1,24 @@
+.share__icon-container {
+  background-color: $accent;
+  height: 21.5px;
+  width: 21.5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 0.25rem;
+  padding-bottom: 0.1rem;
+  cursor: pointer;
+}
+
+.share__icon {
+  color: white;
+  margin-bottom: 0.1rem;
+  font-size: 12px;
+}
+
+.share__react-share-container {
+  margin-bottom: 1rem;
+  margin-left: 0.25rem;
+  padding-bottom: 0.1rem;
+}
