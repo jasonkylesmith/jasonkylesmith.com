@@ -16,6 +16,8 @@ import Blockquote from "../components/blockquote"
 import PostNav from "../components/post-nav"
 import Author from "../components/author"
 import {
+  EmailIcon,
+  EmailShareButton,
   FacebookIcon,
   FacebookShareButton,
   TwitterIcon,
@@ -189,6 +191,7 @@ const BlogPost = props => {
               <Tags tags={tags} />
               <FacebookShareButton
                 url={`https://preview.jasonkylesmith.com/blog/${slug}`}
+
                 /* hashtag="#hashtag" */
               >
                 <div style={{ marginBottom: "1rem", paddingBottom: "0.1rem" }}>
@@ -201,10 +204,30 @@ const BlogPost = props => {
                 via="jasonkylesmith"
                 /* hashtags={["hashtag"]} */
               >
-                <div style={{ marginBottom: "1rem", paddingBottom: "0.1rem" }}>
+                <div
+                  style={{
+                    marginBottom: "1rem",
+                    marginLeft: ".25rem",
+                    paddingBottom: "0.1rem",
+                  }}
+                >
                   <TwitterIcon size={21.5} />
                 </div>
               </TwitterShareButton>
+              <EmailShareButton
+                url={`https://preview.jasonkylesmith.com/blog/${slug}`}
+                subject={`${title} from jasonkylesmith.com`}
+              >
+                <div
+                  style={{
+                    marginBottom: "1rem",
+                    marginLeft: ".25rem",
+                    paddingBottom: "0.1rem",
+                  }}
+                >
+                  <EmailIcon size={21.5} bgStyle={{ fill: "#663cf0" }} />
+                </div>
+              </EmailShareButton>
             </div>
 
             <div className="blog-body d-flex flex-column">
