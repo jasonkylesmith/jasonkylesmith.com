@@ -7,7 +7,7 @@ import heroImage from "../images/standinportrait.png"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Slider from "react-slick"
-import Testimonial from "../components/Testimonial"
+import Testimonial from "../components/testimonial"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
