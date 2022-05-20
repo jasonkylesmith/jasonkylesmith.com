@@ -15,6 +15,12 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import Blockquote from "../components/blockquote"
 import PostNav from "../components/post-nav"
 import Author from "../components/author"
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from "react-share"
 
 library.add(fab, fas)
 
@@ -22,8 +28,12 @@ export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       contentful_id
+      slug
       title
       tags
+      excerpt {
+        excerpt
+      }
       publishedDate(formatString: "Do MMMM, YYYY")
       featuredImage {
         title
@@ -79,8 +89,16 @@ export const query = graphql`
 `
 
 const BlogPost = props => {
-  const { title, publishedDate, featuredImage, tags, body, contentful_id } =
-    props.data.contentfulBlogPost
+  const {
+    title,
+    publishedDate,
+    featuredImage,
+    tags,
+    body,
+    contentful_id,
+    slug,
+    excerpt,
+  } = props.data.contentfulBlogPost
 
   const { edges } = props.data.allContentfulBlogPost
 
@@ -169,6 +187,24 @@ const BlogPost = props => {
             <div className="d-flex direction-row align-items-center">
               <span className="blog-date">{publishedDate}</span>
               <Tags tags={tags} />
+              <FacebookShareButton
+                url={`https://preview.jasonkylesmith.com/blog/${slug}`}
+                /* hashtag="#hashtag" */
+              >
+                <div style={{ marginBottom: "1rem", paddingBottom: "0.1rem" }}>
+                  <FacebookIcon size={21.5} />
+                </div>
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={`https://preview.jasonkylesmith.com/blog/${slug}`}
+                title={title}
+                via="jasonkylesmith"
+                /* hashtags={["hashtag"]} */
+              >
+                <div style={{ marginBottom: "1rem", paddingBottom: "0.1rem" }}>
+                  <TwitterIcon size={21.5} />
+                </div>
+              </TwitterShareButton>
             </div>
 
             <div className="blog-body d-flex flex-column">
