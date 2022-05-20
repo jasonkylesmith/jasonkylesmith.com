@@ -120,7 +120,7 @@ const Gallery = props => {
   return (
     <Layout>
       <Seo title={name} />
-      <div className="container-fluid p-0 mt-4">
+      <div className="container-fluid p-0 mt-4 px-2 px-md-0">
         <div className="row p-0">
           <div className="col-sm-8 offset-sm-2">
             {blocks.map(block => {

@@ -21,9 +21,9 @@
 }
 
 .blog-body {
-  /* border-top: 4px solid $purple; */
-  /* border-bottom: 4px solid $purple; */
-  /* border-left: 4px solid $purple; */
+  /* border-top: 4px solid $accent; */
+  /* border-bottom: 4px solid $accent; */
+  /* border-left: 4px solid $accent; */
   padding-top: 0.5rem;
   li {
     p {
@@ -73,8 +73,14 @@
 }
 
 .blog-date + .blog-tags {
-  margin-top: -1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
   position: relative;
+
+  .blog-tag {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
 
 .blog-tag:first-of-type {
