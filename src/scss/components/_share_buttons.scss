@@ -1,0 +1,48 @@
+.share-container {
+  margin-left: -0.3rem;
+  margin-bottom: 1rem;
+}
+
+.share__icon-wrapper {
+  height: 26px;
+  width: 26px;
+  display: inline;
+  margin-bottom: 3px;
+}
+
+.share__icon-container {
+  background-color: $dark;
+  height: 22px;
+  width: 22px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0rem;
+  margin-top: 0rem;
+  margin-left: 0.25rem;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.share__icon {
+  color: white;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  font-size: 12px !important;
+}
+
+.share__react-share-container {
+  margin-left: 0.25rem;
+}
+
+.share__icon-container,
+.share__react-share-container {
+  transform: scale(1);
+  transition: transform $anim-duration ease-in-out 0ms;
+}
+
+.share__icon-container:hover,
+.share__react-share-container:hover {
+  transform: scale(1.3);
+}
