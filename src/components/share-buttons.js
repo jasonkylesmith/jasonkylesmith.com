@@ -68,6 +68,7 @@ const ShareButtons = props => {
             <FontAwesomeIcon
               icon={["fas", "clipboard"]}
               className="mx-1 share__icon"
+              id="clipboard__icon"
             />
           </CopyToClipboard>
         </div>

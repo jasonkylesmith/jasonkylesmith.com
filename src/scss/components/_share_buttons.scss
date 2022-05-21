@@ -29,7 +29,11 @@
   background-color: transparent;
   padding: 0;
   border: none;
-  font-size: 12px !important;
+  font-size: 12px;
+}
+
+#clipboard__icon {
+  font-size: 12px;
 }
 
 .share__react-share-container {
