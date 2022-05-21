@@ -1,0 +1,78 @@
+.testimonial {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.testimonial--left {
+  border-left: 4px solid $accent;
+}
+
+.testimonial--right {
+  border-right: 4px solid $accent;
+}
+
+.testimonial__image {
+  width: 200px;
+  height: 200px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.testimonial__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.testimonial__quote-container {
+  display: flex;
+  align-items: center;
+}
+
+.testimonial__body-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.testimonial__client-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  h5 {
+    margin: 0;
+  }
+}
+
+// Less than 1248, content overlaps
+
+@media (max-width: 767px) {
+  .testimonial {
+    flex-direction: column;
+    height: auto;
+    width: 200px;
+  }
+
+  .testimonial--left,
+  .testimonial--right {
+    border: none;
+  }
+
+  .testimonial__content {
+    order: 2;
+
+    h3 {
+      font-size: smaller;
+    }
+  }
+
+  .testimonial__image {
+    margin-left: 0;
+    margin-right: 0;
+    order: 1;
+  }
+}

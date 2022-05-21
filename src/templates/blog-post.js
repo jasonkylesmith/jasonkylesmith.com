@@ -1,11 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { fab } from "@fortawesome/free-brands-svg-icons"
-import { fas } from "@fortawesome/free-solid-svg-icons"
-
 import Layout from "../components/layout"
 import Tags from "../components/tags"
 import Seo from "../components/seo"
@@ -15,15 +10,26 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import Blockquote from "../components/blockquote"
 import PostNav from "../components/post-nav"
 import Author from "../components/author"
-
-library.add(fab, fas)
+import {
+  EmailIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from "react-share"
+import ShareButtons from "../components/share-buttons"
 
 export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       contentful_id
+      slug
       title
       tags
+      excerpt {
+        excerpt
+      }
       publishedDate(formatString: "Do MMMM, YYYY")
       featuredImage {
         title
@@ -79,8 +85,16 @@ export const query = graphql`
 `
 
 const BlogPost = props => {
-  const { title, publishedDate, featuredImage, tags, body, contentful_id } =
-    props.data.contentfulBlogPost
+  const {
+    title,
+    publishedDate,
+    featuredImage,
+    tags,
+    body,
+    contentful_id,
+    slug,
+    excerpt,
+  } = props.data.contentfulBlogPost
 
   const { edges } = props.data.allContentfulBlogPost
 
@@ -154,7 +168,7 @@ const BlogPost = props => {
   return (
     <Layout>
       <Seo title={title} />
-      <div className="container-fluid p-0 mt-4">
+      <div className="container-fluid mt-4 px-2 px-md-0">
         <div className="row p-0">
           <div className="col-md-8 offset-md-2">
             {featuredImage && (
@@ -166,9 +180,17 @@ const BlogPost = props => {
               </div>
             )}
             <h1 className="blog-title">{title}</h1>
+            <div className="d-flex direction-row align-items-center">
+              <span className="blog-date">{publishedDate}</span>
+              <Tags tags={tags} />
 
-            <span className="blog-date">{publishedDate}</span>
-            <Tags tags={tags} />
+              <ShareButtons
+                title={title}
+                slug={slug}
+                directory={"blog"}
+                sources={["Facebook", "Twitter", "Email", "Clipboard"]}
+              />
+            </div>
 
             <div className="blog-body d-flex flex-column">
               {bodyContent}
