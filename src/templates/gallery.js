@@ -8,12 +8,15 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import BlockStory from "../components/block-story"
 import BlockGallery from "../components/block-gallery"
 import BlockFeature from "../components/block-feature"
+import ShareButtons from "../components/share-buttons"
 
 export const query = graphql`
   query ($slug: String!) {
     contentfulGallery(slug: { eq: $slug }) {
       contentful_id
       name
+      category
+      slug
       blocks {
         ... on ContentfulBlockFeature {
           id
@@ -115,7 +118,7 @@ const Gallery = props => {
   /* const { title, description, tags, client, tools } =
     props.data.contentfulProject */
 
-  const { blocks, name } = props.data.contentfulGallery
+  const { blocks, name, category, slug } = props.data.contentfulGallery
 
   return (
     <Layout>
@@ -123,6 +126,12 @@ const Gallery = props => {
       <div className="container-fluid p-0 mt-4 px-2 px-md-0">
         <div className="row p-0">
           <div className="col-sm-8 offset-sm-2">
+            <ShareButtons
+              title={name}
+              slug={slug}
+              directory={category.toLowerCase().replace(/\s+/g, "")}
+              sources={["Facebook", "Twitter", "Email", "Clipboard"]}
+            />
             {blocks.map(block => {
               const { id } = block.sys.contentType.sys
 

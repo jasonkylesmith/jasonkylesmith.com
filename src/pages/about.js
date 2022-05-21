@@ -78,6 +78,12 @@ const AboutPage = () => {
                   strive to photograph my subjects true to how I see them.
                 </p>
                 <p>
+                  I feel like a person's beauty is made up of their pleasing
+                  features AND flaws, so I do my best to capture both and create
+                  an image of the subject's authentic self. This is my number
+                  one goal when making portraits of people.
+                </p>
+                <p>
                   I am currently available to schedule for portrait and headshot
                   sessions!
                 </p>
