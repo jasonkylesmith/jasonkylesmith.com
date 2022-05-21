@@ -168,35 +168,31 @@ const BlogPost = props => {
   return (
     <Layout>
       <Seo title={title} />
-      <div className="container-fluid mt-4 px-2 px-md-0">
-        <div className="row p-0">
-          <div className="col-md-8 offset-md-2">
-            {featuredImage && (
-              <div className="w-100 d-flex position-relative">
-                <GatsbyImage
-                  image={featuredImage.gatsbyImageData}
-                  alt={title}
-                />
-              </div>
-            )}
-            <h1 className="blog-title">{title}</h1>
-            <div className="d-flex direction-row align-items-center">
-              <span className="blog-date">{publishedDate}</span>
-              <Tags tags={tags} />
 
-              <ShareButtons
-                title={title}
-                slug={slug}
-                directory={"blog"}
-                sources={["Facebook", "Twitter", "Email", "Clipboard"]}
-              />
+      <div className="row mt-4">
+        <div className="col-md-8 offset-md-2">
+          {featuredImage && (
+            <div className="w-100 d-flex position-relative">
+              <GatsbyImage image={featuredImage.gatsbyImageData} alt={title} />
             </div>
+          )}
+          <h1 className="blog-title">{title}</h1>
+          <div className="d-flex direction-row align-items-center">
+            <span className="blog-date">{publishedDate}</span>
+            <Tags tags={tags} />
 
-            <div className="blog-body d-flex flex-column">
-              {bodyContent}
-              <Author />
-              <PostNav edges={navEdges} />
-            </div>
+            <ShareButtons
+              title={title}
+              slug={slug}
+              directory={"blog"}
+              sources={["Facebook", "Twitter", "Email", "Clipboard"]}
+            />
+          </div>
+
+          <div className="blog-body d-flex flex-column">
+            {bodyContent}
+            <Author />
+            <PostNav edges={navEdges} />
           </div>
         </div>
       </div>
