@@ -64,7 +64,6 @@ const ShareButtons = props => {
         <div className="share__icon-container" title="Copy to Clipboard">
           <CopyToClipboard
             text={`https://preview.jasonkylesmith.com/${directory}/${slug}`}
-            onCopy={() => console.log("Copied to Clipboard")}
           >
             <FontAwesomeIcon
               icon={["fas", "clipboard"]}
