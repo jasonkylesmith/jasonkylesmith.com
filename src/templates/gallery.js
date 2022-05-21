@@ -130,7 +130,7 @@ const Gallery = props => {
               title={name}
               slug={slug}
               directory={category.toLowerCase().replace(/\s+/g, "")}
-              sources={["Facebook", "Twitter", "Email"]}
+              sources={["Facebook", "Twitter", "Email", "Clipboard"]}
             />
             {blocks.map(block => {
               const { id } = block.sys.contentType.sys

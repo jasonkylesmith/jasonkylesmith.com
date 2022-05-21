@@ -15,19 +15,22 @@ import {
 library.add(fas)
 
 const ShareButtons = props => {
-  const iconSize = 21.5
+  const iconSize = 22
 
   const { slug, title, directory, sources } = props
 
   return (
-    <div>
+    <div className="share-container">
       {sources.includes("Facebook") && (
         <FacebookShareButton
           url={`https://preview.jasonkylesmith.com/${directory}/${slug}`}
 
           /* hashtag="#hashtag" */
         >
-          <div className="share__react-share-container">
+          <div
+            className="share__react-share-container"
+            title="Share on Facebook"
+          >
             <FacebookIcon size={iconSize} />
           </div>
         </FacebookShareButton>
@@ -39,7 +42,10 @@ const ShareButtons = props => {
           via="jasonkylesmith"
           /* hashtags={["hashtag"]} */
         >
-          <div className="share__react-share-container">
+          <div
+            className="share__react-share-container"
+            title="Share on Twitter"
+          >
             <TwitterIcon size={iconSize} />
           </div>
         </TwitterShareButton>
@@ -49,13 +55,13 @@ const ShareButtons = props => {
           url={`https://preview.jasonkylesmith.com/${directory}/${slug}`}
           subject={`${title} from jasonkylesmith.com`}
         >
-          <div className="share__react-share-container">
+          <div className="share__react-share-container" title="Share via Email">
             <EmailIcon size={iconSize} bgStyle={{ fill: "#663cf0" }} />
           </div>
         </EmailShareButton>
       )}
       {sources.includes("Clipboard") && (
-        <div className="share__icon-container">
+        <div className="share__icon-container" title="Copy to Clipboard">
           <CopyToClipboard
             text={`https://preview.jasonkylesmith.com/${directory}/${slug}`}
             onCopy={() => console.log("Copied to Clipboard")}
@@ -63,7 +69,6 @@ const ShareButtons = props => {
             <FontAwesomeIcon
               icon={["fas", "clipboard"]}
               className="mx-1 share__icon"
-              size="xs"
             />
           </CopyToClipboard>
         </div>
