@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Tags from "../components/tags"
+
 import Seo from "../components/seo"
-import { GatsbyImage } from "gatsby-plugin-image"
+
 import BlockStory from "../components/block-story"
 import BlockGallery from "../components/block-gallery"
 import BlockFeature from "../components/block-feature"
@@ -99,11 +99,25 @@ const ClientGallery = props => {
   const { blocks, name, passphrase } = props.data.contentfulClientGallery
 
   const [enteredPassphrase, setEnteredPassphrase] = useState("")
+  const [allowAccess, setAllowAccess] = useState(false)
+  const [error, setError] = useState(false)
+
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    if (enteredPassphrase === passphrase) {
+      setAllowAccess(true)
+      setError(false)
+    } else {
+      setAllowAccess(false)
+      setError(true)
+    }
+  }
 
   return (
     <Layout>
       <Seo title={name} />
-      {enteredPassphrase === passphrase ? (
+      {allowAccess ? (
         <div className="row p-0">
           <div className="col-sm-8 offset-sm-2">
             {blocks.map(block => {
@@ -132,6 +146,8 @@ const ClientGallery = props => {
                   </div>
                 )
               }
+
+              return <></>
             })}
           </div>
         </div>
@@ -139,20 +155,39 @@ const ClientGallery = props => {
         <div className="row p-0">
           <div className="col-sm-8 offset-sm-2">
             <div
-              style={{ border: "2px solid pink" }}
-              className="d-flex flex-column justify-content-center"
+              className="d-flex flex-column justify-content-center align-items-center"
+              style={{ height: "60vh" }}
             >
-              <h2 className="m-0">Passphrase Required</h2>
-              <span>
-                Please enter the passphrase given to you in your email.
-              </span>
-              <input
-                placeholder="********"
-                name="enteredPassphrase"
-                type="password"
-                value={enteredPassphrase}
-                onChange={e => setEnteredPassphrase(e.target.value)}
-              />
+              <div className="px-2 p-md-o">
+                <h2 className="m-0">Passphrase Required</h2>
+                <span>
+                  Please enter the passphrase given to you in your email.
+                </span>
+                <form>
+                  <div className="my-2">
+                    <label className="form-label" htmlFor="enteredPassphrase">
+                      Passphrase
+                    </label>
+                    <input
+                      placeholder="********"
+                      name="enteredPassphrase"
+                      type="password"
+                      value={enteredPassphrase}
+                      onChange={e => setEnteredPassphrase(e.target.value)}
+                      className={`form-control ${error && "is-invalid"}`}
+                      style={{ width: "50%" }}
+                    />
+                  </div>
+                  <button className="btn button" onClick={e => handleSubmit(e)}>
+                    Submit
+                  </button>
+                  {error && (
+                    <span className="small ms-2" style={{ color: "red" }}>
+                      Incorrect passphrase.
+                    </span>
+                  )}
+                </form>
+              </div>
             </div>
           </div>
         </div>
