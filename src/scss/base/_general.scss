@@ -145,6 +145,29 @@ a:hover {
     }
   }
 
+  &.gallery-link {
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 2px;
+      background-color: $accent;
+      color: $accent;
+      bottom: 0;
+      left: -0.5rem;
+      transform: scaleY(0);
+      transition: transform $anim-duration ease-in-out 0ms;
+    }
+
+    &:hover {
+      &::before {
+        width: 2px;
+        transition: transform $anim-duration ease-in-out 0ms;
+        transform: scaleY(1);
+      }
+    }
+  }
+
   &.btn {
     width: fit-content;
     text-transform: uppercase;

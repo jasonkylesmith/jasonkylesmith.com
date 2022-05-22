@@ -57,7 +57,7 @@ const GalleryList = props => {
                         to={`/${category
                           .toLowerCase()
                           .replace(/\s+/g, "")}/${slug}`}
-                        className=""
+                        className="gallery-link"
                       >
                         <div className="">
                           <div className="position-relative">

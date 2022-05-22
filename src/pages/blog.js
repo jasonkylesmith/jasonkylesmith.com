@@ -67,7 +67,10 @@ const Blog = () => {
                   return (
                     <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
                       {post.node.featuredImage && (
-                        <Link to={`/blog/${post.node.slug}`} className="">
+                        <Link
+                          to={`/blog/${post.node.slug}`}
+                          className="gallery-link"
+                        >
                           <div className="">
                             <div className="position-relative">
                               <GatsbyImage
