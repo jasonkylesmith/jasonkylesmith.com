@@ -1,0 +1,58 @@
+.pricing {
+  border: 0.25rem solid $accent;
+}
+
+.pricing__header {
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+.pricing__body {
+  p {
+    font-size: $base-font-size-small;
+  }
+}
+
+.pricing__footer {
+  li {
+    font-size: calc($base-font-size-small * 0.9);
+  }
+}
+
+.pricing__price {
+  font-size: calc($base-font-size * 1.1);
+  color: green;
+  position: relative;
+}
+
+.pricing__price--cross-out {
+  color: $dark-lighter;
+  vertical-align: middle;
+  transform: scale(0.6);
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    color: $dark;
+    background-color: $dark;
+    height: 2px;
+    right: 0;
+    bottom: $base-font-size * 0.7;
+    transform-origin: center;
+  }
+
+  &::after {
+    transform: rotate(25deg);
+  }
+  &::before {
+    transform: rotate(-25deg);
+  }
+}
+
+.pricing__discount-text {
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
