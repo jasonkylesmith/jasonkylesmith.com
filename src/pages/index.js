@@ -8,6 +8,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Slider from "react-slick"
 import Testimonial from "../components/testimonial"
+import HighlightCard from "../components/highlight-card"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -15,6 +16,7 @@ const IndexPage = () => {
       allContentfulTestimonial(limit: 3) {
         edges {
           node {
+            id
             client
             quote
             subtitle
@@ -40,11 +42,57 @@ const IndexPage = () => {
           }
         }
       }
+      allContentfulHighlightCard {
+        edges {
+          node {
+            title
+            body {
+              childrenMarkdownRemark {
+                html
+              }
+            }
+            highlight {
+              ... on ContentfulBlogPost {
+                id
+                title
+                slug
+                featuredImage {
+                  gatsbyImageData(
+                    quality: 100
+                    layout: CONSTRAINED
+                    resizingBehavior: FILL
+                    aspectRatio: 2
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
+                }
+              }
+              ... on ContentfulGallery {
+                id
+                title: name
+                slug
+                category
+                featuredImage {
+                  gatsbyImageData(
+                    quality: 100
+                    layout: CONSTRAINED
+                    resizingBehavior: FILL
+                    aspectRatio: 2
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `)
 
   const { edges: testimonials } = data.allContentfulTestimonial
   const { heroBody, heroTitle } = data.allContentfulSitewideCopy.edges[0].node
+  const { edges: highlightCards } = data.allContentfulHighlightCard
 
   const sliderSettings = {
     dots: false,
@@ -103,9 +151,19 @@ const IndexPage = () => {
           </div>
         </div>
         <div className="row">
+          <div className="col col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-2 px-md-0">
+            {highlightCards.map((card, index) => {
+              return <HighlightCard {...card} />
+            })}
+          </div>
+        </div>
+        <div className="row">
           {testimonials.map((testimonial, index) => {
             return (
-              <div className="col col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-2 px-md-0">
+              <div
+                className="col col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-2 px-md-0"
+                key={testimonial.node.id}
+              >
                 <Testimonial
                   {...testimonial.node}
                   variant={index % 2 === 1 ? "left" : "right"}
