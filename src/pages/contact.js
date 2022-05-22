@@ -1,7 +1,7 @@
 import { useLocation } from "@reach/router"
 import queryString from "query-string"
 import { navigate } from "gatsby"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -14,10 +14,19 @@ const ContactFormPage = () => {
   const [message, setMessage] = useState("")
   const [honeypotChecked, setHoneypotChecked] = useState(false)
   const [emailPermissionChecked, setEmailPermissionChecked] = useState(true)
+  const [emailPermissionToUse, setEmailPermissionToUse] = useState("No")
+  const [destination, setDestination] = useState("")
   const [error, setError] = useState(false)
 
   const location = useLocation()
   const urlQuery = queryString.parse(location.search)
+  // ?destination=where-did-user-click added to /contact will allow passing of that information to netlify form to better inform context for user's inqiry
+
+  useEffect(() => {
+    if (urlQuery.destination) {
+      setDestination(urlQuery.destination)
+    }
+  }, [])
 
   const formValidation = () => {
     return emailState === "valid" && message.length > 3 && name.length > 2
@@ -49,6 +58,9 @@ const ContactFormPage = () => {
         break
       case "emailPermissionChecked":
         setEmailPermissionChecked(!emailPermissionChecked)
+        emailPermissionToUse === "Yes"
+          ? setEmailPermissionToUse("No")
+          : setEmailPermissionToUse("Yes")
     }
   }
 
@@ -70,6 +82,8 @@ const ContactFormPage = () => {
           name,
           email,
           message,
+          destination,
+          emailPermissionToUse,
           honeypotChecked,
         }),
       })
@@ -171,7 +185,7 @@ const ContactFormPage = () => {
             >
               Default checkbox
             </label>
-            {/* <div className="form-check mb-4">
+            <div className="form-check mb-4">
               <input
                 className="form-check-input accent-input"
                 type="checkbox"
@@ -186,8 +200,29 @@ const ContactFormPage = () => {
                 this for communication related to my photography and will never
                 sell or give away any information about you.
               </label>
-            </div> */}
-
+            </div>
+            <input
+              class="form-check-input"
+              type="text"
+              id="emailPermissionToUse"
+              name="emailPermissionToUse"
+              value={emailPermissionToUse}
+              hidden
+            />
+            <label htmlFor="emailPermissionTouse" hidden>
+              Permission to use email for email list?
+            </label>
+            <input
+              className="form-check-input"
+              type="text"
+              id="destination"
+              name="destination"
+              value={destination}
+              hidden
+            />
+            <label hidden htmlFor="destination">
+              Destination
+            </label>
             <button className="btn button" type="submit">
               Submit
             </button>
