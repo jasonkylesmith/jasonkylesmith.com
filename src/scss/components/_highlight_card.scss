@@ -45,3 +45,13 @@
   right: -25px;
   margin-left: 1rem;
 }
+
+.highlight__caption {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  color: #ffffff;
+  border-bottom-right-radius: 0.25rem;
+  padding: 0 0.5rem;
+  background-color: $dark;
+}

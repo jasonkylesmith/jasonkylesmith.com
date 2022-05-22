@@ -22,8 +22,11 @@ const HighlightCard = props => {
                   className=""
                   imgStyle={{ borderRadius: ".25rem" }}
                   image={gatsbyImageData}
-                  alt={title}
+                  alt={highlight.title}
                 />
+                <div className="highlight__caption">
+                  <span className="small">{highlight.title}</span>
+                </div>
               </div>
             </Link>
           </div>

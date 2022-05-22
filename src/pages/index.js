@@ -51,6 +51,7 @@ const IndexPage = () => {
         edges {
           node {
             title
+            order
             body {
               childrenMarkdownRemark {
                 html
@@ -159,7 +160,7 @@ const IndexPage = () => {
     nextArrow: <SliderNextArrow />,
     prevArrow: <SliderPrevArrow />,
     responsive: [
-      { breakpoint: 540, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 900, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
   }
 
@@ -208,12 +209,11 @@ const IndexPage = () => {
           </div>
           <div className="col col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-4 px-md-0">
             <Slider {...highlightSettings}>
-              {highlightCards.map((card, index) => {
-                return <HighlightCard {...card} />
-              })}
-              {highlightCards.map((card, index) => {
-                return <HighlightCard {...card} />
-              })}
+              {highlightCards
+                .sort((a, b) => a.node.order - b.node.order)
+                .map((card, index) => {
+                  return <HighlightCard {...card} />
+                })}
             </Slider>
           </div>
         </div>
