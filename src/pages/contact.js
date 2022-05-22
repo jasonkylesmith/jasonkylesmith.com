@@ -43,9 +43,28 @@ const ContactFormPage = () => {
     }
   }
 
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
   const handleSubmit = e => {
     if (formValidation()) {
       setError(false)
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeURI({
+          "form-name": "contact",
+          name,
+          email,
+          message,
+          honeypotChecked,
+        }),
+      })
+        .then(() => alert("Success!"))
+        .catch(error => alert(error))
       //submit form
     } else {
       e.preventDefault()
@@ -62,12 +81,12 @@ const ContactFormPage = () => {
         <div className="col-md-8 offset-md-2">
           <form
             onSubmit={e => handleSubmit(e)}
-            name="Contact Form"
+            name="contact"
             method="post"
             netlify-honeypot="honeypot"
-            netlify
+            data-netlify="true"
           >
-            <input type="hidden" name="form-name" value="Contact Form" />
+            <input type="hidden" name="form-name" value="contact" />
             <div className="mb-3">
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Your Name{" "}
