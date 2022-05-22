@@ -1,8 +1,5 @@
 import * as React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-
-import heroImage from "../images/standinportrait.png"
+import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -27,8 +24,6 @@ const AboutPage = () => {
   `)
 
   const { aboutBody, aboutTitle } = data.allContentfulSitewideCopy.edges[0].node
-
-  console.log(aboutBody.childrenMarkdownRemark[0].html)
 
   const aboutSliderSettings = {
     slidesToShow: 3,
@@ -113,7 +108,7 @@ const AboutPage = () => {
                   I am currently available to schedule for portrait and headshot
                   sessions!
                 </p> */}
-                <a href="#" className="btn mb-0">
+                <a href="/contact" className="btn mb-0">
                   Call to action here!
                 </a>
               </div>
