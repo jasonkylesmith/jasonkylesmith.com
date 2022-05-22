@@ -194,6 +194,7 @@ const ContactFormPage = () => {
                 }
                 id="flexCheckSaveEmail"
                 name="emailPermission"
+                value={emailPermissionChecked}
               />
               <label className="form-check-label" htmlFor="flexCheckSaveEmail">
                 Would you like to be added to my email list? I will only use
@@ -209,7 +210,7 @@ const ContactFormPage = () => {
               value={emailPermissionToUse}
               hidden
             />
-            <label htmlFor="emailPermissionTouse" hidden>
+            <label htmlFor="emailPermissionToUse" hidden>
               Permission to use email for email list?
             </label>
             <input
