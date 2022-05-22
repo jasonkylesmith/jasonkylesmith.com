@@ -1,3 +1,5 @@
+import { useLocation } from "@reach/router"
+import queryString from "query-string"
 import { navigate } from "gatsby"
 import React, { useState } from "react"
 
@@ -13,6 +15,9 @@ const ContactFormPage = () => {
   const [honeypotChecked, setHoneypotChecked] = useState(false)
   const [emailPermissionChecked, setEmailPermissionChecked] = useState(true)
   const [error, setError] = useState(false)
+
+  const location = useLocation()
+  const urlQuery = queryString.parse(location.search)
 
   const formValidation = () => {
     return emailState === "valid" && message.length > 3 && name.length > 2
