@@ -204,10 +204,8 @@ const IndexPage = () => {
           </div>
         </div>
         <div className="row m-0">
-          <div className="col col-md-8 offset-md-2 px-2 px-md-0">
+          <div className="col col-md-8 offset-md-2 mb-4 px-4 px-md-0">
             <h2>What I Do</h2>
-          </div>
-          <div className="col col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-4 px-md-0">
             <Slider {...highlightSettings}>
               {highlightCards
                 .sort((a, b) => a.node.order - b.node.order)
