@@ -30,10 +30,21 @@ const IndexPage = () => {
           }
         }
       }
+      allContentfulSitewideCopy(filter: { name: { eq: "Basic" } }) {
+        edges {
+          node {
+            heroBody {
+              heroBody
+            }
+            heroTitle
+          }
+        }
+      }
     }
   `)
 
   const { edges: testimonials } = data.allContentfulTestimonial
+  const { heroBody, heroTitle } = data.allContentfulSitewideCopy.edges[0].node
 
   const sliderSettings = {
     dots: false,
@@ -75,17 +86,17 @@ const IndexPage = () => {
             }}
           >
             <div className="p-0">
-              <h1 className="">Hi, I'm Jason.</h1>
-              <p className="pe-4">I take pictures of things sometimes.</p>
+              <h1 className="">{heroTitle}</h1>
+              <p className="pe-4">{heroBody.heroBody}</p>
 
               <a href="https://#" className="btn mb-0">
                 Call to action here!
               </a>
             </div>
-            <div className="p-0 d-none d-sm-block flex-grow-1">
+            <div className="p-0 d-none d-sm-block flex-fill">
               <img
                 src="https://picsum.photos/250"
-                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                style={{ objectFit: "cover", width: "250px", height: "250px" }}
                 alt="stand in"
               />
             </div>

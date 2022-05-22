@@ -123,43 +123,42 @@ const Gallery = props => {
   return (
     <Layout>
       <Seo title={name} />
-      <div className="container-fluid p-0 mt-4 px-2 px-md-0">
-        <div className="row p-0">
-          <div className="col-sm-8 offset-sm-2">
-            <ShareButtons
-              title={name}
-              slug={slug}
-              directory={category.toLowerCase().replace(/\s+/g, "")}
-              sources={["Facebook", "Twitter", "Email", "Clipboard"]}
-            />
-            {blocks.map(block => {
-              const { id } = block.sys.contentType.sys
 
-              if (id === "blockStory") {
-                return (
-                  <div>
-                    <BlockStory block={block} key={block.id} />
-                  </div>
-                )
-              }
+      <div className="row mt-4 px-2">
+        <div className="col-sm-8 offset-sm-2">
+          <ShareButtons
+            title={name}
+            slug={slug}
+            directory={category.toLowerCase().replace(/\s+/g, "")}
+            sources={["Facebook", "Twitter", "Email", "Clipboard"]}
+          />
+          {blocks.map(block => {
+            const { id } = block.sys.contentType.sys
 
-              if (id === "blockFeature") {
-                return (
-                  <div>
-                    <BlockFeature block={block} key={block.id} />
-                  </div>
-                )
-              }
+            if (id === "blockStory") {
+              return (
+                <div>
+                  <BlockStory block={block} key={block.id} />
+                </div>
+              )
+            }
 
-              if (id === "blockGallery") {
-                return (
-                  <div>
-                    <BlockGallery block={block} key={block.id} />
-                  </div>
-                )
-              }
-            })}
-          </div>
+            if (id === "blockFeature") {
+              return (
+                <div>
+                  <BlockFeature block={block} key={block.id} />
+                </div>
+              )
+            }
+
+            if (id === "blockGallery") {
+              return (
+                <div>
+                  <BlockGallery block={block} key={block.id} />
+                </div>
+              )
+            }
+          })}
         </div>
       </div>
     </Layout>

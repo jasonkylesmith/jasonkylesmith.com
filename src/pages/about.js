@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 import heroImage from "../images/standinportrait.png"
@@ -9,6 +9,27 @@ import Seo from "../components/seo"
 import Slider from "react-slick"
 
 const AboutPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulSitewideCopy(filter: { name: { eq: "Basic" } }) {
+        edges {
+          node {
+            aboutBody {
+              childrenMarkdownRemark {
+                html
+              }
+            }
+            aboutTitle
+          }
+        }
+      }
+    }
+  `)
+
+  const { aboutBody, aboutTitle } = data.allContentfulSitewideCopy.edges[0].node
+
+  console.log(aboutBody.childrenMarkdownRemark[0].html)
+
   const aboutSliderSettings = {
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -68,8 +89,13 @@ const AboutPage = () => {
           <div className="col-md-8 offset-md-2">
             <div className="row mb-4">
               <div className=" col-12 col-lg-6 order-1 order-lg-1 ps-2 pe-0">
-                <h1 className="blog-title">Hi, I'm Jason!</h1>
-                <p>
+                <h1 className="blog-title">{aboutTitle}</h1>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: aboutBody.childrenMarkdownRemark[0].html,
+                  }}
+                />
+                {/* <p>
                   I'm a photographer from Southeast Michigan and I love to
                   photograph just about everything. Capturing nature is my
                   stress reliever, portrait and headshot photography is my
@@ -86,7 +112,7 @@ const AboutPage = () => {
                 <p>
                   I am currently available to schedule for portrait and headshot
                   sessions!
-                </p>
+                </p> */}
                 <a href="#" className="btn mb-0">
                   Call to action here!
                 </a>

@@ -48,8 +48,6 @@
   }
 }
 
-// Less than 1248, content overlaps
-
 @media (max-width: 767px) {
   .testimonial {
     flex-direction: column;
@@ -74,5 +72,11 @@
     margin-left: 0;
     margin-right: 0;
     order: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  .testimonial {
+    width: 75%;
   }
 }
