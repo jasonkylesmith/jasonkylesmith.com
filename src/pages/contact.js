@@ -63,6 +63,7 @@ const ContactFormPage = () => {
           <form
             onSubmit={e => handleSubmit(e)}
             name="Contact Form"
+            method="post"
             netlify-honeypot="honeypot"
             netlify
           >
