@@ -14,7 +14,7 @@ const ContactFormPage = () => {
   const [message, setMessage] = useState("")
   const [honeypotChecked, setHoneypotChecked] = useState(false)
   const [emailPermissionChecked, setEmailPermissionChecked] = useState(true)
-  const [emailPermissionToUse, setEmailPermissionToUse] = useState("No")
+  const [emailPermissionToUse, setEmailPermissionToUse] = useState("Yes")
   const [destination, setDestination] = useState("")
   const [error, setError] = useState(false)
 
@@ -193,7 +193,7 @@ const ContactFormPage = () => {
                   handleOnChange(event, "emailPermissionChecked")
                 }
                 id="flexCheckSaveEmail"
-                name="emailPermission"
+                name="emailPermissionChecked"
                 value={emailPermissionChecked}
               />
               <label className="form-check-label" htmlFor="flexCheckSaveEmail">
