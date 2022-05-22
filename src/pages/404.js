@@ -19,7 +19,7 @@ const NotFoundPage = () => (
         <div className="bg-text-container d-flex justify-content-center align-items-center">
           <h1>404</h1>
         </div>
-        <h1>This is not the page you're looking for</h1>
+        <h2>This is not the page you're looking for.</h2>
         <Nav404 />
       </div>
     </div>
