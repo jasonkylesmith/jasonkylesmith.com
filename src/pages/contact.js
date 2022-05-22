@@ -65,7 +65,7 @@ const ContactFormPage = () => {
           name,
           email,
           message,
-          emailPermissionChecked,
+          emailPermissionChecked: emailPermissionChecked ? "Yes" : "No",
           honeypotChecked,
         }),
       })
