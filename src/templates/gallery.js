@@ -125,7 +125,7 @@ const Gallery = props => {
       <Seo title={name} />
 
       <div className="row mt-4 px-2">
-        <div className="col-sm-8 offset-sm-2">
+        <div className="col-sm-8 offset-sm-2 mb-2">
           <ShareButtons
             title={name}
             slug={slug}

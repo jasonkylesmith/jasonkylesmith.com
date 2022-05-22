@@ -1,0 +1,47 @@
+.highlight {
+  margin: 0 1rem;
+  border-color: $dark-faded;
+}
+
+.highlight__slider {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.highlight__body {
+  margin-top: $margins;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.slick-prev,
+.slick-next {
+  &.highlight__icon--left,
+  &.highlight__icon--right {
+    display: block;
+    top: 50%;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    color: $dark;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $dark-lighter;
+    }
+  }
+}
+
+.highlight__icon--left {
+  left: -25px;
+  margin-right: 1rem;
+}
+
+.highlight__icon--right {
+  right: -25px;
+  margin-left: 1rem;
+}
