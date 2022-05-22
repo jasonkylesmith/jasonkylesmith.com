@@ -1,3 +1,4 @@
+import { navigate } from "gatsby"
 import React, { useState } from "react"
 
 import Layout from "../components/layout"
@@ -41,7 +42,7 @@ const ContactFormPage = () => {
       case "honeypotChecked":
         setHoneypotChecked(!honeypotChecked)
         break
-      case "emailPermission":
+      case "emailPermissionChecked":
         setEmailPermissionChecked(!emailPermissionChecked)
     }
   }
@@ -68,8 +69,10 @@ const ContactFormPage = () => {
           honeypotChecked,
         }),
       })
-        .then(() => alert("Success!"))
-        .catch(error => alert(error))
+        .then(() => navigate("/thankyou"))
+        .catch(error =>
+          alert("Something went wrong. Please refresh the page and try again.")
+        )
       //submit form
     } else {
       // don't submit form
@@ -152,7 +155,6 @@ const ContactFormPage = () => {
             <input
               className="form-check-input"
               type="checkbox"
-              value={honeypotChecked}
               onChange={event => handleOnChange(event, "honeypotChecked")}
               id="flexCheckDefault"
               name="honeypot"
@@ -169,8 +171,9 @@ const ContactFormPage = () => {
               <input
                 className="form-check-input accent-input"
                 type="checkbox"
-                value={emailPermissionChecked}
-                onChange={event => handleOnChange(event, "emailPermission")}
+                onChange={event =>
+                  handleOnChange(event, "emailPermissionChecked")
+                }
                 id="flexCheckSaveEmail"
                 name="emailPermission"
               />
