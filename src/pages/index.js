@@ -210,7 +210,7 @@ const IndexPage = () => {
               {highlightCards
                 .sort((a, b) => a.node.order - b.node.order)
                 .map((card, index) => {
-                  return <HighlightCard {...card} />
+                  return <HighlightCard {...card} key={card.node.id} />
                 })}
             </Slider>
           </div>
