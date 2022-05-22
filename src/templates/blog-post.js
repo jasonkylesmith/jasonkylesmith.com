@@ -169,7 +169,7 @@ const BlogPost = props => {
     <Layout>
       <Seo title={title} />
 
-      <div className="row mt-4">
+      <div className="row mt-4 px-2">
         <div className="col-md-8 offset-md-2">
           {featuredImage && (
             <div className="w-100 d-flex position-relative">
