@@ -83,13 +83,14 @@ const ContactFormPage = () => {
             onSubmit={e => handleSubmit(e)}
             name="contact"
             method="post"
+            action="/thankyou"
             netlify-honeypot="honeypot"
             data-netlify="true"
           >
             <input type="hidden" name="form-name" value="contact" />
             <div className="mb-3">
               <label htmlFor="exampleFormControlInput1" className="form-label">
-                Your Name{" "}
+                Your Name
                 {error && name.length < 3 && (
                   <span style={{ color: "red" }}></span>
                 )}

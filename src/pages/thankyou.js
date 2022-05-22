@@ -10,23 +10,25 @@ import { Link, navigate } from "gatsby"
 
 library.add(fas)
 
-const NotFoundPage = () => (
+const ThankYouPage = () => (
   <Layout>
     <Seo title="404: Not found" />
 
     <div className="row h-100">
       <div className="not-found-page-column col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center text-center">
         <div className="bg-text-container d-flex justify-content-center align-items-center">
-          <h1>404</h1>
+          <h1 className="thanks">Thanks!</h1>
         </div>
-        <h1>This is not the page you're looking for</h1>
-        <Nav404 />
+        <h2>
+          Appreciate you reaching out! I'll email you back as soon as I can!
+        </h2>
+        <Nav />
       </div>
     </div>
   </Layout>
 )
 
-const Nav404 = props => {
+const Nav = props => {
   return (
     <div className="post-nav ">
       <div className="post-nav-wrapper justify-content-end">
@@ -43,4 +45,4 @@ const Nav404 = props => {
   )
 }
 
-export default NotFoundPage
+export default ThankYouPage
