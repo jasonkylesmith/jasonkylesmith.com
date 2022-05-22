@@ -53,6 +53,7 @@ const ContactFormPage = () => {
   }
 
   const handleSubmit = e => {
+    e.preventDefault()
     if (formValidation()) {
       setError(false)
       fetch("/", {
@@ -63,6 +64,7 @@ const ContactFormPage = () => {
           name,
           email,
           message,
+          emailPermissionChecked,
           honeypotChecked,
         }),
       })
@@ -70,7 +72,6 @@ const ContactFormPage = () => {
         .catch(error => alert(error))
       //submit form
     } else {
-      e.preventDefault()
       // don't submit form
       setError(true)
     }

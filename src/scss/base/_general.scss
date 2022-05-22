@@ -106,6 +106,7 @@ button:active {
     background-color: #ffffff;
     border: 2px solid $accent;
     padding: $btn-padding;
+    text-transform: uppercase;
 
     &:hover {
       color: #ffffff;
