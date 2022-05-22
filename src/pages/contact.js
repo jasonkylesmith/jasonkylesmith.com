@@ -102,6 +102,7 @@ const ContactFormPage = () => {
                 }`}
                 placeholder="Full name"
                 aria-label="Full name"
+                name="name"
                 value={name}
                 onChange={event => handleOnChange(event, "name")}
               />
@@ -117,6 +118,7 @@ const ContactFormPage = () => {
                 } ${error && emailState === "blank" && "is-invalid"}`}
                 id="exampleFormControlInput1"
                 placeholder="name@example.com"
+                name="email"
                 value={email}
                 onChange={event => handleOnChange(event, "email")}
                 onBlur={() => emailValidation()}
@@ -135,6 +137,7 @@ const ContactFormPage = () => {
                 }`}
                 id="exampleFormControlTextarea1"
                 rows="3"
+                name="message"
                 value={message}
                 onChange={event => handleOnChange(event, "message")}
               ></textarea>
