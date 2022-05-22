@@ -55,7 +55,7 @@ const ContactFormPage = () => {
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encodeURI({
+        body: encode({
           "form-name": "contact",
           name,
           email,
