@@ -138,7 +138,9 @@ const ContactFormPage = () => {
               Default checkbox
             </label>
 
-            <button className="btn btn-primary">Submit</button>
+            <button className="btn btn-primary" type="submit">
+              Submit
+            </button>
             {error && (
               <span className="ms-2 small" style={{ color: "red" }}>
                 Please be sure to fill out the whole form
