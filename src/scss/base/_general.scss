@@ -97,6 +97,24 @@ lh {
 li {
 }
 
+button,
+button:hover,
+button:active {
+  &.button {
+    color: $accent;
+    font-weight: 700;
+    background-color: #ffffff;
+    border: 2px solid $accent;
+    padding: $btn-padding;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #ffffff;
+      background-color: $accent;
+    }
+  }
+}
+
 a,
 a:active,
 a:visited,
