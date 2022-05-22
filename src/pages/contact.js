@@ -10,6 +10,7 @@ const ContactFormPage = () => {
   const [emailState, setEmailState] = useState("blank")
   const [message, setMessage] = useState("")
   const [honeypotChecked, setHoneypotChecked] = useState(false)
+  const [emailPermissionChecked, setEmailPermissionChecked] = useState(true)
   const [error, setError] = useState(false)
 
   const formValidation = () => {
@@ -40,6 +41,8 @@ const ContactFormPage = () => {
       case "honeypotChecked":
         setHoneypotChecked(!honeypotChecked)
         break
+      case "emailPermission":
+        setEmailPermissionChecked(!emailPermissionChecked)
     }
   }
 
@@ -79,6 +82,7 @@ const ContactFormPage = () => {
 
       <div className="row mt-4 px-2">
         <div className="col-md-8 offset-md-2">
+          <h1>Let's Get In Touch</h1>
           <form
             onSubmit={e => handleSubmit(e)}
             name="contact"
@@ -160,8 +164,23 @@ const ContactFormPage = () => {
             >
               Default checkbox
             </label>
+            <div className="form-check mb-4">
+              <input
+                className="form-check-input accent-input"
+                type="checkbox"
+                value={emailPermissionChecked}
+                onChange={event => handleOnChange(event, "emailPermission")}
+                id="flexCheckSaveEmail"
+                name="emailPermission"
+              />
+              <label className="form-check-label" htmlFor="flexCheckSaveEmail">
+                Would you like to be added to my email list? I will only use
+                this for communication related to my photography and will never
+                sell or give away any information about you.
+              </label>
+            </div>
 
-            <button className="btn btn-primary" type="submit">
+            <button className="btn button" type="submit">
               Submit
             </button>
             {error && (
