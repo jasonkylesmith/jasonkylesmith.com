@@ -28,16 +28,19 @@ const Navigation = props => {
             </Link>
           </li>
           <li> - </li>
-          {distinct?.map(category => {
+          {distinct?.map((category, index) => {
             return (
-              <>
+              <div
+                key={`${category}${index}-desktop`}
+                style={{ display: "inline" }}
+              >
                 <li>
                   <Link to={`/${category.toLowerCase().replace(/\s+/g, "")}`}>
                     {category.toLowerCase()}
                   </Link>
                 </li>
                 <li> - </li>
-              </>
+              </div>
             )
           })}
           <li>
@@ -74,9 +77,9 @@ const Navigation = props => {
               about me
             </Link>
           </li>
-          {distinct?.map(category => {
+          {distinct?.map((category, index) => {
             return (
-              <li>
+              <li key={`${category}${index}-mobile`}>
                 <Link
                   to={`/${category.toLowerCase().replace(/\s+/g, "")}`}
                   onClick={() => {
