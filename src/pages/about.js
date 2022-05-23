@@ -108,7 +108,7 @@ const AboutPage = () => {
                   I am currently available to schedule for portrait and headshot
                   sessions!
                 </p> */}
-                <a href="/contact" className="btn mb-0">
+                <a href="/contact?destination=about" className="btn mb-0">
                   Call to action here!
                 </a>
               </div>

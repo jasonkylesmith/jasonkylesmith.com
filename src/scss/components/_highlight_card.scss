@@ -18,6 +18,17 @@
   }
 }
 
+.highlight__body--right {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  text-transform: lowercase;
+
+  a {
+    margin-right: 0.25rem;
+  }
+}
+
 .slick-prev,
 .slick-next {
   &.highlight__icon--left,

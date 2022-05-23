@@ -186,7 +186,7 @@ const IndexPage = () => {
               <h1 className="">{heroTitle}</h1>
               <p className="pe-4">{heroBody.heroBody}</p>
 
-              <a href="/contact" className="btn mb-0">
+              <a href="/contact?destination=hero" className="btn mb-0">
                 Call to action here!
               </a>
             </div>
