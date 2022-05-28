@@ -1,5 +1,5 @@
 .highlight {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   border-color: $dark-faded;
   border-radius: 0.25rem;
 }
@@ -7,13 +7,13 @@
 .highlight__slider {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .highlight__body {
   margin-top: $margins;
 
-  p {
+  p:last-child {
     margin-bottom: 0;
   }
 }

@@ -8,9 +8,6 @@ header {
     div {
       display: flex;
       align-items: center;
-
-      .logo {
-      }
     }
   }
 }
@@ -138,4 +135,19 @@ footer {
   .hero-text {
     /* max-width: 100%; */
   }
+}
+
+.block--accent-background {
+  background-color: $accent;
+  color: white;
+
+  .testimonial--left,
+  .testimonial--right {
+    border-color: white;
+  }
+}
+
+.block--dark-background {
+  background-color: $dark;
+  color: white;
 }

@@ -14,7 +14,7 @@ const PricingCard = props => {
   console.log(discountedPrice)
   return (
     <div className="col-12 col-lg-6">
-      <div className="card pricing h-100">
+      <div className="card pricing h-100 shadow-sm">
         <div className="card-header pricing__header">
           <h4>{title}</h4>
         </div>

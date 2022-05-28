@@ -49,10 +49,12 @@ const PrincingPage = props => {
         <div className="col-12 col-lg-12">
           <div className="row">
             <div className="col-md-8 offset-md-2">
-              <div className="row rows-cols-1 rows-cols-lg-2 g-4">
-                {pricingCards.map((card, index) => {
-                  return <PricingCard {...card.node} key={card.node.id} />
-                })}
+              <div className="row rows-cols-1 rows-cols-lg-2 g-4 mb-4 justify-content-center">
+                {pricingCards
+                  /* .filter(card => card.node.category[0] === "headshots") */
+                  .map((card, index) => {
+                    return <PricingCard {...card.node} key={card.node.id} />
+                  })}
               </div>
             </div>
           </div>

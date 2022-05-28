@@ -1,5 +1,12 @@
 .pricing {
-  border: 0.25rem solid $accent;
+  /* border: 0.25rem solid $accent; */
+  border: none;
+  transition: transform 250ms ease-in-out 0ms;
+  transform: scale(0.95);
+
+  &:hover {
+    transform: scale(1);
+  }
 }
 
 .pricing__header {
