@@ -104,7 +104,7 @@ const ContactFormPage = () => {
 
       <div className="row mt-4 px-2">
         <div className="col-md-8 offset-md-2">
-          <h1>Let's Get In Touch</h1>
+          <h1 className="block__heading">Let's Get In Touch</h1>
           <form
             onSubmit={e => handleSubmit(e)}
             name="contact"

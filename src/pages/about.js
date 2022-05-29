@@ -86,7 +86,7 @@ const AboutPage = () => {
           <div className="col-md-8 offset-md-2">
             <div className="row mb-4">
               <div className=" col-12 col-lg-6 order-1 order-lg-1 ps-2 pe-0">
-                <h1 className="blog-title">{aboutTitle}</h1>
+                <h1 className="blog-title block__heading">{aboutTitle}</h1>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: aboutBody.childrenMarkdownRemark[0].html,

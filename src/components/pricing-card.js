@@ -16,7 +16,7 @@ const PricingCard = props => {
     <div className="col-12 col-lg-6">
       <div className="card pricing h-100 shadow-sm">
         <div className="card-header pricing__header">
-          <h4>{title}</h4>
+          <h4 className="block__heading">{title}</h4>
         </div>
         <div className="card-body pricing__body">
           <div
@@ -37,10 +37,12 @@ const PricingCard = props => {
                 discountedPrice > 0 && "pricing__price--cross-out"
               }`}
             >
-              ${price}
+              {!discountedPrice > 0 && "Starting at "}${price}
             </span>
             {discountedPrice > 0 && (
-              <span className="pricing__price">${discountedPrice}</span>
+              <span className="pricing__price">
+                Starting at ${discountedPrice}
+              </span>
             )}
           </div>
           <div className="d-flex position-relative justify-content-end">

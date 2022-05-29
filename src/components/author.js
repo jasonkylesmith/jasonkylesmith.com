@@ -21,7 +21,7 @@ const Author = props => {
         description
         photo {
           gatsbyImageData(
-            width: 200
+            width: 150
             placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
           )

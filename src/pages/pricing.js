@@ -49,6 +49,15 @@ const PrincingPage = props => {
         <div className="col-12 col-lg-12">
           <div className="row">
             <div className="col-md-8 offset-md-2">
+              <div className="row">
+                <div className="col-12">
+                  <h1 className="block__heading">Pricing and Investment</h1>
+                  <p>
+                    Here is where we put something about pricing and investment
+                    being such a good idea.
+                  </p>
+                </div>
+              </div>
               <div className="row rows-cols-1 rows-cols-lg-2 g-4 mb-4 justify-content-center">
                 {pricingCards
                   /* .filter(card => card.node.category[0] === "headshots") */

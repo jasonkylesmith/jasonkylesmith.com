@@ -185,7 +185,7 @@ const IndexPage = () => {
             }}
           >
             <div className="p-0">
-              <h1 className="">{heroTitle}</h1>
+              <h1 className="block__heading pe-4">{heroTitle}</h1>
               <p className="pe-4">{heroBody.heroBody}</p>
 
               <a href="/contact?destination=hero" className="btn mb-0">
@@ -207,7 +207,7 @@ const IndexPage = () => {
         </div>
         <div className="row m-0 py-5">
           <div className="col col-md-8 offset-md-2 mb-4 px-4 px-md-0">
-            <h2>What I Do</h2>
+            <h2 className="block__heading">What I Do</h2>
             <Slider {...highlightSettings}>
               {highlightCards
                 .sort((a, b) => a.node.order - b.node.order)
@@ -217,9 +217,9 @@ const IndexPage = () => {
             </Slider>
           </div>
         </div>
-        <div className="row m-0 py-5">
+        <div className="row m-0 pb-5">
           <div className="col-12 col-md-8 offset-md-2 px-2 px-md-0">
-            <h2 className="">Testimonials</h2>
+            <h2 className="block__heading">Testimonials</h2>
           </div>
           {testimonials.map((testimonial, index) => {
             return (
