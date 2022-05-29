@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Slider from "react-slick"
+import MarkdownDisplay from "../components/markdown-display"
 
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
@@ -16,6 +17,7 @@ const AboutPage = () => {
                 html
               }
             }
+            aboutCtaText
             aboutTitle
           }
         }
@@ -23,7 +25,8 @@ const AboutPage = () => {
     }
   `)
 
-  const { aboutBody, aboutTitle } = data.allContentfulSitewideCopy.edges[0].node
+  const { aboutBody, aboutTitle, aboutCtaText } =
+    data.allContentfulSitewideCopy.edges[0].node
 
   const aboutSliderSettings = {
     slidesToShow: 3,
@@ -84,32 +87,13 @@ const AboutPage = () => {
           <div className="col-md-8 offset-md-2">
             <div className="row mb-4">
               <div className=" col-12 col-lg-6 order-1 order-lg-1 ps-2 pe-0">
-                <h1 className="blog-title">{aboutTitle}</h1>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: aboutBody.childrenMarkdownRemark[0].html,
-                  }}
+                <h1 className="blog-title block__heading">{aboutTitle}</h1>
+
+                <MarkdownDisplay
+                  html={aboutBody.childrenMarkdownRemark[0].html}
                 />
-                {/* <p>
-                  I'm a photographer from Southeast Michigan and I love to
-                  photograph just about everything. Capturing nature is my
-                  stress reliever, portrait and headshot photography is my
-                  bread-and-butter. I'm most inspired by the unique, the
-                  colorful, and the expressive sights of the world around me and
-                  strive to photograph my subjects true to how I see them.
-                </p>
-                <p>
-                  I feel like a person's beauty is made up of their pleasing
-                  features AND flaws, so I do my best to capture both and create
-                  an image of the subject's authentic self. This is my number
-                  one goal when making portraits of people.
-                </p>
-                <p>
-                  I am currently available to schedule for portrait and headshot
-                  sessions!
-                </p> */}
-                <a href="/contact" className="btn mb-0">
-                  Call to action here!
+                <a href="/contact?destination=about" className="btn mb-0">
+                  {aboutCtaText}
                 </a>
               </div>
               <div className="col-12 col-lg-6 order-0 order-lg-0 mb-4 mb-lg-0 ps-0">

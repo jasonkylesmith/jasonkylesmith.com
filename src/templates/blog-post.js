@@ -176,7 +176,7 @@ const BlogPost = props => {
               <GatsbyImage image={featuredImage.gatsbyImageData} alt={title} />
             </div>
           )}
-          <h1 className="blog-title">{title}</h1>
+          <h1 className="blog-title block__heading">{title}</h1>
           <div className="d-flex direction-row align-items-center">
             <span className="blog-date">{publishedDate}</span>
             <Tags tags={tags} />

@@ -10,6 +10,8 @@ import BlockGallery from "../components/block-gallery"
 import BlockFeature from "../components/block-feature"
 import ShareButtons from "../components/share-buttons"
 
+// Lightbox Library https://github.com/VLZH/react-lightgallery
+
 export const query = graphql`
   query ($slug: String!) {
     contentfulGallery(slug: { eq: $slug }) {

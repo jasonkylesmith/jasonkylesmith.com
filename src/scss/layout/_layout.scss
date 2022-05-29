@@ -8,9 +8,6 @@ header {
     div {
       display: flex;
       align-items: center;
-
-      .logo {
-      }
     }
   }
 }
@@ -137,5 +134,38 @@ footer {
 @media (max-width: $max-width-xs) {
   .hero-text {
     /* max-width: 100%; */
+  }
+}
+
+.block--accent-background {
+  background-color: $accent;
+  color: white;
+
+  .testimonial--left,
+  .testimonial--right {
+    border-color: white;
+  }
+}
+
+.block--dark-background {
+  background-color: $dark;
+  color: white;
+}
+
+.block__heading {
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: "";
+    flex: 1;
+    margin-left: 1rem;
+    height: 0.2rem;
+    background-image: linear-gradient(
+      rgba($dark, 0.6) 80%,
+      rgba($accent, 0.6) 95%
+    );
+    border-top-right-radius: $border-radii;
+    border-bottom-right-radius: $border-radii;
   }
 }

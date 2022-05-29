@@ -12,6 +12,7 @@ import HighlightCard from "../components/highlight-card"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import MarkdownDisplay from "../components/markdown-display"
 
 library.add(fas)
 
@@ -42,8 +43,12 @@ const IndexPage = () => {
           node {
             heroBody {
               heroBody
+              childrenMarkdownRemark {
+                html
+              }
             }
             heroTitle
+            heroCtaText
           }
         }
       }
@@ -97,7 +102,8 @@ const IndexPage = () => {
   `)
 
   const { edges: testimonials } = data.allContentfulTestimonial
-  const { heroBody, heroTitle } = data.allContentfulSitewideCopy.edges[0].node
+  const { heroBody, heroTitle, heroCtaText } =
+    data.allContentfulSitewideCopy.edges[0].node
   const { edges: highlightCards } = data.allContentfulHighlightCard
 
   const SliderNextArrow = props => {
@@ -171,7 +177,7 @@ const IndexPage = () => {
       <div className="row p-0 position-relative mt-2">
         <div
           className="col-12 d-flex justify-content-center align-items-center p-0"
-          style={{ height: "85vh" }}
+          style={{ height: "80vh" }}
         >
           <div
             className="hero-text d-flex flex-row"
@@ -183,11 +189,11 @@ const IndexPage = () => {
             }}
           >
             <div className="p-0">
-              <h1 className="">{heroTitle}</h1>
-              <p className="pe-4">{heroBody.heroBody}</p>
+              <h1 className="block__heading pe-4 mb-0">{heroTitle}</h1>
+              <MarkdownDisplay html={heroBody.childrenMarkdownRemark[0].html} />
 
-              <a href="/contact" className="btn mb-0">
-                Call to action here!
+              <a href="/contact?destination=hero" className="btn mb-0">
+                {heroCtaText}
               </a>
             </div>
             <div className="p-0 d-none d-sm-block flex-fill">
@@ -203,9 +209,9 @@ const IndexPage = () => {
             </div>
           </div>
         </div>
-        <div className="row m-0">
+        <div className="row m-0 py-5">
           <div className="col col-md-8 offset-md-2 mb-4 px-4 px-md-0">
-            <h2>What I Do</h2>
+            <h2 className="block__heading">What I Do</h2>
             <Slider {...highlightSettings}>
               {highlightCards
                 .sort((a, b) => a.node.order - b.node.order)
@@ -215,9 +221,9 @@ const IndexPage = () => {
             </Slider>
           </div>
         </div>
-        <div className="row m-0 py-5">
+        <div className="row m-0 pb-5">
           <div className="col-12 col-md-8 offset-md-2 px-2 px-md-0">
-            <h2>Testimonials</h2>
+            <h2 className="block__heading">Testimonials</h2>
           </div>
           {testimonials.map((testimonial, index) => {
             return (

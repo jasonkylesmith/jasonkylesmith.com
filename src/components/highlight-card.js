@@ -1,6 +1,11 @@
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
+
+library.add(fas)
 
 const HighlightCard = props => {
   const { title, body, highlight } = props.node
@@ -41,6 +46,14 @@ const HighlightCard = props => {
                 __html: body.childrenMarkdownRemark[0].html,
               }}
             />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12 highlight__body highlight__body--right">
+            <Link to={`/${category}`} className="">
+              {title}
+            </Link>
+            <FontAwesomeIcon icon={["fas", "angle-right"]} size="md" />
           </div>
         </div>
       </div>

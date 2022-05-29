@@ -43,7 +43,7 @@ const GalleryList = props => {
         <div className="col-12 col-lg-12">
           <div className="row">
             <div className="col-md-8 offset-md-2">
-              <h1>Photo Stories</h1>
+              <h1 className="block__heading">Photo Stories</h1>
             </div>
             <div className="col-md-8 offset-md-2">
               <div className="row">
