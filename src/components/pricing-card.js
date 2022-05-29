@@ -11,7 +11,6 @@ const PricingCard = props => {
     category,
   } = props
 
-  console.log(discountedPrice)
   return (
     <div className="col-12 col-lg-6">
       <div className="card pricing h-100 shadow-sm">

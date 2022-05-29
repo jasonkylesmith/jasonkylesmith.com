@@ -11,10 +11,13 @@ const PrincingPage = props => {
       allContentfulSitewideCopy(filter: { name: { eq: "Basic" } }) {
         edges {
           node {
-            heroBody {
-              heroBody
+            pricingBody {
+              pricingBody
+              childrenMarkdownRemark {
+                html
+              }
             }
-            heroTitle
+            pricingTitle
           }
         }
       }
@@ -40,6 +43,8 @@ const PrincingPage = props => {
   `)
 
   const { edges: pricingCards } = data.allContentfulPricingCard
+  const { pricingTitle, pricingBody } =
+    data.allContentfulSitewideCopy.edges[0].node
 
   return (
     <Layout>
@@ -51,11 +56,12 @@ const PrincingPage = props => {
             <div className="col-md-8 offset-md-2">
               <div className="row">
                 <div className="col-12">
-                  <h1 className="block__heading">Pricing and Investment</h1>
-                  <p>
-                    Here is where we put something about pricing and investment
-                    being such a good idea.
-                  </p>
+                  <h1 className="block__heading">{pricingTitle}</h1>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: pricingBody.childrenMarkdownRemark[0].html,
+                    }}
+                  />
                 </div>
               </div>
               <div className="row rows-cols-1 rows-cols-lg-2 g-4 mb-4 justify-content-center">
