@@ -10,7 +10,7 @@ import BlockGallery from "../components/block-gallery"
 import BlockFeature from "../components/block-feature"
 import ShareButtons from "../components/share-buttons"
 
-// Lightbox Library https://github.com/VLZH/react-lightgallery
+// Lightbox Library https://www.lightgalleryjs.com/docs/react/
 
 export const query = graphql`
   query ($slug: String!) {
@@ -134,6 +134,7 @@ const Gallery = props => {
             directory={category.toLowerCase().replace(/\s+/g, "")}
             sources={["Facebook", "Twitter", "Email", "Clipboard"]}
           />
+
           {blocks.map(block => {
             const { id } = block.sys.contentType.sys
 

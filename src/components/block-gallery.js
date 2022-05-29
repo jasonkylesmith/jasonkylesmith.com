@@ -3,6 +3,12 @@ import React from "react"
 import Gallery from "react-photo-gallery"
 import GalleryImage from "./gallery-image"
 
+import LightGallery from "lightgallery/react"
+
+import "lightgallery/css/lightgallery.css"
+import "lightgallery/css/lg-zoom.css"
+import "lightgallery/css/lg-thumbnail.css"
+
 const BlockGallery = props => {
   const { images, variant } = props.block
 
@@ -90,7 +96,9 @@ const BlockGallery = props => {
         margin: "-.5rem",
       }}
     >
-      <Gallery photos={photoArray} direction={"column"} margin={10} />
+      <LightGallery>
+        <Gallery photos={photoArray} direction={"column"} margin={10} />
+      </LightGallery>
       {/*       <div
         style={{
           width: "500px",
