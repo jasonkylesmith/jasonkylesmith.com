@@ -12,6 +12,7 @@ import HighlightCard from "../components/highlight-card"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import MarkdownDisplay from "../components/markdown-display"
 
 library.add(fas)
 
@@ -42,6 +43,9 @@ const IndexPage = () => {
           node {
             heroBody {
               heroBody
+              childrenMarkdownRemark {
+                html
+              }
             }
             heroTitle
             heroCtaText
@@ -185,8 +189,8 @@ const IndexPage = () => {
             }}
           >
             <div className="p-0">
-              <h1 className="block__heading pe-4">{heroTitle}</h1>
-              <p className="pe-4">{heroBody.heroBody}</p>
+              <h1 className="block__heading pe-4 mb-0">{heroTitle}</h1>
+              <MarkdownDisplay html={heroBody.childrenMarkdownRemark[0].html} />
 
               <a href="/contact?destination=hero" className="btn mb-0">
                 {heroCtaText}

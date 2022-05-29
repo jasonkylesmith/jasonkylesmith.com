@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Slider from "react-slick"
+import MarkdownDisplay from "../components/markdown-display"
 
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
@@ -87,10 +88,9 @@ const AboutPage = () => {
             <div className="row mb-4">
               <div className=" col-12 col-lg-6 order-1 order-lg-1 ps-2 pe-0">
                 <h1 className="blog-title block__heading">{aboutTitle}</h1>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: aboutBody.childrenMarkdownRemark[0].html,
-                  }}
+
+                <MarkdownDisplay
+                  html={aboutBody.childrenMarkdownRemark[0].html}
                 />
                 <a href="/contact?destination=about" className="btn mb-0">
                   {aboutCtaText}

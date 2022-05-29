@@ -4,6 +4,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import PricingCard from "../components/pricing-card"
+import MarkdownDisplay from "../components/markdown-display"
 
 const PrincingPage = props => {
   const data = useStaticQuery(graphql`
@@ -57,10 +58,9 @@ const PrincingPage = props => {
               <div className="row">
                 <div className="col-12">
                   <h1 className="block__heading">{pricingTitle}</h1>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: pricingBody.childrenMarkdownRemark[0].html,
-                    }}
+
+                  <MarkdownDisplay
+                    html={pricingBody.childrenMarkdownRemark[0].html}
                   />
                 </div>
               </div>
