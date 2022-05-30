@@ -68,9 +68,11 @@ export const query = graphql`
           name
           images {
             id
+            description
             gatsbyImageData(
               breakpoints: [200, 400, 600, 800, 1000, 1600]
               sizes: "(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw"
+              quality: 100
             )
             file {
               url
