@@ -142,27 +142,29 @@ const Gallery = props => {
 
             if (id === "blockStory") {
               return (
-                <div>
-                  <BlockStory block={block} key={block.id} />
+                <div key={block.id}>
+                  <BlockStory block={block} />
                 </div>
               )
             }
 
             if (id === "blockFeature") {
               return (
-                <div>
-                  <BlockFeature block={block} key={block.id} />
+                <div key={block.id}>
+                  <BlockFeature block={block} />
                 </div>
               )
             }
 
             if (id === "blockGallery") {
               return (
-                <div>
-                  <BlockGallery block={block} key={block.id} />
+                <div key={block.id}>
+                  <BlockGallery block={block} />
                 </div>
               )
             }
+
+            return <></>
           })}
         </div>
       </div>
