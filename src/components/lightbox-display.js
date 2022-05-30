@@ -56,11 +56,7 @@ const LightboxContainer = props => {
         openLightbox && "lightbox__container--active"
       } ${closingLightbox && "lightbox__container--closed"}`}
     >
-      <img
-        src={image}
-        onClick={img => console.log("clicked the image")}
-        ref={ref}
-      />
+      <img src={image} ref={ref} />
     </div>
   ) : (
     <></>
