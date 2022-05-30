@@ -1,12 +1,10 @@
-import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState } from "react"
 import Gallery from "react-photo-gallery"
-import GalleryImage from "./gallery-image"
+
 import LightboxContainer from "./lightbox-display"
 
 const BlockGallery = props => {
   const [openLightbox, setOpenLightbox] = useState(false)
-  const [closingLightbox, setClosingLightbox] = useState(false)
   const [lightboxImg, setLightboxImg] = useState("")
 
   const { images, variant } = props.block
@@ -49,8 +47,6 @@ const BlockGallery = props => {
     const { height, width } = image.file.details.image
     const { srcSet, sizes } = image.gatsbyImageData.images.sources[0]
     const { description } = image
-
-    console.log(description)
 
     return {
       // src: `https:${url}`,
@@ -124,7 +120,6 @@ const BlockGallery = props => {
         direction={"column"}
         margin={10}
         onClick={(event, index) => {
-          console.log(event)
           const srcset = event.target.srcset.split(",")
           const largest = srcset[srcset.length - 1]
           const noQuery = largest.split("?")
