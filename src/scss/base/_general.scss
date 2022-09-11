@@ -113,6 +113,31 @@ button:active {
       background-color: $accent;
     }
   }
+
+  &.icon {
+    color: $dark;
+    background-color: transparent;
+
+    .icon {
+      transform: scale(1);
+      transition: transform $anim-duration ease-in-out 0ms;
+    }
+
+    &::before {
+      width: 0;
+      height: 0;
+    }
+
+    &:hover {
+      .icon {
+        transform: scale(1.3);
+        color: $accent;
+      }
+      .mobile {
+        color: #fff !important;
+      }
+    }
+  }
 }
 
 a,
