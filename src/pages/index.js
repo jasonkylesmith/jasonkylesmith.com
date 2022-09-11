@@ -195,8 +195,8 @@ const IndexPage = () => {
 
       <div className="row p-0 position-relative mt-2">
         <div
-          className="col-12 d-flex justify-content-start align-items-center p-0"
-          style={{ height: "80vh", marginLeft: "6rem" }}
+          className="col-12 d-flex justify-content-center align-items-center p-4 p-md-0"
+          style={{ height: "80vh" }}
         >
           <div
             className="hero-text d-flex flex-row"
@@ -282,7 +282,7 @@ const IndexPage = () => {
             zIndex: 0,
           }}
         >
-          <Slider {...sliderSettings}>
+          {/* <Slider {...sliderSettings}>
             {heroSlider &&
               heroSlider.map(image => {
                 return (
@@ -295,7 +295,7 @@ const IndexPage = () => {
                   </div>
                 )
               })}
-          </Slider>
+          </Slider> */}
         </div>
       </div>
     </Layout>
