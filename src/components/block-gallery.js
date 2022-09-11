@@ -6,6 +6,7 @@ import LightboxContainer from "./lightbox-display"
 const BlockGallery = props => {
   const [openLightbox, setOpenLightbox] = useState(false)
   const [lightboxImg, setLightboxImg] = useState("")
+  const [lightboxImgSiblings, setLightboxImgSiblings] = useState({})
 
   const { images, variant } = props.block
 
@@ -113,6 +114,8 @@ const BlockGallery = props => {
         image={lightboxImg}
         openLightbox={openLightbox}
         setOpenLightbox={setOpenLightbox}
+        setLightboxImg={setLightboxImg}
+        lightboxImgSiblings={lightboxImgSiblings}
       />
 
       <Gallery
@@ -120,10 +123,20 @@ const BlockGallery = props => {
         direction={"column"}
         margin={10}
         onClick={(event, index) => {
+          console.log("Event", event)
+          //nextSibling, previousSibling
+
           const srcset = event.target.srcset.split(",")
           const largest = srcset[srcset.length - 1]
           const noQuery = largest.split("?")
           imgOnClickString(noQuery[0].replace("\n", ""))
+
+          setLightboxImgSiblings({
+            prev: event.target.previousSibling
+              ? event.target.previousSibling
+              : null,
+            next: event.target.nextSibling ? event.target.nextSibling : null,
+          })
         }}
       />
 
