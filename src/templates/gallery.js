@@ -10,7 +10,7 @@ import BlockGallery from "../components/block-gallery"
 import BlockFeature from "../components/block-feature"
 import ShareButtons from "../components/share-buttons"
 
-// Lightbox Library https://github.com/VLZH/react-lightgallery
+// Lightbox Library https://www.lightgalleryjs.com/docs/react/
 
 export const query = graphql`
   query ($slug: String!) {
@@ -68,9 +68,11 @@ export const query = graphql`
           name
           images {
             id
+            description
             gatsbyImageData(
               breakpoints: [200, 400, 600, 800, 1000, 1600]
               sizes: "(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw"
+              quality: 100
             )
             file {
               url
@@ -134,6 +136,7 @@ const Gallery = props => {
             directory={category.toLowerCase().replace(/\s+/g, "")}
             sources={["Facebook", "Twitter", "Email", "Clipboard"]}
           />
+
           {blocks.map(block => {
             const { id } = block.sys.contentType.sys
 

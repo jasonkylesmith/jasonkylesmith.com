@@ -1,9 +1,13 @@
-import { GatsbyImage } from "gatsby-plugin-image"
-import React from "react"
+import React, { useState } from "react"
 import Gallery from "react-photo-gallery"
-import GalleryImage from "./gallery-image"
+
+import LightboxContainer from "./lightbox-display"
 
 const BlockGallery = props => {
+  const [openLightbox, setOpenLightbox] = useState(false)
+  const [lightboxImg, setLightboxImg] = useState("")
+  const [lightboxImgSiblings, setLightboxImgSiblings] = useState({})
+
   const { images, variant } = props.block
 
   const customSizes = ["(min-width: 480px) 10vw,(min-width: 1024px) 10vw,10vw"]
@@ -43,6 +47,7 @@ const BlockGallery = props => {
     const { url } = image.file
     const { height, width } = image.file.details.image
     const { srcSet, sizes } = image.gatsbyImageData.images.sources[0]
+    const { description } = image
 
     return {
       // src: `https:${url}`,
@@ -50,6 +55,7 @@ const BlockGallery = props => {
       width: width,
       srcSet,
       sizes,
+      alt: description,
     }
   })
 
@@ -84,13 +90,56 @@ const BlockGallery = props => {
     default:
   }
 
+  const imgOnClick = img => {
+    setLightboxImg(img.nativeEvent.target.src)
+    setOpenLightbox(true)
+  }
+
+  const imgOnClickString = img => {
+    setLightboxImg(img)
+    setOpenLightbox(true)
+  }
+
+  // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
+
+  /* use a description to allow a component to query graphql for an image based on unique description. Contentful will have to have unique descriptions for each image for this to work. */
+
   return (
     <div
       style={{
         margin: "-.5rem",
       }}
     >
-      <Gallery photos={photoArray} direction={"column"} margin={10} />
+      <LightboxContainer
+        image={lightboxImg}
+        openLightbox={openLightbox}
+        setOpenLightbox={setOpenLightbox}
+        setLightboxImg={setLightboxImg}
+        lightboxImgSiblings={lightboxImgSiblings}
+      />
+
+      <Gallery
+        photos={photoArray}
+        direction={"column"}
+        margin={10}
+        onClick={(event, index) => {
+          console.log("Event", event)
+          //nextSibling, previousSibling
+
+          const srcset = event.target.srcset.split(",")
+          const largest = srcset[srcset.length - 1]
+          const noQuery = largest.split("?")
+          imgOnClickString(noQuery[0].replace("\n", ""))
+
+          setLightboxImgSiblings({
+            prev: event.target.previousSibling
+              ? event.target.previousSibling
+              : null,
+            next: event.target.nextSibling ? event.target.nextSibling : null,
+          })
+        }}
+      />
+
       {/*       <div
         style={{
           width: "500px",

@@ -49,6 +49,19 @@ const IndexPage = () => {
             }
             heroTitle
             heroCtaText
+            heroPortrait {
+              description
+              file {
+                url
+              }
+            }
+            testimonialsOn
+            heroSlider {
+              file {
+                url
+              }
+              description
+            }
           }
         }
       }
@@ -102,8 +115,14 @@ const IndexPage = () => {
   `)
 
   const { edges: testimonials } = data.allContentfulTestimonial
-  const { heroBody, heroTitle, heroCtaText } =
-    data.allContentfulSitewideCopy.edges[0].node
+  const {
+    heroBody,
+    heroTitle,
+    heroCtaText,
+    heroPortrait,
+    testimonialsOn,
+    heroSlider,
+  } = data.allContentfulSitewideCopy.edges[0].node
   const { edges: highlightCards } = data.allContentfulHighlightCard
 
   const SliderNextArrow = props => {
@@ -176,8 +195,8 @@ const IndexPage = () => {
 
       <div className="row p-0 position-relative mt-2">
         <div
-          className="col-12 d-flex justify-content-center align-items-center p-0"
-          style={{ height: "80vh" }}
+          className="col-12 d-flex justify-content-start align-items-center p-0"
+          style={{ height: "80vh", marginLeft: "6rem" }}
         >
           <div
             className="hero-text d-flex flex-row"
@@ -190,21 +209,32 @@ const IndexPage = () => {
           >
             <div className="p-0">
               <h1 className="block__heading pe-4 mb-0">{heroTitle}</h1>
-              <MarkdownDisplay html={heroBody.childrenMarkdownRemark[0].html} />
-
+              <div className="pe-2">
+                <MarkdownDisplay
+                  html={heroBody.childrenMarkdownRemark[0].html}
+                />
+              </div>
               <a href="/contact?destination=hero" className="btn mb-0">
                 {heroCtaText}
               </a>
             </div>
             <div className="p-0 d-none d-sm-block flex-fill">
               <img
-                src="https://picsum.photos/250"
+                src={
+                  heroPortrait
+                    ? `https:${heroPortrait.file.url}`
+                    : "https://picsum.photos/250"
+                }
                 style={{
                   objectFit: "cover",
                   width: "250px",
                   height: "250px",
                 }}
-                alt="stand in"
+                alt={
+                  heroPortrait
+                    ? `https:${heroPortrait.description}`
+                    : "stand in"
+                }
               />
             </div>
           </div>
@@ -221,24 +251,26 @@ const IndexPage = () => {
             </Slider>
           </div>
         </div>
-        <div className="row m-0 pb-5">
-          <div className="col-12 col-md-8 offset-md-2 px-2 px-md-0">
-            <h2 className="block__heading">Testimonials</h2>
+        {testimonialsOn && (
+          <div className="row m-0 pb-5">
+            <div className="col-12 col-md-8 offset-md-2 px-2 px-md-0">
+              <h2 className="block__heading">Testimonials</h2>
+            </div>
+            {testimonials.map((testimonial, index) => {
+              return (
+                <div
+                  className="col col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-2 px-md-0"
+                  key={testimonial.node.id}
+                >
+                  <Testimonial
+                    {...testimonial.node}
+                    variant={index % 2 === 1 ? "left" : "right"}
+                  />
+                </div>
+              )
+            })}
           </div>
-          {testimonials.map((testimonial, index) => {
-            return (
-              <div
-                className="col col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-2 px-md-0"
-                key={testimonial.node.id}
-              >
-                <Testimonial
-                  {...testimonial.node}
-                  variant={index % 2 === 1 ? "left" : "right"}
-                />
-              </div>
-            )
-          })}
-        </div>
+        )}
 
         <div
           className="p-0"
@@ -251,34 +283,18 @@ const IndexPage = () => {
           }}
         >
           <Slider {...sliderSettings}>
-            <div className="slider-div">
-              <img
-                src="https://picsum.photos/1300/600"
-                loading="lazy"
-                alt="stand in"
-              />
-            </div>
-            <div className="slider-div">
-              <img
-                src="https://picsum.photos/1301/601"
-                loading="lazy"
-                alt="stand in"
-              />
-            </div>
-            <div className="slider-div">
-              <img
-                src="https://picsum.photos/1302/602"
-                loading="lazy"
-                alt="stand in"
-              />
-            </div>
-            <div className="slider-div">
-              <img
-                src="https://picsum.photos/1300/603"
-                loading="lazy"
-                alt="stand in"
-              />
-            </div>
+            {heroSlider &&
+              heroSlider.map(image => {
+                return (
+                  <div className="slider-div">
+                    <img
+                      src={`https:${image.file.url}`}
+                      loading="lazy"
+                      alt={`${image.description}`}
+                    />
+                  </div>
+                )
+              })}
           </Slider>
         </div>
       </div>

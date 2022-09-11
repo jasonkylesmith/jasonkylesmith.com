@@ -118,3 +118,13 @@
 
 .blog-featured {
 }
+
+.masonry {
+  columns: 3;
+  gap: 1rem;
+}
+
+.masonry-item {
+  margin-bottom: 1rem;
+  width: 100%;
+}
