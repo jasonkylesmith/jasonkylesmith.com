@@ -2,8 +2,6 @@ import * as React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
-import heroImage from "../images/standinportrait.png"
-
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Slider from "react-slick"
@@ -13,6 +11,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import MarkdownDisplay from "../components/markdown-display"
+import PayButton from "../components/pay-button"
 
 library.add(fas)
 
@@ -201,13 +200,13 @@ const IndexPage = () => {
           <div
             className="hero-text d-flex flex-row"
             style={{
-              backgroundColor: "rgba(255,255,255,.8)",
-              padding: "1rem",
+              backgroundColor: "rgba(0,0,0,1)",
+
               borderRadius: ".25rem",
               zIndex: "1",
             }}
           >
-            <div className="p-0">
+            <div className="p-4 text-white">
               <h1 className="block__heading pe-4 mb-0">{heroTitle}</h1>
               <div className="pe-2">
                 <MarkdownDisplay
@@ -229,6 +228,7 @@ const IndexPage = () => {
                   objectFit: "cover",
                   width: "250px",
                   height: "250px",
+                  borderRadius: ".25rem",
                 }}
                 alt={
                   heroPortrait

@@ -96,10 +96,10 @@ const AboutPage = () => {
                 <p>
                   I really didn't understand the real meaning of my photography
                   until a few years ago. My wife was dog sitting for a longtime
-                  friend of hers for two wonderful pups, both getting a bit long
-                  in the tooth and absolutely loved by their family. I had never
-                  photographed pets before, so with the wife at work, I decided
-                  to setup a mini-photoshoot with the doggos.
+                  friend of hers with two wonderful pups, both getting a bit
+                  long in the tooth and absolutely loved by their family. I had
+                  never photographed pets before, so with the wife at work, I
+                  decided to setup a mini-photoshoot with the doggos.
                 </p>
                 <p>
                   After the shoot and I got the keepers edited and touched up,
@@ -113,8 +113,8 @@ const AboutPage = () => {
                 </p>
                 <p>
                   That feeling of knowing that I had captured something so
-                  special, so useful, so cherished; well, let's just say that
-                  I'm still chasing that feeling again in my photography today.
+                  special, so useful, so cherished; well, let's just say I
+                  continue to chase that feeling in my photography today.
                 </p>
                 {/* End DEMO */}
                 <a href="/contact?destination=about" className="btn mb-0">
