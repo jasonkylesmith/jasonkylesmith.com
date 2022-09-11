@@ -38,6 +38,8 @@ const useLightboxDisplay = (
 const LightboxContainer = props => {
   const { image, openLightbox, setOpenLightbox } = props
 
+  console.log("Props", props)
+
   const [closingLightbox, setClosingLightbox] = useState(false)
 
   const { ref, isLightboxVisible, setIsLightboxVisible } = useLightboxDisplay(
@@ -55,6 +57,7 @@ const LightboxContainer = props => {
       className={`lightbox__container ${
         openLightbox && "lightbox__container--active"
       } ${closingLightbox && "lightbox__container--closed"}`}
+      style={{ backdropFilter: "blur(8px)" }}
     >
       <img src={image} ref={ref} />
     </div>

@@ -19,6 +19,7 @@ import {
   TwitterShareButton,
 } from "react-share"
 import ShareButtons from "../components/share-buttons"
+import BlockGallery from "../components/block-gallery"
 
 export const query = graphql`
   query ($slug: String!) {
@@ -27,6 +28,39 @@ export const query = graphql`
       slug
       title
       tags
+      gallery {
+        __typename
+        ... on ContentfulBlockGallery {
+          id
+          name
+          images {
+            id
+            description
+            gatsbyImageData(
+              breakpoints: [200, 400, 600, 800, 1000, 1600]
+              sizes: "(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw"
+              quality: 100
+            )
+            file {
+              url
+              details {
+                image {
+                  height
+                  width
+                }
+              }
+            }
+          }
+          variant
+          sys {
+            contentType {
+              sys {
+                id
+              }
+            }
+          }
+        }
+      }
       excerpt {
         excerpt
       }
@@ -94,6 +128,7 @@ const BlogPost = props => {
     contentful_id,
     slug,
     excerpt,
+    gallery,
   } = props.data.contentfulBlogPost
 
   const { edges } = props.data.allContentfulBlogPost
@@ -191,6 +226,11 @@ const BlogPost = props => {
 
           <div className="blog-body d-flex flex-column">
             {bodyContent}
+            {gallery && gallery.__typename === "ContentfulBlockGallery" && (
+              <div className="mb-4">
+                <BlockGallery block={gallery} key={gallery.id} />
+              </div>
+            )}
             <Author />
             <PostNav edges={navEdges} />
           </div>
