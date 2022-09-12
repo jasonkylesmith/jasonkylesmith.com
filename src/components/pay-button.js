@@ -2,10 +2,27 @@ import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
+import { graphql, useStaticQuery } from "gatsby"
 
 library.add(fas)
 
 const PayButton = props => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulSitewideCopy(filter: { name: { eq: "Basic" } }) {
+        edges {
+          node {
+            paymentTitle
+            paymentButton
+          }
+        }
+      }
+    }
+  `)
+
+  const { paymentTitle, paymentButton } =
+    data.allContentfulSitewideCopy.edges[0].node
+
   function showCheckoutWindow(e) {
     e.preventDefault()
 
@@ -73,14 +90,14 @@ const PayButton = props => {
             alignItems: "center",
             width: "226px",
             background: "#FFFFFF",
-            border: "1px solid rgba(0, 0, 0, 0.1)",
+            border: "2px solid rgba(31, 31, 31, .1)",
             boxShadow: "-2px 10px 5px rgba(0, 0, 0, 0)",
-            borderRadius: "10px",
+            borderRadius: ".25rem",
           }}
         >
           <div
             style={{
-              padding: "20px",
+              padding: "1rem",
               display: "flex",
               flexDirection: "column",
             }}
@@ -91,7 +108,7 @@ const PayButton = props => {
                 lineHeight: "20px",
               }}
             >
-              Have an invoice to pay?
+              {paymentTitle ?? "Have an invoice to pay?"}
             </p>
 
             <button
@@ -102,7 +119,7 @@ const PayButton = props => {
               onClick={showCheckoutWindow}
             >
               <div>
-                <span>Pay Now</span>
+                <span>{paymentButton ?? "Pay Now"}</span>
                 <FontAwesomeIcon
                   icon={["fas", "up-right-from-square"]}
                   className="mx-1"
