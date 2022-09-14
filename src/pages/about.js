@@ -19,13 +19,19 @@ const AboutPage = () => {
             }
             aboutCtaText
             aboutTitle
+            aboutPortrait {
+              description
+              file {
+                url
+              }
+            }
           }
         }
       }
     }
   `)
 
-  const { aboutBody, aboutTitle, aboutCtaText } =
+  const { aboutBody, aboutTitle, aboutCtaText, aboutPortrait } =
     data.allContentfulSitewideCopy.edges[0].node
 
   const aboutSliderSettings = {
@@ -86,7 +92,7 @@ const AboutPage = () => {
         <div className="row">
           <div className="col-md-8 offset-md-2">
             <div className="row mb-4">
-              <div className=" col-12 col-lg-6 order-1 order-lg-1 ps-2 pe-0">
+              <div className=" col-12 col-lg-7 order-1 order-lg-1 ps-2 pe-0">
                 <h1 className="blog-title block__heading">{aboutTitle}</h1>
                 <MarkdownDisplay
                   html={aboutBody.childrenMarkdownRemark[0].html}
@@ -121,43 +127,30 @@ const AboutPage = () => {
                   {aboutCtaText}
                 </a>
               </div>
-              <div className="col-12 col-lg-6 order-0 order-lg-0 mb-4 mb-lg-0 ps-0">
+              <div className="col-12 col-lg-5 order-0 order-lg-0 mb-4 mb-lg-0 ps-0">
                 <img
-                  src="https://picsum.photos/600/400"
+                  src={`http:${aboutPortrait.file.url}`}
                   className="img-fluid"
+                  alt={aboutPortrait.description}
                   style={{ objectFit: "cover" }}
                 />
               </div>
             </div>
 
             <div className="row mb-4">
-              <div className="col ps-0 mt-4">
-                <Slider {...aboutSliderSettings}>
-                  <div className="about">
-                    <img
-                      src="https://picsum.photos/450/300"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="about">
-                    <img
-                      src="https://picsum.photos/450/300"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="about">
-                    <img
-                      src="https://picsum.photos/450/300"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="about">
-                    <img
-                      src="https://picsum.photos/450/300"
-                      className="img-fluid"
-                    />
-                  </div>
-                </Slider>
+              <div className="col ps-0 mt-4 about-slider">
+                {/* <Slider {...aboutSliderSettings}>
+                  {aboutSliderGallery.map(image => {
+                    return (
+                      <div className="about">
+                        <img
+                          src={`http:${image.file.url}`}
+                          alt={image.description}
+                        />
+                      </div>
+                    )
+                  })}
+                </Slider> */}
               </div>
             </div>
           </div>

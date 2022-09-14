@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -48,11 +48,15 @@ const GalleryList = props => {
             <div className="col-md-8 offset-md-2">
               <div className="row">
                 {edges.map((gallery, index) => {
-                  const { name, category, featuredImage, slug } = gallery.node
+                  const { name, category, featuredImage, slug, contentful_id } =
+                    gallery.node
                   const { gatsbyImageData, title } = featuredImage
 
                   return (
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
+                    <div
+                      className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0"
+                      key={contentful_id}
+                    >
                       <Link
                         to={`/${category
                           .toLowerCase()

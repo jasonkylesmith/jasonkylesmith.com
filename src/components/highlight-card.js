@@ -53,7 +53,9 @@ const HighlightCard = props => {
             <Link to={`/${category}`} className="">
               {title}
             </Link>
-            <FontAwesomeIcon icon={["fas", "angle-right"]} size="md" />
+            <div style={{ marginBottom: "-2px" }}>
+              <FontAwesomeIcon icon={["fas", "angle-right"]} size="sm" />
+            </div>
           </div>
         </div>
       </div>
