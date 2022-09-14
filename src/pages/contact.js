@@ -61,6 +61,8 @@ const ContactFormPage = () => {
         emailPermissionToUse === "Yes"
           ? setEmailPermissionToUse("No")
           : setEmailPermissionToUse("Yes")
+        break
+      default:
     }
   }
 
@@ -203,11 +205,12 @@ const ContactFormPage = () => {
               </label>
             </div>
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="text"
               id="emailPermissionToUse"
               name="emailPermissionToUse"
               value={emailPermissionToUse}
+              readOnly
               hidden
             />
             <label htmlFor="emailPermissionToUse" hidden>
@@ -219,6 +222,7 @@ const ContactFormPage = () => {
               id="destination"
               name="destination"
               value={destination}
+              readOnly
               hidden
             />
             <label hidden htmlFor="destination">
