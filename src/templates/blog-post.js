@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Tags from "../components/tags"
@@ -10,14 +10,7 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import Blockquote from "../components/blockquote"
 import PostNav from "../components/post-nav"
 import Author from "../components/author"
-import {
-  EmailIcon,
-  EmailShareButton,
-  FacebookIcon,
-  FacebookShareButton,
-  TwitterIcon,
-  TwitterShareButton,
-} from "react-share"
+
 import ShareButtons from "../components/share-buttons"
 import BlockGallery from "../components/block-gallery"
 

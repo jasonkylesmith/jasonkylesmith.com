@@ -70,14 +70,6 @@ const PayButton = props => {
     if (window.focus) newWindow.focus()
   }
 
-  // This overrides the default checkout button click handler to show the embed modal
-  // instead of opening a new tab with the given link url
-  /*   document
-    .getElementById("embedded-checkout-modal-checkout-button")
-    .addEventListener("click", function (e) {
-      showCheckoutWindow(e)
-    }) */
-
   return (
     <div>
       <div>
