@@ -129,7 +129,7 @@ const AboutPage = () => {
               </div>
               <div className="col-12 col-lg-5 order-0 order-lg-0 mb-4 mb-lg-0 ps-0">
                 <img
-                  src={`http:${aboutPortrait.file.url}`}
+                  src={`https:${aboutPortrait.file.url}`}
                   className="img-fluid"
                   alt={aboutPortrait.description}
                   style={{ objectFit: "cover" }}
