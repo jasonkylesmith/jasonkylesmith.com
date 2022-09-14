@@ -211,7 +211,10 @@ const IndexPage = () => {
                   html={heroBody.childrenMarkdownRemark[0].html}
                 />
               </div>
-              <a href="/contact?destination=hero" className="btn mb-0">
+              <a
+                href="/contact?destination=hero"
+                className="btn mb-0 button-on-black"
+              >
                 {heroCtaText}
               </a>
             </div>
