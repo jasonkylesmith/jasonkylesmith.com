@@ -92,20 +92,24 @@ const SocialIcons = props => {
           className="mx-1 icon"
         />
       </a>
-      <button
-        onClick={() => {
-          togglePayVisibleDesktop()
-          togglePayVisibleMobile()
-        }}
-        ref={refButton}
-        className="icon"
-        style={{ borderWidth: 0 }}
-      >
-        <FontAwesomeIcon
-          icon={["fas", "dollar-sign"]}
-          className={`mx-1 icon ${props.version !== "desktop" ? "mobile" : ""}`}
-        />
-      </button>
+      {props?.version !== "author" && (
+        <button
+          onClick={() => {
+            togglePayVisibleDesktop()
+            togglePayVisibleMobile()
+          }}
+          ref={refButton}
+          className="icon"
+          style={{ borderWidth: 0 }}
+        >
+          <FontAwesomeIcon
+            icon={["fas", "dollar-sign"]}
+            className={`mx-1 icon ${
+              props.version !== "desktop" ? "mobile" : ""
+            }`}
+          />
+        </button>
+      )}
       {props?.version === "desktop" && payVisibleDesktop && (
         <div
           style={{ position: "absolute", right: 0, zIndex: 10 }}
