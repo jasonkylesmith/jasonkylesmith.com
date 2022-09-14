@@ -38,8 +38,6 @@ const useLightboxDisplay = (
 const LightboxContainer = props => {
   const { image, openLightbox, setOpenLightbox } = props
 
-  console.log("Props", props)
-
   const [closingLightbox, setClosingLightbox] = useState(false)
 
   const { ref, isLightboxVisible, setIsLightboxVisible } = useLightboxDisplay(

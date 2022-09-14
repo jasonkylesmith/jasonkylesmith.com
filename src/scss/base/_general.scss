@@ -443,6 +443,13 @@ a {
 .slick-slide {
   .about {
     padding: 0.5rem;
+
+    text-align: center;
+    width: auto !important;
+    img {
+      height: 200px;
+      margin: 0;
+    }
   }
 }
 

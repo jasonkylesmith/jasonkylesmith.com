@@ -123,7 +123,6 @@ const BlockGallery = props => {
         direction={"column"}
         margin={10}
         onClick={(event, index) => {
-          console.log("Event", event)
           //nextSibling, previousSibling
 
           const srcset = event.target.srcset.split(",")

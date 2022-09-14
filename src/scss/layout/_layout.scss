@@ -113,6 +113,20 @@ footer {
   }
 }
 
+.hero-container {
+  border-radius: 0.25rem;
+  min-width: min(100%, 700px) !important;
+
+  z-index: 1;
+}
+
+@media (max-width: $max-width-sm) {
+  .hero-container {
+    background-image: none !important;
+    background-color: rgba(0, 0, 0, 1);
+  }
+}
+
 .hero-image {
   position: absolute;
   height: 100vh;
