@@ -7,6 +7,8 @@ import { fab } from "@fortawesome/free-brands-svg-icons"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import PayButton from "./pay-button"
 import { useState } from "react"
+import { useRef } from "react"
+import { useEffect } from "react"
 
 library.add(fab)
 library.add(fas)
@@ -34,10 +36,47 @@ const SocialIcons = props => {
 
   const { linkedIn, twitter, gitHub, instagram } = data.contentfulAuthor
 
-  const [payVisible, setPayVisible] = useState(false)
-  const togglePayVisible = () => {
-    setPayVisible(!payVisible)
+  const [payVisibleDesktop, setPayVisibleDesktop] = useState(false)
+  const [payVisibleMobile, setPayVisibleMobile] = useState(false)
+
+  const togglePayVisibleDesktop = () => {
+    setPayVisibleDesktop(!payVisibleDesktop)
   }
+
+  const togglePayVisibleMobile = () => {
+    setPayVisibleMobile(!payVisibleMobile)
+  }
+
+  const refDesktop = useRef(null)
+  const refMobile = useRef(null)
+  const refButton = useRef(null)
+
+  const handleClickOutside = event => {
+    if (event.type === "click" && !refButton.current.contains(event.target)) {
+      if (
+        event.type === "click" &&
+        refDesktop.current &&
+        !refDesktop.current.contains(event.target)
+      ) {
+        setPayVisibleDesktop(false)
+      }
+
+      if (
+        event.type === "click" &&
+        refMobile.current &&
+        !refMobile.current.contains(event.target)
+      ) {
+        setPayVisibleMobile(false)
+      }
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true)
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true)
+    }
+  }, [])
 
   return (
     <div style={{ position: "relative" }}>
@@ -54,7 +93,11 @@ const SocialIcons = props => {
         />
       </a>
       <button
-        onClick={togglePayVisible}
+        onClick={() => {
+          togglePayVisibleDesktop()
+          togglePayVisibleMobile()
+        }}
+        ref={refButton}
         className="icon"
         style={{ borderWidth: 0 }}
       >
@@ -63,14 +106,18 @@ const SocialIcons = props => {
           className={`mx-1 icon ${props.version !== "desktop" ? "mobile" : ""}`}
         />
       </button>
-      {props?.version === "desktop" && payVisible && (
-        <div style={{ position: "absolute", right: 0, zIndex: 10 }}>
+      {props?.version === "desktop" && payVisibleDesktop && (
+        <div
+          style={{ position: "absolute", right: 0, zIndex: 10 }}
+          ref={refDesktop}
+        >
           <PayButton />
         </div>
       )}
-      {props?.version !== "desktop" && payVisible && (
+      {props?.version !== "desktop" && payVisibleMobile && (
         <div
           style={{ position: "absolute", bottom: 30, left: -80, zIndex: 10 }}
+          ref={refMobile}
         >
           <PayButton />
         </div>
