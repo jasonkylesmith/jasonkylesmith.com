@@ -1,6 +1,5 @@
 import * as React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -11,7 +10,6 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import MarkdownDisplay from "../components/markdown-display"
-import PayButton from "../components/pay-button"
 
 library.add(fas)
 
@@ -67,6 +65,7 @@ const IndexPage = () => {
       allContentfulHighlightCard {
         edges {
           node {
+            id
             title
             order
             body {
@@ -136,7 +135,7 @@ const IndexPage = () => {
   }
 
   const SliderPrevArrow = props => {
-    const { className, style, onClick } = props
+    const { className, onClick } = props
     return (
       <FontAwesomeIcon
         icon={["fas", "angle-left"]}
@@ -198,15 +197,14 @@ const IndexPage = () => {
           style={{ height: "80vh" }}
         >
           <div
-            className="hero-text d-flex flex-row"
+            className="hero-text d-flex flex-row hero-container"
             style={{
-              backgroundColor: "rgba(0,0,0,1)",
-
-              borderRadius: ".25rem",
-              zIndex: "1",
+              backgroundImage: `url(https:${heroPortrait.file.url})`,
+              backgroundPosition: "top right",
+              backgroundSize: "cover",
             }}
           >
-            <div className="p-4 text-white">
+            <div className="p-4 text-white col-12 col-md-6">
               <h1 className="block__heading pe-4 mb-0">{heroTitle}</h1>
               <div className="pe-2">
                 <MarkdownDisplay
@@ -218,7 +216,7 @@ const IndexPage = () => {
               </a>
             </div>
             <div className="p-0 d-none d-sm-block flex-fill">
-              <img
+              {/* <img
                 src={
                   heroPortrait
                     ? `https:${heroPortrait.file.url}`
@@ -235,7 +233,7 @@ const IndexPage = () => {
                     ? `https:${heroPortrait.description}`
                     : "stand in"
                 }
-              />
+              /> */}
             </div>
           </div>
         </div>
