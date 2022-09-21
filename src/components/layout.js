@@ -31,7 +31,10 @@ const Layout = ({ children }) => {
         <div className="row flex-fill">
           <main className="p-0">{children}</main>
         </div>
-        <div className="row">
+        <div
+          className="row"
+          style={{ position: "absolute", bottom: 0, width: "100%" }}
+        >
           <Footer version="desktop" />
           <Footer version="mobile" />
         </div>
