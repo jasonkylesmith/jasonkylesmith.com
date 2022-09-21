@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
         </div>
         <div
           className="row"
-          style={{ position: "absolute", bottom: 0, width: "100%" }}
+          style={{ position: "fixed", bottom: 0, width: "100%" }}
         >
           <Footer version="desktop" />
           <Footer version="mobile" />
