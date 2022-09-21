@@ -149,6 +149,16 @@ a:hover {
   font-weight: 600;
   position: relative;
 
+  &.button-on-black {
+    border: 2px solid white !important;
+    background-color: white;
+
+    &:hover {
+      transition: border $anim-duration ease-in-out 0ms;
+      border: 2px solid $accent !important;
+    }
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -223,6 +233,7 @@ a:hover {
   &.btn:hover {
     background-color: $accent;
     color: $light;
+    border: 2px solid $accent;
 
     &.scroll {
       background-color: $dark;

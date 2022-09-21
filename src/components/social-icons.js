@@ -52,7 +52,11 @@ const SocialIcons = props => {
   const refButton = useRef(null)
 
   const handleClickOutside = event => {
-    if (event.type === "click" && !refButton.current.contains(event.target)) {
+    if (
+      event.type === "click" &&
+      refButton &&
+      !refButton?.current?.contains(event.target)
+    ) {
       if (
         event.type === "click" &&
         refDesktop.current &&
