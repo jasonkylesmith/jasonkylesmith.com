@@ -5,17 +5,24 @@
   flex-direction: row;
 }
 
-.testimonial--left {
-}
-
-.testimonial--right {
-}
-
 .testimonial__image {
   width: 200px;
   height: 200px;
-  margin-left: 1rem;
-  margin-right: 1rem;
+}
+
+.testimonial--left {
+  .testimonial__image {
+    margin-right: 1rem;
+  }
+}
+
+.testimonial--right {
+  .testimonial__image {
+    margin-left: 1rem;
+  }
+}
+
+.testimonial--right {
 }
 
 .testimonial__content {
