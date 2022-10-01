@@ -71,6 +71,7 @@ const Testimonial = props => {
             <GatsbyImage
               image={image.gatsbyImageData}
               alt={image.description}
+              imgStyle={{ borderRadius: ".25rem" }}
               objectPosition="center center"
             />
           </div>

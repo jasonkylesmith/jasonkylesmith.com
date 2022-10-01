@@ -74,14 +74,14 @@
   }
 
   .testimonial__image {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     order: 1;
   }
 }
 
 @media (min-width: 1200px) {
   .testimonial {
-    width: 75%;
+    width: 100%;
   }
 }
