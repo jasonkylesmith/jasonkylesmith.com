@@ -7,7 +7,7 @@ const Testimonial = props => {
 
   if (variant === "left") {
     return (
-      <div className="ms-2 ms-md-0 testimonial testimonial--left">
+      <div className="ms-2 ms-md-0 testimonial testimonial--left justify-content-between">
         {image && (
           <div className="testimonial__image">
             <GatsbyImage
@@ -44,7 +44,7 @@ const Testimonial = props => {
     )
   } else if (variant === "right") {
     return (
-      <div className="ms-2 ms-md-0 testimonial testimonial--right">
+      <div className="ms-2 ms-md-0 testimonial testimonial--right justify-content-between">
         <div className="testimonial__content">
           {quote && (
             <div
@@ -71,6 +71,7 @@ const Testimonial = props => {
             <GatsbyImage
               image={image.gatsbyImageData}
               alt={image.description}
+              imgStyle={{ borderRadius: ".25rem" }}
               objectPosition="center center"
             />
           </div>

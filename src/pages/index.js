@@ -187,9 +187,11 @@ const IndexPage = () => {
     ],
   }
 
+  const test = [...testimonials, ...testimonials]
+
   return (
     <Layout>
-      <Seo title="Home" />
+      <Seo title="Home | Jason Kyle Smith" />
 
       <div className="row p-0 position-relative mt-2">
         <div
@@ -260,7 +262,7 @@ const IndexPage = () => {
             {testimonials.map((testimonial, index) => {
               return (
                 <div
-                  className="col col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-2 px-md-0"
+                  className="col-12 col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-2 px-md-0"
                   key={testimonial.node.id}
                 >
                   <Testimonial

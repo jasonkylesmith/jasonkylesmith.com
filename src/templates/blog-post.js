@@ -60,6 +60,9 @@ export const query = graphql`
       publishedDate(formatString: "Do MMMM, YYYY")
       featuredImage {
         title
+        file {
+          url
+        }
         gatsbyImageData(
           quality: 100
           layout: CONSTRAINED
@@ -195,7 +198,12 @@ const BlogPost = props => {
 
   return (
     <Layout>
-      <Seo title={title} />
+      <Seo
+        title={title}
+        url={`https://www.jasonkylesmith.com/blog/${slug}`}
+        description={excerpt.excerpt}
+        photo={featuredImage.file.url}
+      />
 
       <div className="row mt-4 px-2">
         <div className="col-md-8 offset-md-2">

@@ -87,7 +87,7 @@ const AboutPage = () => {
 
   return (
     <Layout>
-      <Seo title="About Me" />
+      <Seo title="About | Jason Kyle Smith" />
       <div className="container-fluid mt-4">
         <div className="row">
           <div className="col-md-8 offset-md-2">
