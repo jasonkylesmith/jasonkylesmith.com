@@ -62,7 +62,7 @@ function Seo({ description, lang, meta, title, photo, url }) {
           property: "og:image",
           content: photo
             ? `https:${photo}`
-            : `https://preview.jasonkylesmith.com${defaultOg}`,
+            : `https://images.ctfassets.net/zidjz73fa9st/6JoQ8LxQyK8xCyJinQS02U/c6cac74c5a73e3cd860e9a235cf742c0/default-og-image.png`,
         },
         {
           name: `twitter:card`,
