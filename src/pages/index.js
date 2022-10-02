@@ -191,7 +191,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <Seo title="Home" />
+      <Seo title="Home | Jason Kyle Smith" />
 
       <div className="row p-0 position-relative mt-2">
         <div

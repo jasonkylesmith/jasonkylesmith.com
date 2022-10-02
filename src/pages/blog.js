@@ -53,7 +53,7 @@ const Blog = () => {
 
   return (
     <Layout>
-      <Seo title="Blog" />
+      <Seo title="Blog | Jason Kyle Smith" />
 
       <div className="row mt-4 px-md-2 px-2">
         <div className="col-12 col-lg-12">
