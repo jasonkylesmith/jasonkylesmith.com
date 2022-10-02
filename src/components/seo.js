@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import defaultOg from "../images/default-og-image.png"
 
-function Seo({ description, lang, meta, title, photo }) {
+function Seo({ description, lang, meta, title, photo, url }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -53,6 +53,10 @@ function Seo({ description, lang, meta, title, photo }) {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: "og:url",
+          content: url ? url : `https://www.jasonkylesmith.com`,
         },
         {
           property: "og:image",

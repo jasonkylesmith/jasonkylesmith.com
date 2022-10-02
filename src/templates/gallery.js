@@ -17,6 +17,11 @@ export const query = graphql`
     contentfulGallery(slug: { eq: $slug }) {
       contentful_id
       name
+      featuredImage {
+        file {
+          url
+        }
+      }
       category
       slug
       blocks {
@@ -122,11 +127,16 @@ const Gallery = props => {
   /* const { title, description, tags, client, tools } =
     props.data.contentfulProject */
 
-  const { blocks, name, category, slug } = props.data.contentfulGallery
+  const { blocks, name, category, slug, featuredImage } =
+    props.data.contentfulGallery
 
   return (
     <Layout>
-      <Seo title={name} />
+      <Seo
+        title={name}
+        url={`https://www.jasonkylesmith.com/${category}/${slug}`}
+        photo={featuredImage.file.url}
+      />
 
       <div className="row mt-4 px-2">
         <div className="col-sm-8 offset-sm-2 mb-2">

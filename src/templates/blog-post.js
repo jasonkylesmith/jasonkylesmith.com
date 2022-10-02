@@ -200,6 +200,7 @@ const BlogPost = props => {
     <Layout>
       <Seo
         title={title}
+        url={`https://www.jasonkylesmith.com/blog/${slug}`}
         description={excerpt.excerpt}
         photo={featuredImage.file.url}
       />
