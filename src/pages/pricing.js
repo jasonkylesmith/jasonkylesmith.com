@@ -37,6 +37,17 @@ const PrincingPage = props => {
             discountedPrice
             discountText
             category
+            image {
+              description
+              gatsbyImageData(
+                quality: 100
+                layout: CONSTRAINED
+                resizingBehavior: FILL
+                aspectRatio: 2
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
           }
         }
       }
@@ -51,7 +62,7 @@ const PrincingPage = props => {
     <Layout>
       <Seo title="Pricing" />
 
-      <div className="row mt-4 px-2">
+      <div className="row mt-4 px-2" style={{ paddingBottom: "2.5rem" }}>
         <div className="col-12 col-lg-12">
           <div className="row">
             <div className="col-md-8 offset-md-2">

@@ -1,3 +1,4 @@
+import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 
 const PricingCard = props => {
@@ -9,20 +10,27 @@ const PricingCard = props => {
     discountedPrice,
     discountText,
     category,
+    image,
   } = props
 
   return (
-    <div className="col-12 col-lg-6">
+    <div className="col-12 col-lg-6 px-0">
       <div className="card pricing h-100 shadow-sm">
-        <div className="card-header pricing__header">
+        <div className="card-header pricing__header p-0 pb-2">
           <h4 className="block__heading">{title}</h4>
         </div>
-        <div className="card-body pricing__body">
-          <div
+        <div className="card-body pricing__body p-0">
+          {image && (
+            <GatsbyImage
+              image={image.gatsbyImageData}
+              alt={image.description}
+            />
+          )}
+          {/* <div
             dangerouslySetInnerHTML={{
               __html: body.childrenMarkdownRemark[0].html,
             }}
-          />
+          /> */}
         </div>
         <div className="card-footer pricing__footer">
           <ul>
