@@ -2,8 +2,6 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
-import heroImage from "../images/standinportrait.png"
-
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -28,7 +26,6 @@ const IndexPage = () => (
           SEE MY RECENT WORK
         </a>
       </div>
-      <img src={heroImage} alt="stand in for myself" className="hero-image" />
     </div>
     <div className="mt-4">
       <h2>More Down Here!</h2>
