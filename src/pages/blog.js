@@ -5,7 +5,6 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import Tags from "../components/tags"
@@ -65,7 +64,10 @@ const Blog = () => {
               <div className="row">
                 {filteredEdges.map((post, index) => {
                   return (
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0">
+                    <div
+                      className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0"
+                      key={index}
+                    >
                       {post.node.featuredImage && (
                         <Link
                           to={`/blog/${post.node.slug}`}

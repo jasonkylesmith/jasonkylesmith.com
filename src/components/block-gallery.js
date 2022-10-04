@@ -8,14 +8,14 @@ const BlockGallery = props => {
   const [lightboxImg, setLightboxImg] = useState("")
   const [lightboxImgSiblings, setLightboxImgSiblings] = useState({})
 
-  const { images, variant } = props.block
+  const { images } = props.block
 
-  const customSizes = ["(min-width: 480px) 10vw,(min-width: 1024px) 10vw,10vw"]
+  /*   const customSizes = ["(min-width: 480px) 10vw,(min-width: 1024px) 10vw,10vw"]
 
-  const altSizes = ["12vw"]
+  const altSizes = ["12vw"] */
 
-  let maxItems = 5000
-  let columns = 3
+  /* let maxItems = 5000
+     let columns = 3
 
   switch (variant) {
     case "All Small":
@@ -40,26 +40,27 @@ const BlockGallery = props => {
       columns = 2
       break
     default:
-  }
+  } */
 
   let photoArray = []
-  photoArray = images.map(image => {
+  photoArray = images.map((image, index) => {
     const { url } = image.file
     const { height, width } = image.file.details.image
     const { srcSet, sizes } = image.gatsbyImageData.images.sources[0]
     const { description } = image
 
     return {
-      // src: `https:${url}`,
+      src: `https:${url}`,
       height: height,
       width: width,
       srcSet,
       sizes,
       alt: description,
+      key: `${index}-${url}`,
     }
   })
 
-  let galleryClass
+  /*   let galleryClass
   let galleryWrapperClass = ""
 
   switch (variant) {
@@ -88,12 +89,12 @@ const BlockGallery = props => {
       galleryWrapperClass = "one-to-two-wrapper"
       break
     default:
-  }
+  } */
 
-  const imgOnClick = img => {
+  /*   const imgOnClick = img => {
     setLightboxImg(img.nativeEvent.target.src)
     setOpenLightbox(true)
-  }
+  } */
 
   const imgOnClickString = img => {
     setLightboxImg(img)

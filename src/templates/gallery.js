@@ -1,10 +1,8 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Tags from "../components/tags"
 import Seo from "../components/seo"
-import { GatsbyImage } from "gatsby-plugin-image"
 import BlockStory from "../components/block-story"
 import BlockGallery from "../components/block-gallery"
 import BlockFeature from "../components/block-feature"
@@ -40,7 +38,11 @@ export const query = graphql`
                 }
               }
               image {
-                gatsbyImageData
+                gatsbyImageData(
+                  quality: 100
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
                 description
               }
               caption
@@ -78,6 +80,8 @@ export const query = graphql`
               breakpoints: [200, 400, 600, 800, 1000, 1600]
               sizes: "(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw"
               quality: 100
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
             )
             file {
               url
@@ -103,7 +107,11 @@ export const query = graphql`
           name
           image {
             id
-            gatsbyImageData
+            gatsbyImageData(
+              quality: 100
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
             description
           }
           imageFloat
@@ -139,7 +147,7 @@ const Gallery = props => {
       />
 
       <div className="row mt-4 px-2">
-        <div className="col-sm-8 offset-sm-2 mb-2">
+        <div className="col-sm-8 offset-sm-2 mb-2 pb-5">
           <ShareButtons
             title={name}
             slug={slug}
@@ -152,28 +160,40 @@ const Gallery = props => {
 
             if (id === "blockStory") {
               return (
-                <div>
-                  <BlockStory block={block} key={block.id} />
+                <div key={block.id}>
+                  <BlockStory block={block} />
                 </div>
               )
             }
 
             if (id === "blockFeature") {
               return (
-                <div>
-                  <BlockFeature block={block} key={block.id} />
+                <div key={block.id}>
+                  <BlockFeature block={block} />
                 </div>
               )
             }
 
             if (id === "blockGallery") {
               return (
-                <div>
-                  <BlockGallery block={block} key={block.id} />
+                <div key={block.id}>
+                  <BlockGallery block={block} />
                 </div>
               )
             }
+
+            return null
           })}
+          {category === "Portraiture" && (
+            <div className="text-center mt-4">
+              <a
+                href={`/contact?destination=${slug}`}
+                className="btn mb-0 mt-4"
+              >
+                Interested in making a photo together?
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </Layout>

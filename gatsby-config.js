@@ -10,6 +10,12 @@ module.exports = {
     siteUrl: `https://www.jasonkylesmith.com`,
   },
   plugins: [
+    {
+      resolve: "@mkitio/gatsby-theme-password-protect",
+      options: {
+        password: "jks", // delete or `undefined` to disable password protection
+      },
+    },
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
