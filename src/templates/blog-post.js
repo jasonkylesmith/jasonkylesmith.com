@@ -234,6 +234,7 @@ const BlogPost = props => {
                 <BlockGallery block={gallery} key={gallery.id} />
               </div>
             )}
+            <div className="ending" />
             <Author />
             <PostNav edges={navEdges} />
           </div>
