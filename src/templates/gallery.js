@@ -155,6 +155,8 @@ const Gallery = props => {
             sources={["Facebook", "Twitter", "Email", "Clipboard"]}
           />
 
+          <h1 className="block__heading">{name}</h1>
+
           {blocks.map(block => {
             const { id } = block.sys.contentType.sys
 
