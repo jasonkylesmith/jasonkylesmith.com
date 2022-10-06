@@ -299,6 +299,7 @@ const IndexPage = () => {
               backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               height: "300px",
+              display: "flex",
               alignItems: "center",
             }}
           >
