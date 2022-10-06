@@ -50,8 +50,15 @@ const IndexPage = () => {
               description
               file {
                 url
+                details {
+                  image {
+                    height
+                  }
+                }
               }
             }
+            footerCtaBody
+            footerCtaButtonText
             testimonialsOn
             heroSlider {
               file {
@@ -120,6 +127,8 @@ const IndexPage = () => {
     heroPortrait,
     testimonialsOn,
     heroSlider,
+    footerCtaBody,
+    footerCtaButtonText,
   } = data.allContentfulSitewideCopy.edges[0].node
   const { edges: highlightCards } = data.allContentfulHighlightCard
 
@@ -274,6 +283,33 @@ const IndexPage = () => {
             })}
           </div>
         )}
+
+        <div
+          className="row m-0 py-5"
+          style={{
+            backgroundColor: "black",
+            color: "white",
+          }}
+        >
+          <div
+            className="col col-md-8 offset-md-2 mb-4 px-4 px-md-0"
+            style={{
+              backgroundImage: `url(https:${heroPortrait.file.url})`,
+              backgroundPosition: "center right",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              height: "300px",
+              alignItems: "center",
+            }}
+          >
+            <div className="col-6" style={{ textAlign: "center" }}>
+              <p>{footerCtaBody}</p>
+              <a href="#" className="btn button-on-black mb-0">
+                {footerCtaButtonText}
+              </a>
+            </div>
+          </div>
+        </div>
 
         <div
           className="p-0"
