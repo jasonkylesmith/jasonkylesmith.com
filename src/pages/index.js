@@ -278,10 +278,7 @@ const IndexPage = () => {
               alignItems: "center",
             }}
           >
-            <div
-              className="col-6 col-md-5 offset-md-1 col-lg-4 offset-lg-2"
-              style={{ textAlign: "center" }}
-            >
+            <div className="col-6" style={{ textAlign: "left" }}>
               <p>{footerCtaBody}</p>
               <a
                 href="/contact?destination=footerhero"
