@@ -126,7 +126,6 @@ const IndexPage = () => {
     heroCtaText,
     heroPortrait,
     testimonialsOn,
-    heroSlider,
     footerCtaBody,
     footerCtaButtonText,
   } = data.allContentfulSitewideCopy.edges[0].node
@@ -154,28 +153,6 @@ const IndexPage = () => {
     )
   }
 
-  const sliderSettings = {
-    dots: false,
-    infinite: true,
-    autoplay: true,
-    lazyLoad: false,
-    autoplaySpeed: 7000,
-    speed: 2000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    className: "slider-div",
-    centerMode: true,
-    centerPadding: "0px",
-    cssEase: "linear",
-    arrows: false,
-    appendDots: dots => <ul>{dots}</ul>,
-    fade: true,
-    pauseOnHover: false,
-    pauseOnFocus: false,
-    pauseOnDotsHover: false,
-    swipe: false,
-  }
-
   const highlightSettings = {
     dots: false,
     infinite: true,
@@ -195,8 +172,6 @@ const IndexPage = () => {
       { breakpoint: 900, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
   }
-
-  const test = [...testimonials, ...testimonials]
 
   return (
     <Layout>
@@ -303,9 +278,15 @@ const IndexPage = () => {
               alignItems: "center",
             }}
           >
-            <div className="col-6" style={{ textAlign: "center" }}>
+            <div
+              className="col-6 col-md-5 offset-md-1 col-lg-4 offset-lg-2"
+              style={{ textAlign: "center" }}
+            >
               <p>{footerCtaBody}</p>
-              <a href="#" className="btn button-on-black mb-0">
+              <a
+                href="/contact?destination=footerhero"
+                className="btn button-on-black mb-0"
+              >
                 {footerCtaButtonText}
               </a>
             </div>
