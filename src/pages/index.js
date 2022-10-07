@@ -180,7 +180,7 @@ const IndexPage = () => {
       <div className="row p-0 position-relative mt-2">
         <div
           className="col-12 d-flex justify-content-center align-items-center p-4 p-md-0"
-          style={{ height: "80vh" }}
+          style={{ height: "70vh" }}
         >
           <div
             className="hero-text d-flex flex-row hero-container"
@@ -290,6 +290,10 @@ const IndexPage = () => {
           </div>
         </div>
 
+        {/* 
+        
+            WHEN HERO IMAGE IS CREATED AND READY TO BE USED
+
         <div
           className="p-0"
           style={{
@@ -300,21 +304,15 @@ const IndexPage = () => {
             zIndex: 0,
           }}
         >
-          {/* <Slider {...sliderSettings}>
-            {heroSlider &&
-              heroSlider.map(image => {
-                return (
-                  <div className="slider-div">
-                    <img
-                      src={`https:${image.file.url}`}
-                      loading="lazy"
-                      alt={`${image.description}`}
-                    />
-                  </div>
-                )
-              })}
-          </Slider> */}
-        </div>
+          <div className="slider-div">
+            <img
+              src={heroImage}
+              loading="lazy"
+              alt={`Description`}
+              style={{ objectPosition: "center bottom" }}
+            />
+          </div>
+        </div> */}
       </div>
     </Layout>
   )
