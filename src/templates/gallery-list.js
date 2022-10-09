@@ -7,13 +7,17 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 export const query = graphql`
   query ($category: String!) {
-    allContentfulGallery(filter: { category: { eq: $category } }) {
+    allContentfulGallery(
+      sort: { fields: order }
+      filter: { category: { eq: $category } }
+    ) {
       edges {
         node {
           contentful_id
           name
           slug
           category
+          order
           featuredImage {
             title
             gatsbyImageData(
