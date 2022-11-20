@@ -66,6 +66,19 @@ const Layout = ({ children }) => {
                 viewBox="0 0 448 1"
               />
             </a>
+
+            <a
+              rel="me"
+              href="https://universeodon.com/@jasonkylesmith"
+              target="_new"
+              className="icon"
+            >
+              <FontAwesomeIcon
+                icon={["fab", "mastodon"]}
+                className="mx-1 icon"
+                viewBox="0 0 448 1"
+              />
+            </a>
           </div>
         </div>
         {/* SIDEBAR WRAPPER*/}
