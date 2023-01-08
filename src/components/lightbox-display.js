@@ -60,9 +60,39 @@ const LightboxContainer = props => {
     }
   }
 
+  const checkSwipe = () => {
+    if (touchEndX < touchStartX) {
+      console.log("swiped left")
+      moveImgIndex("right")
+    }
+    if (touchEndX > touchStartX) {
+      console.log("swiped right")
+      moveImgIndex("left")
+    }
+  }
+
+  let touchStartX = 0
+  let touchEndX = 0
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside, true)
     document.addEventListener("keydown", handleClickOutside, true)
+    document.addEventListener(
+      "touchstart",
+      e => {
+        touchStartX = e.changedTouches[0].screenX
+      },
+      true
+    )
+    document.addEventListener(
+      "touchend",
+      e => {
+        touchEndX = e.changedTouches[0].screenX
+        checkSwipe()
+      },
+      true
+    )
+
     return () => {
       document.removeEventListener("click", handleClickOutside, true)
       document.removeEventListener("keydown", handleClickOutside, true)
@@ -70,6 +100,7 @@ const LightboxContainer = props => {
   }, [])
 
   const [closingLightbox, setClosingLightbox] = useState(false)
+  const [imageChanging, setImageChanging] = useState(false)
 
   return openLightbox ? (
     <div
@@ -79,11 +110,19 @@ const LightboxContainer = props => {
       style={{ backdropFilter: "blur(8px)" }}
     >
       <span
-        style={{ color: "white", opacity: imgIndex > 0 ? 1 : 0 }}
-        onClick={() => (imgIndex > 0 ? moveImgIndex("left") : closeLightbox())}
+        style={{
+          color: "white",
+          cursor: "pointer",
+          opacity: imgIndex > 0 ? 1 : 0,
+          padding: "1rem",
+          fontSize: "2rem",
+        }}
+        onClick={() => {
+          imgIndex > 0 ? moveImgIndex("left") : closeLightbox()
+        }}
         ref={leftRef}
       >
-        Left
+        {"<"}
       </span>
 
       {imgIndex > 0 && images[imgIndex - 2] && (
@@ -102,8 +141,11 @@ const LightboxContainer = props => {
 
       <span
         style={{
+          cursor: "pointer",
           color: "white",
           opacity: imgIndex !== images.length - 1 ? 1 : 0,
+          padding: "1rem",
+          fontSize: "2rem",
         }}
         onClick={() =>
           imgIndex !== images.length - 1
@@ -112,7 +154,7 @@ const LightboxContainer = props => {
         }
         ref={rightRef}
       >
-        Right
+        {">"}
       </span>
     </div>
   ) : (

@@ -19,6 +19,15 @@
     height: auto;
     width: auto;
     z-index: 11;
+    border-radius: 0.25rem;
+  }
+}
+
+@media (max-width: $max-width-sm) {
+  .lightbox__container {
+    img {
+      max-width: 80vw;
+    }
   }
 }
 

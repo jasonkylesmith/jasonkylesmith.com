@@ -6,8 +6,10 @@ import LightboxContainer from "./lightbox-display"
 /* TODO
 
 [ ] Transition for changes of images
-[ ] Left and Right arrow icons in LightboxContainer
-[ ] Height of horizontal images should be same as for vertical images
+[X] Left and Right arrow icons in LightboxContainer
+[X] Handle swiping on mobile
+[X] Height of horizontal images should be same as for vertical images
+[X] On mobile, reduce max-width to allow arrows to show on screen
 [ ] Smartly handle image sizes to reduce load times, 
         potentially get rid of one or all hidden preload images
 
