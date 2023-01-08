@@ -126,7 +126,6 @@ const IndexPage = () => {
     heroCtaText,
     heroPortrait,
     testimonialsOn,
-    heroSlider,
     footerCtaBody,
     footerCtaButtonText,
   } = data.allContentfulSitewideCopy.edges[0].node
@@ -154,28 +153,6 @@ const IndexPage = () => {
     )
   }
 
-  const sliderSettings = {
-    dots: false,
-    infinite: true,
-    autoplay: true,
-    lazyLoad: false,
-    autoplaySpeed: 7000,
-    speed: 2000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    className: "slider-div",
-    centerMode: true,
-    centerPadding: "0px",
-    cssEase: "linear",
-    arrows: false,
-    appendDots: dots => <ul>{dots}</ul>,
-    fade: true,
-    pauseOnHover: false,
-    pauseOnFocus: false,
-    pauseOnDotsHover: false,
-    swipe: false,
-  }
-
   const highlightSettings = {
     dots: false,
     infinite: true,
@@ -196,8 +173,6 @@ const IndexPage = () => {
     ],
   }
 
-  const test = [...testimonials, ...testimonials]
-
   return (
     <Layout>
       <Seo title="Home | Jason Kyle Smith" />
@@ -205,7 +180,7 @@ const IndexPage = () => {
       <div className="row p-0 position-relative mt-2">
         <div
           className="col-12 d-flex justify-content-center align-items-center p-4 p-md-0"
-          style={{ height: "80vh" }}
+          style={{ height: "70vh" }}
         >
           <div
             className="hero-text d-flex flex-row hero-container"
@@ -303,14 +278,21 @@ const IndexPage = () => {
               alignItems: "center",
             }}
           >
-            <div className="col-6" style={{ textAlign: "center" }}>
+            <div className="col-6" style={{ textAlign: "left" }}>
               <p>{footerCtaBody}</p>
-              <a href="#" className="btn button-on-black mb-0">
+              <a
+                href="/contact?destination=footerhero"
+                className="btn button-on-black mb-0"
+              >
                 {footerCtaButtonText}
               </a>
             </div>
           </div>
         </div>
+
+        {/* 
+        
+            WHEN HERO IMAGE IS CREATED AND READY TO BE USED
 
         <div
           className="p-0"
@@ -322,21 +304,15 @@ const IndexPage = () => {
             zIndex: 0,
           }}
         >
-          {/* <Slider {...sliderSettings}>
-            {heroSlider &&
-              heroSlider.map(image => {
-                return (
-                  <div className="slider-div">
-                    <img
-                      src={`https:${image.file.url}`}
-                      loading="lazy"
-                      alt={`${image.description}`}
-                    />
-                  </div>
-                )
-              })}
-          </Slider> */}
-        </div>
+          <div className="slider-div">
+            <img
+              src={heroImage}
+              loading="lazy"
+              alt={`Description`}
+              style={{ objectPosition: "center bottom" }}
+            />
+          </div>
+        </div> */}
       </div>
     </Layout>
   )

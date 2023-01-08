@@ -1,14 +1,41 @@
-import React, { useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import Gallery from "react-photo-gallery"
 
 import LightboxContainer from "./lightbox-display"
 
+/* TODO
+
+[ ] Transition for changes of images
+[X] Left and Right arrow icons in LightboxContainer
+[X] Handle swiping on mobile
+[X] Height of horizontal images should be same as for vertical images
+[X] On mobile, reduce max-width to allow arrows to show on screen
+[ ] Smartly handle image sizes to reduce load times, 
+        potentially get rid of one or all hidden preload images\
+[ ] Memoize creation of photoArray
+[ ] Add ability to customize amount of gallery rows
+
+*/
+
 const BlockGallery = props => {
   const [openLightbox, setOpenLightbox] = useState(false)
-  const [lightboxImg, setLightboxImg] = useState("")
-  const [lightboxImgSiblings, setLightboxImgSiblings] = useState({})
+  const [imgIndex, setImgIndex] = useState()
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth)
 
-  const { images } = props.block
+  const imgIndexRef = useRef(0)
+
+  const { images, columns } = props.block
+
+  useEffect(() => {
+    const getInnerWidth = () => {
+      setInnerWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", () => getInnerWidth(), true)
+
+    return () =>
+      window.removeEventListener("resize", () => getInnerWidth(), true)
+  }, [])
 
   /*   const customSizes = ["(min-width: 480px) 10vw,(min-width: 1024px) 10vw,10vw"]
 
@@ -42,7 +69,7 @@ const BlockGallery = props => {
     default:
   } */
 
-  let photoArray = []
+  /*   let photoArray = []
   photoArray = images.map((image, index) => {
     const { url } = image.file
     const { height, width } = image.file.details.image
@@ -56,9 +83,36 @@ const BlockGallery = props => {
       srcSet,
       sizes,
       alt: description,
+
+      index,
       key: `${index}-${url}`,
     }
-  })
+  }) */
+
+  const photoArray = useMemo(() => {
+    const buildPhotoArray = () => {
+      return images.map((image, index) => {
+        const { url } = image.file
+        const { height, width } = image.file.details.image
+        const { srcSet, sizes } = image.gatsbyImageData.images.sources[0]
+        const { description } = image
+
+        return {
+          src: `https:${url}`,
+          height: height,
+          width: width,
+          srcSet,
+          sizes,
+          alt: description,
+
+          index,
+          key: `${index}-${url}`,
+        }
+      })
+    }
+
+    return buildPhotoArray()
+  }, [images])
 
   /*   let galleryClass
   let galleryWrapperClass = ""
@@ -96,14 +150,19 @@ const BlockGallery = props => {
     setOpenLightbox(true)
   } */
 
-  const imgOnClickString = img => {
-    setLightboxImg(img)
-    setOpenLightbox(true)
+  const moveImgIndex = direction => {
+    if (direction === "left" && imgIndexRef.current > 0) {
+      // setImgIndex(imgIndexRef - 1)
+      imgIndexRef.current = imgIndexRef.current - 1
+      setImgIndex(imgIndexRef.current)
+    }
+
+    if (direction === "right" && imgIndexRef.current < photoArray?.length - 1) {
+      // setImgIndex(imgIndexRef + 1)
+      imgIndexRef.current = imgIndexRef.current + 1
+      setImgIndex(imgIndexRef.current)
+    }
   }
-
-  // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
-
-  /* use a description to allow a component to query graphql for an image based on unique description. Contentful will have to have unique descriptions for each image for this to work. */
 
   return (
     <div
@@ -112,33 +171,53 @@ const BlockGallery = props => {
       }}
     >
       <LightboxContainer
-        image={lightboxImg}
+        images={photoArray}
         openLightbox={openLightbox}
         setOpenLightbox={setOpenLightbox}
-        setLightboxImg={setLightboxImg}
-        lightboxImgSiblings={lightboxImgSiblings}
+        moveImgIndex={moveImgIndex}
+        imgIndex={imgIndex}
       />
 
       <Gallery
         photos={photoArray}
         direction={"column"}
         margin={10}
-        onClick={(event, index) => {
-          //nextSibling, previousSibling
+        columns={
+          columns
+            ? innerWidth > 992
+              ? columns
+              : innerWidth > 768
+              ? Math.round(columns / 2)
+              : 1
+            : undefined
+        }
+        onClick={(event, photos) => {
+          imgIndexRef.current = photos.index
+          setImgIndex(photos.index)
 
-          const srcset = event.target.srcset.split(",")
-          const largest = srcset[srcset.length - 1]
-          const noQuery = largest.split("?")
-          imgOnClickString(noQuery[0].replace("\n", ""))
-
-          setLightboxImgSiblings({
-            prev: event.target.previousSibling
-              ? event.target.previousSibling
-              : null,
-            next: event.target.nextSibling ? event.target.nextSibling : null,
-          })
+          setOpenLightbox(true)
         }}
       />
+
+      {/* <div className="gallery-test">
+        <div className="gallery-test--container">
+          {photoArray.map(photo => {
+            const isVertical = photo.width < photo.height ? true : false
+
+            return (
+              <div className="item">
+                <div className="inner-item">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className={isVertical ? "vertical" : "horizontal"}
+                  />
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div> */}
 
       {/*       <div
         style={{

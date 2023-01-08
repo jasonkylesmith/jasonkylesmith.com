@@ -23,7 +23,7 @@ const ShareButtons = props => {
     <div className="share-container">
       {sources.includes("Facebook") && (
         <FacebookShareButton
-          url={`https://preview.jasonkylesmith.com/${directory}/${slug}`}
+          url={`https://www..jasonkylesmith.com/${directory}/${slug}`}
 
           /* hashtag="#hashtag" */
         >
@@ -37,7 +37,7 @@ const ShareButtons = props => {
       )}
       {sources.includes("Twitter") && (
         <TwitterShareButton
-          url={`https://preview.jasonkylesmith.com/${directory}/${slug}`}
+          url={`https://www.jasonkylesmith.com/${directory}/${slug}`}
           title={title}
           via="jasonkylesmith"
           /* hashtags={["hashtag"]} */
@@ -52,7 +52,7 @@ const ShareButtons = props => {
       )}
       {sources.includes("Email") && (
         <EmailShareButton
-          url={`https://preview.jasonkylesmith.com/${directory}/${slug}`}
+          url={`https://www.jasonkylesmith.com/${directory}/${slug}`}
           subject={`${title} from jasonkylesmith.com`}
         >
           <div className="share__react-share-container" title="Share via Email">
@@ -63,7 +63,7 @@ const ShareButtons = props => {
       {sources.includes("Clipboard") && (
         <div className="share__icon-container" title="Copy to Clipboard">
           <CopyToClipboard
-            text={`https://preview.jasonkylesmith.com/${directory}/${slug}`}
+            text={`https://www.jasonkylesmith.com/${directory}/${slug}`}
           >
             <FontAwesomeIcon
               icon={["fas", "clipboard"]}
