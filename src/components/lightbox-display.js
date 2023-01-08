@@ -26,14 +26,14 @@ const LightboxContainer = props => {
 
   useEffect(() => {
     const checkSwipe = () => {
-      if (touchEndX < touchStartX) {
-        console.log("swiped left")
+      /*       if (touchEndX < touchStartX) {
+        
         moveImgIndex("right")
       }
       if (touchEndX > touchStartX) {
-        console.log("swiped right")
+       
         moveImgIndex("left")
-      }
+      } */
     }
 
     const handleClickOutside = event => {
@@ -76,7 +76,7 @@ const LightboxContainer = props => {
 
     document.addEventListener("click", handleClickOutside, true)
     document.addEventListener("keydown", handleClickOutside, true)
-    document.addEventListener(
+    /* document.addEventListener(
       "touchstart",
       e => {
         touchStartX = e.changedTouches[0].screenX
@@ -90,12 +90,12 @@ const LightboxContainer = props => {
         checkSwipe()
       },
       true
-    )
+    ) */
 
     return () => {
       document.removeEventListener("click", handleClickOutside, true)
       document.removeEventListener("keydown", handleClickOutside, true)
-      document.removeEventListener(
+      /* document.removeEventListener(
         "touchstart",
         e => {
           touchStartX = e.changedTouches[0].screenX
@@ -109,7 +109,7 @@ const LightboxContainer = props => {
           checkSwipe()
         },
         true
-      )
+      ) */
     }
   }, [moveImgIndex, closeLightbox])
 
