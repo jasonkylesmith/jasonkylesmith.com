@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import Gallery from "react-photo-gallery"
 
 import LightboxContainer from "./lightbox-display"
@@ -11,18 +11,31 @@ import LightboxContainer from "./lightbox-display"
 [X] Height of horizontal images should be same as for vertical images
 [X] On mobile, reduce max-width to allow arrows to show on screen
 [ ] Smartly handle image sizes to reduce load times, 
-        potentially get rid of one or all hidden preload images
+        potentially get rid of one or all hidden preload images\
+[ ] Memoize creation of photoArray
+[ ] Add ability to customize amount of gallery rows
 
 */
 
 const BlockGallery = props => {
   const [openLightbox, setOpenLightbox] = useState(false)
-
   const [imgIndex, setImgIndex] = useState()
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth)
 
   const imgIndexRef = useRef(0)
 
-  const { images } = props.block
+  const { images, columns } = props.block
+
+  useEffect(() => {
+    const getInnerWidth = () => {
+      setInnerWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", () => getInnerWidth(), true)
+
+    return () =>
+      window.removeEventListener("resize", () => getInnerWidth(), true)
+  }, [])
 
   /*   const customSizes = ["(min-width: 480px) 10vw,(min-width: 1024px) 10vw,10vw"]
 
@@ -56,7 +69,7 @@ const BlockGallery = props => {
     default:
   } */
 
-  let photoArray = []
+  /*   let photoArray = []
   photoArray = images.map((image, index) => {
     const { url } = image.file
     const { height, width } = image.file.details.image
@@ -74,7 +87,32 @@ const BlockGallery = props => {
       index,
       key: `${index}-${url}`,
     }
-  })
+  }) */
+
+  const photoArray = useMemo(() => {
+    const buildPhotoArray = () => {
+      return images.map((image, index) => {
+        const { url } = image.file
+        const { height, width } = image.file.details.image
+        const { srcSet, sizes } = image.gatsbyImageData.images.sources[0]
+        const { description } = image
+
+        return {
+          src: `https:${url}`,
+          height: height,
+          width: width,
+          srcSet,
+          sizes,
+          alt: description,
+
+          index,
+          key: `${index}-${url}`,
+        }
+      })
+    }
+
+    return buildPhotoArray()
+  }, [images])
 
   /*   let galleryClass
   let galleryWrapperClass = ""
@@ -126,10 +164,6 @@ const BlockGallery = props => {
     }
   }
 
-  // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
-
-  /* use a description to allow a component to query graphql for an image based on unique description. Contentful will have to have unique descriptions for each image for this to work. */
-
   return (
     <div
       style={{
@@ -148,6 +182,15 @@ const BlockGallery = props => {
         photos={photoArray}
         direction={"column"}
         margin={10}
+        columns={
+          columns
+            ? innerWidth > 992
+              ? columns
+              : innerWidth > 768
+              ? Math.round(columns / 2)
+              : 1
+            : undefined
+        }
         onClick={(event, photos) => {
           imgIndexRef.current = photos.index
           setImgIndex(photos.index)
