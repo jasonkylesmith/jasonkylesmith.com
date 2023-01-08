@@ -73,6 +73,7 @@ export const query = graphql`
         ... on ContentfulBlockGallery {
           id
           name
+          columns
           images {
             id
             description
