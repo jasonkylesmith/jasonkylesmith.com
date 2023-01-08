@@ -204,7 +204,7 @@ const BlogPost = props => {
         title={title}
         url={`https://www.jasonkylesmith.com/blog/${slug}`}
         description={excerpt.excerpt}
-        photo={featuredImage.file.url}
+        photo={featuredImage?.file?.url}
       />
 
       <div className="row mt-4 px-2">

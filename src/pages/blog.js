@@ -68,13 +68,13 @@ const Blog = () => {
                       className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0"
                       key={index}
                     >
-                      {post.node.featuredImage && (
-                        <Link
-                          to={`/blog/${post.node.slug}`}
-                          className="gallery-link"
-                        >
-                          <div className="">
-                            <div className="position-relative">
+                      <Link
+                        to={`/blog/${post.node.slug}`}
+                        className="gallery-link"
+                      >
+                        <div className="">
+                          <div className="position-relative">
+                            {post.node.featuredImage && (
                               <GatsbyImage
                                 className=""
                                 imgStyle={{ borderRadius: ".25rem" }}
@@ -82,23 +82,23 @@ const Blog = () => {
                                 image={post.node.featuredImage.gatsbyImageData}
                                 alt={post.node.title}
                               />
+                            )}
 
-                              <Tags tags={post.node.tags} />
-                            </div>
-                            <div className="">
-                              <h4 className="text-dark mt-1 mb-0">
-                                {post.node.title}
-                              </h4>
-                              <span
-                                className="text-dark small fw-normal"
-                                style={{ fontSize: "14px" }}
-                              >
-                                {post.node.publishedDate}
-                              </span>
-                            </div>
+                            <Tags tags={post.node.tags} />
                           </div>
-                        </Link>
-                      )}
+                          <div className="">
+                            <h4 className="text-dark mt-1 mb-0">
+                              {post.node.title}
+                            </h4>
+                            <span
+                              className="text-dark small fw-normal"
+                              style={{ fontSize: "14px" }}
+                            >
+                              {post.node.publishedDate}
+                            </span>
+                          </div>
+                        </div>
+                      </Link>
                     </div>
                   )
                 })}
