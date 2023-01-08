@@ -27,16 +27,27 @@ const LightboxContainer = props => {
 
   const handleClickOutside = event => {
     if (event.type === "keydown") {
-      if (event.key === "ArrowLeft") {
-        moveImgIndex("left")
+      switch (event.key) {
+        case "ArrowLeft":
+          moveImgIndex("left")
+          break
+
+        case "ArrowRight":
+          moveImgIndex("right")
+          break
+
+        case "Escape":
+          closeLightbox()
+          break
+
+        default:
+          break
       }
-      if (event.key === "ArrowRight") {
-        moveImgIndex("right")
-      }
+
       return
     }
 
-    if (event.type === "click" || event.key === "Escape") {
+    if (event.type === "click") {
       if (leftRef && leftRef?.current?.contains(event.target)) {
         return
       }
