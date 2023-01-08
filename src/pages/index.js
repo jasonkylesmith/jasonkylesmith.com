@@ -10,6 +10,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import MarkdownDisplay from "../components/markdown-display"
+import backgroundImage from "../images/test-background.jpg"
 
 library.add(fas)
 
@@ -180,18 +181,15 @@ const IndexPage = () => {
       <div className="row p-0 position-relative mt-2">
         <div
           className="col-12 d-flex justify-content-center align-items-center p-4 p-md-0"
-          style={{ height: "70vh" }}
+          style={{
+            height: "70vh",
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: "cover",
+          }}
         >
-          <div
-            className="hero-text d-flex flex-row hero-container"
-            style={{
-              backgroundImage: `url(https:${heroPortrait.file.url})`,
-              backgroundPosition: "top right",
-              backgroundSize: "cover",
-            }}
-          >
-            <div className="p-4 text-white col-12 col-md-6">
-              <h1 className="block__heading pe-4 mb-0">{heroTitle}</h1>
+          <div className="hero-text d-flex flex-row hero-container">
+            <div className="p-4 text-white col-12">
+              <h1 className="block__heading on-black pe-4 mb-0">{heroTitle}</h1>
               <div className="pe-2">
                 <MarkdownDisplay
                   html={heroBody.childrenMarkdownRemark[0].html}
@@ -203,26 +201,6 @@ const IndexPage = () => {
               >
                 {heroCtaText}
               </a>
-            </div>
-            <div className="p-0 d-none d-sm-block flex-fill">
-              {/* <img
-                src={
-                  heroPortrait
-                    ? `https:${heroPortrait.file.url}`
-                    : "https://picsum.photos/250"
-                }
-                style={{
-                  objectFit: "cover",
-                  width: "250px",
-                  height: "250px",
-                  borderRadius: ".25rem",
-                }}
-                alt={
-                  heroPortrait
-                    ? `https:${heroPortrait.description}`
-                    : "stand in"
-                }
-              /> */}
             </div>
           </div>
         </div>
