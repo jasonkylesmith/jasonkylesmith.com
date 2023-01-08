@@ -12,8 +12,8 @@ import LightboxContainer from "./lightbox-display"
 [X] On mobile, reduce max-width to allow arrows to show on screen
 [ ] Smartly handle image sizes to reduce load times, 
         potentially get rid of one or all hidden preload images\
-[ ] Memoize creation of photoArray
-[ ] Add ability to customize amount of gallery rows
+[X] Memoize creation of photoArray
+[X] Add ability to customize amount of gallery rows
 
 */
 
@@ -168,6 +168,7 @@ const BlockGallery = props => {
     <div
       style={{
         margin: "-.5rem",
+        overflowX: "hidden",
       }}
     >
       <LightboxContainer
@@ -186,7 +187,7 @@ const BlockGallery = props => {
           columns
             ? innerWidth > 992
               ? columns
-              : innerWidth > 768
+              : innerWidth > 500
               ? Math.round(columns / 2)
               : 1
             : undefined

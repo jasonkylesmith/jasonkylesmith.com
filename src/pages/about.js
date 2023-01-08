@@ -17,6 +17,11 @@ const AboutPage = () => {
                 html
               }
             }
+            aboutWhyPhotography {
+              childrenMarkdownRemark {
+                html
+              }
+            }
             aboutCtaText
             aboutTitle
             aboutPortrait {
@@ -31,8 +36,13 @@ const AboutPage = () => {
     }
   `)
 
-  const { aboutBody, aboutTitle, aboutCtaText, aboutPortrait } =
-    data.allContentfulSitewideCopy.edges[0].node
+  const {
+    aboutBody,
+    aboutWhyPhotography,
+    aboutTitle,
+    aboutCtaText,
+    aboutPortrait,
+  } = data.allContentfulSitewideCopy.edges[0].node
 
   const aboutSliderSettings = {
     slidesToShow: 3,
@@ -99,29 +109,9 @@ const AboutPage = () => {
                 />
                 {/* Start DEMO */}
                 <h1 className="blog-title block__heading">Why Photography?</h1>
-                <p>
-                  I really didn't understand the real meaning of my photography
-                  until a few years ago. My wife was dog sitting for a longtime
-                  friend of hers with two wonderful pups, both getting a bit
-                  long in the tooth and absolutely loved by their family. I had
-                  never photographed pets before, so with the wife at work, I
-                  decided to setup a mini-photoshoot with the doggos.
-                </p>
-                <p>
-                  After the shoot and I got the keepers edited and touched up,
-                  we gifted two photos to them with frame, matte, and
-                  everything. I can still remember the look on their faces when
-                  we gave them those photos, you could tell they were just so
-                  appreciative! Over the next few years, our four-legged friends
-                  passed away and though I'd rather they still be around, it
-                  felt so good knowing that the family still had photos taken
-                  right before their health declined.
-                </p>
-                <p>
-                  That feeling of knowing that I had captured something so
-                  special, so useful, so cherished; well, let's just say I
-                  continue to chase that feeling in my photography today.
-                </p>
+                <MarkdownDisplay
+                  html={aboutWhyPhotography.childrenMarkdownRemark[0].html}
+                />
                 {/* End DEMO */}
                 <a href="/contact?destination=about" className="btn mb-0">
                   {aboutCtaText}
