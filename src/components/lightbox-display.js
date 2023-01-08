@@ -1,5 +1,4 @@
-import { StaticImage } from "gatsby-plugin-image"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 
 // max-height and max-width for images?
 
@@ -17,64 +16,64 @@ const LightboxContainer = props => {
   const leftRef = useRef(null)
   const rightRef = useRef(null)
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setClosingLightbox(true)
     setTimeout(() => {
       setOpenLightbox(false)
       setClosingLightbox(false)
     }, 500)
-  }
-
-  const handleClickOutside = event => {
-    if (event.type === "keydown") {
-      switch (event.key) {
-        case "ArrowLeft":
-          moveImgIndex("left")
-          break
-
-        case "ArrowRight":
-          moveImgIndex("right")
-          break
-
-        case "Escape":
-          closeLightbox()
-          break
-
-        default:
-          break
-      }
-
-      return
-    }
-
-    if (event.type === "click") {
-      if (leftRef && leftRef?.current?.contains(event.target)) {
-        return
-      }
-      if (rightRef && rightRef?.current?.contains(event.target)) {
-        return
-      }
-      if (imgRef.current && !imgRef.current.contains(event.target)) {
-        closeLightbox()
-      }
-    }
-  }
-
-  const checkSwipe = () => {
-    if (touchEndX < touchStartX) {
-      console.log("swiped left")
-      moveImgIndex("right")
-    }
-    if (touchEndX > touchStartX) {
-      console.log("swiped right")
-      moveImgIndex("left")
-    }
-  }
-
-  let touchStartX = 0
-  let touchEndX = 0
+  }, [setOpenLightbox])
 
   useEffect(() => {
+    const checkSwipe = () => {
+      if (touchEndX < touchStartX) {
+        console.log("swiped left")
+        moveImgIndex("right")
+      }
+      if (touchEndX > touchStartX) {
+        console.log("swiped right")
+        moveImgIndex("left")
+      }
+    }
+
+    const handleClickOutside = event => {
+      if (event.type === "keydown") {
+        switch (event.key) {
+          case "ArrowLeft":
+            moveImgIndex("left")
+            break
+
+          case "ArrowRight":
+            moveImgIndex("right")
+            break
+
+          case "Escape":
+            closeLightbox()
+            break
+
+          default:
+            break
+        }
+
+        return
+      }
+
+      if (event.type === "click") {
+        if (leftRef && leftRef?.current?.contains(event.target)) {
+          return
+        }
+        if (rightRef && rightRef?.current?.contains(event.target)) {
+          return
+        }
+        if (imgRef.current && !imgRef.current.contains(event.target)) {
+          closeLightbox()
+        }
+      }
+    }
+
+    let touchStartX = 0
+    let touchEndX = 0
+
     document.addEventListener("click", handleClickOutside, true)
     document.addEventListener("keydown", handleClickOutside, true)
     document.addEventListener(
@@ -96,11 +95,25 @@ const LightboxContainer = props => {
     return () => {
       document.removeEventListener("click", handleClickOutside, true)
       document.removeEventListener("keydown", handleClickOutside, true)
+      document.removeEventListener(
+        "touchstart",
+        e => {
+          touchStartX = e.changedTouches[0].screenX
+        },
+        true
+      )
+      document.removeEventListener(
+        "touchend",
+        e => {
+          touchEndX = e.changedTouches[0].screenX
+          checkSwipe()
+        },
+        true
+      )
     }
-  }, [])
+  }, [moveImgIndex, closeLightbox])
 
   const [closingLightbox, setClosingLightbox] = useState(false)
-  const [imageChanging, setImageChanging] = useState(false)
 
   return openLightbox ? (
     <div
@@ -120,23 +133,44 @@ const LightboxContainer = props => {
         onClick={() => {
           imgIndex > 0 ? moveImgIndex("left") : closeLightbox()
         }}
+        onKeyPress={e => {
+          if (e.code === "Space" || e.code === "Enter") moveImgIndex("left")
+        }}
+        role="button"
+        tabIndex={0}
         ref={leftRef}
       >
         {"<"}
       </span>
 
       {imgIndex > 0 && images[imgIndex - 2] && (
-        <img src={images[imgIndex - 2].src} style={{ display: "none" }} />
+        <img
+          src={images[imgIndex - 2].src}
+          style={{ display: "none" }}
+          alt={images[imgIndex - 2].alt}
+        />
       )}
       {imgIndex > 0 && images[imgIndex - 1] && (
-        <img src={images[imgIndex - 1].src} style={{ display: "none" }} />
+        <img
+          src={images[imgIndex - 1].src}
+          style={{ display: "none" }}
+          alt={images[imgIndex - 1].alt}
+        />
       )}
-      <img src={images[imgIndex].src} ref={imgRef} />
+      <img src={images[imgIndex].src} ref={imgRef} alt={images[imgIndex].alt} />
       {images[imgIndex + 1] && (
-        <img src={images[imgIndex + 1].src} style={{ display: "none" }} />
+        <img
+          src={images[imgIndex + 1].src}
+          style={{ display: "none" }}
+          alt={images[imgIndex + 1].alt}
+        />
       )}
       {images[imgIndex + 2] && (
-        <img src={images[imgIndex + 2].src} style={{ display: "none" }} />
+        <img
+          src={images[imgIndex + 2].src}
+          style={{ display: "none" }}
+          alt={images[imgIndex + 2].alt}
+        />
       )}
 
       <span
@@ -152,6 +186,11 @@ const LightboxContainer = props => {
             ? moveImgIndex("right")
             : closeLightbox()
         }
+        onKeyPress={e => {
+          if (e.code === "Space" || e.code === "Enter") moveImgIndex("right")
+        }}
+        role="button"
+        tabIndex={0}
         ref={rightRef}
       >
         {">"}
