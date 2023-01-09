@@ -26,10 +26,13 @@ const LightboxContainer = props => {
 
   useEffect(() => {
     const checkSwipe = () => {
-      if (touchEndX < touchStartX) {
+      const diff = touchStartX - touchEndX
+      const limit = 35
+
+      if (diff > limit) {
         moveImgIndex("right")
       }
-      if (touchEndX > touchStartX) {
+      if (diff < -limit) {
         moveImgIndex("left")
       }
     }
