@@ -46,7 +46,6 @@ const Clients = () => {
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
-      console.log(user)
       // Auth is no longer loading and session is authenticated,
       if (user.galleries && user.galleries.length > 0) {
         // gallery data exists and is not empty, so we need details on all galleries that the user has access to

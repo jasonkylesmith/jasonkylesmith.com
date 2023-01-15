@@ -3,8 +3,6 @@ import React from "react"
 const Tooltip = props => {
   const { text, tipText } = props
 
-  console.log(props)
-
   return (
     <div className="tooltip--container">
       <span>{text}</span>

@@ -200,8 +200,8 @@ const BlockGallery = props => {
         }}
       />
 
-      {/* <div className="gallery-test">
-        <div className="gallery-test--container">
+      {/* <div className="client-gallery">
+        <div className="client-gallery--container">
           {photoArray.map(photo => {
             const isVertical = photo.width < photo.height ? true : false
 

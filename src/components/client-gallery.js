@@ -45,8 +45,8 @@ const ClientPhotos = ({ photos }) => {
         imgIndex={imgIndex}
       />
 
-      <div className="gallery-test">
-        <div className="gallery-test--container row">
+      <div className="client-gallery">
+        <div className="client-gallery--container row">
           {photos.map((photo, index) => {
             const { width, height } = photo.photo.file.details.image
             const { url: src } = photo.photo.file
@@ -55,7 +55,10 @@ const ClientPhotos = ({ photos }) => {
             const isVertical = width < height ? true : false
 
             return (
-              <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-2">
+              <div
+                className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-2"
+                key={photo.contentful_id}
+              >
                 <div className="item">
                   <div className="inner-item">
                     <img
