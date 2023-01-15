@@ -61,11 +61,17 @@ const Clients = () => {
           return false
         })
 
-        console.log(tempGalleries)
         setClientGalleries(tempGalleries)
       }
     }
   }, [isAuthenticated, isLoading, data, user])
+
+  const headingText =
+    clientGalleries.length > 1
+      ? "Your Client Galleries"
+      : clientGalleries.length === 1
+      ? "Your Client Gallery"
+      : "No Galleries Available Yet"
 
   return (
     <Layout>
@@ -80,59 +86,66 @@ const Clients = () => {
           <div className="row">
             {!isLoading ? (
               isAuthenticated ? (
-                <div className="col-md-8 offset-md-2">
-                  <div className="row">
-                    {clientGalleries &&
-                      clientGalleries.map(
-                        ({
-                          node: {
-                            name,
-                            featuredImage,
-                            contentful_id,
-                            hideImage,
-                            slug,
-                          },
-                        }) => {
-                          const { gatsbyImageData, title } = featuredImage
-
-                          return (
-                            <div
-                              className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0"
-                              key={contentful_id}
-                            >
-                              <Link
-                                to={`/clients/${slug}`}
-                                className="gallery-link"
-                              >
-                                <div className="">
-                                  <div className="position-relative">
-                                    <GatsbyImage
-                                      className=""
-                                      imgStyle={{
-                                        borderRadius: ".25rem",
-                                        filter: hideImage ? "blur(10px)" : null,
-                                      }}
-                                      image={gatsbyImageData}
-                                      alt={title}
-                                    />
-                                  </div>
-                                  <div className="">
-                                    <h4 className="text-dark mt-1 mb-0">
-                                      {name}
-                                    </h4>
-                                    <span
-                                      className="text-dark small fw-normal"
-                                      style={{ fontSize: "14px" }}
-                                    ></span>
-                                  </div>
-                                </div>
-                              </Link>
-                            </div>
-                          )
-                        }
-                      )}
+                <>
+                  <div className="col-md-8 offset-md-2">
+                    <h1 className="block__heading">{headingText}</h1>
                   </div>
-                </div>
+                  <div className="col-md-8 offset-md-2">
+                    <div className="row">
+                      {clientGalleries &&
+                        clientGalleries.map(
+                          ({
+                            node: {
+                              name,
+                              featuredImage,
+                              contentful_id,
+                              hideImage,
+                              slug,
+                            },
+                          }) => {
+                            const { gatsbyImageData, title } = featuredImage
+
+                            return (
+                              <div
+                                className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0"
+                                key={contentful_id}
+                              >
+                                <Link
+                                  to={`/clients/${slug}`}
+                                  className="gallery-link"
+                                >
+                                  <div className="">
+                                    <div className="position-relative">
+                                      <GatsbyImage
+                                        className=""
+                                        imgStyle={{
+                                          borderRadius: ".25rem",
+                                          filter: hideImage
+                                            ? "blur(10px)"
+                                            : null,
+                                        }}
+                                        image={gatsbyImageData}
+                                        alt={title}
+                                      />
+                                    </div>
+                                    <div className="">
+                                      <h4 className="text-dark mt-1 mb-0">
+                                        {name}
+                                      </h4>
+                                      <span
+                                        className="text-dark small fw-normal"
+                                        style={{ fontSize: "14px" }}
+                                      ></span>
+                                    </div>
+                                  </div>
+                                </Link>
+                              </div>
+                            )
+                          }
+                        )}
+                    </div>
+                  </div>
+                </>
               ) : (
                 <div style={{ marginTop: "6rem" }}>
                   <div
