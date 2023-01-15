@@ -3,7 +3,9 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React, { useEffect, useState } from "react"
 import Layout from "../components/layout"
+import Loading from "../components/loading"
 import LoginButton from "../components/login-button"
+import LogoutButton from "../components/logout-button"
 import Seo from "../components/seo"
 
 const Clients = () => {
@@ -143,6 +145,17 @@ const Clients = () => {
                             )
                           }
                         )}
+                      <div
+                        style={{
+                          display: "flex",
+
+                          flexDirection: "column",
+                          justifyContent: "flex-end",
+                          alignItems: "flex-end",
+                        }}
+                      >
+                        <LogoutButton>Logout</LogoutButton>
+                      </div>
                     </div>
                   </div>
                 </>
@@ -169,7 +182,7 @@ const Clients = () => {
                 </div>
               )
             ) : (
-              <div>Loading graphic goes here...</div>
+              <Loading />
             )}
           </div>
         </div>
