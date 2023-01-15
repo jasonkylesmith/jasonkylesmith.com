@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,13 +8,14 @@ import Seo from "../components/seo"
 import BlockStory from "../components/block-story"
 import BlockGallery from "../components/block-gallery"
 import BlockFeature from "../components/block-feature"
+import { useAuth0 } from "@auth0/auth0-react"
+import LoginButton from "../components/login-button"
 
 export const query = graphql`
   query ($slug: String!) {
     contentfulClientGallery(slug: { eq: $slug }) {
       contentful_id
       name
-      passphrase
       blocks {
         ... on ContentfulBlockFeature {
           id
@@ -95,105 +96,60 @@ export const query = graphql`
 `
 
 const ClientGallery = props => {
-  /* const { title, description, tags, client, tools } =
-    props.data.contentfulProject */
+  const { contentful_id } = props.data.contentfulClientGallery
 
-  const { blocks, name, passphrase } = props.data.contentfulClientGallery
+  const { isLoading, isAuthenticated, user, loginWithPopup } = useAuth0()
+  const [idMatch, setIdMatch] = useState(false)
 
-  const [enteredPassphrase, setEnteredPassphrase] = useState("")
-  const [allowAccess, setAllowAccess] = useState(false)
-  const [error, setError] = useState(false)
-
-  const handleSubmit = e => {
-    e.preventDefault()
-
-    if (enteredPassphrase === passphrase) {
-      setAllowAccess(true)
-      setError(false)
-    } else {
-      setAllowAccess(false)
-      setError(true)
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      if (user.galleries.includes(contentful_id)) {
+        setIdMatch(true)
+      }
     }
-  }
+  }, [isAuthenticated, isLoading])
+
+  const { blocks, name } = props.data.contentfulClientGallery
 
   return (
     <Layout>
       <Seo title={name} />
-      {allowAccess ? (
-        <div className="row p-0">
-          <div className="col-sm-8 offset-sm-2">
-            {blocks.map(block => {
-              const { id } = block.sys.contentType.sys
-
-              if (id === "blockStory") {
-                return (
-                  <div>
-                    <BlockStory block={block} key={block.id} />
-                  </div>
-                )
-              }
-
-              if (id === "blockFeature") {
-                return (
-                  <div>
-                    <BlockFeature block={block} key={block.id} />
-                  </div>
-                )
-              }
-
-              if (id === "blockGallery") {
-                return (
-                  <div>
-                    <BlockGallery block={block} key={block.id} />
-                  </div>
-                )
-              }
-
-              return <></>
-            })}
-          </div>
-        </div>
-      ) : (
-        <div className="row p-0">
-          <div className="col-sm-8 offset-sm-2">
-            <div
-              className="d-flex flex-column justify-content-center align-items-center"
-              style={{ height: "60vh" }}
-            >
-              <div className="px-2 p-md-o">
-                <h2 className="m-0">Passphrase Required</h2>
-                <span>
-                  Please enter the passphrase given to you in your email.
-                </span>
-                <form>
-                  <div className="my-2">
-                    <label className="form-label" htmlFor="enteredPassphrase">
-                      Passphrase
-                    </label>
-                    <input
-                      placeholder="********"
-                      name="enteredPassphrase"
-                      type="password"
-                      value={enteredPassphrase}
-                      onChange={e => setEnteredPassphrase(e.target.value)}
-                      className={`form-control ${error && "is-invalid"}`}
-                      style={{ width: "50%" }}
-                    />
-                  </div>
-                  <button className="btn button" onClick={e => handleSubmit(e)}>
-                    Submit
-                  </button>
-                  {error && (
-                    <span className="small ms-2" style={{ color: "red" }}>
-                      Incorrect passphrase.
-                    </span>
-                  )}
-                </form>
+      <div className="row mt-4 px-2">
+        <div className="col-md-8 offset-md-2">
+          {!isLoading ? (
+            isAuthenticated ? (
+              idMatch ? (
+                "Access Granted"
+              ) : (
+                "Access Denied"
+              )
+            ) : (
+              <div style={{ marginTop: "6rem" }}>
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <span> Access Denied</span>
+                </div>
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <LoginButton>Log In Required</LoginButton>
+                </div>
               </div>
-            </div>
-          </div>
+            )
+          ) : (
+            <div>Loading graphic goes here...</div>
+          )}
         </div>
-      )}
+      </div>
     </Layout>
   )
 }
