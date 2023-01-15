@@ -1,93 +1,41 @@
-import React, { useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 
 import Seo from "../components/seo"
 
-import BlockStory from "../components/block-story"
-import BlockGallery from "../components/block-gallery"
-import BlockFeature from "../components/block-feature"
+import { useAuth0 } from "@auth0/auth0-react"
+import LoginButton from "../components/login-button"
+import ClientPhotos from "../components/client-gallery"
+import Tooltip from "../components/tooltip"
+import { CLIENT_GALLERY_STATUS_TEXT } from "../helpers/constants"
+import Loading from "../components/loading"
 
 export const query = graphql`
   query ($slug: String!) {
     contentfulClientGallery(slug: { eq: $slug }) {
       contentful_id
       name
-      passphrase
-      blocks {
-        ... on ContentfulBlockFeature {
-          id
-          name
-          variant
-          blockItems {
-            ... on ContentfulBlockItemImage {
-              id
-              sys {
-                contentType {
-                  sys {
-                    id
-                  }
-                }
-              }
+      nextDueDate(formatString: "Do MMMM, YYYY")
+      photoshootDate(formatString: "Do MMMM, YYYY hh:MM a")
+      downloadLink
+      status
+      photos {
+        photoStatus
+        photoName
+        photo {
+          gatsbyImageData
+          file {
+            details {
               image {
-                gatsbyImageData
-                description
-              }
-              caption
-              includeCaption
-            }
-            ... on ContentfulBlockItemText {
-              id
-              sys {
-                contentType {
-                  sys {
-                    id
-                  }
-                }
-              }
-              text {
-                raw
+                height
+                width
               }
             }
+            url
           }
-          sys {
-            contentType {
-              sys {
-                id
-              }
-            }
-          }
-        }
-        ... on ContentfulBlockGallery {
-          id
-          name
-          images {
-            id
-            gatsbyImageData(
-              breakpoints: [200, 400, 600, 800, 1000, 1600]
-              sizes: "(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw"
-              placeholder: BLURRED
-              formats: [AUTO, WEBP, AVIF]
-            )
-            file {
-              url
-              details {
-                image {
-                  height
-                  width
-                }
-              }
-            }
-          }
-          variant
-          sys {
-            contentType {
-              sys {
-                id
-              }
-            }
-          }
+          description
         }
       }
     }
@@ -95,105 +43,149 @@ export const query = graphql`
 `
 
 const ClientGallery = props => {
-  /* const { title, description, tags, client, tools } =
-    props.data.contentfulProject */
+  const {
+    contentful_id,
+    name,
 
-  const { blocks, name, passphrase } = props.data.contentfulClientGallery
+    photoshootDate,
+    nextDueDate,
+    status,
+    downloadLink,
+    photos,
+  } = props.data.contentfulClientGallery
 
-  const [enteredPassphrase, setEnteredPassphrase] = useState("")
-  const [allowAccess, setAllowAccess] = useState(false)
-  const [error, setError] = useState(false)
+  const { isLoading, isAuthenticated, user } = useAuth0()
+  const [idMatch, setIdMatch] = useState(false)
+  const [photosByStatus, setPhotosByStatus] = useState({
+    previews: [],
+    reviews: [],
+    finals: [],
+  })
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  useMemo(() => {
+    let previews = []
+    let reviews = []
+    let finals = []
 
-    if (enteredPassphrase === passphrase) {
-      setAllowAccess(true)
-      setError(false)
-    } else {
-      setAllowAccess(false)
-      setError(true)
+    photos.forEach(photo => {
+      const { photoStatus } = photo
+
+      switch (photoStatus) {
+        case "preview":
+          previews.push(photo)
+          break
+        case "review":
+          reviews.push(photo)
+          break
+        case "final":
+          finals.push(photo)
+          break
+        default:
+          previews.push(photo)
+      }
+
+      setPhotosByStatus({ previews, reviews, finals })
+    })
+  }, [photos])
+
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      if (user.galleries.includes(contentful_id)) {
+        setIdMatch(true)
+      }
     }
-  }
+  }, [isAuthenticated, isLoading, contentful_id, user.galleries])
 
   return (
     <Layout>
       <Seo title={name} />
-      {allowAccess ? (
-        <div className="row p-0">
-          <div className="col-sm-8 offset-sm-2">
-            {blocks.map(block => {
-              const { id } = block.sys.contentType.sys
-
-              if (id === "blockStory") {
-                return (
-                  <div>
-                    <BlockStory block={block} key={block.id} />
+      <div className="row mt-4 px-2 mb-5">
+        <div className="col-md-8 offset-md-2">
+          {!isLoading ? (
+            isAuthenticated ? (
+              idMatch ? (
+                <>
+                  <h1 className="block__heading">{name}</h1>
+                  <div className="row justify-space-between">
+                    <div className="col-12 col-lg-7 m-0">
+                      <span>
+                        <b>photoshoot date:</b> {photoshootDate}
+                      </span>
+                    </div>
+                    <div className="col-12 col-lg-5 m-0 d-flex flex-column">
+                      <span>
+                        <b>status: </b>
+                        <Tooltip
+                          text={status}
+                          tipText={CLIENT_GALLERY_STATUS_TEXT[status]}
+                        />
+                      </span>
+                      <span>
+                        <b>next due date:</b> {nextDueDate}
+                      </span>
+                      {status === "final" && downloadLink && (
+                        <span>
+                          <a
+                            href={downloadLink}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Download Final Deliverables
+                          </a>
+                        </span>
+                      )}
+                    </div>
                   </div>
-                )
-              }
-
-              if (id === "blockFeature") {
-                return (
-                  <div>
-                    <BlockFeature block={block} key={block.id} />
-                  </div>
-                )
-              }
-
-              if (id === "blockGallery") {
-                return (
-                  <div>
-                    <BlockGallery block={block} key={block.id} />
-                  </div>
-                )
-              }
-
-              return <></>
-            })}
-          </div>
-        </div>
-      ) : (
-        <div className="row p-0">
-          <div className="col-sm-8 offset-sm-2">
-            <div
-              className="d-flex flex-column justify-content-center align-items-center"
-              style={{ height: "60vh" }}
-            >
-              <div className="px-2 p-md-o">
-                <h2 className="m-0">Passphrase Required</h2>
-                <span>
-                  Please enter the passphrase given to you in your email.
-                </span>
-                <form>
-                  <div className="my-2">
-                    <label className="form-label" htmlFor="enteredPassphrase">
-                      Passphrase
-                    </label>
-                    <input
-                      placeholder="********"
-                      name="enteredPassphrase"
-                      type="password"
-                      value={enteredPassphrase}
-                      onChange={e => setEnteredPassphrase(e.target.value)}
-                      className={`form-control ${error && "is-invalid"}`}
-                      style={{ width: "50%" }}
-                    />
-                  </div>
-                  <button className="btn button" onClick={e => handleSubmit(e)}>
-                    Submit
-                  </button>
-                  {error && (
-                    <span className="small ms-2" style={{ color: "red" }}>
-                      Incorrect passphrase.
-                    </span>
+                  {photosByStatus.previews.length > 0 && (
+                    <div className="mt-4">
+                      <h2 className="block__heading">Previews</h2>
+                      <ClientPhotos photos={photosByStatus.previews} />
+                    </div>
                   )}
-                </form>
+                  {photosByStatus.reviews.length > 0 && (
+                    <div className="mt-4">
+                      <h2 className="block__heading">Ready for Review</h2>
+                      <ClientPhotos photos={photosByStatus.reviews} />
+                    </div>
+                  )}
+                  {photosByStatus.finals.length > 0 && (
+                    <div className="mt-4">
+                      <h2 className="block__heading">Final Photos</h2>
+                      <ClientPhotos photos={photosByStatus.finals} />
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div style={{ marginTop: "6rem" }}>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <LoginButton>Log In Required</LoginButton>
+                  </div>
+                </div>
+              )
+            ) : (
+              <div style={{ marginTop: "6rem" }}>
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <LoginButton>Log In Required</LoginButton>
+                </div>
               </div>
-            </div>
-          </div>
+            )
+          ) : (
+            <Loading />
+          )}
         </div>
-      )}
+      </div>
     </Layout>
   )
 }

@@ -1,0 +1,43 @@
+.tooltip--container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip--text {
+  position: absolute;
+
+  width: 10rem;
+  top: 0%;
+  left: 3rem;
+  font-size: smaller;
+  border-radius: 0.25rem;
+  background-color: $dark;
+  color: white;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 10;
+  transition: opacity 250ms ease-in-out 250ms;
+
+  &::before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: $dark;
+    padding: 5px;
+    left: -5px;
+    top: calc(50% - 5px);
+    top: 8px;
+
+    z-index: -1;
+  }
+}
+
+.tooltip--container {
+  &:hover {
+    .tooltip--text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

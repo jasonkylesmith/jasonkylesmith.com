@@ -6,7 +6,7 @@ const LightboxContainer = props => {
   const {
     openLightbox,
     setOpenLightbox,
-
+    photos,
     images,
     moveImgIndex,
     imgIndex,
@@ -15,6 +15,8 @@ const LightboxContainer = props => {
   const imgRef = useRef(null)
   const leftRef = useRef(null)
   const rightRef = useRef(null)
+
+  const allImages = images || photos
 
   const closeLightbox = useCallback(() => {
     setClosingLightbox(true)
@@ -146,33 +148,61 @@ const LightboxContainer = props => {
         {"<"}
       </span>
 
-      {imgIndex > 0 && images[imgIndex - 2] && (
+      {imgIndex > 0 && allImages[imgIndex - 2] && (
         <img
-          src={images[imgIndex - 2].src}
+          src={
+            allImages[imgIndex - 2].src ||
+            allImages[imgIndex - 2].photo.file.url
+          }
           style={{ display: "none" }}
-          alt={images[imgIndex - 2].alt}
+          alt={
+            allImages[imgIndex - 2].alt ||
+            allImages[imgIndex - 2].photo.description
+          }
         />
       )}
-      {imgIndex > 0 && images[imgIndex - 1] && (
+      {imgIndex > 0 && allImages[imgIndex - 1] && (
         <img
-          src={images[imgIndex - 1].src}
+          src={
+            allImages[imgIndex - 1].src ||
+            allImages[imgIndex - 1].photo.file.url
+          }
           style={{ display: "none" }}
-          alt={images[imgIndex - 1].alt}
+          alt={
+            allImages[imgIndex - 1].alt ||
+            allImages[imgIndex - 1].photo.description
+          }
         />
       )}
-      <img src={images[imgIndex].src} ref={imgRef} alt={images[imgIndex].alt} />
-      {images[imgIndex + 1] && (
+      <img
+        src={allImages[imgIndex].src || allImages[imgIndex].photo.file.url}
+        ref={imgRef}
+        alt={allImages[imgIndex].alt || allImages[imgIndex].photo.description}
+      />
+      {allImages[imgIndex + 1] && (
         <img
-          src={images[imgIndex + 1].src}
+          src={
+            allImages[imgIndex + 1].src ||
+            allImages[imgIndex + 1].photo.file.url
+          }
           style={{ display: "none" }}
-          alt={images[imgIndex + 1].alt}
+          alt={
+            allImages[imgIndex + 1].alt ||
+            allImages[imgIndex + 1].photo.description
+          }
         />
       )}
-      {images[imgIndex + 2] && (
+      {allImages[imgIndex + 2] && (
         <img
-          src={images[imgIndex + 2].src}
+          src={
+            allImages[imgIndex + 2].src ||
+            allImages[imgIndex + 2].photo.file.url
+          }
           style={{ display: "none" }}
-          alt={images[imgIndex + 2].alt}
+          alt={
+            allImages[imgIndex + 2].alt ||
+            allImages[imgIndex + 2].photo.description
+          }
         />
       )}
 
@@ -180,12 +210,12 @@ const LightboxContainer = props => {
         style={{
           cursor: "pointer",
           color: "white",
-          opacity: imgIndex !== images.length - 1 ? 1 : 0,
+          opacity: imgIndex !== allImages.length - 1 ? 1 : 0,
           padding: "1rem",
           fontSize: "2rem",
         }}
         onClick={() =>
-          imgIndex !== images.length - 1
+          imgIndex !== allImages.length - 1
             ? moveImgIndex("right")
             : closeLightbox()
         }

@@ -102,6 +102,16 @@ const Navigation = props => {
               blog
             </Link>
           </li>
+          <li>
+            <Link
+              to="/clients"
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              clients
+            </Link>
+          </li>
         </ul>
       </nav>
     )

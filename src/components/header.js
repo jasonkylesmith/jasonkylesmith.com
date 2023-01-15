@@ -21,12 +21,17 @@ const Header = props => {
                     </div>
                   </Link>
                 </div>
-                <div className="col-12" style={{ marginTop: "-.5rem" }}>
+                {/* <div className="col-12" style={{ marginTop: "-.5rem" }}>
                   <Navigation version="desktop" />
-                </div>
+                </div> */}
               </div>
               <div className="col-4 d-flex justify-content-end">
                 <SocialIcons version="desktop" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12" style={{ marginTop: "-.5rem" }}>
+                <Navigation version="desktop" />
               </div>
             </div>
           </div>
