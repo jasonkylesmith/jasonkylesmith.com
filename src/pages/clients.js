@@ -168,15 +168,6 @@ const Clients = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <span> Access Denied</span>
-                  </div>
-                  <div
-                    style={{
-                      width: "100%",
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
                     <LoginButton>Log In Required</LoginButton>
                   </div>
                 </div>

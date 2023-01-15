@@ -55,7 +55,7 @@ const ClientPhotos = ({ photos }) => {
             const isVertical = width < height ? true : false
 
             return (
-              <div className="col-12 col-sm-6 col-lg-4 mb-2">
+              <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-2">
                 <div className="item">
                   <div className="inner-item">
                     <img
