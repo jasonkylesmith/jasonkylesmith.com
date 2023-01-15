@@ -94,7 +94,7 @@ const ClientGallery = props => {
         setIdMatch(true)
       }
     }
-  }, [isAuthenticated, isLoading, contentful_id, user.galleries])
+  }, [isAuthenticated, isLoading, contentful_id, user])
 
   return (
     <Layout>

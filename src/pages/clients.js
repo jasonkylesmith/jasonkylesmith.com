@@ -11,6 +11,8 @@ import Seo from "../components/seo"
 const Clients = () => {
   const { user, isAuthenticated, isLoading } = useAuth0()
 
+  console.log("AUTH", useAuth0())
+
   const [clientGalleries, setClientGalleries] = useState([])
 
   const data = useStaticQuery(graphql`
