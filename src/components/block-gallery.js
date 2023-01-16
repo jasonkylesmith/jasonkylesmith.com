@@ -168,6 +168,7 @@ const BlockGallery = props => {
     <div
       style={{
         margin: "-.5rem",
+        overflowX: "hidden",
       }}
     >
       <LightboxContainer
@@ -186,7 +187,7 @@ const BlockGallery = props => {
           columns
             ? innerWidth > 992
               ? columns
-              : innerWidth > 768
+              : innerWidth > 500
               ? Math.round(columns / 2)
               : 1
             : undefined
@@ -199,8 +200,8 @@ const BlockGallery = props => {
         }}
       />
 
-      {/* <div className="gallery-test">
-        <div className="gallery-test--container">
+      {/* <div className="client-gallery">
+        <div className="client-gallery--container">
           {photoArray.map(photo => {
             const isVertical = photo.width < photo.height ? true : false
 
