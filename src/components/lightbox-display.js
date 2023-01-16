@@ -26,8 +26,6 @@ const LightboxContainer = props => {
 
   const allImages = images || photos
 
-  console.log(allImages)
-
   const closeLightbox = useCallback(() => {
     setClosingLightbox(true)
     setTimeout(() => {

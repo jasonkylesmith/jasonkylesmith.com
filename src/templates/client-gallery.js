@@ -109,12 +109,15 @@ const ClientGallery = props => {
                 <>
                   <h1 className="block__heading">{name}</h1>
                   <div className="row justify-space-between">
-                    <div className="col-12 col-lg-7 m-0">
+                    <div className="col-12 col-lg-8 m-0 d-flex flex-column">
                       <span>
                         <b>photoshoot date:</b> {photoshootDate}
                       </span>
+                      <span>
+                        <b>next due date:</b> {nextDueDate}
+                      </span>
                     </div>
-                    <div className="col-12 col-lg-5 m-0 d-flex flex-column">
+                    <div className="col-12 col-lg-4 m-0 d-flex flex-column">
                       <span>
                         <b>status: </b>
                         <Tooltip
@@ -124,9 +127,7 @@ const ClientGallery = props => {
                           <span>{status}</span>
                         </Tooltip>
                       </span>
-                      <span>
-                        <b>next due date:</b> {nextDueDate}
-                      </span>
+
                       {status === "final" && downloadLink && (
                         <span>
                           <a
