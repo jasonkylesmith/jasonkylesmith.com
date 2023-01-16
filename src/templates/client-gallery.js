@@ -24,6 +24,8 @@ export const query = graphql`
       photos {
         photoStatus
         photoName
+        photographerRating
+        clientFavorite
         photo {
           gatsbyImageData
           file {

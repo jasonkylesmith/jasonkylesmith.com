@@ -1,5 +1,12 @@
 import React, { useEffect, useRef, useState } from "react"
 import LightboxContainer from "./lightbox-display"
+import Ratings from "./ratings"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+import { library } from "@fortawesome/fontawesome-svg-core"
+
+library.add(fas)
 
 const ClientPhotos = ({ photos }) => {
   const [openLightbox, setOpenLightbox] = useState(false)
@@ -35,6 +42,8 @@ const ClientPhotos = ({ photos }) => {
 
   photos = [...photos, ...photos, ...photos, ...photos]
 
+  const colLGClass = photos.length > 3 ? "col-lg-3" : "col-lg-4"
+
   return (
     <>
       <LightboxContainer
@@ -56,7 +65,7 @@ const ClientPhotos = ({ photos }) => {
 
             return (
               <div
-                className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-2"
+                className={`col-12 col-sm-6 col-md-4  ${colLGClass} mb-2`}
                 key={photo.contentful_id}
               >
                 <div className="item">
@@ -72,8 +81,29 @@ const ClientPhotos = ({ photos }) => {
                       }}
                     />
                   </div>
+                  {photo.clientFavorite && (
+                    <span
+                      style={{ position: "absolute", right: ".3rem", top: 0 }}
+                    >
+                      <FontAwesomeIcon
+                        icon={["fas", "heart"]}
+                        style={{
+                          color: "#663cf0",
+                          height: ".7rem",
+                          width: ".7rem",
+                        }}
+                      />
+                    </span>
+                  )}
                 </div>
-                <span>{photo.photoName}</span>
+                <div className="row">
+                  <div className="col">
+                    <span style={{ fontSize: ".9rem" }}>{photo.photoName}</span>
+                  </div>
+                  <div className="col d-flex justify-content-end align-items-center">
+                    <Ratings rating={photo.photographerRating} />
+                  </div>
+                </div>
               </div>
             )
           })}
