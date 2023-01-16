@@ -3,8 +3,6 @@ import React from "react"
 const Tooltip = props => {
   const { children, tipText, direction } = props
 
-  console.log("Tool Tip Props", props)
-
   return (
     <div className="tooltip--container">
       {children}
