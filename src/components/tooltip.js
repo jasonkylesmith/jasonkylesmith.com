@@ -1,12 +1,14 @@
 import React from "react"
 
 const Tooltip = props => {
-  const { text, tipText } = props
+  const { children, tipText, direction } = props
 
   return (
     <div className="tooltip--container">
-      <span>{text}</span>
-      <span className="tooltip--text">{tipText}</span>
+      {children}
+      <span className={`tooltip--text ${direction ? direction : "bottom"}`}>
+        {tipText}
+      </span>
     </div>
   )
 }
