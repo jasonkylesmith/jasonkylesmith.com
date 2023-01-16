@@ -52,6 +52,7 @@ const ClientPhotos = ({ photos }) => {
         setOpenLightbox={setOpenLightbox}
         moveImgIndex={moveImgIndex}
         imgIndex={imgIndex}
+        isClient
       />
 
       <div className="client-gallery">

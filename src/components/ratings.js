@@ -5,15 +5,15 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 
 library.add(fas)
 
-const Ratings = ({ rating }) => {
+const Ratings = ({ rating, isLarger }) => {
   const Star = () => {
     return (
       <FontAwesomeIcon
         icon={["fas", "star"]}
         style={{
           color: "#663cf0",
-          height: ".7rem",
-          width: ".7rem",
+          height: isLarger ? ".9rem" : ".7rem",
+          width: isLarger ? ".9rem" : ".7rem",
         }}
       />
     )
