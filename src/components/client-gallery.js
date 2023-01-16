@@ -5,6 +5,7 @@ import Ratings from "./ratings"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { library } from "@fortawesome/fontawesome-svg-core"
+import Tooltip from "./tooltip"
 
 library.add(fas)
 
@@ -86,14 +87,16 @@ const ClientPhotos = ({ photos }) => {
                     <span
                       style={{ position: "absolute", right: ".3rem", top: 0 }}
                     >
-                      <FontAwesomeIcon
-                        icon={["fas", "heart"]}
-                        style={{
-                          color: "#663cf0",
-                          height: ".7rem",
-                          width: ".7rem",
-                        }}
-                      />
+                      <Tooltip direction="right" tipText="Client Favorite">
+                        <FontAwesomeIcon
+                          icon={["fas", "heart"]}
+                          style={{
+                            color: "#663cf0",
+                            height: ".7rem",
+                            width: ".7rem",
+                          }}
+                        />
+                      </Tooltip>
                     </span>
                   )}
                 </div>
@@ -102,7 +105,9 @@ const ClientPhotos = ({ photos }) => {
                     <span style={{ fontSize: ".9rem" }}>{photo.photoName}</span>
                   </div>
                   <div className="col d-flex justify-content-end align-items-center">
-                    <Ratings rating={photo.photographerRating} />
+                    <Tooltip direction="center" tipText="Photographer Rating">
+                      <Ratings rating={photo.photographerRating} />
+                    </Tooltip>
                   </div>
                 </div>
               </div>
