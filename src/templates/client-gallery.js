@@ -24,6 +24,8 @@ export const query = graphql`
       photos {
         photoStatus
         photoName
+        photographerRating
+        clientFavorite
         photo {
           gatsbyImageData
           file {
@@ -116,9 +118,11 @@ const ClientGallery = props => {
                       <span>
                         <b>status: </b>
                         <Tooltip
-                          text={status}
                           tipText={CLIENT_GALLERY_STATUS_TEXT[status]}
-                        />
+                          direction="right"
+                        >
+                          <span>{status}</span>
+                        </Tooltip>
                       </span>
                       <span>
                         <b>next due date:</b> {nextDueDate}

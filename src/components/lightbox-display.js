@@ -1,4 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react"
+import Ratings from "./ratings"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+import { library } from "@fortawesome/fontawesome-svg-core"
+
+library.add(fas)
 
 // max-height and max-width for images?
 
@@ -10,6 +17,7 @@ const LightboxContainer = props => {
     images,
     moveImgIndex,
     imgIndex,
+    isClient,
   } = props
 
   const imgRef = useRef(null)
@@ -17,6 +25,8 @@ const LightboxContainer = props => {
   const rightRef = useRef(null)
 
   const allImages = images || photos
+
+  console.log(allImages)
 
   const closeLightbox = useCallback(() => {
     setClosingLightbox(true)
@@ -157,7 +167,8 @@ const LightboxContainer = props => {
           style={{ display: "none" }}
           alt={
             allImages[imgIndex - 2].alt ||
-            allImages[imgIndex - 2].photo.description
+            allImages[imgIndex - 2]?.photo?.description ||
+            ""
           }
         />
       )}
@@ -170,15 +181,48 @@ const LightboxContainer = props => {
           style={{ display: "none" }}
           alt={
             allImages[imgIndex - 1].alt ||
-            allImages[imgIndex - 1].photo.description
+            allImages[imgIndex - 1]?.photo?.description ||
+            ""
           }
         />
       )}
-      <img
-        src={allImages[imgIndex].src || allImages[imgIndex].photo.file.url}
-        ref={imgRef}
-        alt={allImages[imgIndex].alt || allImages[imgIndex].photo.description}
-      />
+      <div className="d-flex flex-column position-relative">
+        <img
+          src={allImages[imgIndex].src || allImages[imgIndex].photo.file.url}
+          ref={imgRef}
+          alt={
+            allImages[imgIndex].alt ||
+            allImages[imgIndex]?.photo?.description ||
+            ""
+          }
+        />
+
+        {isClient && allImages[imgIndex]?.clientFavorite && (
+          <span
+            style={{ position: "absolute", right: ".3rem", top: 0, zIndex: 11 }}
+          >
+            <FontAwesomeIcon
+              icon={["fas", "heart"]}
+              style={{
+                color: "#663cf0",
+                height: ".9rem",
+                width: ".9rem",
+              }}
+            />
+          </span>
+        )}
+        {isClient && (
+          <div className="d-flex flex-row w-100 justify-content-between text-white">
+            <span>{allImages[imgIndex]?.photoName}</span>
+            <div>
+              <Ratings
+                rating={allImages[imgIndex]?.photographerRating}
+                isLarger
+              />
+            </div>
+          </div>
+        )}
+      </div>
       {allImages[imgIndex + 1] && (
         <img
           src={
@@ -188,7 +232,8 @@ const LightboxContainer = props => {
           style={{ display: "none" }}
           alt={
             allImages[imgIndex + 1].alt ||
-            allImages[imgIndex + 1].photo.description
+            allImages[imgIndex + 1]?.photo?.description ||
+            ""
           }
         />
       )}
@@ -201,7 +246,8 @@ const LightboxContainer = props => {
           style={{ display: "none" }}
           alt={
             allImages[imgIndex + 2].alt ||
-            allImages[imgIndex + 2].photo.description
+            allImages[imgIndex + 2]?.photo?.description ||
+            ""
           }
         />
       )}

@@ -7,8 +7,7 @@
   position: absolute;
 
   width: 10rem;
-  top: 0%;
-  left: 3rem;
+
   font-size: smaller;
   border-radius: 0.25rem;
   background-color: $dark;
@@ -19,17 +18,62 @@
   z-index: 10;
   transition: opacity 250ms ease-in-out 250ms;
 
-  &::before {
-    content: "";
-    position: absolute;
-    transform: rotate(45deg);
-    background-color: $dark;
-    padding: 5px;
-    left: -5px;
-    top: calc(50% - 5px);
-    top: 8px;
+  &.right {
+    top: 0%;
+    right: -11rem;
 
-    z-index: -1;
+    &::before {
+      content: "";
+      position: absolute;
+      transform: rotate(45deg);
+      background-color: $dark;
+      padding: 5px;
+      left: -4px;
+      top: calc(50% - 5px);
+      top: 8px;
+
+      z-index: -1;
+    }
+  }
+
+  &.center {
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      transform: rotate(45deg) translateX(-50%);
+      background-color: $dark;
+      padding: 5px;
+      left: 50%;
+
+      top: calc(50% - 5px);
+      top: 0;
+
+      z-index: -1;
+    }
+  }
+
+  &.bottom {
+    top: 28px;
+    left: -6px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      transform: rotate(45deg);
+      background-color: $dark;
+      padding: 5px;
+      left: 6px;
+      top: calc(50% - 5px);
+      top: -4px;
+
+      z-index: -1;
+    }
   }
 }
 
