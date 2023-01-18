@@ -34,16 +34,27 @@ const LightboxContainer = props => {
     }, 500)
   }, [setOpenLightbox])
 
+  const handleTransition = direction => {
+    setTransitionStatus("lightbox__transition--closing")
+    setTimeout(() => {
+      moveImgIndex(direction)
+      setTransitionStatus("lightbox__transition--opening")
+      setTimeout(() => {
+        setTransitionStatus("lightbox__transition--active")
+      }, 250)
+    }, 250)
+  }
+
   useEffect(() => {
     const checkSwipe = () => {
       const diff = touchStartX - touchEndX
       const limit = 35
 
       if (diff > limit) {
-        moveImgIndex("right")
+        handleTransition("right")
       }
       if (diff < -limit) {
-        moveImgIndex("left")
+        handleTransition("left")
       }
     }
 
@@ -51,11 +62,11 @@ const LightboxContainer = props => {
       if (event.type === "keydown") {
         switch (event.key) {
           case "ArrowLeft":
-            moveImgIndex("left")
+            handleTransition("left")
             break
 
           case "ArrowRight":
-            moveImgIndex("right")
+            handleTransition("right")
             break
 
           case "Escape":
@@ -127,6 +138,9 @@ const LightboxContainer = props => {
   }, [])
 
   const [closingLightbox, setClosingLightbox] = useState(false)
+  const [transitionStatus, setTransitionStatus] = useState(
+    "lightbox__transition--active"
+  )
 
   return openLightbox ? (
     <div
@@ -144,10 +158,10 @@ const LightboxContainer = props => {
           fontSize: "2rem",
         }}
         onClick={() => {
-          imgIndex > 0 ? moveImgIndex("left") : closeLightbox()
+          imgIndex > 0 ? handleTransition("left") : closeLightbox()
         }}
         onKeyPress={e => {
-          if (e.code === "Space" || e.code === "Enter") moveImgIndex("left")
+          if (e.code === "Space" || e.code === "Enter") handleTransition("left")
         }}
         role="button"
         tabIndex={0}
@@ -184,7 +198,9 @@ const LightboxContainer = props => {
           }
         />
       )}
-      <div className="d-flex flex-column position-relative">
+      <div
+        className={`d-flex flex-column position-relative lightbox__transition ${transitionStatus}`}
+      >
         <img
           src={allImages[imgIndex].src || allImages[imgIndex].photo.file.url}
           ref={imgRef}
@@ -210,7 +226,9 @@ const LightboxContainer = props => {
           </span>
         )}
         {isClient && (
-          <div className="d-flex flex-row w-100 justify-content-between text-white">
+          <div
+            className={`d-flex flex-row w-100 justify-content-between text-white`}
+          >
             <span>{allImages[imgIndex]?.photoName}</span>
             <div>
               <Ratings
@@ -260,11 +278,12 @@ const LightboxContainer = props => {
         }}
         onClick={() =>
           imgIndex !== allImages.length - 1
-            ? moveImgIndex("right")
+            ? handleTransition("right")
             : closeLightbox()
         }
         onKeyPress={e => {
-          if (e.code === "Space" || e.code === "Enter") moveImgIndex("right")
+          if (e.code === "Space" || e.code === "Enter")
+            handleTransition("right")
         }}
         role="button"
         tabIndex={0}

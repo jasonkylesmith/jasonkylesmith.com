@@ -137,14 +137,14 @@ footer {
 .hero-container {
   border-radius: 0.25rem;
   min-width: min(100%, 700px) !important;
-
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 1;
 }
 
 @media (max-width: $max-width-sm) {
   .hero-container {
     background-image: none !important;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 }
 
@@ -212,6 +212,15 @@ footer {
     background-image: linear-gradient(rgba($dark, 1) 80%, rgba($dark, 1) 95%);
     border-top-right-radius: $border-radii;
     border-bottom-right-radius: $border-radii;
+  }
+
+  &.on-black {
+    &::after {
+      background-image: linear-gradient(
+        rgba($light, 1) 80%,
+        rgba(white, 1) 95%
+      );
+    }
   }
 }
 

@@ -5,6 +5,8 @@ const Testimonial = props => {
   const variant = props.variant ? props.variant : "left"
   const { client, subtitle, quote, body, image } = props
 
+  console.log(props)
+
   if (variant === "left") {
     return (
       <div className="ms-2 ms-md-0 testimonial testimonial--left justify-content-between">
@@ -27,10 +29,10 @@ const Testimonial = props => {
                 flex: body && body.length > 0 ? 0 : 1,
               }}
             >
-              <h3>"{quote}"</h3>
+              <h3>{quote}</h3>
             </div>
           )}
-          {false && (
+          {body && (
             <div className="testimonial__body-container">
               <p>{body}</p>
             </div>
@@ -53,10 +55,10 @@ const Testimonial = props => {
                 flex: body && body.length > 0 ? 0 : 1,
               }}
             >
-              <h3>"{quote}"</h3>
+              <h3>{quote}</h3>
             </div>
           )}
-          {false && (
+          {body && (
             <div className="testimonial__body-container">
               <p>{body}</p>
             </div>

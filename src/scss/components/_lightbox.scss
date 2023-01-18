@@ -24,6 +24,23 @@
   }
 }
 
+.lightbox__transition {
+  opacity: 1;
+  transform: scale(1);
+  /* transition: opacity 250ms ease-in-out; */
+}
+
+.lightbox__transition--closing {
+  opacity: 0;
+
+  transition: opacity 250ms ease-out;
+}
+
+.lightbox__transition--opening {
+  opacity: 1;
+  transition: opacity 250ms ease-out;
+}
+
 @media (max-width: $max-width-sm) {
   .lightbox__container {
     img {
