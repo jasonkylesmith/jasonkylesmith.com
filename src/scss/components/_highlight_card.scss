@@ -2,6 +2,12 @@
   margin: 0 0.5rem;
   border-color: $dark-faded;
   border-radius: 0.25rem;
+  flex: 0 0 32%;
+}
+
+.highlight__container {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .highlight__slider {
@@ -48,16 +54,6 @@
   }
 }
 
-.highlight__icon--left {
-  left: -25px;
-  margin-left: 0.4rem;
-}
-
-.highlight__icon--right {
-  right: -25px;
-  margin-right: 0.4rem;
-}
-
 .highlight__caption {
   position: absolute;
   right: 0.5rem;
@@ -66,4 +62,22 @@
   border-bottom-right-radius: 0.25rem;
   padding: 0 0.5rem;
   background-color: $dark;
+}
+
+@media (max-width: 1199px) {
+  .highlight__container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .highlight {
+    flex: 0 0 45%;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .highlight__container {
+    flex-direction: column;
+  }
 }
