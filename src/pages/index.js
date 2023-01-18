@@ -10,6 +10,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import MarkdownDisplay from "../components/markdown-display"
+import backgroundImage from "../images/test-background.jpg"
 
 library.add(fas)
 
@@ -23,6 +24,7 @@ const IndexPage = () => {
             client
             quote
             subtitle
+            body
             image {
               gatsbyImageData(
                 width: 200
@@ -156,12 +158,14 @@ const IndexPage = () => {
   const highlightSettings = {
     dots: false,
     infinite: true,
-    autoplay: false,
+    autoplay: true,
+    autoplaySpeed: 10000,
     lazyLoad: false,
+
     speed: 700,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    className: "highlight__slider",
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    className: "",
     easing: "ease-in-out",
     arrows: true,
     fade: false,
@@ -169,7 +173,8 @@ const IndexPage = () => {
     nextArrow: <SliderNextArrow />,
     prevArrow: <SliderPrevArrow />,
     responsive: [
-      { breakpoint: 900, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } },
+      { breakpoint: 550, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
   }
 
@@ -180,18 +185,15 @@ const IndexPage = () => {
       <div className="row p-0 position-relative mt-2">
         <div
           className="col-12 d-flex justify-content-center align-items-center p-4 p-md-0"
-          style={{ height: "70vh" }}
+          style={{
+            height: "70vh",
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: "cover",
+          }}
         >
-          <div
-            className="hero-text d-flex flex-row hero-container"
-            style={{
-              backgroundImage: `url(https:${heroPortrait.file.url})`,
-              backgroundPosition: "top right",
-              backgroundSize: "cover",
-            }}
-          >
-            <div className="p-4 text-white col-12 col-md-6">
-              <h1 className="block__heading pe-4 mb-0">{heroTitle}</h1>
+          <div className="hero-text d-flex flex-row hero-container">
+            <div className="p-4 text-white col-12">
+              <h1 className="block__heading on-black pe-4 mb-0">{heroTitle}</h1>
               <div className="pe-2">
                 <MarkdownDisplay
                   html={heroBody.childrenMarkdownRemark[0].html}
@@ -204,38 +206,19 @@ const IndexPage = () => {
                 {heroCtaText}
               </a>
             </div>
-            <div className="p-0 d-none d-sm-block flex-fill">
-              {/* <img
-                src={
-                  heroPortrait
-                    ? `https:${heroPortrait.file.url}`
-                    : "https://picsum.photos/250"
-                }
-                style={{
-                  objectFit: "cover",
-                  width: "250px",
-                  height: "250px",
-                  borderRadius: ".25rem",
-                }}
-                alt={
-                  heroPortrait
-                    ? `https:${heroPortrait.description}`
-                    : "stand in"
-                }
-              /> */}
-            </div>
           </div>
         </div>
         <div className="row m-0 py-5">
           <div className="col col-md-8 offset-md-2 mb-4 px-4 px-md-0">
             <h2 className="block__heading">What I Do</h2>
-            <Slider {...highlightSettings}>
+
+            <div className="highlight__container">
               {highlightCards
                 .sort((a, b) => a.node.order - b.node.order)
                 .map((card, index) => {
                   return <HighlightCard {...card} key={card.node.id} />
                 })}
-            </Slider>
+            </div>
           </div>
         </div>
         {testimonialsOn && (
@@ -243,19 +226,26 @@ const IndexPage = () => {
             <div className="col-12 col-md-8 offset-md-2 px-2 px-md-0">
               <h2 className="block__heading">Testimonials</h2>
             </div>
-            {testimonials.map((testimonial, index) => {
-              return (
-                <div
-                  className="col-12 col-md-8 offset-md-2 d-flex justify-content-center mb-4 px-2 px-md-0"
-                  key={testimonial.node.id}
-                >
-                  <Testimonial
-                    {...testimonial.node}
-                    variant={index % 2 === 1 ? "left" : "right"}
-                  />
-                </div>
-              )
-            })}
+
+            <div className="col-12 col-md-8 offset-md-2 px-2 px-md-0">
+              <Slider {...highlightSettings}>
+                {testimonials.map((testimonial, index) => {
+                  return (
+                    <div className="row mx-1 px-2">
+                      <div
+                        className="col-12 d-flex justify-content-center mb-4 px-2 px-md-0"
+                        key={testimonial.node.id}
+                      >
+                        <Testimonial
+                          {...testimonial.node}
+                          variant={index % 2 === 1 ? "left" : "right"}
+                        />
+                      </div>
+                    </div>
+                  )
+                })}
+              </Slider>
+            </div>
           </div>
         )}
 
@@ -289,30 +279,6 @@ const IndexPage = () => {
             </div>
           </div>
         </div>
-
-        {/* 
-        
-            WHEN HERO IMAGE IS CREATED AND READY TO BE USED
-
-        <div
-          className="p-0"
-          style={{
-            height: "85vh",
-            position: "absolute",
-            top: 0,
-            left: 12,
-            zIndex: 0,
-          }}
-        >
-          <div className="slider-div">
-            <img
-              src={heroImage}
-              loading="lazy"
-              alt={`Description`}
-              style={{ objectPosition: "center bottom" }}
-            />
-          </div>
-        </div> */}
       </div>
     </Layout>
   )

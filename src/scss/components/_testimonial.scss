@@ -5,6 +5,14 @@
   flex-direction: row;
 }
 
+.testimonial h3 {
+  margin-left: 1rem;
+  &::before,
+  &::after {
+    content: '"';
+  }
+}
+
 .testimonial__image {
   width: 200px;
   height: 200px;
@@ -34,7 +42,6 @@
 
 .testimonial__quote-container {
   display: flex;
-  align-items: center;
 }
 
 .testimonial__body-container {
@@ -53,7 +60,30 @@
   }
 }
 
+.highlight__icon--left {
+  left: -25px;
+  margin-left: 0rem;
+}
+
+.highlight__icon--right {
+  right: -25px;
+  margin-right: 0rem;
+}
+
+.slick-active {
+}
+
 @media (max-width: 767px) {
+  .highlight__icon--left {
+    left: -50px;
+    margin-left: 1rem;
+  }
+
+  .highlight__icon--right {
+    right: -50px;
+    margin-right: 1rem;
+  }
+
   .testimonial {
     flex-direction: column;
     height: auto;
