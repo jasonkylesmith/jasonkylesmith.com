@@ -18,7 +18,7 @@ export const query = graphql`
       contentful_id
       name
       nextDueDate(formatString: "Do MMMM, YYYY")
-      photoshootDate(formatString: "Do MMMM, YYYY hh:MM a")
+      photoshootDate(formatString: "Do MMMM, YYYY")
       downloadLink
       status
       photos {
