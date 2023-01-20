@@ -14,8 +14,8 @@ const NotFoundPage = () => (
   <Layout>
     <Seo title="404 Page Not found | Jason Kyle Smith" />
 
-    <div className="row h-75">
-      <div className="not-found-page-column col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center text-center">
+    <div className="row w-100 p-0" style={{ height: "90%" }}>
+      <div className="not-found-page-column col-12 d-flex flex-column justify-content-center align-items-center text-center">
         <div className="bg-text-container d-flex justify-content-center align-items-center">
           <h1>404</h1>
         </div>

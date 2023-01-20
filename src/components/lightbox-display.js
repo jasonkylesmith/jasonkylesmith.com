@@ -135,7 +135,7 @@ const LightboxContainer = props => {
         true
       )
     }
-  }, [])
+  }, [closeLightbox])
 
   const [closingLightbox, setClosingLightbox] = useState(false)
   const [transitionStatus, setTransitionStatus] = useState(

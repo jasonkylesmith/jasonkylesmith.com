@@ -5,15 +5,16 @@ import ModuleWrapper from "../components/module-wrapper"
 import Seo from "../components/seo"
 
 const Page = ({ data }) => {
-  const { name, slug, modules } = data.contentfulPage
+  const { name, modules } = data.contentfulPage
 
   return (
     <Layout>
       <Seo title={name} />
-
-      {modules.map(module => {
-        return <ModuleWrapper props={module} />
-      })}
+      <div className="mb-5">
+        {modules.map(module => {
+          return <ModuleWrapper props={module} />
+        })}
+      </div>
     </Layout>
   )
 }
@@ -28,9 +29,65 @@ export const query = graphql`
       modules {
         sectionMargin
         fullWidth
+        backgroundColor
         name
         headline
         module {
+          ... on ContentfulSplitContent {
+            fullWidth
+            ratio
+            name
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+            blocks {
+              ... on ContentfulCopy {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                id
+                name
+                text {
+                  text
+                  childrenMarkdownRemark {
+                    html
+                  }
+                }
+              }
+              ... on ContentfulImage {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                id
+                name
+                image {
+                  gatsbyImageData
+                  description
+                  file {
+                    url
+                    details {
+                      image {
+                        height
+                        width
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
           ... on ContentfulCarousel {
             sys {
               contentType {

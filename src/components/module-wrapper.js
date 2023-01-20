@@ -4,12 +4,13 @@ import CardList from "./card-list"
 import Carousel from "./carousel"
 import ClientGallery from "./client-gallery"
 import Hero from "./hero"
+import SplitContent from "./split-content"
 
 const ModuleWrapper = ({ props }) => {
-  const { name, sectionMargin, module, fullWidth, headline } = props
+  const { sectionMargin, module, fullWidth, headline, backgroundColor } = props
   const { id } = module.sys.contentType.sys
 
-  console.log(id)
+  console.log(id, backgroundColor)
 
   const Container = ({ children }) => {
     let content
@@ -27,14 +28,18 @@ const ModuleWrapper = ({ props }) => {
 
     if (!fullWidth) {
       return (
-        <section className={`section__${sectionMargin} row px-2`}>
+        <section
+          className={`section__${sectionMargin} section__${backgroundColor} row px-2`}
+        >
           <div className="col-12 col-md-8 offset-md-2">{content}</div>
         </section>
       )
     } else {
       return (
-        <section className={`section__${sectionMargin} row px-0`}>
-          <div className="col-12 p-0">{content}</div>
+        <section
+          className={`section__${sectionMargin} section__${backgroundColor} row px-0`}
+        >
+          <div className={`col-12 ${id === "hero" && "px-0"}`}>{content}</div>
         </section>
       )
     }
@@ -56,8 +61,13 @@ const ModuleWrapper = ({ props }) => {
       moduleSection = <CardList module={module} />
       break
     case "carousel":
-      // moduleSection = <Carousel module={module} />
-      moduleSection = <></>
+      moduleSection = <Carousel module={module} />
+
+      break
+    case "splitContent":
+      moduleSection = (
+        <SplitContent module={module} parentFullWidth={fullWidth} />
+      )
       break
     default:
       moduleSection = <div>{module.name}</div>

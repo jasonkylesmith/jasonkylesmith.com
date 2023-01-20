@@ -17,7 +17,7 @@ const Hero = ({ module }) => {
         <div className="p-4 text-white col-12">
           <h1 className="block__heading on-black pe-4 mb-0">{headline}</h1>
           <div className="pe-2 mb-4">{copy.copy}</div>
-          <Link data={ctaButton} className="btn mb-0 button-on-black" />
+          <Link data={ctaButton} className="btn mb-0" />
         </div>
       </div>
     </div>

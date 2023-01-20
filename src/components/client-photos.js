@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import LightboxContainer from "./lightbox-display"
 import Ratings from "./ratings"
 
@@ -12,20 +12,8 @@ library.add(fas)
 const ClientPhotos = ({ photos }) => {
   const [openLightbox, setOpenLightbox] = useState(false)
   const [imgIndex, setImgIndex] = useState()
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth)
 
   const imgIndexRef = useRef(0)
-
-  useEffect(() => {
-    const getInnerWidth = () => {
-      setInnerWidth(window.innerWidth)
-    }
-
-    window.addEventListener("resize", () => getInnerWidth(), true)
-
-    return () =>
-      window.removeEventListener("resize", () => getInnerWidth(), true)
-  }, [])
 
   const moveImgIndex = direction => {
     if (direction === "left" && imgIndexRef.current > 0) {
@@ -61,7 +49,7 @@ const ClientPhotos = ({ photos }) => {
           {photos.map((photo, index) => {
             const { width, height } = photo.photo.file.details.image
             const { url: src } = photo.photo.file
-            const { description: alt, contentful_id } = photo.photo
+            const { description: alt } = photo.photo
 
             const isVertical = width < height ? true : false
 

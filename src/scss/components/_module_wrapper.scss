@@ -1,23 +1,43 @@
 .section {
-  margin: 0;
+  padding: 0;
 }
 
 .section__xl {
-  margin: 10rem 0;
+  padding: 10rem 0;
 }
 
 .section__lg {
-  margin: 7.5rem 0;
+  padding: 7rem 0;
 }
 
 .section__md {
-  margin: 5rem 0;
+  padding: 4rem 0;
 }
 
 .section__sm {
-  margin: 2.5rem 0;
+  padding: 2.5rem 0;
 }
 
 .section__xs {
-  margin: 1rem 0;
+  padding: 1rem 0;
+}
+
+.section__white {
+  background-color: white;
+  color: $dark;
+}
+
+.section__dark {
+  background-color: $dark;
+  color: white;
+}
+
+.section__black {
+  background-color: black;
+  color: white;
+}
+
+.section__accent {
+  background-color: $accent;
+  color: white;
 }

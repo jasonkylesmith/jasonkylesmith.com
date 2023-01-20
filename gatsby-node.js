@@ -40,13 +40,15 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   response.data.allContentfulPage.edges.forEach(edge => {
-    createPage({
-      path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
-      component: path.resolve("./src/templates/page.js"),
-      context: {
-        slug: edge.node.slug,
-      },
-    })
+    if (edge.node.slug !== "test") {
+      createPage({
+        path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
+        component: path.resolve("./src/templates/page.js"),
+        context: {
+          slug: edge.node.slug,
+        },
+      })
+    }
   })
 
   response.data.allContentfulBlogPost.edges

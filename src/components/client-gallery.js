@@ -3,10 +3,10 @@ import React from "react"
 import { useEffect, useMemo, useState } from "react"
 import { CLIENT_GALLERY_STATUS_TEXT } from "../helpers/constants"
 import ClientPhotos from "./client-photos"
-import Layout from "./layout"
+
 import Loading from "./loading"
 import LoginButton from "./login-button"
-import Seo from "./seo"
+
 import Tooltip from "./tooltip"
 
 const ClientGallery = props => {

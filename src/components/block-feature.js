@@ -6,40 +6,35 @@ const BlockFeature = props => {
   const { blockItems, variant } = props.block
 
   let maxItems
-  let containerClass
+
   let blockClasses
 
   switch (variant) {
     case "Portrait Solo":
       maxItems = 1
-      containerClass = "portrait-solo"
       blockClasses = "col-12"
       break
     case "Portrait Duo":
       maxItems = 2
-      containerClass = "portrait-duo"
       blockClasses = "col-12 col-md-6 mb-4"
       break
     case "Portrait Trio":
       maxItems = 3
-      containerClass = "portrait-trio"
       blockClasses = "col-12 col-sm-6 col-md-4 mb-4"
       break
     case "Landscape Solo":
       maxItems = 1
-      containerClass = "landscape-solo"
       blockClasses = "col-12"
       break
     case "Landscape Duo":
       maxItems = 2
-      containerClass = "landscape-duo"
       blockClasses = "col-12"
       break
     case "Landscape Trio":
       maxItems = 3
-      containerClass = "landscape-trio"
       blockClasses = "col-12"
       break
+    default:
   }
 
   return (
