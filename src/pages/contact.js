@@ -26,7 +26,7 @@ const ContactFormPage = () => {
     if (urlQuery.destination) {
       setDestination(urlQuery.destination)
     }
-  }, [])
+  }, [urlQuery.destination])
 
   const formValidation = () => {
     return emailState === "valid" && message.length > 3 && name.length > 2

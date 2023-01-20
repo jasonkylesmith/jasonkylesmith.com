@@ -3,7 +3,7 @@ import * as React from "react"
 import MenuIcon from "./menu-icon"
 import { Link } from "gatsby"
 import Navigation from "./navigation"
-import Footer from "./footer"
+
 import SocialIcons from "./social-icons"
 
 const Header = props => {

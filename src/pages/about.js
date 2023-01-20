@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Slider from "react-slick"
+
 import MarkdownDisplay from "../components/markdown-display"
 
 const AboutPage = () => {
@@ -44,57 +44,6 @@ const AboutPage = () => {
     aboutPortrait,
   } = data.allContentfulSitewideCopy.edges[0].node
 
-  const aboutSliderSettings = {
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    swipeToSlide: true,
-    centerMode: true,
-    arrows: false,
-    dots: true,
-    swipe: true,
-    infinite: true,
-    focusOnSelect: true,
-    rows: 1,
-    responsive: [
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 1400,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-    ],
-  }
-
   return (
     <Layout>
       <Seo title="About | Jason Kyle Smith" />
@@ -128,20 +77,7 @@ const AboutPage = () => {
             </div>
 
             <div className="row mb-4">
-              <div className="col ps-0 mt-4 about-slider">
-                {/* <Slider {...aboutSliderSettings}>
-                  {aboutSliderGallery.map(image => {
-                    return (
-                      <div className="about">
-                        <img
-                          src={`http:${image.file.url}`}
-                          alt={image.description}
-                        />
-                      </div>
-                    )
-                  })}
-                </Slider> */}
-              </div>
+              <div className="col ps-0 mt-4 about-slider"></div>
             </div>
           </div>
         </div>

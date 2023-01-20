@@ -1,11 +1,12 @@
 .not-found-page-column {
-  height: 97vh;
+  width: 100vw;
+  height: 100%;
 }
 
 .bg-text-container {
   opacity: 0.2;
-  height: 97vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   position: absolute;
   text-align: center;
   z-index: -1;
@@ -22,7 +23,7 @@
 
 @media (max-width: $max-width-md) {
   .not-found-page-column {
-    height: 75vh;
+    height: 60vh;
   }
   .bg-text-container {
     h1 {

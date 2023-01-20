@@ -8,7 +8,7 @@ import React from "react"
 library.add(fas)
 
 const HighlightCard = props => {
-  const { title, body, highlight } = props.node
+  const { title, body, highlight } = props?.node || props
   const { gatsbyImageData } = highlight.featuredImage
   const { slug } = highlight
 
@@ -18,7 +18,7 @@ const HighlightCard = props => {
 
   return (
     <div className="card highlight">
-      <div className="card-body">
+      <div className="card-body d-flex flex-column justify-content-between">
         <div className="row">
           <div className="col-12">
             <Link to={`/${category}/${slug}`} className="gallery-link">
@@ -38,8 +38,6 @@ const HighlightCard = props => {
           <div className="col-12">
             <h4 className="m-0">{title}</h4>
           </div>
-        </div>
-        <div className="row">
           <div className="col-12 highlight__body">
             <div
               dangerouslySetInnerHTML={{
@@ -48,6 +46,7 @@ const HighlightCard = props => {
             />
           </div>
         </div>
+
         <div className="row">
           <div className="col-12 highlight__body highlight__body--right">
             <Link to={`/${category}`} className="">

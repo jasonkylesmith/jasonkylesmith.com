@@ -35,8 +35,7 @@ const SocialIcons = props => {
     }
   `)
 
-  const { linkedIn, twitter, gitHub, instagram, mastodon } =
-    data.contentfulAuthor
+  const { twitter, instagram } = data.contentfulAuthor
 
   const [payVisibleDesktop, setPayVisibleDesktop] = useState(false)
   const [payVisibleMobile, setPayVisibleMobile] = useState(false)
@@ -98,9 +97,7 @@ const SocialIcons = props => {
           className="mx-1 icon"
         />
       </a>
-      {/* <a rel="me" href={mastodon} target="_new" className="icon">
-        <FontAwesomeIcon icon={["fab", "mastodon"]} className="mx-1 icon" />
-      </a> */}
+
       {props?.version !== "author" && (
         <button
           onClick={() => {
