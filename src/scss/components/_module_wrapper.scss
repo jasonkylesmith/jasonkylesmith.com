@@ -1,0 +1,43 @@
+.section {
+  padding: 0;
+}
+
+.section__xl {
+  padding: 10rem 0;
+}
+
+.section__lg {
+  padding: 7rem 0;
+}
+
+.section__md {
+  padding: 4rem 0;
+}
+
+.section__sm {
+  padding: 2.5rem 0;
+}
+
+.section__xs {
+  padding: 1rem 0;
+}
+
+.section__white {
+  background-color: white;
+  color: $dark;
+}
+
+.section__dark {
+  background-color: $dark;
+  color: white;
+}
+
+.section__black {
+  background-color: black;
+  color: white;
+}
+
+.section__accent {
+  background-color: $accent;
+  color: white;
+}

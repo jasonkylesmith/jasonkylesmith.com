@@ -5,6 +5,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const response = await graphql(`
     query {
+      allContentfulPage {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
       allContentfulBlogPost {
         edges {
           node {
@@ -31,6 +38,18 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+
+  response.data.allContentfulPage.edges.forEach(edge => {
+    if (edge.node.slug !== "test") {
+      createPage({
+        path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
+        component: path.resolve("./src/templates/page.js"),
+        context: {
+          slug: edge.node.slug,
+        },
+      })
+    }
+  })
 
   response.data.allContentfulBlogPost.edges
     // Filter out posts to be published in the future .filter(edge => new Date(edge.node.publishedDate) <= new Date())

@@ -35,6 +35,7 @@ const MenuIcon = props => {
         onClick={() => {
           handleMenuClick()
         }}
+        role="button"
       >
         <span></span>
         <span></span>

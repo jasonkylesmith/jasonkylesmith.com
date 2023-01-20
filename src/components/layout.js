@@ -7,13 +7,11 @@
 
 import * as React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 
 import "../scss/main.scss"
 import Footer from "./footer"
-import Navigation from "./navigation"
 
 const Layout = ({ children }) => {
   return (
@@ -29,7 +27,7 @@ const Layout = ({ children }) => {
           <Header version="mobile" />
         </div>
         <div className="row flex-fill">
-          <main className="p-0">{children}</main>
+          <main className="p-0 container">{children}</main>
         </div>
         <div
           className="row"
