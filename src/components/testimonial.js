@@ -5,8 +5,6 @@ const Testimonial = props => {
   const variant = props.variant ? props.variant : "left"
   const { client, subtitle, quote, body, image } = props
 
-  console.log(props)
-
   if (variant === "left") {
     return (
       <div className="ms-2 ms-md-0 testimonial testimonial--left justify-content-between">

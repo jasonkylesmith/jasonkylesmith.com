@@ -7,7 +7,7 @@ import Seo from "../components/seo"
 
 import { useAuth0 } from "@auth0/auth0-react"
 import LoginButton from "../components/login-button"
-import ClientPhotos from "../components/client-gallery"
+import ClientPhotos from "../components/client-photos"
 import Tooltip from "../components/tooltip"
 import { CLIENT_GALLERY_STATUS_TEXT } from "../helpers/constants"
 import Loading from "../components/loading"
@@ -27,6 +27,7 @@ export const query = graphql`
         photographerRating
         clientFavorite
         photo {
+          contentful_id
           gatsbyImageData
           file {
             details {

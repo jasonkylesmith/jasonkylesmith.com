@@ -1,122 +1,154 @@
-import React, { useEffect, useRef, useState } from "react"
-import LightboxContainer from "./lightbox-display"
-import Ratings from "./ratings"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { fas } from "@fortawesome/free-solid-svg-icons"
-import { library } from "@fortawesome/fontawesome-svg-core"
+import { useAuth0 } from "@auth0/auth0-react"
+import React from "react"
+import { useEffect, useMemo, useState } from "react"
+import { CLIENT_GALLERY_STATUS_TEXT } from "../helpers/constants"
+import ClientPhotos from "./client-photos"
+import Layout from "./layout"
+import Loading from "./loading"
+import LoginButton from "./login-button"
+import Seo from "./seo"
 import Tooltip from "./tooltip"
 
-library.add(fas)
+const ClientGallery = props => {
+  const {
+    contentful_id,
+    name,
 
-const ClientPhotos = ({ photos }) => {
-  const [openLightbox, setOpenLightbox] = useState(false)
-  const [imgIndex, setImgIndex] = useState()
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth)
+    photoshootDate,
+    nextDueDate,
+    status,
+    downloadLink,
+    photos,
+  } = props.module
 
-  const imgIndexRef = useRef(0)
+  const { isLoading, isAuthenticated, user } = useAuth0()
+  const [idMatch, setIdMatch] = useState(false)
+  const [photosByStatus, setPhotosByStatus] = useState({
+    previews: [],
+    reviews: [],
+    finals: [],
+  })
+
+  useMemo(() => {
+    let previews = []
+    let reviews = []
+    let finals = []
+
+    photos.forEach(photo => {
+      const { photoStatus } = photo
+
+      switch (photoStatus) {
+        case "preview":
+          previews.push(photo)
+          break
+        case "review":
+          reviews.push(photo)
+          break
+        case "final":
+          finals.push(photo)
+          break
+        default:
+          previews.push(photo)
+      }
+
+      setPhotosByStatus({ previews, reviews, finals })
+    })
+  }, [photos])
 
   useEffect(() => {
-    const getInnerWidth = () => {
-      setInnerWidth(window.innerWidth)
+    if (!isLoading && isAuthenticated) {
+      if (user.galleries.includes(contentful_id)) {
+        setIdMatch(true)
+      }
     }
-
-    window.addEventListener("resize", () => getInnerWidth(), true)
-
-    return () =>
-      window.removeEventListener("resize", () => getInnerWidth(), true)
-  }, [])
-
-  const moveImgIndex = direction => {
-    if (direction === "left" && imgIndexRef.current > 0) {
-      // setImgIndex(imgIndexRef - 1)
-      imgIndexRef.current = imgIndexRef.current - 1
-      setImgIndex(imgIndexRef.current)
-    }
-
-    if (direction === "right" && imgIndexRef.current < photos?.length - 1) {
-      // setImgIndex(imgIndexRef + 1)
-      imgIndexRef.current = imgIndexRef.current + 1
-      setImgIndex(imgIndexRef.current)
-    }
-  }
-
-  photos = [...photos, ...photos, ...photos, ...photos]
-
-  const colLGClass = photos.length > 3 ? "col-lg-3" : "col-lg-4"
+  }, [isAuthenticated, isLoading, contentful_id, user])
 
   return (
     <>
-      <LightboxContainer
-        images={photos}
-        openLightbox={openLightbox}
-        setOpenLightbox={setOpenLightbox}
-        moveImgIndex={moveImgIndex}
-        imgIndex={imgIndex}
-        isClient
-      />
-
-      <div className="client-gallery">
-        <div className="client-gallery--container row">
-          {photos.map((photo, index) => {
-            const { width, height } = photo.photo.file.details.image
-            const { url: src } = photo.photo.file
-            const { description: alt } = photo.photo
-
-            const isVertical = width < height ? true : false
-
-            return (
-              <div
-                className={`col-12 col-sm-6 col-md-4  ${colLGClass} mb-2`}
-                key={photo.contentful_id}
-              >
-                <div className="item">
-                  <div className="inner-item">
-                    <img
-                      src={src}
-                      alt={alt}
-                      className={isVertical ? "vertical" : "horizontal"}
-                      onClick={() => {
-                        imgIndexRef.current = index
-                        setImgIndex(index)
-                        setOpenLightbox(true)
-                      }}
-                    />
-                  </div>
-                  {photo.clientFavorite && (
-                    <span
-                      style={{ position: "absolute", right: ".3rem", top: 0 }}
+      {!isLoading ? (
+        isAuthenticated ? (
+          idMatch ? (
+            <>
+              <h1 className="block__heading">{name}</h1>
+              <div className="row justify-space-between">
+                <div className="col-12 col-lg-8 m-0 d-flex flex-column">
+                  <span>
+                    <b>photoshoot date:</b> {photoshootDate}
+                  </span>
+                  <span>
+                    <b>next due date:</b> {nextDueDate}
+                  </span>
+                </div>
+                <div className="col-12 col-lg-4 m-0 d-flex flex-column">
+                  <span>
+                    <b>status: </b>
+                    <Tooltip
+                      tipText={CLIENT_GALLERY_STATUS_TEXT[status]}
+                      direction="right"
                     >
-                      <Tooltip direction="right" tipText="Client Favorite">
-                        <FontAwesomeIcon
-                          icon={["fas", "heart"]}
-                          style={{
-                            color: "#663cf0",
-                            height: ".7rem",
-                            width: ".7rem",
-                          }}
-                        />
-                      </Tooltip>
+                      <span>{status}</span>
+                    </Tooltip>
+                  </span>
+
+                  {status === "final" && downloadLink && (
+                    <span>
+                      <a href={downloadLink} target="_blank" rel="noreferrer">
+                        Download Final Deliverables
+                      </a>
                     </span>
                   )}
                 </div>
-                <div className="row">
-                  <div className="col">
-                    <span style={{ fontSize: ".9rem" }}>{photo.photoName}</span>
-                  </div>
-                  <div className="col d-flex justify-content-end align-items-center">
-                    <Tooltip direction="center" tipText="Photographer Rating">
-                      <Ratings rating={photo.photographerRating} />
-                    </Tooltip>
-                  </div>
-                </div>
               </div>
-            )
-          })}
-        </div>
-      </div>
+              {photosByStatus.previews.length > 0 && (
+                <div className="mt-4">
+                  <h2 className="block__heading">Previews</h2>
+                  <ClientPhotos photos={photosByStatus.previews} />
+                </div>
+              )}
+              {photosByStatus.reviews.length > 0 && (
+                <div className="mt-4">
+                  <h2 className="block__heading">Ready for Review</h2>
+                  <ClientPhotos photos={photosByStatus.reviews} />
+                </div>
+              )}
+              {photosByStatus.finals.length > 0 && (
+                <div className="mt-4">
+                  <h2 className="block__heading">Final Photos</h2>
+                  <ClientPhotos photos={photosByStatus.finals} />
+                </div>
+              )}
+            </>
+          ) : (
+            <div style={{ marginTop: "6rem" }}>
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <LoginButton>Log In Required</LoginButton>
+              </div>
+            </div>
+          )
+        ) : (
+          <div style={{ marginTop: "6rem" }}>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <LoginButton>Log In Required</LoginButton>
+            </div>
+          </div>
+        )
+      ) : (
+        <Loading />
+      )}
     </>
   )
 }
 
-export default ClientPhotos
+export default ClientGallery

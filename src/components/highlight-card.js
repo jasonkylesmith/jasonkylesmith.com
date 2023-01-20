@@ -8,7 +8,7 @@ import React from "react"
 library.add(fas)
 
 const HighlightCard = props => {
-  const { title, body, highlight } = props.node
+  const { title, body, highlight } = props?.node || props
   const { gatsbyImageData } = highlight.featuredImage
   const { slug } = highlight
 

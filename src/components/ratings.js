@@ -6,7 +6,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 library.add(fas)
 
 const Ratings = ({ rating, isLarger }) => {
-  const Star = () => {
+  const Star = key => {
     return (
       <FontAwesomeIcon
         icon={["fas", "star"]}
@@ -15,6 +15,7 @@ const Ratings = ({ rating, isLarger }) => {
           height: isLarger ? ".9rem" : ".7rem",
           width: isLarger ? ".9rem" : ".7rem",
         }}
+        key={key}
       />
     )
   }
@@ -22,7 +23,7 @@ const Ratings = ({ rating, isLarger }) => {
   return (
     <>
       {rating >= 0 && rating <= 5 ? (
-        [...Array(rating)].map((e, i) => <Star />)
+        [...Array(rating)].map((e, i) => <Star key={i} />)
       ) : (
         <></>
       )}

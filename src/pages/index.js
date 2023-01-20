@@ -37,6 +37,71 @@ const IndexPage = () => {
           }
         }
       }
+      allContentfulPage {
+        edges {
+          node {
+            slug
+            name
+            modules {
+              sectionMargin
+              name
+              module {
+                ... on ContentfulBlockGallery {
+                  sys {
+                    contentType {
+                      sys {
+                        type
+                      }
+                    }
+                  }
+                  id
+                  name
+                  columns
+                  variant
+                  images {
+                    description
+                    gatsbyImageData
+                    title
+                  }
+                }
+                ... on ContentfulClientGallery {
+                  sys {
+                    contentType {
+                      sys {
+                        type
+                      }
+                    }
+                  }
+                  id
+                  name
+                  hideImage
+                  downloadLink
+                  contentful_id
+                  featuredImage {
+                    description
+                    gatsbyImageData
+                    title
+                  }
+                  photoshootDate
+                  slug
+                  photos {
+                    photoName
+                    photoStatus
+                    photographerRating
+                    clientFavorite
+                    photo {
+                      gatsbyImageData
+                      title
+                      description
+                      contentful_id
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       allContentfulSitewideCopy(filter: { name: { eq: "Basic" } }) {
         edges {
           node {
@@ -221,7 +286,7 @@ const IndexPage = () => {
             </div>
           </div>
         </div>
-        {testimonialsOn && (
+        {true && (
           <div className="row m-0 pb-5">
             <div className="col-12 col-md-8 offset-md-2 px-2 px-md-0">
               <h2 className="block__heading">Testimonials</h2>
@@ -229,6 +294,21 @@ const IndexPage = () => {
 
             <div className="col-12 col-md-8 offset-md-2 px-2 px-md-0">
               <Slider {...highlightSettings}>
+                {testimonials.map((testimonial, index) => {
+                  return (
+                    <div className="row mx-1 px-2">
+                      <div
+                        className="col-12 d-flex justify-content-center mb-4 px-2 px-md-0"
+                        key={testimonial.node.id}
+                      >
+                        <Testimonial
+                          {...testimonial.node}
+                          variant={index % 2 === 1 ? "left" : "right"}
+                        />
+                      </div>
+                    </div>
+                  )
+                })}
                 {testimonials.map((testimonial, index) => {
                   return (
                     <div className="row mx-1 px-2">
