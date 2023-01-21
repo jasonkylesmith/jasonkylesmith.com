@@ -1,9 +1,9 @@
 import * as React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { GatsbyImage } from "gatsby-plugin-image"
+import GalleryList from "../components/gallery-list"
 
 export const query = graphql`
   query ($category: String!) {
@@ -13,6 +13,13 @@ export const query = graphql`
     ) {
       edges {
         node {
+          sys {
+            contentType {
+              sys {
+                id
+              }
+            }
+          }
           contentful_id
           name
           slug
@@ -35,7 +42,7 @@ export const query = graphql`
   }
 `
 
-const GalleryList = props => {
+const GalleryListPage = props => {
   const { edges } = props.data.allContentfulGallery
   const { category } = props.pageContext
 
@@ -44,8 +51,8 @@ const GalleryList = props => {
       <Seo title={`${category}`} />
 
       <div className="row mt-4 px-2">
-        <div className="col-12 col-lg-12">
-          <div className="row">
+        <div className="col-md-8 offset-md-2">
+          {/* <div className="row">
             <div className="col-md-8 offset-md-2">
               <h1 className="block__heading">{category}</h1>
             </div>
@@ -90,11 +97,12 @@ const GalleryList = props => {
                 })}
               </div>
             </div>
-          </div>
+          </div> */}
+          <GalleryList module={edges} category={category} />
         </div>
       </div>
     </Layout>
   )
 }
 
-export default GalleryList
+export default GalleryListPage
