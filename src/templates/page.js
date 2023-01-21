@@ -11,8 +11,8 @@ const Page = ({ data }) => {
     <Layout>
       <Seo title={name} />
       <div className="mb-5">
-        {modules.map(module => {
-          return <ModuleWrapper props={module} />
+        {modules.map((module, index) => {
+          return <ModuleWrapper props={module} key={index} />
         })}
       </div>
     </Layout>
@@ -33,6 +33,77 @@ export const query = graphql`
         name
         headline
         module {
+          ... on ContentfulContentPageList {
+            id
+            name
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+            pages {
+              ... on ContentfulBlogPost {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                contentful_id
+                title
+                id
+                slug
+                featured
+                publishedDate(formatString: "Do MMMM, YYYY")
+                fullDate: publishedDate
+                tags
+                featuredImage {
+                  title
+                  gatsbyImageData(
+                    layout: FULL_WIDTH
+                    quality: 100
+                    resizingBehavior: CROP
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                    aspectRatio: 2
+                  )
+                }
+                excerpt {
+                  childMarkdownRemark {
+                    excerpt(pruneLength: 360)
+                  }
+                }
+              }
+              ... on ContentfulGallery {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                contentful_id
+                name
+                slug
+                category
+                order
+                featuredImage {
+                  title
+                  gatsbyImageData(
+                    quality: 100
+                    layout: CONSTRAINED
+                    resizingBehavior: FILL
+                    aspectRatio: 2
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
+                }
+              }
+            }
+          }
           ... on ContentfulSplitContent {
             fullWidth
             ratio
