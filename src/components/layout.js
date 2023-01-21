@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
           <Header version="mobile" />
         </div>
         <div className="row flex-fill">
-          <main className="p-0 container">{children}</main>
+          <main className="p-0 mb-4 container">{children}</main>
         </div>
         <div
           className="row"
