@@ -9,7 +9,6 @@ const CardList = ({ module }) => {
       {cards
         .sort((a, b) => a.order - b.order)
         .map((card, index) => {
-          console.log(card)
           return <HighlightCard {...card} key={card.id} />
         })}
     </div>

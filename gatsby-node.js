@@ -41,6 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   response.data.allContentfulPage.edges.forEach(edge => {
     if (edge.node.slug !== "test") {
+      /* if (true) { */
       createPage({
         path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
         component: path.resolve("./src/templates/page.js"),

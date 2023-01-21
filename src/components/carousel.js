@@ -59,11 +59,8 @@ const Carousel = ({ module }) => {
     <Slider {...highlightSettings}>
       {slides.map((slide, index) => {
         return (
-          <div className="row mx-1 pe-2">
-            <div
-              className="col-12 d-flex justify-content-center mb-4 px-2 px-md-0"
-              key={slide.id}
-            >
+          <div className="row mx-1 pe-2" key={`${slide.id}-${index}`}>
+            <div className="col-12 d-flex justify-content-center mb-4 px-2 px-md-0">
               <Testimonial
                 {...slide}
                 variant={index % 2 === 1 ? "left" : "right"}

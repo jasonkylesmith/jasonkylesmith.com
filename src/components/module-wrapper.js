@@ -3,15 +3,17 @@ import BlockGallery from "./block-gallery"
 import CardList from "./card-list"
 import Carousel from "./carousel"
 import ClientGallery from "./client-gallery"
+import GalleryList from "./gallery-list"
 import Hero from "./hero"
 import SplitContent from "./split-content"
 
 const ModuleWrapper = ({ props }) => {
   const { sectionMargin, module, fullWidth, headline, backgroundColor } = props
+
   const { id } = module.sys.contentType.sys
 
-  console.log(id, backgroundColor)
-
+  /*   console.log("Module Wrapper ID", id)
+   */
   const Container = ({ children }) => {
     let content
 
@@ -68,6 +70,9 @@ const ModuleWrapper = ({ props }) => {
       moduleSection = (
         <SplitContent module={module} parentFullWidth={fullWidth} />
       )
+      break
+    case "contentPageList":
+      moduleSection = <GalleryList module={module} />
       break
     default:
       moduleSection = <div>{module.name}</div>
