@@ -99,17 +99,6 @@ export const query = graphql`
               description
             }
           }
-          ... on ContentfulAsset {
-            contentful_id
-            __typename
-            gatsbyImageData(
-              quality: 100
-              placeholder: BLURRED
-              formats: [AUTO, WEBP, AVIF]
-            )
-            title
-            description
-          }
         }
       }
     }
