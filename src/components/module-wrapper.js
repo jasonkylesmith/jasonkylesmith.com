@@ -5,6 +5,7 @@ import Carousel from "./carousel"
 import ClientGallery from "./client-gallery"
 import GalleryList from "./gallery-list"
 import Hero from "./hero"
+import IconList from "./icon-list"
 import SplitContent from "./split-content"
 
 const ModuleWrapper = ({ props }) => {
@@ -73,6 +74,9 @@ const ModuleWrapper = ({ props }) => {
       break
     case "contentPageList":
       moduleSection = <GalleryList module={module} />
+      break
+    case "iconList":
+      moduleSection = <IconList module={module} />
       break
     default:
       moduleSection = <div>{module.name}</div>

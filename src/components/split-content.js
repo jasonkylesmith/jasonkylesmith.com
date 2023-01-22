@@ -1,5 +1,6 @@
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
+import IconList from "./icon-list"
 import MarkdownDisplay from "./markdown-display"
 
 const SplitContent = ({ module, parentFullWidth }) => {
@@ -46,11 +47,15 @@ const SplitContent = ({ module, parentFullWidth }) => {
       )
     }
 
+    if (id === "iconList") {
+      return <IconList module={block} isSplitContent />
+    }
+
     return <></>
   }
 
   return (
-    <div className="col-12 col-md-8 offset-md-2">
+    <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}>
       <div className={`split-content row px-3`}>
         {numOfBlocks === 1 ? (
           <div className={`${soloClasses} content-container`}>
