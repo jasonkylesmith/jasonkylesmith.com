@@ -33,6 +33,43 @@ export const query = graphql`
         name
         headline
         module {
+          ... on ContentfulIconList {
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+            id
+            name
+            iconSize
+            variant
+            icons {
+              variant
+              fontAwesomeIcon
+              text {
+                text
+                childrenMarkdownRemark {
+                  html
+                }
+              }
+              image {
+                gatsbyImageData
+                file {
+                  url
+                  details {
+                    image {
+                      height
+                      width
+                    }
+                  }
+                }
+                title
+                description
+              }
+            }
+          }
           ... on ContentfulContentPageList {
             id
             name
@@ -116,6 +153,43 @@ export const query = graphql`
               }
             }
             blocks {
+              ... on ContentfulIconList {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                id
+                name
+                iconSize
+                variant
+                icons {
+                  variant
+                  fontAwesomeIcon
+                  text {
+                    text
+                    childrenMarkdownRemark {
+                      html
+                    }
+                  }
+                  image {
+                    gatsbyImageData
+                    file {
+                      url
+                      details {
+                        image {
+                          height
+                          width
+                        }
+                      }
+                    }
+                    title
+                    description
+                  }
+                }
+              }
               ... on ContentfulCopy {
                 sys {
                   contentType {

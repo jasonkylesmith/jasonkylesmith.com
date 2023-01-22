@@ -22,12 +22,12 @@ const Layout = ({ children }) => {
         className="container-fluid d-flex flex-column justify-content-between"
         style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}
       >
-        <div className="row">
+        <div className="row mb-2">
           <Header version="desktop" />
           <Header version="mobile" />
         </div>
         <div className="row flex-fill">
-          <main className="p-0 mb-4 container">{children}</main>
+          <main className="p-0 container">{children}</main>
         </div>
         <div
           className="row"
