@@ -33,7 +33,7 @@ const Footer = props => {
           />
         </a>
         <a
-          href="https://www.twitter.com/jayisawebdev"
+          href="https://www.twitter.com/jasonkylesmith"
           target="_new"
           className="icon"
         >
@@ -44,7 +44,7 @@ const Footer = props => {
           />
         </a>
         <a
-          href="https://www.instagram.com/jasonksmith84"
+          href="https://www.instagram.com/jasonkylesmithphoto"
           target="_new"
           className="icon"
         >
@@ -86,7 +86,7 @@ const Footer = props => {
             />
           </a>
           <a
-            href="https://www.twitter.com/jayisawebdev"
+            href="https://www.twitter.com/jasonkylesmith"
             target="_new"
             className="icon"
           >
@@ -97,7 +97,7 @@ const Footer = props => {
             />
           </a>
           <a
-            href="https://www.instagram.com/jasonksmith84"
+            href="https://www.instagram.com/jasonkylesmithphoto"
             target="_new"
             className="icon"
           >
@@ -142,7 +142,7 @@ const Footer = props => {
             />
           </a>
           <a
-            href="https://www.twitter.com/jayisawebdev"
+            href="https://www.twitter.com/jasonkylesmith"
             target="_new"
             className="icon"
           >
@@ -153,7 +153,7 @@ const Footer = props => {
             />
           </a>
           <a
-            href="https://www.instagram.com/jasonksmith84"
+            href="https://www.instagram.com/jasonkylesmithphoto"
             target="_new"
             className="icon"
           >

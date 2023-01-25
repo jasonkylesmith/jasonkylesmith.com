@@ -67,7 +67,7 @@ const Layout = ({ children }) => {
               />
             </a>
 
-            <a
+            {/*             <a
               rel="me"
               href="https://universeodon.com/@jasonkylesmith"
               target="_new"
@@ -78,7 +78,7 @@ const Layout = ({ children }) => {
                 className="mx-1 icon"
                 viewBox="0 0 448 1"
               />
-            </a>
+            </a> */}
           </div>
         </div>
         {/* SIDEBAR WRAPPER*/}
