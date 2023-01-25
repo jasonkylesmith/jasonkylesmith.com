@@ -8,7 +8,7 @@ const Hero = ({ module }) => {
     <div
       className="col-12 d-flex justify-content-center align-items-center p-4 p-md-0"
       style={{
-        height: "70vh",
+        height: "80vh",
         backgroundImage: `url(${backgroundImage.file.url})`,
         backgroundSize: "cover",
       }}

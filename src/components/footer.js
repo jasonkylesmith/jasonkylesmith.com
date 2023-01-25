@@ -11,7 +11,11 @@ const Footer = props => {
     return (
       <footer className="d-none d-md-flex align-items-center row px-2 m-0">
         <div className="col-md-8 offset-md-2 text-center">
-          <a href="/clients">clients</a>
+          <div className="text-white">
+            <a href="/clients">clients</a> - <a href="/contact">contact</a>
+            {/*  -
+            <a href="/contact"> privacy policy</a> */}
+          </div>
           <span
             className="copyright d-none d-md-block"
             style={{
