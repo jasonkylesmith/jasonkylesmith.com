@@ -1,5 +1,6 @@
 import { graphql } from "gatsby"
 import React from "react"
+import FAQ from "../components/faq"
 import Layout from "../components/layout"
 import ModuleWrapper from "../components/module-wrapper"
 import Seo from "../components/seo"
@@ -11,6 +12,11 @@ const Page = ({ data }) => {
     <Layout>
       <Seo title={name} />
       <div className="mb-5">
+        <section className={`section__${"lg"} section__${"white"} row px-2`}>
+          <div className="col-12 col-md-8 offset-md-2">
+            <FAQ />
+          </div>
+        </section>
         {modules.map((module, index) => {
           return <ModuleWrapper props={module} key={index} />
         })}

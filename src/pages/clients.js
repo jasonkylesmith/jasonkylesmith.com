@@ -47,25 +47,35 @@ const Clients = () => {
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
       // Auth is no longer loading and session is authenticated,
+
       if (user.galleries && user.galleries.length > 0) {
         // gallery data exists and is not empty, so we need details on all galleries that the user has access to
 
+        let admin = false
+
+        if (user.sub === process.env.GATSBY_AUTH0_ADMIN) {
+          admin = true
+        }
+
         const { galleries } = user
+
         const { edges: allClientGalleries } = data.allContentfulClientGallery
 
         const tempGalleries = allClientGalleries.filter(({ node }) => {
-          if (galleries.includes(node.contentful_id)) {
+          if (galleries.includes(node.contentful_id) || admin) {
             if (node.status !== "draft") {
               return true
             }
           }
-          return false
+          return true
         })
 
         setClientGalleries(tempGalleries)
       }
     }
   }, [isAuthenticated, isLoading, data, user])
+
+  console.log("Client Galleries", clientGalleries)
 
   const headingText =
     clientGalleries.length > 1
@@ -104,7 +114,8 @@ const Clients = () => {
                               slug,
                             },
                           }) => {
-                            const { gatsbyImageData, title } = featuredImage
+                            const { gatsbyImageData, title } =
+                              featuredImage ?? null
 
                             return (
                               <div
