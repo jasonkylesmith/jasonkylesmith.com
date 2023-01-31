@@ -1,5 +1,6 @@
 import { graphql } from "gatsby"
 import React from "react"
+import Accordion from "../components/accordion"
 import Layout from "../components/layout"
 import ModuleWrapper from "../components/module-wrapper"
 import Seo from "../components/seo"
@@ -33,6 +34,34 @@ export const query = graphql`
         name
         headline
         module {
+          ... on ContentfulAccordion {
+            allowMultipleExpanded
+            allowZeroExpanded
+            preExpanded
+            contentful_id
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+            items {
+              contentful_id
+              body {
+                body
+                childrenMarkdownRemark {
+                  html
+                }
+              }
+              heading {
+                heading
+                childrenMarkdownRemark {
+                  html
+                }
+              }
+            }
+          }
           ... on ContentfulIconList {
             sys {
               contentType {

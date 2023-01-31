@@ -70,7 +70,7 @@ const ClientGallery = props => {
     let reviews = []
     let finals = []
 
-    photos.forEach(photo => {
+    photos?.forEach(photo => {
       const { photoStatus } = photo
 
       switch (photoStatus) {
@@ -93,7 +93,8 @@ const ClientGallery = props => {
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
-      if (user.galleries.includes(contentful_id)) {
+      const admin = user.sub === process.env.GATSBY_AUTH0_ADMIN ? true : false
+      if (user.galleries.includes(contentful_id) || admin) {
         setIdMatch(true)
       }
     }
