@@ -58,8 +58,6 @@ const Carousel = ({ module }) => {
   return (
     <Slider {...highlightSettings}>
       {slides.map((slide, index) => {
-        console.log("Slide", slide)
-
         return (
           <div className="row mx-1 pe-2" key={`${slide.id}-${index}`}>
             <div className="col-12 d-flex justify-content-center mb-4 px-2 px-md-0">
