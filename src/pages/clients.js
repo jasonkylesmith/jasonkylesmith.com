@@ -75,8 +75,6 @@ const Clients = () => {
     }
   }, [isAuthenticated, isLoading, data, user])
 
-  console.log("Client Galleries", clientGalleries)
-
   const headingText =
     clientGalleries.length > 1
       ? "Your Client Galleries"

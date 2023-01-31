@@ -1,4 +1,5 @@
 import React from "react"
+import Accordion from "./accordion"
 import BlockGallery from "./block-gallery"
 import CardList from "./card-list"
 import Carousel from "./carousel"
@@ -13,8 +14,8 @@ const ModuleWrapper = ({ props }) => {
 
   const { id } = module.sys.contentType.sys
 
-  /*   console.log("Module Wrapper ID", id)
-   */
+  /* console.log("Module Wrapper ID", id) */
+
   const Container = ({ children }) => {
     let content
 
@@ -65,7 +66,6 @@ const ModuleWrapper = ({ props }) => {
       break
     case "carousel":
       moduleSection = <Carousel module={module} />
-
       break
     case "splitContent":
       moduleSection = (
@@ -77,6 +77,9 @@ const ModuleWrapper = ({ props }) => {
       break
     case "iconList":
       moduleSection = <IconList module={module} />
+      break
+    case "accordion":
+      moduleSection = <Accordion module={module} />
       break
     default:
       moduleSection = <div>{module.name}</div>
