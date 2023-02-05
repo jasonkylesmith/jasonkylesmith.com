@@ -26,13 +26,6 @@
 
   &:hover {
     .iconList__container--wrapper {
-      transform: scale(0.8);
-    }
-  }
-
-  .iconList__container--wrapper {
-    &:hover {
-      transform: scale(1.2);
     }
   }
 
@@ -83,6 +76,13 @@
   @media (min-width: $max-width-xs) {
     .iconList__container--wrapper {
       width: 50%;
+      transition: transform 0.25s ease-in-out;
+    }
+
+    .iconList__container--wrapper {
+      &:hover {
+        transform: scale(1.2);
+      }
     }
 
     &.splitContent {
