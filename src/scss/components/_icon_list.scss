@@ -18,9 +18,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem;
-    width: 100%;
 
+    width: 100%;
     transition: transform 0.25s ease-in-out;
   }
 
@@ -39,16 +38,6 @@
     &.icon-text {
       justify-content: flex-start;
       padding-top: 2rem;
-    }
-
-    img,
-    svg {
-      margin-left: 1rem;
-    }
-
-    p {
-      padding: 1rem;
-      margin: 0;
     }
   }
 
@@ -77,6 +66,7 @@
     .iconList__container--wrapper {
       width: 50%;
       transition: transform 0.25s ease-in-out;
+      padding: 0.5rem;
     }
 
     .iconList__container--wrapper {
@@ -94,9 +84,19 @@
     .iconList__container--item {
       align-items: center;
 
-      svg,
+      /*       svg,
       img {
         margin-left: 0 !important;
+      } */
+
+      img,
+      svg {
+        margin-left: 1rem;
+      }
+
+      p {
+        padding: 1rem;
+        margin: 0;
       }
     }
   }
