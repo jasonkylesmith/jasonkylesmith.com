@@ -86,7 +86,9 @@ const BlockText = props => {
   const { blockClasses } = props
   const { text } = props.item
 
-  return <div className={`${blockClasses}`}>{textRender(text)}</div>
+  return (
+    <div className={`${blockClasses} align-self-start`}>{textRender(text)}</div>
+  )
 }
 
 export default BlockFeature

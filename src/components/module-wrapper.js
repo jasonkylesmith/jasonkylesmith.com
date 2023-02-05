@@ -30,6 +30,10 @@ const ModuleWrapper = ({ props }) => {
       content = children
     }
 
+    if (id === "carousel" && module.slides < 1) {
+      return <></>
+    }
+
     if (!fullWidth) {
       return (
         <section
@@ -65,7 +69,8 @@ const ModuleWrapper = ({ props }) => {
       moduleSection = <CardList module={module} />
       break
     case "carousel":
-      moduleSection = <Carousel module={module} />
+      moduleSection =
+        module.slides.length > 0 ? <Carousel module={module} /> : <></>
       break
     case "splitContent":
       moduleSection = (
