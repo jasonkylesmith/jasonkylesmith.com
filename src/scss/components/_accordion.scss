@@ -19,7 +19,17 @@
 
 .accordion__panel {
   padding: 0.5rem;
+  animation: fadein 0.3s ease-in-out;
 }
 
 .accordion {
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
