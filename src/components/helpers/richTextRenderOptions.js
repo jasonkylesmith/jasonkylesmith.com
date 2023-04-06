@@ -39,7 +39,10 @@ const richTextRenderOptions = {
       <h6 className="mt-4 mb-0">{children}</h6>
     ),
     [BLOCKS.QUOTE]: (node, children) => (
-      <div className="blockquote align-self-center m-0 mb-4">
+      <div
+        className="blockquote align-self-center mb-4"
+        style={{ marginTop: "3rem" }}
+      >
         <Blockquote quote={children} />
       </div>
     ),
