@@ -40,7 +40,7 @@ const BlockGallery = props => {
       return () =>
         window.removeEventListener("resize", () => getInnerWidth(), true)
     }
-  }, [window])
+  }, [])
 
   /*   const customSizes = ["(min-width: 480px) 10vw,(min-width: 1024px) 10vw,10vw"]
 
