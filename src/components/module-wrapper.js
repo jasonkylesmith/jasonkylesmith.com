@@ -53,6 +53,8 @@ const ModuleWrapper = ({ props }) => {
     }
   }
 
+  console.log("module", module)
+
   let moduleSection
 
   switch (id) {
@@ -70,7 +72,7 @@ const ModuleWrapper = ({ props }) => {
       break
     case "carousel":
       moduleSection =
-        module.slides.length > 0 ? <Carousel module={module} /> : <></>
+        module.slides?.length > 0 ? <Carousel module={module} /> : <></>
       break
     case "splitContent":
       moduleSection = (
