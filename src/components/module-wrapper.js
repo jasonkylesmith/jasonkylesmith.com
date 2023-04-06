@@ -53,8 +53,6 @@ const ModuleWrapper = ({ props }) => {
     }
   }
 
-  console.log("module", module)
-
   let moduleSection
 
   switch (id) {
