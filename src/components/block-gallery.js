@@ -20,7 +20,7 @@ import LightboxContainer from "./lightbox-display"
 const BlockGallery = props => {
   const [openLightbox, setOpenLightbox] = useState(false)
   const [imgIndex, setImgIndex] = useState()
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth)
+  const [innerWidth, setInnerWidth] = useState(null)
 
   const imgIndexRef = useRef(0)
 
