@@ -20,12 +20,24 @@ const richTextRenderOptions = {
         )
       }
     },
-    [BLOCKS.HEADING_1]: (node, children) => <h1 className="">{children}</h1>,
-    [BLOCKS.HEADING_2]: (node, children) => <h2 className="">{children}</h2>,
-    [BLOCKS.HEADING_3]: (node, children) => <h3 className="">{children}</h3>,
-    [BLOCKS.HEADING_4]: (node, children) => <h4 className="">{children}</h4>,
-    [BLOCKS.HEADING_5]: (node, children) => <h5 className="">{children}</h5>,
-    [BLOCKS.HEADING_6]: (node, children) => <h6 className="">{children}</h6>,
+    [BLOCKS.HEADING_1]: (node, children) => (
+      <h1 className="mt-4 mb-0">{children}</h1>
+    ),
+    [BLOCKS.HEADING_2]: (node, children) => (
+      <h2 className="mt-4 mb-0">{children}</h2>
+    ),
+    [BLOCKS.HEADING_3]: (node, children) => (
+      <h3 className="mt-4 mb-0">{children}</h3>
+    ),
+    [BLOCKS.HEADING_4]: (node, children) => (
+      <h4 className="mt-4 mb-0">{children}</h4>
+    ),
+    [BLOCKS.HEADING_5]: (node, children) => (
+      <h5 className="mt-4 mb-0">{children}</h5>
+    ),
+    [BLOCKS.HEADING_6]: (node, children) => (
+      <h6 className="mt-4 mb-0">{children}</h6>
+    ),
     [BLOCKS.QUOTE]: (node, children) => (
       <div className="blockquote align-self-center m-0 mb-4">
         <Blockquote quote={children} />
