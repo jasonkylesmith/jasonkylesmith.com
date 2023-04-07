@@ -66,7 +66,7 @@ const AboutPage = () => {
                   {aboutCtaText}
                 </a>
               </div>
-              <div className="col-12 col-lg-5 order-0 order-lg-0 mb-4 mb-lg-0 ps-0">
+              <div className="col-12 col-lg-5 order-0 order-lg-0 mb-4 mb-lg-0 px-0 ps-md-0 pe-md-2">
                 <img
                   src={`https:${aboutPortrait.file.url}`}
                   className="img-fluid"
