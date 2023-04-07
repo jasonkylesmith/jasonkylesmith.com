@@ -176,34 +176,38 @@ const BlockGallery = props => {
         overflowX: "hidden",
       }}
     >
-      <LightboxContainer
-        images={photoArray}
-        openLightbox={openLightbox}
-        setOpenLightbox={setOpenLightbox}
-        moveImgIndex={moveImgIndex}
-        imgIndex={imgIndex}
-      />
+      {innerWidth && (
+        <>
+          <LightboxContainer
+            images={photoArray}
+            openLightbox={openLightbox}
+            setOpenLightbox={setOpenLightbox}
+            moveImgIndex={moveImgIndex}
+            imgIndex={imgIndex}
+          />
 
-      <Gallery
-        photos={photoArray}
-        direction={"column"}
-        margin={10}
-        columns={
-          columns
-            ? innerWidth > 992
-              ? columns
-              : innerWidth > 500
-              ? Math.round(columns / 2)
-              : 1
-            : undefined
-        }
-        onClick={(event, photos) => {
-          imgIndexRef.current = photos.index
-          setImgIndex(photos.index)
+          <Gallery
+            photos={photoArray}
+            direction={"column"}
+            margin={10}
+            columns={
+              columns
+                ? innerWidth > 992
+                  ? columns
+                  : innerWidth > 500
+                  ? Math.round(columns / 2)
+                  : 1
+                : undefined
+            }
+            onClick={(event, photos) => {
+              imgIndexRef.current = photos.index
+              setImgIndex(photos.index)
 
-          setOpenLightbox(true)
-        }}
-      />
+              setOpenLightbox(true)
+            }}
+          />
+        </>
+      )}
 
       {/* <div className="client-gallery">
         <div className="client-gallery--container">

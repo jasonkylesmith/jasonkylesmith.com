@@ -94,7 +94,7 @@ const ClientGallery = props => {
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
       const admin = user.sub === process.env.GATSBY_AUTH0_ADMIN ? true : false
-      if (user.galleries.includes(contentful_id) || admin) {
+      if (admin || user.galleries.includes(contentful_id)) {
         setIdMatch(true)
       }
     }
