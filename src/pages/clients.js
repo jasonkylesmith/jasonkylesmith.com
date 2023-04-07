@@ -73,8 +73,6 @@ const Clients = () => {
           }
         })
 
-        console.log(tempGalleries)
-
         setClientGalleries(tempGalleries)
       }
     }
