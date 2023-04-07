@@ -62,13 +62,18 @@ const Clients = () => {
         const { edges: allClientGalleries } = data.allContentfulClientGallery
 
         const tempGalleries = allClientGalleries.filter(({ node }) => {
-          if (galleries.includes(node.contentful_id) || admin) {
+          if (admin) {
+            return true
+          } else if (galleries.includes(node.contentful_id)) {
             if (node.status !== "draft") {
               return true
+            } else {
+              return false
             }
           }
-          return true
         })
+
+        console.log(tempGalleries)
 
         setClientGalleries(tempGalleries)
       }
