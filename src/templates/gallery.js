@@ -103,7 +103,12 @@ export const query = graphql`
             }
           }
         }
-        ... on ContentfulBlockStory {
+      }
+    }
+  }
+`
+
+/* ... on ContentfulBlockStory {
           id
           name
           image {
@@ -126,11 +131,7 @@ export const query = graphql`
           text {
             raw
           }
-        }
-      }
-    }
-  }
-`
+        } */
 
 const Gallery = props => {
   /* const { title, description, tags, client, tools } =
