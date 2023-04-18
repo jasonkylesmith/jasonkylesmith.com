@@ -174,12 +174,14 @@ const LightboxContainer = props => {
         <img
           src={
             allImages[imgIndex - 2].src ||
-            allImages[imgIndex - 2].photo.file.url
+            allImages[imgIndex - 2].photo?.file?.url ||
+            allImages[imgIndex - 2].file.url
           }
           style={{ display: "none" }}
           alt={
             allImages[imgIndex - 2].alt ||
             allImages[imgIndex - 2]?.photo?.description ||
+            allImages[imgIndex - 2].description ||
             ""
           }
         />
@@ -188,12 +190,14 @@ const LightboxContainer = props => {
         <img
           src={
             allImages[imgIndex - 1].src ||
-            allImages[imgIndex - 1].photo.file.url
+            allImages[imgIndex - 1].photo?.file?.url ||
+            allImages[imgIndex - 1].file.url
           }
           style={{ display: "none" }}
           alt={
             allImages[imgIndex - 1].alt ||
             allImages[imgIndex - 1]?.photo?.description ||
+            allImages[imgIndex - 1]?.description ||
             ""
           }
         />
@@ -202,11 +206,16 @@ const LightboxContainer = props => {
         className={`d-flex flex-column position-relative lightbox__transition ${transitionStatus}`}
       >
         <img
-          src={allImages[imgIndex].src || allImages[imgIndex].photo.file.url}
+          src={
+            allImages[imgIndex].src ||
+            allImages[imgIndex].photo?.file?.url ||
+            allImages[imgIndex].file.url
+          }
           ref={imgRef}
           alt={
             allImages[imgIndex].alt ||
             allImages[imgIndex]?.photo?.description ||
+            allImages[imgIndex]?.description ||
             ""
           }
         />
@@ -243,7 +252,8 @@ const LightboxContainer = props => {
         <img
           src={
             allImages[imgIndex + 1].src ||
-            allImages[imgIndex + 1].photo.file.url
+            allImages[imgIndex + 1].photo?.file?.url ||
+            allImages[imgIndex + 1].file.url
           }
           style={{ display: "none" }}
           alt={
@@ -257,7 +267,8 @@ const LightboxContainer = props => {
         <img
           src={
             allImages[imgIndex + 2].src ||
-            allImages[imgIndex + 2].photo.file.url
+            allImages[imgIndex + 2].photo?.file?.url ||
+            allImages[imgIndex + 2].file.url
           }
           style={{ display: "none" }}
           alt={

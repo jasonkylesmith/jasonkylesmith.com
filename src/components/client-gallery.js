@@ -75,22 +75,20 @@ const ClientGallery = props => {
                   <span>
                     <b>photoshoot date:</b> {photoshootDate}
                   </span>
-                  <span>
+                  {/* <span>
                     <b>next due date:</b> {nextDueDate}
-                  </span>
+                  </span> */}
                 </div>
                 <div className="col-12 col-lg-4 m-0 d-flex flex-column">
-                  <span>
+                  {/* <span>
                     <b>status: </b>
-                    <Tooltip
-                      tipText={CLIENT_GALLERY_STATUS_TEXT[status]}
-                      direction="right"
-                    >
-                      <span>{status}</span>
-                    </Tooltip>
-                  </span>
 
-                  {status === "final" && downloadLink && (
+                    <span title={CLIENT_GALLERY_STATUS_TEXT[status]}>
+                      {status}
+                    </span>
+                  </span> */}
+
+                  {downloadLink && (
                     <span>
                       <a href={downloadLink} target="_blank" rel="noreferrer">
                         Download Final Deliverables

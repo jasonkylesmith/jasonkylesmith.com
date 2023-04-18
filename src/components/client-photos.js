@@ -29,9 +29,7 @@ const ClientPhotos = ({ photos }) => {
     }
   }
 
-  photos = [...photos, ...photos, ...photos, ...photos]
-
-  const colLGClass = photos.length > 3 ? "col-lg-3" : "col-lg-4"
+  const colLGClass = photos.length > 3 ? "col-lg-4" : "col-lg-4"
 
   return (
     <>
@@ -47,16 +45,28 @@ const ClientPhotos = ({ photos }) => {
       <div className="client-gallery">
         <div className="client-gallery--container row">
           {photos.map((photo, index) => {
-            const { width, height } = photo.photo.file.details.image
-            const { url: src } = photo.photo.file
-            const { description: alt } = photo.photo
+            const { width, height } =
+              photo?.photo?.file?.details?.image ?? photo.file.details.image
+            const { url: src } = photo?.photo?.file ?? photo.file
+            const { description: alt } = photo?.photo ?? photo
 
             const isVertical = width < height ? true : false
+
+            let count
+
+            if (!photo.photoName) {
+              const indexOfLastHyphen = photo.title.lastIndexOf("-")
+              count = photo.title.substring(indexOfLastHyphen + 1)
+            } else {
+              count = null
+            }
 
             return (
               <div
                 className={`col-12 col-sm-6 col-md-4  ${colLGClass} mb-2`}
-                key={`${photo.photo.contentful_id}-${index}`}
+                key={`${
+                  photo?.photo?.contentful_id ?? photo.contentful_id
+                }-${index}`}
               >
                 <div className="item">
                   <div className="inner-item">
@@ -90,13 +100,17 @@ const ClientPhotos = ({ photos }) => {
                 </div>
                 <div className="row">
                   <div className="col">
-                    <span style={{ fontSize: ".9rem" }}>{photo.photoName}</span>
+                    <span style={{ fontSize: ".9rem" }}>
+                      {photo.photoName ?? `Photo ${count}`}
+                    </span>
                   </div>
-                  <div className="col d-flex justify-content-end align-items-center">
-                    <Tooltip direction="center" tipText="Photographer Rating">
-                      <Ratings rating={photo.photographerRating} />
-                    </Tooltip>
-                  </div>
+                  {photo.photographerRating && (
+                    <div className="col d-flex justify-content-end align-items-center">
+                      <Tooltip direction="center" tipText="Photographer Rating">
+                        <Ratings rating={photo.photographerRating} />
+                      </Tooltip>
+                    </div>
+                  )}
                 </div>
               </div>
             )
