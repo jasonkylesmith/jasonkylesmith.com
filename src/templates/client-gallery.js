@@ -21,6 +21,21 @@ export const query = graphql`
       photoshootDate(formatString: "Do MMMM, YYYY")
       downloadLink
       status
+      photographs {
+        gatsbyImageData
+        contentful_id
+        description
+        title
+        file {
+          url
+          details {
+            image {
+              height
+              width
+            }
+          }
+        }
+      }
       photos {
         photoStatus
         photoName
@@ -49,7 +64,7 @@ const ClientGallery = props => {
   const {
     contentful_id,
     name,
-
+    photographs,
     photoshootDate,
     nextDueDate,
     status,
@@ -63,6 +78,7 @@ const ClientGallery = props => {
     previews: [],
     reviews: [],
     finals: [],
+    photographs: [],
   })
 
   useMemo(() => {
@@ -84,12 +100,20 @@ const ClientGallery = props => {
           finals.push(photo)
           break
         default:
-          previews.push(photo)
+          finals.push(photo)
       }
-
-      setPhotosByStatus({ previews, reviews, finals })
     })
-  }, [photos])
+
+    if (photographs?.length > 0) {
+      photographs.sort(
+        (a, b) =>
+          a.title.substring(a.title.lastIndexOf("-") + 1) -
+          b.title.substring(b.title.lastIndexOf("-") + 1)
+      )
+    }
+
+    setPhotosByStatus({ previews, reviews, finals, photographs })
+  }, [photos, photographs])
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
@@ -115,22 +139,20 @@ const ClientGallery = props => {
                       <span>
                         <b>photoshoot date:</b> {photoshootDate}
                       </span>
-                      <span>
+                      {/* <span>
                         <b>next due date:</b> {nextDueDate}
-                      </span>
+                      </span> */}
                     </div>
                     <div className="col-12 col-lg-4 m-0 d-flex flex-column">
-                      <span>
+                      {/*  <span>
                         <b>status: </b>
-                        <Tooltip
-                          tipText={CLIENT_GALLERY_STATUS_TEXT[status]}
-                          direction="right"
-                        >
-                          <span>{status}</span>
-                        </Tooltip>
-                      </span>
 
-                      {status === "final" && downloadLink && (
+                        <span title={CLIENT_GALLERY_STATUS_TEXT[status]}>
+                          {status}
+                        </span>
+                      </span> */}
+
+                      {downloadLink && (
                         <span>
                           <a
                             href={downloadLink}
@@ -159,6 +181,12 @@ const ClientGallery = props => {
                     <div className="mt-4">
                       <h2 className="block__heading">Final Photos</h2>
                       <ClientPhotos photos={photosByStatus.finals} />
+                    </div>
+                  )}
+                  {photosByStatus.photographs?.length > 0 && (
+                    <div className="mt-4">
+                      {/* <h2 className="block__heading">Photos</h2> */}
+                      <ClientPhotos photos={photosByStatus.photographs} />
                     </div>
                   )}
                 </>
