@@ -361,6 +361,20 @@ export const query = graphql`
               text
               destination
             }
+            featuredImages {
+              gatsbyImageData
+              description
+              title
+              file {
+                url
+                details {
+                  image {
+                    height
+                    width
+                  }
+                }
+              }
+            }
             backgroundImage {
               file {
                 details {

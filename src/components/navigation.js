@@ -24,7 +24,7 @@ const Navigation = props => {
           <li> - </li>
           <li>
             <Link to="/about" className="">
-              about me
+              about
             </Link>
           </li>
           <li> - </li>
@@ -74,7 +74,7 @@ const Navigation = props => {
                 props.menuClick()
               }}
             >
-              about me
+              about
             </Link>
           </li>
           {distinct?.map((category, index) => {
