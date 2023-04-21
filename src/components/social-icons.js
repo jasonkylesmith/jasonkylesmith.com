@@ -30,7 +30,6 @@ const SocialIcons = props => {
         twitter
         gitHub
         instagram
-        mastodon
       }
     }
   `)
