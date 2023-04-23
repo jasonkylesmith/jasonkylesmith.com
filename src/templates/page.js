@@ -11,6 +11,7 @@ const Page = ({ data }) => {
   return (
     <Layout>
       <Seo title={name} />
+
       <div className="mb-5 pt-5 pt-lg-0 pe-2 pe-md-0">
         {modules.map((module, index) => {
           return <ModuleWrapper props={module} key={index} />
@@ -207,6 +208,20 @@ export const query = graphql`
               }
             }
             blocks {
+              ... on ContentfulContactForm {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                id
+                name
+                title
+                destination
+                buttonText
+              }
               ... on ContentfulIconList {
                 sys {
                   contentType {
