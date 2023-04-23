@@ -88,7 +88,7 @@ const Clients = () => {
   return (
     <Layout>
       <Seo
-        title={"Clients"}
+        title={"Clients | Jason Kyle Smith"}
         url={`https://www.jasonkylesmith.com/clients`}
         description={"Clients"}
         photo={null}

@@ -2,19 +2,39 @@ import React from "react"
 
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
+import { fab } from "@fortawesome/free-brands-svg-icons"
+import { far } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { GatsbyImage } from "gatsby-plugin-image"
 import MarkdownDisplay from "./markdown-display"
 
 library.add(fas)
+library.add(fab)
+library.add(far)
 
 const IconList = ({ module, isSplitContent }) => {
-  const FAIconContainer = ({ name }) => {
+  const FAIconContainer = ({ name, type }) => {
+    let iconType
+
+    switch (type) {
+      case "solid":
+        iconType = "fas"
+        break
+      case "brand":
+        iconType = "fab"
+        break
+      case "regular":
+        iconType = "far"
+        break
+      default:
+        iconType = "fas"
+    }
+
     return (
       <FontAwesomeIcon
-        icon={["fas", name]}
+        icon={[iconType, name]}
         className="iconList--svg"
-        size="2x"
+        size="4x"
       />
     )
   }
@@ -51,7 +71,8 @@ const IconList = ({ module, isSplitContent }) => {
       }`}
     >
       {icons.map((icon, index) => {
-        const { image, variant, fontAwesomeIcon, text } = icon
+        const { image, variant, fontAwesomeIcon, fontAwesomeIconType, text } =
+          icon
 
         if (variant === "text-only") {
           // text only version
@@ -70,7 +91,10 @@ const IconList = ({ module, isSplitContent }) => {
           const asset = image ? (
             <ImageContainer image={image} />
           ) : (
-            <FAIconContainer name={fontAwesomeIcon} />
+            <FAIconContainer
+              name={fontAwesomeIcon}
+              type={fontAwesomeIconType}
+            />
           )
 
           if (variant === "icon-text") {
