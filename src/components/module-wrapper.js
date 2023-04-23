@@ -10,7 +10,14 @@ import IconList from "./icon-list"
 import SplitContent from "./split-content"
 
 const ModuleWrapper = ({ props }) => {
-  const { sectionMargin, module, fullWidth, headline, backgroundColor } = props
+  const {
+    sectionMargin,
+    marginVariant,
+    module,
+    fullWidth,
+    headline,
+    backgroundColor,
+  } = props
 
   const { id } = module.sys.contentType.sys
 
@@ -30,14 +37,16 @@ const ModuleWrapper = ({ props }) => {
       content = children
     }
 
-    if (id === "carousel" && module.slides < 1) {
+    if (id === "carousel" && module?.slides < 1) {
       return <></>
     }
 
     if (!fullWidth) {
       return (
         <section
-          className={`section__${sectionMargin} section__${backgroundColor} row px-2`}
+          className={`section__${sectionMargin} ${
+            marginVariant && `section__${marginVariant}`
+          } section__${backgroundColor} row px-2`}
         >
           <div className="col-12 col-md-8 offset-md-2">{content}</div>
         </section>
@@ -45,7 +54,9 @@ const ModuleWrapper = ({ props }) => {
     } else {
       return (
         <section
-          className={`section__${sectionMargin} section__${backgroundColor} row px-0`}
+          className={`section__${sectionMargin} ${
+            marginVariant && `section__${marginVariant}`
+          } section__${backgroundColor} row px-0`}
         >
           <div className={`col-12 ${id === "hero" && "px-0"}`}>{content}</div>
         </section>
