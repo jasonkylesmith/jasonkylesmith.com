@@ -84,13 +84,13 @@ const SocialIcons = props => {
 
   return (
     <div style={{ position: "relative" }}>
-      <a href={twitter} target="_new" className="icon">
+      <a href={twitter} target="_new" className="icon" aria-label="Twitter">
         <FontAwesomeIcon
           icon={["fab", "twitter-square"]}
           className="mx-1 icon"
         />
       </a>
-      <a href={instagram} target="_new" className="icon">
+      <a href={instagram} target="_new" className="icon" aria-label="Instagram">
         <FontAwesomeIcon
           icon={["fab", "instagram-square"]}
           className="mx-1 icon"
