@@ -112,6 +112,29 @@ export const query = graphql`
               }
             }
             pages {
+              ... on ContentfulCustomContentPage {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                contentful_id
+                featuredImage {
+                  gatsbyImageData(
+                    layout: FULL_WIDTH
+                    quality: 100
+                    resizingBehavior: CROP
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                    aspectRatio: 2
+                  )
+                  title
+                }
+                slug
+                name
+              }
               ... on ContentfulBlogPost {
                 sys {
                   contentType {
