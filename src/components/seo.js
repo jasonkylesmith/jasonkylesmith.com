@@ -34,6 +34,7 @@ function Seo({ description, lang, meta, title, photo, url }) {
         lang,
       }}
     >
+      <title>{title}</title>
       <meta property="og:type" content={"website"} />
       <meta property="og:locale" content="en_US" />
       <meta property="og:title" content={title} />
