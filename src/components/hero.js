@@ -56,8 +56,6 @@ const Hero = ({ module }) => {
           featuredImages.map(image => {
             const { width, height } = image.file.details.image
 
-            console.log(image.file.url)
-
             return (
               <div className={"hero-image-wrapper"}>
                 <img

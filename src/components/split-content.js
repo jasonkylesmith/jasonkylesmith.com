@@ -2,6 +2,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import IconList from "./icon-list"
 import MarkdownDisplay from "./markdown-display"
+import ContactForm from "./contact-form"
 
 const SplitContent = ({ module, parentFullWidth }) => {
   const { blocks, ratio } = module
@@ -52,6 +53,10 @@ const SplitContent = ({ module, parentFullWidth }) => {
 
     if (id === "iconList") {
       return <IconList module={block} isSplitContent />
+    }
+
+    if (id === "contactForm") {
+      return <ContactForm module={block} />
     }
 
     return <></>
