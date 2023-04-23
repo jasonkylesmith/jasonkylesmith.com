@@ -71,6 +71,7 @@ const ClientPhotos = ({ photos }) => {
                 <div className="item">
                   <div className="inner-item">
                     <img
+                      loading
                       src={src}
                       alt={alt}
                       className={isVertical ? "vertical" : "horizontal"}

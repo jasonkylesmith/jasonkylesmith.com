@@ -340,6 +340,7 @@ div.ending {
 }
 
 div.medium {
+  clear: both;
   width: 100%;
   height: 0.1rem;
   background-image: linear-gradient(rgba(#ccc, 1) 80%, rgba(#ccc, 1) 95%);
