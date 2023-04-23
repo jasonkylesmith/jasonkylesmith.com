@@ -25,6 +25,7 @@ export const query = graphql`
         ... on ContentfulBlockGallery {
           id
           name
+          columns
           images {
             id
             description
@@ -182,7 +183,7 @@ const BlogPost = props => {
           <div className="blog-body">
             {bodyContent}
             {gallery && gallery.__typename === "ContentfulBlockGallery" && (
-              <div className="mb-4">
+              <div className="my-4">
                 <BlockGallery block={gallery} key={gallery.id} />
               </div>
             )}
