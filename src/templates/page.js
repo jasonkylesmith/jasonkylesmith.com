@@ -78,6 +78,7 @@ export const query = graphql`
             icons {
               variant
               fontAwesomeIcon
+              fontAwesomeIconType
               text {
                 text
                 childrenMarkdownRemark {
@@ -198,6 +199,7 @@ export const query = graphql`
                 icons {
                   variant
                   fontAwesomeIcon
+                  fontAwesomeIconType
                   text {
                     text
                     childrenMarkdownRemark {

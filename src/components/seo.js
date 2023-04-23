@@ -33,53 +33,49 @@ function Seo({ description, lang, meta, title, photo, url }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          property: "og:url",
-          content: url ? url : `https://www.jasonkylesmith.com`,
-        },
-        {
-          property: "og:image",
-          content: photo
-            ? `https:${photo}`
-            : `https://images.ctfassets.net/zidjz73fa9st/6JoQ8LxQyK8xCyJinQS02U/c6cac74c5a73e3cd860e9a235cf742c0/default-og-image.png`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: `@jasonkylesmith`,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
     >
+      <meta property="og:type" content={"website"} />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={metaDescription} />
+      <meta
+        property="og:url"
+        content={url ? url : `https://www.jasonkylesmith.com`}
+      />
+      <meta
+        property="og:image"
+        content={
+          photo
+            ? `https:${photo}`
+            : `https://images.ctfassets.net/zidjz73fa9st/6JoQ8LxQyK8xCyJinQS02U/62a1cffa04dd030f152405b63070fe3b/og-image-general.webp`
+        }
+      />
+      <meta property="og:image:width" content={"1200"} />
+      <meta property="og:image:height" content={"600"} />
+      <meta property="og:image:alt" content={title} />
+      <meta property="og:site_name" content="Jason Kyle Smith" />
+      <meta property="og:see_also" content="JKS" />
+      <meta property="og:see_also" content="Jason Kyle Smith Photography" />
+      <meta property="og:see_also" content="" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:site" content="Jason Kyle Smith" />
+      <meta
+        name="twitter:image"
+        content={
+          photo
+            ? `https:${photo}`
+            : `https://images.ctfassets.net/zidjz73fa9st/6JoQ8LxQyK8xCyJinQS02U/62a1cffa04dd030f152405b63070fe3b/og-image-general.webp`
+        }
+      />
+      <meta name="twitter:creator" content={"@jasonkylesmith"} />
+      <meta
+        name="twitter:url"
+        content={url ? url : `https://www.jasonkylesmith.com`}
+      />
+
+      <meta property="twitter:image:alt" content={title} />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
