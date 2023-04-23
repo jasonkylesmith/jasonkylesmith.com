@@ -17,10 +17,18 @@ const GalleryList = ({ module, category }) => {
     } = page
     const { gatsbyImageData, title } = featuredImage
 
-    const linkTo =
-      id === "gallery"
-        ? `/${category.toLowerCase().replace(/\s+/g, "")}/${slug}`
-        : `/blog/${slug}`
+    let linkTo
+
+    switch (id) {
+      case "gallery":
+        linkTo = `/${category.toLowerCase().replace(/\s+/g, "")}/${slug}`
+        break
+      case "blog":
+        linkTo = `/blog/${slug}`
+        break
+      default:
+        linkTo = `/${slug}`
+    }
 
     const colNum = moduleToUse.length === 2 ? 6 : 4
 
