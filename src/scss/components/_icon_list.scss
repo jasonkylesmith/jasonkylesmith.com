@@ -4,6 +4,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
+  gap: 2rem;
 
   .iconList--svg {
     color: $accent;
@@ -19,7 +20,8 @@
     justify-content: center;
     align-items: center;
 
-    width: 100%;
+    /*    width: 100%; */
+    flex: 1 0 40%;
     transition: transform 0.25s ease-in-out;
   }
 
@@ -43,6 +45,7 @@
 
   .iconList__container--image {
     width: 51px;
+    width: 100%;
   }
 
   &.staggered {
@@ -64,20 +67,19 @@
 
   @media (min-width: $max-width-xs) {
     .iconList__container--wrapper {
-      width: 50%;
+      /* width: 50%; */
       transition: transform 0.25s ease-in-out;
-      padding: 0.5rem;
     }
 
     .iconList__container--wrapper {
       &:hover {
-        transform: scale(1.2);
+        /* transform: scale(1.2); */
       }
     }
 
     &.splitContent {
       .iconList__container--wrapper {
-        width: 50%;
+        /* width: 50%; */
       }
     }
 
@@ -89,21 +91,22 @@
         margin-left: 0 !important;
       } */
 
-      img,
-      svg {
-        margin-left: 1rem;
-      }
-
       p {
-        padding: 1rem;
+        /*  padding: 1rem; */
         margin: 0;
       }
     }
   }
 
+  @media (min-width: $max-width-md) {
+    .iconList__container--wrapper {
+      flex: 1 0 15%;
+    }
+  }
+
   @media (min-width: $max-width-lg) {
     .iconList__container--wrapper {
-      width: 33%;
+      /* width: 33%; */
     }
 
     &.sm {

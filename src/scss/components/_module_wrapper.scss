@@ -22,6 +22,14 @@
   padding: 1rem 0;
 }
 
+.section__only-top {
+  padding-bottom: 0;
+}
+
+.section__only-bottom {
+  padding-top: 0;
+}
+
 .section__white {
   background-color: white;
   color: $dark;

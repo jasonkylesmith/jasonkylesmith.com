@@ -22,9 +22,11 @@ const GalleryList = ({ module, category }) => {
         ? `/${category.toLowerCase().replace(/\s+/g, "")}/${slug}`
         : `/blog/${slug}`
 
+    const colNum = moduleToUse.length === 2 ? 6 : 4
+
     return (
       <div
-        className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0"
+        className={`col-12 col-sm-12 col-md-6 col-lg-${colNum} col-xl-${colNum} mb-4 mx-0`}
         key={contentful_id}
       >
         <Link to={linkTo} className="gallery-link">

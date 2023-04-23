@@ -26,7 +26,7 @@ const IconList = ({ module, isSplitContent }) => {
       <GatsbyImage
         image={gatsbyImageData}
         alt={description}
-        className="iconList__container--image"
+        className="iconList__container--image m-0"
       />
     )
   }

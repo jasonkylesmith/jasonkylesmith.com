@@ -19,20 +19,23 @@ const SplitContent = ({ module, parentFullWidth }) => {
       leftClasses = "col-12 col-md-6"
       rightClasses = "col-12 col-md-6"
     } else if (ratio === "left-larger") {
-      leftClasses = "col-12 col-md-7"
-      rightClasses = "col-12 col-md-5"
+      leftClasses = "col-12 col-md-8"
+      rightClasses = "col-12 col-md-4"
     } else {
-      leftClasses = "col-12 col-md-5"
-      rightClasses = "col-12 col-md-7"
+      leftClasses = "col-12 col-md-4"
+      rightClasses = "col-12 col-md-8"
     }
   }
+
+  leftClasses += " pe-md-4"
+  rightClasses += " ps-md-4"
 
   const BlockWrapper = ({ block }) => {
     const { id } = block.sys.contentType.sys
 
     if (id === "copy") {
       return (
-        <div className={`copy-wrapper px-3 py-2`}>
+        <div className={`copy-wrapper py-2`}>
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
         </div>
       )
@@ -56,7 +59,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
 
   return (
     <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}>
-      <div className={`split-content row px-3`}>
+      <div className={`split-content row`}>
         {numOfBlocks === 1 ? (
           <div className={`${soloClasses} content-container`}>
             <BlockWrapper block={blocks[0]} />
