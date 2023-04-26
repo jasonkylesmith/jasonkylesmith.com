@@ -60,7 +60,7 @@ const Carousel = ({ module }) => {
       {slides.map((slide, index) => {
         return (
           <div className="row mx-1 pe-2" key={`${slide.id}-${index}`}>
-            <div className="col-12 d-flex justify-content-center mb-4 px-4 px-md-2">
+            <div className="col-12 d-flex justify-content-center px-4 px-md-2">
               <Testimonial
                 {...slide}
                 variant={index % 2 === 1 ? "left" : "right"}
