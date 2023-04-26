@@ -1,5 +1,8 @@
 const path = require("path")
 
+let excludedPages = ["test", "lifestyle", "studio"]
+let exclude = true
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -40,8 +43,17 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   response.data.allContentfulPage.edges.forEach(edge => {
-    if (edge.node.slug !== "test") {
-      /*     if (true) { */
+    if (excludedPages.includes(edge.node.slug)) {
+      if (!exclude) {
+        createPage({
+          path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
+          component: path.resolve("./src/templates/page.js"),
+          context: {
+            slug: edge.node.slug,
+          },
+        })
+      }
+    } else {
       createPage({
         path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
         component: path.resolve("./src/templates/page.js"),
@@ -50,6 +62,17 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     }
+
+    //if (edge.node.slug !== "test") {
+    /*     if (true) { */
+    //createPage({
+    //path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
+    //component: path.resolve("./src/templates/page.js"),
+    //context: {
+    //  slug: edge.node.slug,
+    // },
+    //})
+    //}
   })
 
   response.data.allContentfulBlogPost.edges
@@ -100,10 +123,10 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  createPage({
+  /* createPage({
     path: "/using-dsg",
     component: require.resolve("./src/templates/using-dsg.js"),
     context: {},
     defer: true,
-  })
+  }) */
 }
