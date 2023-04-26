@@ -1,7 +1,6 @@
 .split-content {
   .content-container {
     display: flex;
-    align-items: center;
   }
 
   &.full-width {
@@ -13,6 +12,16 @@
   .copy-wrapper {
     width: 100%;
     padding: 0;
+
+    &.solo-text {
+      width: 100%;
+    }
+
+    @media (min-width: 767px) {
+      &.solo-text {
+        width: 75%;
+      }
+    }
 
     &.full-width-copy {
       padding: 6rem;
