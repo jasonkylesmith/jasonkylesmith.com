@@ -34,7 +34,15 @@ function Seo({ description, lang, meta, title, photo, url }) {
         lang,
       }}
     >
-      <title>{title}</title>
+      <title>{`${title} | Jason Kyle Smith Photography`}</title>
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
       <meta property="og:type" content={"website"} />
       <meta property="og:locale" content="en_US" />
       <meta property="og:title" content={title} />
@@ -53,14 +61,20 @@ function Seo({ description, lang, meta, title, photo, url }) {
       />
       <meta property="og:image:width" content={"1200"} />
       <meta property="og:image:height" content={"600"} />
-      <meta property="og:image:alt" content={title} />
+      <meta
+        property="og:image:alt"
+        content={`${title} | Jason Kyle Smith Photography`}
+      />
       <meta property="og:site_name" content="Jason Kyle Smith" />
       <meta property="og:see_also" content="JKS" />
       <meta property="og:see_also" content="Jason Kyle Smith Photography" />
       <meta property="og:see_also" content="" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:title" content={title} />
+      <meta
+        name="twitter:title"
+        content={`${title} | Jason Kyle Smith Photography`}
+      />
       <meta name="twitter:site" content="Jason Kyle Smith" />
       <meta
         name="twitter:image"
@@ -76,13 +90,11 @@ function Seo({ description, lang, meta, title, photo, url }) {
         content={url ? url : `https://www.jasonkylesmith.com`}
       />
 
-      <meta property="twitter:image:alt" content={title} />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
-        rel="stylesheet"
+      <meta
+        property="twitter:image:alt"
+        content={`${title} | Jason Kyle Smith Photography`}
       />
+
       <meta name="robots" content="NOINDEX, NOFOLLOW" />
     </Helmet>
   )

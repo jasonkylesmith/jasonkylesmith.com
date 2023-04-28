@@ -102,7 +102,7 @@ const ContactFormPage = () => {
 
   return (
     <Layout>
-      <Seo title="Contact Me | Jason Kyle Smith" />
+      <Seo title="Contact Me" />
 
       <div className="row mt-4 px-2">
         <div className="col-md-8 offset-md-2">

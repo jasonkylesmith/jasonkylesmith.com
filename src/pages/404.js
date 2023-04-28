@@ -12,7 +12,7 @@ library.add(fas)
 
 const NotFoundPage = () => (
   <Layout>
-    <Seo title="404 Page Not found | Jason Kyle Smith" />
+    <Seo title="404 - Page Not found" />
 
     <div className="row w-100 h-75 p-0" style={{ height: "90%" }}>
       <div className="not-found-page-column col-12 d-flex flex-column justify-content-center align-items-center text-center">

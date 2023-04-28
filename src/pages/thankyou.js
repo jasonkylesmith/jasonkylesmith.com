@@ -40,7 +40,7 @@ const ThankYouPage = () => {
 
   return (
     <Layout>
-      <Seo title="Thank You! | Jason Kyle Smith" />
+      <Seo title="Thank You!" />
 
       <div className="row w-100 h-75 p-0">
         <div className="not-found-page-column col-12  d-flex flex-column justify-content-center align-items-center text-center">
