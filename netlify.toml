@@ -7,4 +7,16 @@ for = "/*"
   Permissions-Policy = '''
       "geolocation=();", "midi=();", "sync-xhr=();", "microphone=();", "camera=();", "magnetometer=();", "gyroscope=();", "fullscreen=(self);", "payment=();"
   '''
+
+  X-Frame-Options = '''
+        "SAMEORIGIN;"
+  '''
+
+  X-Content-Type-Options = '''
+        "nosniff;"
+  '''
+
+  Referrer-Policy = '''
+        ""
+  '''
     
