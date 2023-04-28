@@ -87,7 +87,7 @@ export const query = graphql`
                 }
               }
               image {
-                gatsbyImageData
+                gatsbyImageData(quality: 100)
                 file {
                   url
                   details {
@@ -245,7 +245,7 @@ export const query = graphql`
                     }
                   }
                   image {
-                    gatsbyImageData
+                    gatsbyImageData(quality: 100)
                     file {
                       url
                       details {
@@ -288,7 +288,7 @@ export const query = graphql`
                 id
                 name
                 image {
-                  gatsbyImageData
+                  gatsbyImageData(quality: 100)
                   description
                   file {
                     url
@@ -402,7 +402,7 @@ export const query = graphql`
               destination
             }
             featuredImages {
-              gatsbyImageData
+              gatsbyImageData(quality: 100)
               description
               title
               file {
@@ -426,7 +426,7 @@ export const query = graphql`
                 url
               }
               description
-              gatsbyImageData
+              gatsbyImageData(quality: 100)
               title
             }
           }
@@ -453,7 +453,7 @@ export const query = graphql`
                 url
               }
               description
-              gatsbyImageData
+              gatsbyImageData(quality: 100)
               title
             }
           }
@@ -472,7 +472,7 @@ export const query = graphql`
             contentful_id
             featuredImage {
               description
-              gatsbyImageData
+              gatsbyImageData(quality: 100)
               title
             }
             nextDueDate
@@ -494,7 +494,7 @@ export const query = graphql`
                   }
                   url
                 }
-                gatsbyImageData
+                gatsbyImageData(quality: 100)
                 title
                 description
                 contentful_id
