@@ -1,6 +1,22 @@
 .split-content {
   .content-container {
     display: flex;
+
+    &.left {
+      .copy-wrapper {
+        padding-left: 0.5rem;
+      }
+    }
+
+    &.right {
+      .copy-wrapper {
+        padding-right: 0.5rem;
+      }
+    }
+  }
+
+  &.align-center {
+    align-items: center;
   }
 
   &.full-width {

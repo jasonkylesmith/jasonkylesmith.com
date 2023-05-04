@@ -52,12 +52,12 @@ const AboutPage = () => {
           <div className="col-md-8 offset-md-2">
             <div className="row mb-4">
               <div className=" col-12 col-lg-7 order-1 order-lg-1 ps-2 pe-0">
-                <h1 className="blog-title block__heading">{aboutTitle}</h1>
+                <h2 className="mb-1 block__heading">{aboutTitle}</h2>
                 <MarkdownDisplay
                   html={aboutBody.childrenMarkdownRemark[0].html}
                 />
                 {/* Start DEMO */}
-                <h1 className="blog-title block__heading">Why Photography?</h1>
+                <h2 className="mb-1 block__heading">Why Photography?</h2>
                 <MarkdownDisplay
                   html={aboutWhyPhotography.childrenMarkdownRemark[0].html}
                 />

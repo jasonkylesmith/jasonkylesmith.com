@@ -5,7 +5,7 @@ import MarkdownDisplay from "./markdown-display"
 import ContactForm from "./contact-form"
 
 const SplitContent = ({ module, parentFullWidth }) => {
-  const { blocks, ratio } = module
+  const { blocks, ratio, verticalAlignment, fullWidth } = module
 
   const numOfBlocks = blocks.length
 
@@ -28,8 +28,8 @@ const SplitContent = ({ module, parentFullWidth }) => {
     }
   }
 
-  leftClasses += " pe-md-4"
-  rightClasses += " ps-md-4"
+  leftClasses += " pe-md-4 left"
+  rightClasses += " ps-md-4 right"
 
   const BlockWrapper = ({ block }) => {
     const { id } = block.sys.contentType.sys
@@ -65,8 +65,13 @@ const SplitContent = ({ module, parentFullWidth }) => {
   }
 
   return (
-    <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}>
-      <div className={`split-content row px-3 px-md-0`}>
+    <div className={`col-12`}>
+      {/* <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}> */}
+      <div
+        className={`split-content row px-3 px-md-0 ${
+          verticalAlignment === "center" && "align-center"
+        }`}
+      >
         {numOfBlocks === 1 ? (
           <div className={`${soloClasses} content-container`}>
             <BlockWrapper block={blocks[0]} />

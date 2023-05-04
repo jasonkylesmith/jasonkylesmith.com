@@ -199,6 +199,7 @@ export const query = graphql`
           ... on ContentfulSplitContent {
             fullWidth
             ratio
+            verticalAlignment
             name
             sys {
               contentType {
