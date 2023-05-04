@@ -108,7 +108,7 @@ const ContactForm = ({ module }) => {
   }
 
   return (
-    <div style={{ padding: "1rem", width: "100%" }}>
+    <div className="contact-form">
       {!isMessageSent ? (
         <>
           {title && <h4>{title}</h4>}

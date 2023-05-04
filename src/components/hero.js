@@ -38,35 +38,37 @@ const Hero = ({ module }) => {
 
   return (
     <div
-      className="col-12 d-flex flex-column flex-lg-row justify-content-center align-items-center p-4 p-md-0  new-hero-container"
+      className="col-12 col-md-10 offset-md-1 d-flex flex-column flex-lg-row justify-content-between align-items-center p-4 p-md-0  new-hero-container"
       style={{
         height: "80vh",
       }}
     >
-      <div className="col-12 col-md-8 offset-0 col-lg-4 offset-lg-0 p-3 p-lg-4">
+      <div className="col-12 col-md-10 offset-0 col-lg-6 offset-lg-0 p-3 p-lg-4">
         <h2 className="block__heading pe-4 mb-0 hero-headline">{headline}</h2>
         <div className="pe-2 mb-4">{copy.copy}</div>
         <Link data={ctaButton} className="btn mb-0" />
       </div>
-      <div className="col-12 d-none d-lg-grid col-lg-4 p-0 p-lg-4 hero-image-container">
-        {featuredImages &&
-          featuredImages.length > 0 &&
-          featuredImages.map(image => {
-            const { width, height } = image.file.details.image
+      <div className="col-12 col-lg-6 offset-lg-0 p-0 p-lg-0">
+        <div className="col-12 d-none d-lg-grid hero-image-container">
+          {featuredImages &&
+            featuredImages.length > 0 &&
+            featuredImages.map(image => {
+              const { width, height } = image.file.details.image
 
-            return (
-              <div className={"hero-image-wrapper"}>
-                <img
-                  src={image.file.url}
-                  alt={image.description}
-                  className={getAspectRatio(width, height)}
-                />
-              </div>
-            )
-          })}
+              return (
+                <div className={"hero-image-wrapper"}>
+                  <img
+                    src={image.file.url}
+                    alt={image.description}
+                    className={getAspectRatio(width, height)}
+                  />
+                </div>
+              )
+            })}
+        </div>
       </div>
 
-      <div className="col-12 col-md-8 d-flex d-lg-none  p-0  hero-image-container-small">
+      <div className="col-12 col-md-8 d-flex d-lg-none p-0 hero-image-container-small">
         {featuredImages &&
           featuredImages.length > 0 &&
           featuredImages.map(image => {

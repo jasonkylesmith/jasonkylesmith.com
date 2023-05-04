@@ -48,7 +48,7 @@ const ModuleWrapper = ({ props }) => {
             marginVariant && `section__${marginVariant}`
           } section__${backgroundColor} row px-2`}
         >
-          <div className="col-12 col-md-8 offset-md-2">{content}</div>
+          <div className="col-12 col-md-10 offset-md-1">{content}</div>
         </section>
       )
     } else {

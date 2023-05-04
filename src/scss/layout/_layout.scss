@@ -229,21 +229,22 @@ footer {
     grid-row-gap: 1rem;
 
     max-width: 100vw;
+    width: 50%;
 
     img {
       object-fit: cover;
       border: 1px solid lightgray;
     }
 
-    img.horizontal {
-      width: 300px !important;
-      height: auto !important;
+    /*     img.horizontal {
+      width: 300px;
+      height: auto;
     }
 
     img.vertical {
-      height: 250px !important;
-      width: auto !important;
-    }
+      height: 250px;
+      width: auto;
+    } */
 
     .hero-image-wrapper {
       padding: 0.5rem;
@@ -275,6 +276,29 @@ footer {
 @media (max-width: $max-width-xs) {
   .hero-text {
     /* max-width: 100%; */
+  }
+}
+
+@media (min-width: $max-width-md) {
+  img.horizontal {
+    width: 200px;
+    height: auto;
+  }
+
+  img.vertical {
+    height: 167px;
+    width: auto;
+  }
+}
+
+@media (min-width: $max-width-lg) {
+  img.horizontal {
+    width: 225px;
+    height: auto;
+  }
+  img.vertical {
+    height: 188px;
+    width: auto;
   }
 }
 
@@ -394,4 +418,9 @@ div.medium {
     width: auto;
     height: 100%;
   }
+}
+
+.contact-form {
+  padding: 1rem;
+  width: 100%;
 }

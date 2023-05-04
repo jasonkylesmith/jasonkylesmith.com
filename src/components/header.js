@@ -11,7 +11,7 @@ const Header = props => {
     return (
       <header className="d-none d-md-block px-2">
         <div className="row justify-space-between">
-          <div className="col-md-8 offset-md-2">
+          <div className="col-md-10 offset-md-1">
             <div className="row">
               <div className="col-8">
                 <div className="logo-container col-12">

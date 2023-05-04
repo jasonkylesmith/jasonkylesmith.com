@@ -6,11 +6,19 @@
       .copy-wrapper {
         padding-left: 0.5rem;
       }
+
+      .contact-form {
+        padding-left: 1.5rem;
+      }
     }
 
     &.right {
       .copy-wrapper {
         padding-right: 0.5rem;
+      }
+
+      .contact-form {
+        padding-right: 1.5rem;
       }
     }
   }
