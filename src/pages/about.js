@@ -49,7 +49,7 @@ const AboutPage = () => {
       <Seo title="About" />
       <div className="container-fluid mt-4">
         <div className="row">
-          <div className="col-md-8 offset-md-2">
+          <div className="col-md-10 offset-md-1">
             <div className="row mb-4">
               <div className=" col-12 col-lg-7 order-1 order-lg-1 ps-2 pe-0">
                 <h2 className="mb-1 block__heading">{aboutTitle}</h2>

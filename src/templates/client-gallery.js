@@ -128,7 +128,7 @@ const ClientGallery = props => {
     <Layout>
       <Seo title={name} />
       <div className="row mt-4 px-2 mb-5">
-        <div className="col-md-8 offset-md-2">
+        <div className="col-md-10 offset-md-1">
           {!isLoading ? (
             isAuthenticated ? (
               idMatch ? (

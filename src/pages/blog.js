@@ -57,10 +57,10 @@ const Blog = () => {
       <div className="row mt-4 px-md-2 px-2">
         <div className="col-12 col-lg-12">
           <div className="row">
-            <div className="col-md-8 offset-md-2">
+            <div className="col-md-10 offset-md-1">
               <h1 className="block__heading">Blog Posts</h1>
             </div>
-            <div className="col-md-8 offset-md-2">
+            <div className="col-md-10 offset-md-1">
               <div className="row">
                 {filteredEdges.map((post, index) => {
                   return (

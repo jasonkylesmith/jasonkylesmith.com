@@ -161,7 +161,7 @@ const BlogPost = props => {
       />
 
       <div className="row mt-4 px-2">
-        <div className="col-md-8 offset-md-2">
+        <div className="col-md-10 offset-md-1">
           {featuredImage && (
             <div className="w-100 d-flex position-relative">
               <GatsbyImage image={featuredImage.gatsbyImageData} alt={title} />

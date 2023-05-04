@@ -99,10 +99,10 @@ const Clients = () => {
             {!isLoading ? (
               isAuthenticated ? (
                 <>
-                  <div className="col-md-8 offset-md-2">
+                  <div className="col-md-10 offset-md-1">
                     <h1 className="block__heading">{headingText}</h1>
                   </div>
-                  <div className="col-md-8 offset-md-2">
+                  <div className="col-md-10 offset-md-1">
                     <div className="row">
                       {clientGalleries &&
                         clientGalleries.map(
