@@ -200,6 +200,7 @@ export const query = graphql`
             fullWidth
             ratio
             verticalAlignment
+            isHero
             name
             sys {
               contentType {

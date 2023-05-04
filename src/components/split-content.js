@@ -5,7 +5,7 @@ import MarkdownDisplay from "./markdown-display"
 import ContactForm from "./contact-form"
 
 const SplitContent = ({ module, parentFullWidth }) => {
-  const { blocks, ratio, verticalAlignment, fullWidth } = module
+  const { blocks, ratio, verticalAlignment, fullWidth, isHero } = module
 
   const numOfBlocks = blocks.length
 
@@ -37,7 +37,9 @@ const SplitContent = ({ module, parentFullWidth }) => {
     if (id === "copy") {
       return (
         <div
-          className={`copy-wrapper py-2 ${numOfBlocks === 1 && "solo-text"}`}
+          className={`copy-wrapper py-2 ${numOfBlocks === 1 && "solo-text"} ${
+            isHero && "hero-copy"
+          }`}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
         </div>

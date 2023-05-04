@@ -37,6 +37,32 @@
     width: 100%;
     padding: 0;
 
+    &.hero-copy {
+      h1,
+      h2,
+      h3 {
+        display: flex;
+        align-items: center;
+        font-size: 3rem;
+        font-family: Dosis, sans-serif;
+        font-weight: 800;
+        margin-bottom: 0;
+
+        &::after {
+          content: "";
+          flex: 1;
+          margin-left: 1rem;
+          height: 0.2rem;
+          background-image: linear-gradient(
+            rgba($dark, 1) 80%,
+            rgba($dark, 1) 95%
+          );
+          border-top-right-radius: $border-radii;
+          border-bottom-right-radius: $border-radii;
+        }
+      }
+    }
+
     &.solo-text {
       width: 100%;
     }
