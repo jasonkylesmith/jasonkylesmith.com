@@ -1,7 +1,7 @@
 const path = require("path")
 
 let excludedPages = ["test", "lifestyle", "studio"]
-let exclude = false
+let exclude = true
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
