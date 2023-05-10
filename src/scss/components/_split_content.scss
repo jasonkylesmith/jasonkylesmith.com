@@ -38,9 +38,9 @@
     padding: 0;
 
     &.hero-copy {
-      h1,
-      h2,
-      h3 {
+      h1:first-of-type,
+      h2:first-of-type,
+      h3:first-of-type {
         display: flex;
         align-items: center;
         font-size: 3rem;
@@ -69,7 +69,7 @@
 
     @media (min-width: 767px) {
       &.solo-text {
-        width: 75%;
+        width: 100%;
       }
     }
 
