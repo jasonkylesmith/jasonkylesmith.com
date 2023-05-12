@@ -34,12 +34,14 @@ const SplitContent = ({ module, parentFullWidth }) => {
   const BlockWrapper = ({ block }) => {
     const { id } = block.sys.contentType.sys
 
+    const textAlign = block?.textAlign ? block.textAlign : "start"
+
     if (id === "copy") {
       return (
         <div
-          className={`copy-wrapper py-2 ${numOfBlocks === 1 && "solo-text"} ${
-            isHero && "hero-copy"
-          }`}
+          className={`copy-wrapper text-${textAlign} py-2 ${
+            numOfBlocks === 1 && "solo-text"
+          } ${isHero && "hero-copy"}`}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
         </div>
