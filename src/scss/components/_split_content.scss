@@ -1,10 +1,11 @@
 .split-content {
   .content-container {
     display: flex;
+    padding: 0;
 
     &.left {
       .copy-wrapper {
-        padding-left: 0.5rem;
+        padding-left: 0;
       }
 
       .contact-form {
@@ -14,7 +15,7 @@
 
     &.right {
       .copy-wrapper {
-        padding-right: 0.5rem;
+        padding-right: 0;
       }
 
       .contact-form {
@@ -80,6 +81,25 @@
 
   .image-wrapper {
     width: 100%;
+  }
+
+  @media (min-width: 767px) {
+    .content-container {
+      display: flex;
+      padding: 0;
+
+      &.left {
+        .copy-wrapper {
+          padding-left: 0.7rem;
+        }
+      }
+
+      &.right {
+        .copy-wrapper {
+          padding-right: 0.7rem;
+        }
+      }
+    }
   }
 
   @media (max-width: 767px) {
