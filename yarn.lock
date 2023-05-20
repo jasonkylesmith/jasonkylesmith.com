@@ -1120,6 +1120,16 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/bebas-neue@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/bebas-neue/-/bebas-neue-4.5.9.tgz#66e73f9a1fc10575a679f7699a47b70fd3ee7e40"
+  integrity sha512-xacwu7elbiZIKgmzE0U4U29oh/WjoAmYLg2Eq9vEvq3cJqfO/wRkQZpNS6o1WU1i804AzJF//91E16c9+VgQlA==
+
+"@fontsource/dosis@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/dosis/-/dosis-4.5.11.tgz#78e6871187793a3b283ce807dcdbbdc06af9c197"
+  integrity sha512-bPFz80oRiNVYnojK9pDG243oHHpIbg+54EPLp9IRH9vKyk2WQNgBQATjO9u86C6weN8tEO25GM4tSU0ev7I1Vg==
+
 "@fortawesome/fontawesome-common-types@6.2.0":
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.2.0.tgz#76467a94aa888aeb22aafa43eb6ff889df3a5a7f"
