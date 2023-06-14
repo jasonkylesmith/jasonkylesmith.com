@@ -39,7 +39,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
     if (id === "copy") {
       return (
         <div
-          className={`copy-wrapper text-${textAlign} py-2 ${
+          className={`copy-wrapper text-md-${textAlign} py-2 ${
             numOfBlocks === 1 && "solo-text"
           } ${isHero && "hero-copy"}`}
         >
