@@ -272,6 +272,7 @@ export const query = graphql`
                 }
                 id
                 name
+                textAlign
                 text {
                   text
                   childrenMarkdownRemark {

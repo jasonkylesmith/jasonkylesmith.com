@@ -23,7 +23,7 @@
     align-items: center;
 
     /*    width: 100%; */
-    flex: 1 0 40%;
+
     transition: transform 0.25s ease-in-out;
   }
 
@@ -33,21 +33,67 @@
   }
 
   .iconList__container--item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: fit-content;
+    gap: 0.5rem;
 
     &.icon-text {
       justify-content: flex-start;
       padding-top: 2rem;
     }
+
+    blockquote {
+      display: inline;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: start;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      /*       &::before,
+      &::after {
+        position: absolute;
+        color: $accent;
+        font-size: $base-font-size * 7;
+      } */
+
+      /*       &::before {
+        content: "“";
+        top: -2.8rem;
+        left: -5px;
+        z-index: 0;
+      } */
+
+      /*       &::after {
+        content: "”";
+        bottom: -60px;
+        right: 0;
+      } */
+    }
+
+    blockquote + p:first-of-type {
+      content: "";
+      text-align: start;
+      font-size: 1rem;
+
+      &:only-of-type {
+        margin-bottom: 0;
+      }
+
+      &:before {
+        content: "-";
+      }
+    }
   }
 
   .iconList__container--image {
-    width: 51px;
-    width: 100%;
+    border-radius: 0.25rem;
   }
 
   &.staggered {
@@ -74,6 +120,7 @@
     }
 
     .iconList__container--wrapper {
+      flex: 1 0 40%;
       &:hover {
         /* transform: scale(1.2); */
       }
@@ -98,15 +145,40 @@
         margin: 0;
       }
     }
+
+    .iconList__container--item {
+      blockquote {
+        font-size: 1.4rem;
+      }
+
+      blockquote + p {
+        font-size: 1rem;
+      }
+    }
   }
 
   @media (min-width: $max-width-md) {
+    gap: 2rem;
+
     .iconList__container--wrapper {
       flex: 1 0 15%;
     }
   }
 
   @media (min-width: $max-width-lg) {
+    gap: 4rem;
+
+    .iconList__container--item {
+      blockquote {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+      }
+
+      blockquote + p {
+        font-size: 1.2rem;
+      }
+    }
+
     .iconList__container--wrapper {
       /* width: 33%; */
     }

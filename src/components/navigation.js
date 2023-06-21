@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
 const Navigation = props => {
-  const data = useStaticQuery(graphql`
+  /*   const data = useStaticQuery(graphql`
     query {
       allContentfulGallery {
         distinct(field: category)
@@ -10,7 +10,7 @@ const Navigation = props => {
     }
   `)
 
-  const { distinct } = data.allContentfulGallery
+  const { distinct } = data.allContentfulGallery */
 
   if (props.version === "desktop") {
     return (
@@ -27,8 +27,37 @@ const Navigation = props => {
               about
             </Link>
           </li>
+
           <li> - </li>
-          {distinct?.map((category, index) => {
+          <li>
+            <Link to="/portrait-photography" className="">
+              portraits
+            </Link>
+          </li>
+
+          <li> - </li>
+          <li>
+            <Link to="/studio" className="">
+              studio
+            </Link>
+          </li>
+
+          <li> - </li>
+          <li>
+            <Link to="/photostories" className="">
+              photo stories
+            </Link>
+          </li>
+
+          <li> - </li>
+          <li>
+            <Link to="/contact" className="">
+              contact
+            </Link>
+          </li>
+
+          <li> - </li>
+          {/*           {distinct?.map((category, index) => {
             return (
               <div
                 key={`${category}${index}-desktop`}
@@ -42,7 +71,7 @@ const Navigation = props => {
                 <li> - </li>
               </div>
             )
-          })}
+          })} */}
           <li>
             <Link to="/blog" className="">
               blog
@@ -77,7 +106,40 @@ const Navigation = props => {
               about
             </Link>
           </li>
-          {distinct?.map((category, index) => {
+          <li>
+            <Link
+              to="/portrait-photography"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              portraits
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/studio"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              studio
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/photostories"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              photo stories
+            </Link>
+          </li>
+          {/*           {distinct?.map((category, index) => {
             return (
               <li key={`${category}${index}-mobile`}>
                 <Link
@@ -90,7 +152,17 @@ const Navigation = props => {
                 </Link>
               </li>
             )
-          })}
+          })} */}
+          <li>
+            <Link
+              to="/contact"
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              contact
+            </Link>
+          </li>
           <li>
             <Link
               to="/blog"
@@ -102,7 +174,7 @@ const Navigation = props => {
               blog
             </Link>
           </li>
-          <li>
+          {/*           <li>
             <Link
               to="/clients"
               onClick={() => {
@@ -111,17 +183,7 @@ const Navigation = props => {
             >
               clients
             </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact"
-              onClick={() => {
-                props.menuClick()
-              }}
-            >
-              contact
-            </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     )
