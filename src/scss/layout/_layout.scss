@@ -87,8 +87,14 @@ footer {
     color: white !important;
     font-size: smaller;
 
-    & .icon {
-      color: $dark;
+    &.icon {
+      color: white;
+
+      &:hover {
+        .icon {
+          color: white !important;
+        }
+      }
     }
 
     &:hover {
@@ -114,7 +120,7 @@ footer {
       &:hover {
         &.icon {
           .icon {
-            color: white;
+            color: $dark;
           }
         }
       }

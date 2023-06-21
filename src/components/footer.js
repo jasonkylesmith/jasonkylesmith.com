@@ -11,11 +11,16 @@ const Footer = props => {
     return (
       <footer className="d-none d-md-flex align-items-center row px-2 m-0">
         <div className="col-md-8 offset-md-2 text-center">
-          <div className="text-white">
-            {/* <a href="/clients">clients</a> -  */}
-            {/* <a href="/contact">contact</a> */}
-            {/*  -
+          <div className="text-white d-flex justify-content-center flex-row gap-2">
+            <div>
+              {/* <a href="/clients">clients</a> -  */}
+              <a href="/contact">contact</a> - <a href="/blog"> blog</a>
+              {/*  -
             <a href="/contact"> privacy policy</a> */}
+            </div>
+            <div>
+              <SocialIcons />
+            </div>
           </div>
           <span
             className="copyright d-none d-md-block"

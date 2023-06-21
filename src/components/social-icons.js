@@ -85,19 +85,13 @@ const SocialIcons = props => {
   return (
     <div style={{ position: "relative" }}>
       <a href={twitter} target="_new" className="icon" aria-label="Twitter">
-        <FontAwesomeIcon
-          icon={["fab", "twitter-square"]}
-          className="mx-1 icon"
-        />
+        <FontAwesomeIcon icon={["fab", "twitter"]} className="mx-1 icon" />
       </a>
       <a href={instagram} target="_new" className="icon" aria-label="Instagram">
-        <FontAwesomeIcon
-          icon={["fab", "instagram-square"]}
-          className="mx-1 icon"
-        />
+        <FontAwesomeIcon icon={["fab", "instagram"]} className="mx-1 icon" />
       </a>
 
-      {props?.version !== "author" && (
+      {/* {props?.version !== "author" && (
         <button
           onClick={() => {
             togglePayVisibleDesktop()
@@ -114,8 +108,8 @@ const SocialIcons = props => {
             }`}
           />
         </button>
-      )}
-      {props?.version === "desktop" && payVisibleDesktop && (
+      )} */}
+      {/*       {props?.version === "desktop" && payVisibleDesktop && (
         <div
           style={{ position: "absolute", right: 0, zIndex: 10 }}
           ref={refDesktop}
@@ -130,7 +124,7 @@ const SocialIcons = props => {
         >
           <PayButton />
         </div>
-      )}
+      )} */}
     </div>
   )
 }

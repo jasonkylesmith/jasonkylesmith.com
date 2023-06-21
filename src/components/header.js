@@ -26,7 +26,7 @@ const Header = props => {
                 </div> */}
               </div>
               <div className="col-4 d-flex justify-content-end">
-                <SocialIcons version="desktop" />
+                {/* <SocialIcons version="desktop" /> */}
               </div>
             </div>
             <div className="row">
