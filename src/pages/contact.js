@@ -187,7 +187,7 @@ const ContactFormPage = () => {
             >
               Default checkbox
             </label>
-            <div className="form-check mb-4">
+            {/* <div className="form-check mb-4">
               <input
                 className="form-check-input accent-input"
                 type="checkbox"
@@ -203,7 +203,7 @@ const ContactFormPage = () => {
                 this for communication related to my photography and will never
                 sell or give away any information about you.
               </label>
-            </div>
+            </div> */}
             <input
               className="form-check-input"
               type="text"

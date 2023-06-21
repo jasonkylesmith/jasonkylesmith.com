@@ -1,4 +1,19 @@
 .markdown-display {
+  position: relative;
+
+  p:only-child {
+    margin: 0;
+  }
+
+  h1 + p:only-of-type,
+  h2 + p:only-of-type,
+  h3 + p:only-of-type,
+  h4 + p:only-of-type,
+  h5 + p:only-of-type,
+  h6 + p:only-of-type {
+    margin: 0;
+  }
+
   &.buttonStyle {
     a {
       display: inline-block;

@@ -34,12 +34,14 @@ const SplitContent = ({ module, parentFullWidth }) => {
   const BlockWrapper = ({ block }) => {
     const { id } = block.sys.contentType.sys
 
+    const textAlign = block?.textAlign ? block.textAlign : "start"
+
     if (id === "copy") {
       return (
         <div
-          className={`copy-wrapper py-2 ${numOfBlocks === 1 && "solo-text"} ${
-            isHero && "hero-copy"
-          }`}
+          className={`copy-wrapper text-md-${textAlign} py-2 ${
+            numOfBlocks === 1 && "solo-text"
+          } ${isHero && "hero-copy"}`}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
         </div>
@@ -70,7 +72,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
     <div className={`col-12`}>
       {/* <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}> */}
       <div
-        className={`split-content row px-3 px-md-0 ${
+        className={`split-content row ps-3 px-md-0 ${
           verticalAlignment === "center" && "align-center"
         }`}
       >

@@ -6,6 +6,8 @@
   "author": "Jason Smith",
   "dependencies": {
     "@auth0/auth0-react": "^1.12.1",
+    "@fontsource/bebas-neue": "^4.5.9",
+    "@fontsource/dosis": "^4.5.11",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
