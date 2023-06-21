@@ -30,8 +30,8 @@ const Navigation = props => {
 
           <li> - </li>
           <li>
-            <Link to="/lifestyle" className="">
-              lifestyle
+            <Link to="/portrait-photography" className="">
+              portraits
             </Link>
           </li>
 
@@ -108,13 +108,13 @@ const Navigation = props => {
           </li>
           <li>
             <Link
-              to="/lifestyle"
+              to="/portrait-photography"
               className=""
               onClick={() => {
                 props.menuClick()
               }}
             >
-              lifestyle
+              portraits
             </Link>
           </li>
           <li>

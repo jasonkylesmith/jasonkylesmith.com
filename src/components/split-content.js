@@ -72,7 +72,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
     <div className={`col-12`}>
       {/* <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}> */}
       <div
-        className={`split-content row px-3 px-md-0 ${
+        className={`split-content row ps-3 px-md-0 ${
           verticalAlignment === "center" && "align-center"
         }`}
       >

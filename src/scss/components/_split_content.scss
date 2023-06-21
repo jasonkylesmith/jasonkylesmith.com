@@ -39,6 +39,10 @@
     padding: 0;
 
     &.hero-copy {
+      p:first-of-type {
+        margin: 0;
+      }
+
       h1:first-of-type,
       h2:first-of-type,
       h3:first-of-type {
