@@ -49,14 +49,13 @@ const Navigation = props => {
             </Link>
           </li>
 
-          <li> - </li>
+          {/* <li> - </li>
           <li>
             <Link to="/contact" className="">
               contact
             </Link>
-          </li>
+          </li> */}
 
-          <li> - </li>
           {/*           {distinct?.map((category, index) => {
             return (
               <div
@@ -72,11 +71,6 @@ const Navigation = props => {
               </div>
             )
           })} */}
-          <li>
-            <Link to="/blog" className="">
-              blog
-            </Link>
-          </li>
         </ul>
       </nav>
     )
