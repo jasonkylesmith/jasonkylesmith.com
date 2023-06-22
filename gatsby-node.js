@@ -4,6 +4,19 @@ let excludedPages = ["test"]
 let exclude = false
 
 exports.createPages = async ({ graphql, actions }) => {
+  let envExclude = []
+
+  switch (process.env.GATSBY_ENVIRONMENT) {
+    case "live":
+      envExclude = ["development", "preview"]
+      break
+    case "preview":
+      envExclude = ["development"]
+      break
+    default:
+      envExclude = []
+  }
+
   const { createPage } = actions
 
   const response = await graphql(`
@@ -12,6 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            envLevel
           }
         }
       }
@@ -43,8 +57,26 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   response.data.allContentfulPage.edges.forEach(edge => {
-    if (excludedPages.includes(edge.node.slug)) {
-      if (!exclude) {
+    if (process.env.GATSBY_ENVIRONMENT === "live") {
+      createPage({
+        path: "/",
+        component: path.resolve("./src/templates/temp.js"),
+        context: {},
+      })
+    }
+
+    if (!envExclude.includes(edge.node.envLevel)) {
+      if (excludedPages.includes(edge.node.slug)) {
+        if (!exclude) {
+          createPage({
+            path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
+            component: path.resolve("./src/templates/page.js"),
+            context: {
+              slug: edge.node.slug,
+            },
+          })
+        }
+      } else {
         createPage({
           path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
           component: path.resolve("./src/templates/page.js"),
@@ -53,14 +85,6 @@ exports.createPages = async ({ graphql, actions }) => {
           },
         })
       }
-    } else {
-      createPage({
-        path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
-        component: path.resolve("./src/templates/page.js"),
-        context: {
-          slug: edge.node.slug,
-        },
-      })
     }
 
     //if (edge.node.slug !== "test") {
@@ -75,53 +99,59 @@ exports.createPages = async ({ graphql, actions }) => {
     //}
   })
 
-  response.data.allContentfulBlogPost.edges
-    // Filter out posts to be published in the future .filter(edge => new Date(edge.node.publishedDate) <= new Date())
-    .forEach(edge => {
-      if (edge.node.slug !== "demo-post") {
-        createPage({
-          path: `/blog/${edge.node.slug}`,
-          component: path.resolve("./src/templates/blog-post.js"),
-          context: {
-            slug: edge.node.slug,
-          },
-        })
-      }
+  if (process.env.GATSBY_ENVIRONMENT !== "live") {
+    /* 
+      TEMPORARILY PREVENT FROM APPEARING ON LIVE
+    */
+
+    response.data.allContentfulBlogPost.edges
+      // Filter out posts to be published in the future .filter(edge => new Date(edge.node.publishedDate) <= new Date())
+      .forEach(edge => {
+        if (edge.node.slug !== "demo-post") {
+          createPage({
+            path: `/blog/${edge.node.slug}`,
+            component: path.resolve("./src/templates/blog-post.js"),
+            context: {
+              slug: edge.node.slug,
+            },
+          })
+        }
+      })
+
+    response.data.allContentfulGallery.edges.forEach(edge => {
+      createPage({
+        path: `/${edge.node.category.toLowerCase().replace(/\s+/g, "")}/${
+          edge.node.slug
+        }`,
+        component: path.resolve("./src/templates/gallery.js"),
+        context: {
+          slug: edge.node.slug,
+        },
+      })
     })
 
-  response.data.allContentfulGallery.edges.forEach(edge => {
-    createPage({
-      path: `/${edge.node.category.toLowerCase().replace(/\s+/g, "")}/${
-        edge.node.slug
-      }`,
-      component: path.resolve("./src/templates/gallery.js"),
-      context: {
-        slug: edge.node.slug,
-      },
+    response.data.allContentfulClientGallery.edges.forEach(edge => {
+      createPage({
+        path: `/clients/${edge.node.slug}`,
+        component: path.resolve("./src/templates/client-gallery.js"),
+        context: {
+          slug: edge.node.slug,
+        },
+      })
     })
-  })
 
-  response.data.allContentfulClientGallery.edges.forEach(edge => {
-    createPage({
-      path: `/clients/${edge.node.slug}`,
-      component: path.resolve("./src/templates/client-gallery.js"),
-      context: {
-        slug: edge.node.slug,
-      },
+    response.data.allContentfulGallery.distinct.forEach(category => {
+      const formattedCategory = category.toLowerCase().replace(/\s+/g, "")
+
+      createPage({
+        path: `/${formattedCategory}`,
+        component: path.resolve("./src/templates/gallery-list.js"),
+        context: {
+          category: category,
+        },
+      })
     })
-  })
-
-  response.data.allContentfulGallery.distinct.forEach(category => {
-    const formattedCategory = category.toLowerCase().replace(/\s+/g, "")
-
-    createPage({
-      path: `/${formattedCategory}`,
-      component: path.resolve("./src/templates/gallery-list.js"),
-      context: {
-        category: category,
-      },
-    })
-  })
+  }
 
   /* createPage({
     path: "/using-dsg",

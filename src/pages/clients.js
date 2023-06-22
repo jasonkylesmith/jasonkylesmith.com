@@ -7,6 +7,7 @@ import Loading from "../components/loading"
 import LoginButton from "../components/login-button"
 import LogoutButton from "../components/logout-button"
 import Seo from "../components/seo"
+import LivePlaceholder from "../components/live-placeholder"
 
 const Clients = () => {
   const { user, isAuthenticated, isLoading } = useAuth0()
@@ -85,7 +86,9 @@ const Clients = () => {
       ? "Your Client Gallery"
       : "No Galleries Available Yet"
 
-  return (
+  return process.env.GATSBY_ENVIRONMENT === "live" ? (
+    <LivePlaceholder />
+  ) : (
     <Layout>
       <Seo
         title={"Clients"}

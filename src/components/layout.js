@@ -22,20 +22,24 @@ const Layout = ({ children }) => {
         className="container-fluid d-flex flex-column justify-content-between"
         style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}
       >
-        <div className="row mb-2">
-          <Header version="desktop" />
-          <Header version="mobile" />
-        </div>
+        {process.env.GATSBY_ENVIRONMENT !== "live" && (
+          <div className="row mb-2">
+            <Header version="desktop" />
+            <Header version="mobile" />
+          </div>
+        )}
         <div className="row flex-fill">
           <main className="p-0 container">{children}</main>
         </div>
-        <div
-          className="row"
-          style={{ position: "fixed", bottom: 0, width: "100%" }}
-        >
-          <Footer version="desktop" />
-          <Footer version="mobile" />
-        </div>
+        {process.env.GATSBY_ENVIRONMENT !== "live" && (
+          <div
+            className="row"
+            style={{ position: "fixed", bottom: 0, width: "100%" }}
+          >
+            <Footer version="desktop" />
+            <Footer version="mobile" />
+          </div>
+        )}
       </div>
     </>
   )

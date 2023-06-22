@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { Link, navigate } from "gatsby"
+import LivePlaceholder from "../components/live-placeholder"
 
 library.add(fas)
 
@@ -38,7 +39,9 @@ const ThankYouPage = () => {
       message = ""
   }
 
-  return (
+  return process.env.GATSBY_ENVIRONMENT === "live" ? (
+    <LivePlaceholder />
+  ) : (
     <Layout>
       <Seo title="Thank You!" />
 
