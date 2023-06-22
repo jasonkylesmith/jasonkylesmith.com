@@ -279,12 +279,6 @@ footer {
   }
 }
 
-@media (max-width: $max-width-xs) {
-  .hero-text {
-    /* max-width: 100%; */
-  }
-}
-
 @media (min-width: $max-width-md) {
   img.horizontal {
     width: 200px;
