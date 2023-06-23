@@ -127,7 +127,7 @@ const ClientGallery = props => {
   return (
     <Layout>
       <Seo title={name} />
-      <div className="row mt-4 px-2 mb-5">
+      <div className="row mt-4 mb-5">
         <div className="col-md-10 offset-md-1">
           {!isLoading ? (
             isAuthenticated ? (

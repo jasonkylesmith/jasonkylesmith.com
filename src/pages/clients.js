@@ -96,7 +96,7 @@ const Clients = () => {
         description={"Clients"}
         photo={null}
       />
-      <div className="row mt-4 px-2">
+      <div className="row mt-4">
         <div className="col-12 col-lg-12">
           <div className="row">
             {!isLoading ? (

@@ -12,7 +12,7 @@ const Page = ({ data }) => {
     <Layout>
       <Seo title={name} />
 
-      <div className="mb-5 pt-5 pt-lg-0 pe-2 pe-md-0">
+      <div className="mb-5">
         {modules.map((module, index) => {
           return <ModuleWrapper props={module} key={index} />
         })}

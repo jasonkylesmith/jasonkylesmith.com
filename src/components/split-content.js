@@ -14,7 +14,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
   let soloClasses
 
   if (numOfBlocks === 1) {
-    soloClasses = "col-12 display-flex px-3 "
+    soloClasses = "col-12 display-flex"
   } else {
     if (ratio === "equal") {
       leftClasses = "col-12 col-md-6"
@@ -28,10 +28,10 @@ const SplitContent = ({ module, parentFullWidth }) => {
     }
   }
 
-  leftClasses += " pe-md-4 left"
-  rightClasses += " ps-md-4 right"
+  leftClasses += " pe-4 left"
+  rightClasses += " ps-4 right"
 
-  const BlockWrapper = ({ block }) => {
+  const BlockWrapper = ({ block, side }) => {
     const { id } = block.sys.contentType.sys
 
     const textAlign = block?.textAlign ? block.textAlign : "start"
@@ -39,9 +39,9 @@ const SplitContent = ({ module, parentFullWidth }) => {
     if (id === "copy") {
       return (
         <div
-          className={`copy-wrapper text-md-${textAlign} py-2 ${
+          className={`copy-wrapper text-md-${textAlign} ${
             numOfBlocks === 1 && "solo-text"
-          } ${isHero && "hero-copy"}`}
+          } ${isHero && "hero-copy"} ${side === "right" && "pe-4"}`}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
         </div>
@@ -62,7 +62,11 @@ const SplitContent = ({ module, parentFullWidth }) => {
     }
 
     if (id === "contactForm") {
-      return <ContactForm module={block} />
+      return (
+        <div className="ps-4 w-100">
+          <ContactForm module={block} />
+        </div>
+      )
     }
 
     return <></>
@@ -72,21 +76,21 @@ const SplitContent = ({ module, parentFullWidth }) => {
     <div className={`col-12`}>
       {/* <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}> */}
       <div
-        className={`split-content row ps-3 px-md-0 ${
+        className={`split-content row ${
           verticalAlignment === "center" && "align-center"
         }`}
       >
         {numOfBlocks === 1 ? (
           <div className={`${soloClasses} content-container`}>
-            <BlockWrapper block={blocks[0]} />
+            <BlockWrapper block={blocks[0]} side="center" />
           </div>
         ) : (
           <>
             <div className={`${leftClasses} content-container`}>
-              <BlockWrapper block={blocks[0]} />
+              <BlockWrapper block={blocks[0]} side="left" />
             </div>
             <div className={`${rightClasses} content-container`}>
-              <BlockWrapper block={blocks[1]} />
+              <BlockWrapper block={blocks[1]} side="right" />
             </div>
           </>
         )}
