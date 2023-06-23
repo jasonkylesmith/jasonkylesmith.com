@@ -1,4 +1,10 @@
 .split-content {
+  .copy-trigger + .copy-trigger {
+    .copy-wrapper {
+      padding-left: 0 !important;
+    }
+  }
+
   .content-container {
     display: flex;
     padding: 0;
@@ -96,13 +102,13 @@
 
       &.left {
         .copy-wrapper {
-          padding-left: 0.7rem;
+          padding-left: 0rem;
         }
       }
 
       &.right {
         .copy-wrapper {
-          padding-right: 0.7rem;
+          padding-right: 0rem;
         }
       }
     }

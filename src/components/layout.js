@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
             </Link>
           </div>
         )}
-        <div className="row flex-fill">
+        <div className="row flex-fill m-0">
           <main className="p-0 container">{children}</main>
         </div>
         {process.env.GATSBY_ENVIRONMENT !== "live" && (

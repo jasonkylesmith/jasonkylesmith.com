@@ -28,8 +28,8 @@ const SplitContent = ({ module, parentFullWidth }) => {
     }
   }
 
-  leftClasses += " pe-4 left"
-  rightClasses += " ps-4 right"
+  leftClasses += " pe-md-4 left"
+  rightClasses += " ps-md-4 pb-4 pb-md-0 right"
 
   const BlockWrapper = ({ block, side }) => {
     const { id } = block.sys.contentType.sys
@@ -40,8 +40,10 @@ const SplitContent = ({ module, parentFullWidth }) => {
       return (
         <div
           className={`copy-wrapper text-md-${textAlign} ${
-            numOfBlocks === 1 && "solo-text"
-          } ${isHero && "hero-copy"} ${side === "right" && "pe-4"}`}
+            numOfBlocks === 1 && "solo-text px-4"
+          } ${isHero && "hero-copy"} ${
+            side === "right" && "pe-4 ps-4 ps-md-0"
+          }`}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
         </div>
@@ -76,7 +78,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
     <div className={`col-12`}>
       {/* <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}> */}
       <div
-        className={`split-content row ${
+        className={`split-content row gap-4 gap-md-0 mx-0 ${
           verticalAlignment === "center" && "align-center"
         }`}
       >
@@ -86,10 +88,18 @@ const SplitContent = ({ module, parentFullWidth }) => {
           </div>
         ) : (
           <>
-            <div className={`${leftClasses} content-container`}>
+            <div
+              className={`${leftClasses} content-container ${
+                blocks[0].sys.contentType.sys.id === "copy" && "copy-trigger"
+              }`}
+            >
               <BlockWrapper block={blocks[0]} side="left" />
             </div>
-            <div className={`${rightClasses} content-container`}>
+            <div
+              className={`${rightClasses} content-container ${
+                blocks[1].sys.contentType.sys.id === "copy" && "copy-trigger"
+              }`}
+            >
               <BlockWrapper block={blocks[1]} side="right" />
             </div>
           </>
