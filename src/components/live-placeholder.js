@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 import Seo from "./seo"
+import { Link } from "gatsby"
 
 const LivePlaceholder = () => {
   return (
     <>
       <Seo title="Coming Soon" />
+
       <div className="layout-container">
         <div
           className="hero-text w-100 position-absolute m-0 d-flex flex-column justify-content-center align-items-center"

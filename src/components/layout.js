@@ -12,6 +12,7 @@ import Header from "./header"
 
 import "../scss/main.scss"
 import Footer from "./footer"
+import { Link } from "gatsby"
 
 const Layout = ({ children }) => {
   return (
@@ -22,10 +23,18 @@ const Layout = ({ children }) => {
         className="container-fluid d-flex flex-column justify-content-between"
         style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}
       >
-        {process.env.GATSBY_ENVIRONMENT !== "live" && (
+        {process.env.GATSBY_ENVIRONMENT !== "live" ? (
           <div className="row mb-2">
             <Header version="desktop" />
             <Header version="mobile" />
+          </div>
+        ) : (
+          <div className="logo-container col-12">
+            <Link to="/" className="logo-link">
+              <div>
+                <span className="logo">Jason Kyle Smith</span>
+              </div>
+            </Link>
           </div>
         )}
         <div className="row flex-fill">
