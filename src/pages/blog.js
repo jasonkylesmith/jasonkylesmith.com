@@ -8,6 +8,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import Tags from "../components/tags"
+import LivePlaceholder from "../components/live-placeholder"
 
 const Blog = () => {
   const data = useStaticQuery(graphql`
@@ -50,10 +51,11 @@ const Blog = () => {
   const filteredEdges = edges.filter(edge => edge.node.slug !== "demo-post")
   // Filter out posts to be published in the future .filter(edge => new Date(edge.node.fullDate) <= new Date())
 
-  return (
+  return process.env.GATSBY_ENVIRONMENT === "live" ? (
+    <LivePlaceholder />
+  ) : (
     <Layout>
       <Seo title="Blog" />
-
       <div className="row mt-4 px-md-2 px-2">
         <div className="col-12 col-lg-12">
           <div className="row">

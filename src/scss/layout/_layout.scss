@@ -35,10 +35,9 @@ nav.desktop-nav {
 }
 
 .layout-container {
-  display: grid;
-  grid-template-columns: minmax(256px, 1fr) 1fr 22fr;
-  grid-template-rows: auto;
-  grid-template-areas: "sidebar . content content content content content content content content content content content content content content content content content content content content content content ";
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   overflow-x: clip;
   margin: 0;
@@ -57,9 +56,6 @@ nav.desktop-nav {
 
 @media (max-width: $max-width-sm) {
   .layout-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: "content";
   }
 
   .content {
@@ -276,12 +272,6 @@ footer {
       justify-content: center;
       align-items: flex-start;
     }
-  }
-}
-
-@media (max-width: $max-width-xs) {
-  .hero-text {
-    /* max-width: 100%; */
   }
 }
 

@@ -5,9 +5,12 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Blockquote from "../components/blockquote"
+import LivePlaceholder from "../components/live-placeholder"
 
 const IndexPage = () => {
-  return (
+  return process.env.GATSBY_ENVIRONMENT === "live" ? (
+    <LivePlaceholder />
+  ) : (
     <Layout>
       <Seo title="Home" />
 

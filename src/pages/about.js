@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 import MarkdownDisplay from "../components/markdown-display"
+import LivePlaceholder from "../components/live-placeholder"
 
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
@@ -44,7 +45,9 @@ const AboutPage = () => {
     aboutPortrait,
   } = data.allContentfulSitewideCopy.edges[0].node
 
-  return (
+  return process.env.GATSBY_ENVIRONMENT === "live" ? (
+    <LivePlaceholder />
+  ) : (
     <Layout>
       <Seo title="About" />
       <div className="container-fluid mt-4">
