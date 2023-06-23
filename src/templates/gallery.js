@@ -149,7 +149,7 @@ const Gallery = props => {
       />
 
       <div className="row mt-4 mb-5">
-        <div className="col-md-10 offset-md-1 mb-2">
+        <div className="col-md-10 offset-md-1 mb-2 px-md-0">
           <ShareButtons
             title={name}
             slug={slug}
