@@ -54,7 +54,7 @@ const AboutPage = () => {
         <div className="row">
           <div className="col-md-10 offset-md-1">
             <div className="row mb-4">
-              <div className=" col-12 col-lg-7 order-1 order-lg-1 ps-2 pe-0">
+              <div className=" col-12 col-lg-7 order-1 order-lg-1">
                 <h2 className="mb-1 block__heading">{aboutTitle}</h2>
                 <MarkdownDisplay
                   html={aboutBody.childrenMarkdownRemark[0].html}
@@ -69,7 +69,7 @@ const AboutPage = () => {
                   {aboutCtaText}
                 </a>
               </div>
-              <div className="col-12 col-lg-5 order-0 order-lg-0 mb-4 mb-lg-0 px-0 ps-md-0 pe-md-2">
+              <div className="col-12 col-lg-5 order-0 order-lg-0 mb-4 mb-lg-0">
                 <img
                   src={`https:${aboutPortrait.file.url}`}
                   className="img-fluid"
@@ -80,7 +80,7 @@ const AboutPage = () => {
             </div>
 
             <div className="row mb-4">
-              <div className="col ps-0 mt-4 about-slider"></div>
+              <div className="col mt-4 about-slider"></div>
             </div>
           </div>
         </div>

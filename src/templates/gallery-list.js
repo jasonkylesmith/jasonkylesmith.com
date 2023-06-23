@@ -50,7 +50,7 @@ const GalleryListPage = props => {
     <Layout>
       <Seo title={`${category}`} />
 
-      <div className="row mt-4 px-2">
+      <div className="row mt-4">
         <div className="col-md-10 offset-md-1">
           {/* <div className="row">
             <div className="col-md-8 offset-md-2">

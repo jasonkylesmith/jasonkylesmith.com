@@ -9,11 +9,11 @@ import SocialIcons from "./social-icons"
 const Header = props => {
   if (props.version === "desktop") {
     return (
-      <header className="d-none d-md-block px-2">
+      <header className="d-none d-md-block">
         <div className="row justify-space-between">
           <div className="col-md-10 offset-md-1">
             <div className="row">
-              <div className="col-8">
+              <div className="col-8 p-0">
                 <div className="logo-container col-12">
                   <Link to="/" className="logo-link">
                     <div>
@@ -30,7 +30,7 @@ const Header = props => {
               </div>
             </div>
             <div className="row">
-              <div className="col-12" style={{ marginTop: "-.5rem" }}>
+              <div className="col-12 p-0" style={{ marginTop: "-.5rem" }}>
                 <Navigation version="desktop" />
               </div>
             </div>

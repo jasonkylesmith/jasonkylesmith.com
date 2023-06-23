@@ -38,17 +38,17 @@ const Hero = ({ module }) => {
 
   return (
     <div
-      className="col-12 col-md-10 offset-md-1 d-flex flex-column flex-lg-row justify-content-between align-items-center p-4 p-md-0  new-hero-container"
+      className="col-12 col-md-10 offset-md-1 d-flex flex-column flex-lg-row justify-content-between align-items-center new-hero-container"
       style={{
         height: "80vh",
       }}
     >
-      <div className="col-12 col-md-10 offset-0 col-lg-6 offset-lg-0 p-3 p-lg-4">
+      <div className="col-12 col-md-10 offset-0 col-lg-6 offset-lg-0">
         <h2 className="block__heading pe-4 mb-0 hero-headline">{headline}</h2>
         <div className="pe-2 mb-4">{copy.copy}</div>
         <Link data={ctaButton} className="btn mb-0" />
       </div>
-      <div className="col-12 col-lg-6 offset-lg-0 p-0 p-lg-0">
+      <div className="col-12 col-lg-6 offset-lg-0">
         <div className="col-12 d-none d-lg-grid hero-image-container">
           {featuredImages &&
             featuredImages.length > 0 &&
@@ -68,7 +68,7 @@ const Hero = ({ module }) => {
         </div>
       </div>
 
-      <div className="col-12 col-md-8 d-flex d-lg-none p-0 hero-image-container-small">
+      <div className="col-12 col-md-8 d-flex d-lg-none hero-image-container-small">
         {featuredImages &&
           featuredImages.length > 0 &&
           featuredImages.map(image => {

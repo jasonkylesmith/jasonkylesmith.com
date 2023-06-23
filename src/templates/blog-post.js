@@ -160,7 +160,7 @@ const BlogPost = props => {
         photo={featuredImage?.file?.url}
       />
 
-      <div className="row mt-4 px-2">
+      <div className="row mt-4">
         <div className="col-md-10 offset-md-1">
           {featuredImage && (
             <div className="w-100 d-flex position-relative">

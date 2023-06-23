@@ -56,7 +56,7 @@ const Blog = () => {
   ) : (
     <Layout>
       <Seo title="Blog" />
-      <div className="row mt-4 px-md-2 px-2">
+      <div className="row mt-4 px-md-2">
         <div className="col-12 col-lg-12">
           <div className="row">
             <div className="col-md-10 offset-md-1">

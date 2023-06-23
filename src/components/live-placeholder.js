@@ -72,7 +72,7 @@ const LivePlaceholder = () => {
         </div>
 
         {/* CONTENT WRAPPER*/}
-        <div className="content pt-0 pt-md-3">
+        <div className="content">
           <div className="container-fluid">
             <div className="row">
               {/* <div className="d-flex d-md-none mobile-header sticky-top align-items-center">
