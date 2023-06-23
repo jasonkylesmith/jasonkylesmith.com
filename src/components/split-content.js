@@ -65,7 +65,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
 
     if (id === "contactForm") {
       return (
-        <div className="ps-4 w-100">
+        <div className="ps-md-4  w-100">
           <ContactForm module={block} />
         </div>
       )
