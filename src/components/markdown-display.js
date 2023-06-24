@@ -7,7 +7,7 @@ const MarkdownDisplay = props => {
 
   return (
     <div
-      className={`markdown-display${
+      className={`markdown-display ${
         noButton ? " noButtonStyle" : " buttonStyle"
       }`}
       dangerouslySetInnerHTML={{

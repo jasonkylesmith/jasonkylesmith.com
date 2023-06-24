@@ -9,7 +9,7 @@ library.add(fab)
 const Footer = props => {
   if (props.version === "desktop") {
     return (
-      <footer className="d-none d-md-flex align-items-center row px-2 m-0">
+      <footer className="d-none d-md-flex align-items-center row m-0">
         <div className="col-md-8 offset-md-2 text-center">
           <div className="text-white d-flex justify-content-center flex-row gap-2">
             <div>

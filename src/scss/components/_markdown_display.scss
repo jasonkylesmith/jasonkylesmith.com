@@ -5,6 +5,10 @@
     margin: 0;
   }
 
+  li {
+    margin-bottom: 1rem;
+  }
+
   h1 + p:only-of-type,
   h2 + p:only-of-type,
   h3 + p:only-of-type,
