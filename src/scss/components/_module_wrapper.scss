@@ -54,3 +54,21 @@
   background-color: $light;
   color: $dark;
 }
+
+@media (max-width: 767px) {
+  .section__xl:first-of-type {
+    padding-top: 1.25rem;
+  }
+
+  .section__lg:first-of-type {
+    padding-top: 1.25rem;
+  }
+
+  .section__md:first-of-type {
+    padding-top: 1.25rem;
+  }
+
+  .section__sm:first-of-type {
+    padding-top: 1.25rem;
+  }
+}
