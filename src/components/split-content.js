@@ -14,7 +14,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
   let soloClasses
 
   if (numOfBlocks === 1) {
-    soloClasses = "col-12 display-flex"
+    soloClasses = "col-12 col-md-10 offset-md-1 display-flex"
   } else {
     if (ratio === "equal") {
       leftClasses = "col-12 col-md-6"
