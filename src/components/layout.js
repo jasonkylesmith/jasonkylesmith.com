@@ -7,13 +7,12 @@
 
 import * as React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 
 import "../scss/main.scss"
 import Footer from "./footer"
-import Navigation from "./navigation"
+import { Link } from "gatsby"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
@@ -23,97 +22,40 @@ import Seo from "./seo"
 library.add(fab)
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
-      <Seo title="Coming Soon" />
-      <div className="layout-container">
-        <div
-          className="hero-text w-100 position-absolute m-0 d-flex flex-column justify-content-center align-items-center"
-          style={{ height: "99vh" }}
-        >
-          <h1>Jason Kyle Smith</h1>
-          <p>Coming Soon</p>
-          <div className="position-absolute" style={{ bottom: "1rem" }}>
-            <a
-              href="https://www.twitter.com/jasonkylesmith"
-              target="_new"
-              className="icon"
-            >
-              <FontAwesomeIcon
-                icon={["fab", "twitter-square"]}
-                className="mx-1 icon"
-                viewBox="0 0 448 1"
-              />
-            </a>
-            <a
-              href="https://www.instagram.com/jasonkylesmithphoto"
-              target="_new"
-              className="icon"
-            >
-              <FontAwesomeIcon
-                icon={["fab", "instagram-square"]}
-                className="mx-1 icon"
-                viewBox="0 0 448 1"
-              />
-            </a>
+      {/* CONTENT WRAPPER*/}
 
-            {/*             <a
-              rel="me"
-              href="https://universeodon.com/@jasonkylesmith"
-              target="_new"
-              className="icon"
-            >
-              <FontAwesomeIcon
-                icon={["fab", "mastodon"]}
-                className="mx-1 icon"
-                viewBox="0 0 448 1"
-              />
-            </a> */}
+      <div
+        className="container-fluid d-flex flex-column justify-content-between"
+        style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}
+      >
+        {process.env.GATSBY_ENVIRONMENT !== "live" ? (
+          <div className="row mb-2">
+            <Header version="desktop" />
+            <Header version="mobile" />
           </div>
-        </div>
-        {/* SIDEBAR WRAPPER*/}
-
-        <div className="sidebar d-none d-md-block">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col">
-                <div className="position-fixed d-none d-md-flex flex-column justify-content-between vh-100">
-                  {/* <Header version="desktop" /> */}
-
-                  {/* <Navigation version="desktop" /> */}
-
-                  {/* <Footer version="desktop" /> */}
-                </div>
+        ) : (
+          <div className="logo-container col-12">
+            <Link to="/" className="logo-link">
+              <div>
+                <span className="logo">Jason Kyle Smith</span>
               </div>
-            </div>
+            </Link>
           </div>
+        )}
+        <div className="row flex-fill m-0">
+          <main className="p-0 container">{children}</main>
         </div>
-
-        {/* CONTENT WRAPPER*/}
-        <div className="content pt-0 pt-md-3">
-          <div className="container-fluid">
-            <div className="row">
-              {/* <div className="d-flex d-md-none mobile-header sticky-top align-items-center">
-                <Header version="mobile" />
-              </div> */}
-              <div className="col">{/* <main>{children}</main> */}</div>
-
-              {/* <div className="">
-                <Footer version="mobile" />
-              </div> */}
-            </div>
+        {process.env.GATSBY_ENVIRONMENT !== "live" && (
+          <div
+            className="row"
+            style={{ position: "fixed", bottom: 0, width: "100%" }}
+          >
+            <Footer version="desktop" />
+            <Footer version="mobile" />
           </div>
-        </div>
+        )}
       </div>
     </>
   )

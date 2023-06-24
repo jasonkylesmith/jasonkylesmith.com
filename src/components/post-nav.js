@@ -3,16 +3,15 @@ import { Link } from "gatsby"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
-import { fab } from "@fortawesome/free-brands-svg-icons"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 
-library.add(fab, fas)
+library.add(fas)
 
 const PostNav = props => {
   const { edges } = props
 
   return (
-    <div className="post-nav">
+    <div className="post-nav mt-2 mb-5">
       {edges.prev && (
         <div className="post-nav-wrapper">
           <FontAwesomeIcon icon={["fas", "chevron-left"]} />{" "}
@@ -30,7 +29,7 @@ const PostNav = props => {
             slug={edges.next.slug}
             title={edges.next.title}
             direction="Next"
-          />{" "}
+          />
           <FontAwesomeIcon icon={["fas", "chevron-right"]} />
         </div>
       )}

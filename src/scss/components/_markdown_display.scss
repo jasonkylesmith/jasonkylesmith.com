@@ -1,0 +1,51 @@
+.markdown-display {
+  position: relative;
+
+  p:only-child {
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 1rem;
+  }
+
+  h1 + p:only-of-type,
+  h2 + p:only-of-type,
+  h3 + p:only-of-type,
+  h4 + p:only-of-type,
+  h5 + p:only-of-type,
+  h6 + p:only-of-type {
+    margin: 0;
+  }
+
+  &.buttonStyle {
+    a {
+      display: inline-block;
+      line-height: 1.5;
+      vertical-align: middle;
+      cursor: pointer;
+      width: fit-content;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: center;
+      padding: 2px 6px;
+      transition: background-color 250ms ease-in-out 0ms,
+        color 250ms ease-in-out 0ms;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      border: 2px solid $accent;
+      &::before {
+        height: 0;
+      }
+    }
+
+    a:hover {
+      background-color: $accent;
+      color: $light;
+
+      &::before {
+        height: 0;
+      }
+    }
+  }
+}

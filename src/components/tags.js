@@ -7,7 +7,7 @@ const Tags = props => {
     disabledClass = "tags-disabled"
   }
   return (
-    <>
+    <div className="blog-tags">
       {props.tags === null ? (
         <span className="blog-tag tags-disabled">no tags</span>
       ) : (
@@ -15,7 +15,7 @@ const Tags = props => {
           return <Tag tag={tag} disabledClass={disabledClass} key={index} />
         })
       )}
-    </>
+    </div>
   )
 }
 

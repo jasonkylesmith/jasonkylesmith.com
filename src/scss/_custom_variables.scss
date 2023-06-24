@@ -1,8 +1,19 @@
 // COLORS
 
 $purple: #663cf0;
+$accent: #663cf0;
+
 $dark: #1f1f1f;
-$light: #f6f3ff;
+$light: #f7f7f7;
+
+$purple-overlay: rgba(102, 60, 240, 0.5);
+$purple-darker: #5030b9;
+
+$accent-overlay: rgba(102, 60, 240, 0.5);
+$accent-darker: #5030b9;
+
+$dark-faded: rgba(31, 31, 31, 0.1);
+$dark-lighter: #505050;
 
 // TYPOGRAPHY
 
@@ -24,6 +35,11 @@ $anim-duration: 250ms;
 // SHADOWS
 
 $shadow-standard: 0px 4px 15px -10px $dark;
+$shadow-large: 0px 4px 25px -10px $dark;
+
+// FEATURES
+
+$border-radii: 20px;
 
 // BREAKPOINTS
 

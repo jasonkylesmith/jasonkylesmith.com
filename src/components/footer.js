@@ -1,115 +1,55 @@
 import * as React from "react"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
+import SocialIcons from "./social-icons"
 
 library.add(fab)
 
 const Footer = props => {
   if (props.version === "desktop") {
     return (
-      <footer>
-        <a
-          href="https://www.linkedin.com/in/jasonkylesmith"
-          target="_new"
-          className="icon"
-        >
-          <FontAwesomeIcon
-            icon={["fab", "linkedin"]}
-            className="me-1 icon"
-            viewBox="0 0 448 1"
-          />
-        </a>
-        <a
-          href="https://www.github.com/jasonkylesmith"
-          target="_new"
-          className="icon"
-        >
-          <FontAwesomeIcon
-            icon={["fab", "github-square"]}
-            className="mx-1 icon"
-            viewBox="0 0 448 1"
-          />
-        </a>
-        <a
-          href="https://www.twitter.com/jasonkylesmith"
-          target="_new"
-          className="icon"
-        >
-          <FontAwesomeIcon
-            icon={["fab", "twitter-square"]}
-            className="mx-1 icon"
-            viewBox="0 0 448 1"
-          />
-        </a>
-        <a
-          href="https://www.instagram.com/jasonkylesmithphoto"
-          target="_new"
-          className="icon"
-        >
-          <FontAwesomeIcon
-            icon={["fab", "instagram-square"]}
-            className="mx-1 icon"
-            viewBox="0 0 448 1"
-          />
-        </a>
-        <span className="copyright d-none d-md-block">
-          © {new Date().getFullYear()}, Jason Kyle Smith
-        </span>
+      <footer className="d-none d-md-flex align-items-center row m-0">
+        <div className="col-md-8 offset-md-2 text-center">
+          <div className="text-white d-flex justify-content-center flex-row gap-2">
+            <div>
+              {/* <a href="/clients">clients</a> -  */}
+              <a href="/contact">contact</a> - <a href="/blog"> blog</a>
+              {/*  -
+            <a href="/contact"> privacy policy</a> */}
+            </div>
+            <div>
+              <SocialIcons />
+            </div>
+          </div>
+          <span
+            className="copyright d-none d-md-block"
+            style={{
+              marginLeft: "-.5rem",
+              color: "#FFFFFF",
+              fontWeight: "500",
+              textAlign: "center",
+            }}
+          >
+            © {new Date().getFullYear()}, Jason Kyle Smith
+          </span>
+        </div>
       </footer>
     )
   } else if (props.version === "mobile") {
     return (
-      <footer className="d-flex flex-column align-items-center d-md-none">
+      <footer className="d-flex flex-column align-items-center d-md-none menu">
         <div>
-          <a
-            href="https://www.linkedin.com/in/jasonkylesmith"
-            target="_new"
-            className="icon"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "linkedin"]}
-              className="me-1 icon"
-              viewBox="0 0 448 1"
-            />
-          </a>
-          <a
-            href="https://www.github.com/jasonkylesmith"
-            target="_new"
-            className="icon"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "github-square"]}
-              className="mx-1 icon"
-              viewBox="0 0 448 1"
-            />
-          </a>
-          <a
-            href="https://www.twitter.com/jasonkylesmith"
-            target="_new"
-            className="icon"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "twitter-square"]}
-              className="mx-1 icon"
-              viewBox="0 0 448 1"
-            />
-          </a>
-          <a
-            href="https://www.instagram.com/jasonkylesmithphoto"
-            target="_new"
-            className="icon"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "instagram-square"]}
-              className="mx-1 icon"
-              viewBox="0 0 448 1"
-            />
-          </a>
+          <SocialIcons />
         </div>
         <div>
-          <span className="copyright d-md-none">
+          <span
+            className="copyright d-md-none text-white"
+            style={{
+              color: "#FFFFFF",
+              fontWeight: "500",
+            }}
+          >
             © {new Date().getFullYear()}, Jason Kyle Smith
           </span>
         </div>
@@ -119,53 +59,16 @@ const Footer = props => {
     return (
       <footer className="d-flex flex-column align-items-center menu">
         <div>
-          <a
-            href="https://www.linkedin.com/in/jasonkylesmith"
-            target="_new"
-            className="icon"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "linkedin"]}
-              className="me-1 icon"
-              viewBox="0 0 448 1"
-            />
-          </a>
-          <a
-            href="https://www.github.com/jasonkylesmith"
-            target="_new"
-            className="icon"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "github-square"]}
-              className="mx-1 icon"
-              viewBox="0 0 448 1"
-            />
-          </a>
-          <a
-            href="https://www.twitter.com/jasonkylesmith"
-            target="_new"
-            className="icon"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "twitter-square"]}
-              className="mx-1 icon"
-              viewBox="0 0 448 1"
-            />
-          </a>
-          <a
-            href="https://www.instagram.com/jasonkylesmithphoto"
-            target="_new"
-            className="icon"
-          >
-            <FontAwesomeIcon
-              icon={["fab", "instagram-square"]}
-              className="mx-1 icon"
-              viewBox="0 0 448 1"
-            />
-          </a>
+          <SocialIcons />
         </div>
         <div>
-          <span className="copyright d-md-none">
+          <span
+            className="copyright d-md-none text-white"
+            style={{
+              color: "#FFFFFF",
+              fontWeight: "500",
+            }}
+          >
             © {new Date().getFullYear()}, Jason Kyle Smith
           </span>
         </div>

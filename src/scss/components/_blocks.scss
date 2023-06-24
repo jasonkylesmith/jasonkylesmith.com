@@ -1,0 +1,146 @@
+.block-left-float,
+.block-right-float {
+  min-height: 250px;
+
+  .main-img {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: $max-width-md) {
+  .block-left-float,
+  .block-right-float {
+    .main-img {
+      max-width: 40%;
+    }
+  }
+}
+
+.block-left-float {
+  .main-img {
+    /* float: left; */
+    margin-right: 1rem;
+  }
+}
+
+.block-right-float {
+  .main-img {
+    /*  float: right; */
+    margin-left: 1rem;
+  }
+}
+
+.block-gallery,
+.block-feature {
+  padding: 2rem;
+}
+
+$gallery-img-small: 130px;
+$gallery-img-medium: 230px;
+$gallery-wrapper-small: 150px;
+$gallery-wrapper-medium: 250px;
+
+.block-gallery-grid {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
+
+  &.all-small {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax($gallery-wrapper-small, 1fr)
+    );
+  }
+
+  &.all-medium {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax($gallery-wrapper-medium, 1fr)
+    );
+  }
+}
+
+div[class^="block-gallery-wrapper-"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dotted rgba(102, 60, 240, 0.3);
+}
+
+.block-gallery-wrapper-all-small {
+  width: $gallery-img-small;
+  height: $gallery-img-small;
+}
+
+.block-gallery-wrapper-all-medium {
+  width: minmax($gallery-img-medium, 1fr);
+  height: $gallery-img-medium;
+}
+
+.block-gallery-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 200ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .block-gallery-img {
+    margin: auto;
+  }
+
+  &.landscape {
+    height: auto;
+    width: 85%;
+
+    .block-gallery-img {
+      height: auto;
+      width: 85%;
+    }
+  }
+
+  &.portrait {
+    height: 90%;
+    width: auto;
+
+    .block-gallery-img {
+      height: 90%;
+      width: auto;
+    }
+  }
+}
+
+.portrait-duo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: $max-width-sm) {
+  .portrait-duo {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.portrait-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: $max-width-sm) {
+  .portrait-trio {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.react-photo-gallery--gallery {
+  img {
+    // box-shadow: 0px 3px 10px -6px #1f1f1f;
+
+    border: solid 2px #eee;
+    border-radius: 0.25rem;
+  }
+}

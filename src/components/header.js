@@ -2,27 +2,50 @@ import * as React from "react"
 
 import MenuIcon from "./menu-icon"
 import { Link } from "gatsby"
+import Navigation from "./navigation"
+
+import SocialIcons from "./social-icons"
 
 const Header = props => {
   if (props.version === "desktop") {
     return (
-      <header>
-        <div className="logo-container">
-          <Link to="/" className="logo-link">
-            <div>
-              <h1 className="logo m-0">Jason Kyle Smith</h1>
+      <header className="d-none d-md-block">
+        <div className="row justify-space-between">
+          <div className="col-md-10 offset-md-1">
+            <div className="row">
+              <div className="col-8 p-0">
+                <div className="logo-container col-12">
+                  <Link to="/" className="logo-link">
+                    <div>
+                      <span className="logo">Jason Kyle Smith</span>
+                    </div>
+                  </Link>
+                </div>
+                {/* <div className="col-12" style={{ marginTop: "-.5rem" }}>
+                  <Navigation version="desktop" />
+                </div> */}
+              </div>
+              <div className="col-4 d-flex justify-content-end">
+                {/* <SocialIcons version="desktop" /> */}
+              </div>
             </div>
-          </Link>
+            <div className="row">
+              <div className="col-12 p-0" style={{ marginTop: "-.5rem" }}>
+                <Navigation version="desktop" />
+              </div>
+            </div>
+          </div>
         </div>
       </header>
     )
   } else {
     return (
-      <header>
-        <div className="logo-container">
+      <header className="d-block d-md-none">
+        <div className="logo-container me-2">
           <Link to="/" className="logo-link">
             <div>
-              <h1 className="logo m-0">Jason Kyle Smith</h1>
+              {/* <img src={icon} className="logo-icon" alt="Purple Hexagon Icon" /> */}
+              <h1 className="logo">Jason Kyle Smith</h1>
             </div>
           </Link>
 

@@ -33,6 +33,11 @@ table {
   margin-bottom: $margins;
 }
 
+ul,
+ol {
+  margin-top: $margins;
+}
+
 p {
 }
 
@@ -97,22 +102,76 @@ lh {
 li {
 }
 
+button,
+button:hover,
+button:active {
+  &.button {
+    color: $accent;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    background-color: #ffffff;
+    border: 2px solid $accent;
+    padding: $btn-padding;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #ffffff;
+      background-color: $accent;
+    }
+  }
+
+  &.icon {
+    color: $dark;
+    background-color: transparent;
+
+    .icon {
+      transform: scale(1);
+      transition: transform $anim-duration ease-in-out 0ms;
+    }
+
+    &::before {
+      width: 0;
+      height: 0;
+    }
+
+    &:hover {
+      .icon {
+        transform: scale(1.3);
+        color: $accent;
+      }
+      .mobile {
+        color: #fff !important;
+      }
+    }
+  }
+}
+
 a,
 a:active,
 a:visited,
 a:hover {
   text-decoration: none;
-  color: $purple;
+  color: $accent;
   font-weight: 600;
   position: relative;
+
+  &.button-on-black {
+    border: 2px solid white !important;
+    background-color: white;
+
+    &:hover {
+      transition: border $anim-duration ease-in-out 0ms;
+      border: 2px solid $accent !important;
+    }
+  }
 
   &::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: $purple;
-    color: $purple;
+    background-color: $accent;
+    color: $accent;
     bottom: 0;
     left: 0;
     transform: scaleX(0);
@@ -127,13 +186,36 @@ a:hover {
     }
   }
 
+  &.gallery-link {
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 2px;
+      background-color: $accent;
+      color: $accent;
+      bottom: 0;
+      left: -0.5rem;
+      transform: scaleY(0);
+      transition: transform $anim-duration ease-in-out 0ms;
+    }
+
+    &:hover {
+      &::before {
+        width: 2px;
+        transition: transform $anim-duration ease-in-out 0ms;
+        transform: scaleY(1);
+      }
+    }
+  }
+
   &.btn {
     width: fit-content;
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
-    color: $purple;
-    border: 2px solid $purple;
+    color: $accent;
+    border: 2px solid $accent;
     margin-bottom: $margins;
     padding: $btn-padding;
     transition: background-color $anim-duration ease-in-out 0ms,
@@ -155,8 +237,9 @@ a:hover {
   }
 
   &.btn:hover {
-    background-color: $purple;
+    background-color: $accent;
     color: $light;
+    border: 2px solid $accent;
 
     &.scroll {
       background-color: $dark;
@@ -179,7 +262,7 @@ a:hover {
     &:hover {
       .icon {
         transform: scale(1.3);
-        color: $purple;
+        color: $accent;
       }
     }
   }
@@ -200,13 +283,49 @@ a:hover {
   }
 }
 
+.btn-link,
+.btn-link:active,
+.btn-link:visited,
+.btn-link:hover {
+  text-decoration: none;
+  color: $accent;
+  font-weight: 600;
+  position: relative;
+  padding: 0;
+  margin: 0 1rem;
+  border: 0;
+  background-color: transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: $accent;
+    color: $accent;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform $anim-duration ease-in-out 0ms;
+  }
+
+  &:hover {
+    &::before {
+      color: $accent;
+      height: 2px;
+      transition: transform $anim-duration ease-in-out 0ms;
+      transform: scaleX(1);
+    }
+  }
+}
+
 nav {
   a,
   a:visited {
     color: $dark;
 
     &:hover {
-      color: $purple;
+      color: $accent;
     }
   }
 
@@ -214,13 +333,8 @@ nav {
     text-align: center;
     width: 100%;
 
-    .menu {
-      .icon {
-        .icon {
-          &:hover {
-            color: white;
-          }
-        }
+    .icon {
+      &:hover {
       }
     }
 
@@ -238,12 +352,6 @@ nav {
   }
 }
 
-a:hover {
-}
-
-a:focus {
-}
-
 .blockquote {
   position: relative;
   padding: 0 2rem;
@@ -258,7 +366,7 @@ a:focus {
     &::before,
     &::after {
       position: absolute;
-      color: $purple;
+      color: $accent;
       font-size: $base-font-size * 5;
     }
 
@@ -287,9 +395,12 @@ blockquote {
 
 .logo {
   font-family: $font-family-header;
+  font-size: $base-font-size * 2.5;
+  font-weight: 500;
   margin: 0;
-  padding: 0.5rem 0 0.3rem 0;
+  padding: 0;
   width: min(250px, 100%);
+  line-height: 1.2;
 }
 
 @media (max-width: 342px) {
@@ -298,8 +409,12 @@ blockquote {
   }
 }
 
-.icon {
+.logo-icon {
   height: 40px;
+}
+
+.icon {
+  transform-origin: center;
 }
 
 .copyright {
@@ -308,4 +423,53 @@ blockquote {
 
 .small-text {
   font-size: $base-font-size-small;
+}
+
+.asset-title + .subtitle {
+  margin-top: -1.5rem;
+}
+
+.subtitle {
+  font-size: $base-font-size-small;
+}
+
+.text-dark {
+  color: $dark !important;
+}
+
+.slider-div {
+  height: 70vh;
+  width: 100vw;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+a {
+  &:hover {
+    img.gallery-image {
+      transform: scale(1.1);
+      border: 2px solid pink;
+    }
+  }
+}
+
+.slick-slide {
+  .about {
+    padding: 0.5rem;
+
+    text-align: center;
+    width: auto !important;
+    img {
+      height: 200px;
+      margin: 0;
+    }
+  }
+}
+
+.pink-border {
+  border: 2px solid pink;
 }

@@ -1,41 +1,76 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
 const Navigation = props => {
+  /*   const data = useStaticQuery(graphql`
+    query {
+      allContentfulGallery {
+        distinct(field: category)
+      }
+    }
+  `)
+
+  const { distinct } = data.allContentfulGallery */
+
   if (props.version === "desktop") {
     return (
-      <nav className="d-none d-md-block">
+      <nav className="d-none d-md-block desktop-nav">
         <ul>
           <li>
             <Link to="/" className="">
               home
             </Link>
           </li>
+          <li> - </li>
           <li>
-            <Link to="/" className="">
-              about me
+            <Link to="/about" className="">
+              about
             </Link>
           </li>
+
+          <li> - </li>
           <li>
-            <Link to="/webdevelopment" className="">
-              web development
+            <Link to="/portrait-photography" className="">
+              portraits
             </Link>
           </li>
+
+          <li> - </li>
           <li>
-            <Link to="/" className="">
-              graphic design
+            <Link to="/studio" className="">
+              studio
             </Link>
           </li>
+
+          <li> - </li>
           <li>
-            <Link to="/" className="">
-              photography
+            <Link to="/photostories" className="">
+              photo stories
             </Link>
           </li>
+
+          {/* <li> - </li>
           <li>
-            <Link to="/blog/" className="">
-              blog
+            <Link to="/contact" className="">
+              contact
             </Link>
-          </li>
+          </li> */}
+
+          {/*           {distinct?.map((category, index) => {
+            return (
+              <div
+                key={`${category}${index}-desktop`}
+                style={{ display: "inline" }}
+              >
+                <li>
+                  <Link to={`/${category.toLowerCase().replace(/\s+/g, "")}`}>
+                    {category.toLowerCase()}
+                  </Link>
+                </li>
+                <li> - </li>
+              </div>
+            )
+          })} */}
         </ul>
       </nav>
     )
@@ -56,51 +91,75 @@ const Navigation = props => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/about"
               className=""
               onClick={() => {
                 props.menuClick()
               }}
             >
-              about me
+              about
             </Link>
           </li>
           <li>
             <Link
-              to="/webdevelopment"
+              to="/portrait-photography"
               className=""
               onClick={() => {
                 props.menuClick()
               }}
             >
-              web development
+              portraits
             </Link>
           </li>
           <li>
             <Link
-              to="/"
+              to="/studio"
               className=""
               onClick={() => {
                 props.menuClick()
               }}
             >
-              graphic design
+              studio
             </Link>
           </li>
           <li>
             <Link
-              to="/"
+              to="/photostories"
               className=""
               onClick={() => {
                 props.menuClick()
               }}
             >
-              photography
+              photo stories
+            </Link>
+          </li>
+          {/*           {distinct?.map((category, index) => {
+            return (
+              <li key={`${category}${index}-mobile`}>
+                <Link
+                  to={`/${category.toLowerCase().replace(/\s+/g, "")}`}
+                  onClick={() => {
+                    props.menuClick()
+                  }}
+                >
+                  {category.toLowerCase()}
+                </Link>
+              </li>
+            )
+          })} */}
+          <li>
+            <Link
+              to="/contact"
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              contact
             </Link>
           </li>
           <li>
             <Link
-              to="/blog/"
+              to="/blog"
               className=""
               onClick={() => {
                 props.menuClick()
@@ -109,6 +168,16 @@ const Navigation = props => {
               blog
             </Link>
           </li>
+          {/*           <li>
+            <Link
+              to="/clients"
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              clients
+            </Link>
+          </li> */}
         </ul>
       </nav>
     )
