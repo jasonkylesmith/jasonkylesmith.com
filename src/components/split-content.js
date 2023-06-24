@@ -43,7 +43,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
             numOfBlocks === 1 && "solo-text px-4"
           } ${isHero && "hero-copy"} ${
             side === "right" && "pe-0 ps-0 ps-md-0"
-          }`}
+          } ${parentFullWidth && "pe-3 ps-3"}`}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
         </div>
@@ -65,7 +65,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
 
     if (id === "contactForm") {
       return (
-        <div className="ps-md-4  w-100">
+        <div className={`ps-md-4 w-100  ${parentFullWidth && "pe-3 ps-3"}`}>
           <ContactForm module={block} />
         </div>
       )

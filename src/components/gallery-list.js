@@ -18,12 +18,13 @@ const GalleryList = ({ module, category }) => {
     const { gatsbyImageData, title } = featuredImage
 
     let linkTo
+    console.log(id, slug)
 
     switch (id) {
       case "gallery":
         linkTo = `/${category.toLowerCase().replace(/\s+/g, "")}/${slug}`
         break
-      case "blog":
+      case "blogPost":
         linkTo = `/blog/${slug}`
         break
       default:
