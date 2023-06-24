@@ -42,7 +42,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
           className={`copy-wrapper text-md-${textAlign} ${
             numOfBlocks === 1 && "solo-text px-4"
           } ${isHero && "hero-copy"} ${
-            side === "right" && "pe-2 ps-2 ps-md-0"
+            side === "right" && "pe-0 ps-0 ps-md-0"
           }`}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
