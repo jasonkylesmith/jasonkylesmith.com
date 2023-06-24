@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const { createPage } = actions
   // this
-  /*   const response = await graphql(`
+  const response = await graphql(`
     query {
       allContentfulPage {
         edges {
@@ -54,7 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `) */
+  `)
 
   response.data.allContentfulPage.edges.forEach(edge => {
     if (process.env.GATSBY_ENVIRONMENT === "live") {
