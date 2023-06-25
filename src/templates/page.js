@@ -210,6 +210,34 @@ export const query = graphql`
               }
             }
             blocks {
+              ... on ContentfulBlockGallery {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                id
+                name
+                columns
+                orientation
+                variant
+                images {
+                  file {
+                    details {
+                      image {
+                        height
+                        width
+                      }
+                    }
+                    url
+                  }
+                  description
+                  gatsbyImageData(quality: 100)
+                  title
+                }
+              }
               ... on ContentfulContactForm {
                 sys {
                   contentType {
@@ -444,6 +472,7 @@ export const query = graphql`
             id
             name
             columns
+            orientation
             variant
             images {
               file {

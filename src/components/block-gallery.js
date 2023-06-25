@@ -24,7 +24,7 @@ const BlockGallery = props => {
 
   const imgIndexRef = useRef(0)
 
-  const { images, columns } = props.block
+  const { images, columns, orientation } = props.block
 
   useEffect(() => {
     const getInnerWidth = () => {
@@ -188,7 +188,7 @@ const BlockGallery = props => {
 
           <Gallery
             photos={photoArray}
-            direction={"column"}
+            direction={orientation ? orientation : "row"}
             margin={10}
             columns={
               columns

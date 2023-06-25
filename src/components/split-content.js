@@ -3,6 +3,7 @@ import React from "react"
 import IconList from "./icon-list"
 import MarkdownDisplay from "./markdown-display"
 import ContactForm from "./contact-form"
+import BlockGallery from "./block-gallery"
 
 const SplitContent = ({ module, parentFullWidth }) => {
   const { blocks, ratio, verticalAlignment, fullWidth, isHero } = module
@@ -69,6 +70,15 @@ const SplitContent = ({ module, parentFullWidth }) => {
           <ContactForm module={block} />
         </div>
       )
+    }
+
+    if (id === "blockGallery") {
+      console.log("Block Gallery", block)
+      if (block.orientation === "row") {
+        return <BlockGallery block={block} />
+      } else {
+        return <></>
+      }
     }
 
     return <></>
