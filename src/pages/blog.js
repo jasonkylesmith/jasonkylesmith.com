@@ -29,7 +29,7 @@ const Blog = () => {
               gatsbyImageData(
                 layout: FULL_WIDTH
                 quality: 100
-                resizingBehavior: CROP
+                resizingBehavior: NO_CHANGE
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
                 aspectRatio: 2
