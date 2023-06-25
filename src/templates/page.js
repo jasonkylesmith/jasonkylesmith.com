@@ -319,7 +319,12 @@ export const query = graphql`
                 id
                 name
                 image {
-                  gatsbyImageData(quality: 100)
+                  gatsbyImageData(
+                    quality: 100
+                    placeholder: BLURRED
+                    layout: FULL_WIDTH
+                    resizingBehavior: NO_CHANGE
+                  )
                   description
                   file {
                     url
