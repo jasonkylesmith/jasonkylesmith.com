@@ -104,9 +104,8 @@ exports.createPages = async ({ graphql, actions }) => {
       TEMPORARILY PREVENT FROM APPEARING ON LIVE
     */
 
-    response.data.allContentfulBlogPost.edges
-      // Filter out posts to be published in the future .filter(edge => new Date(edge.node.publishedDate) <= new Date())
-      .forEach(edge => {
+    if (process.env.GATSBY_ENVIRONMENT === "development") {
+      response.data.allContentfulBlogPost.edges.forEach(edge => {
         if (edge.node.slug !== "demo-post") {
           createPage({
             path: `/blog/${edge.node.slug}`,
@@ -117,6 +116,23 @@ exports.createPages = async ({ graphql, actions }) => {
           })
         }
       })
+    } else {
+      const today = new Date()
+
+      response.data.allContentfulBlogPost.edges.forEach(edge => {
+        const date = new Date(edge.node.publishedDate)
+
+        if (edge.node.slug !== "demo-post" && date <= today) {
+          createPage({
+            path: `/blog/${edge.node.slug}`,
+            component: path.resolve("./src/templates/blog-post.js"),
+            context: {
+              slug: edge.node.slug,
+            },
+          })
+        }
+      })
+    }
 
     response.data.allContentfulGallery.edges.forEach(edge => {
       createPage({
