@@ -21,7 +21,7 @@ const Tags = props => {
 
 export default Tags
 
-const Tag = props => {
+export const Tag = props => {
   return (
     <>
       <span className={`blog-tag ${props.disabledClass}`}>{props.tag}</span>
