@@ -50,8 +50,13 @@ const Blog = () => {
 
   const { edges } = data.allContentfulBlogPost
 
+  const today = new Date()
+
   const [filteredEdges, setFilteredEdges] = useState(
-    edges.filter(edge => edge.node.slug !== "demo-post")
+    edges.filter(
+      edge =>
+        edge.node.slug !== "demo-post" && new Date(edge.node.fullDate) <= today
+    )
   )
 
   const [selectedTag, setSelectedTag] = useState("all")
