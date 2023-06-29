@@ -34,6 +34,18 @@ nav.desktop-nav {
   }
 }
 
+.standard-container-padding {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+@media (min-width: $max-width-sm) {
+  .standard-container-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .layout-container {
   display: flex;
   justify-content: center;

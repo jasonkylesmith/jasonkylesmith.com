@@ -152,6 +152,63 @@
   margin-left: 0;
 }
 
+.blog-list-tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  gap: 0.25rem;
+
+  button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  button:focus-visible,
+  button:focus {
+    outline: 0;
+
+    .blog-tag {
+      border: inset 2px $accent;
+    }
+
+    .selected-tag {
+      .blog-tag {
+        border: inset 2px $dark;
+      }
+    }
+  }
+
+  .blog-tag {
+    margin: 0;
+    border-radius: 0;
+    font-weight: 600;
+    font-size: $base-font-size-small;
+  }
+
+  .selected-tag {
+    .blog-tag {
+      border-color: $accent;
+      background: $accent;
+    }
+  }
+
+  .blog-list-tag-start {
+    .blog-tag {
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+  }
+
+  .blog-list-tag-end {
+    .blog-tag {
+      border-top-right-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+    }
+  }
+}
+
 .post-nav {
   display: flex;
   width: 100%;
