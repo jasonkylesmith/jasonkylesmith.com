@@ -106,11 +106,11 @@ button,
 button:hover,
 button:active {
   &.button {
-    color: $accent;
+    color: $accent-darker;
     border-radius: 0.25rem;
     font-weight: 700;
     background-color: #ffffff;
-    border: 2px solid $accent;
+    border: 2px solid $accent-darker;
     padding: $btn-padding;
     text-transform: uppercase;
 
@@ -151,7 +151,7 @@ a:active,
 a:visited,
 a:hover {
   text-decoration: none;
-  color: $accent;
+  color: $accent-darker;
   font-weight: 600;
   position: relative;
 
@@ -161,7 +161,7 @@ a:hover {
 
     &:hover {
       transition: border $anim-duration ease-in-out 0ms;
-      border: 2px solid $accent !important;
+      border: 2px solid $accent-darker !important;
     }
   }
 
@@ -170,7 +170,7 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: $accent;
+    background-color: $accent-darker;
     color: $accent;
     bottom: 0;
     left: 0;
@@ -192,8 +192,8 @@ a:hover {
       position: absolute;
       height: 100%;
       width: 2px;
-      background-color: $accent;
-      color: $accent;
+      background-color: $accent-darker;
+      color: $accent-darker;
       bottom: 0;
       left: -0.5rem;
       transform: scaleY(0);
@@ -214,8 +214,8 @@ a:hover {
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
-    color: $accent;
-    border: 2px solid $accent;
+    color: $accent-darker;
+    border: 2px solid $accent-darker;
     margin-bottom: $margins;
     padding: $btn-padding;
     transition: background-color $anim-duration ease-in-out 0ms,
@@ -237,9 +237,9 @@ a:hover {
   }
 
   &.btn:hover {
-    background-color: $accent;
+    background-color: $accent-darker;
     color: $light;
-    border: 2px solid $accent;
+    border: 2px solid $accent-darker;
 
     &.scroll {
       background-color: $dark;
@@ -288,7 +288,7 @@ a:hover {
 .btn-link:visited,
 .btn-link:hover {
   text-decoration: none;
-  color: $accent;
+  color: $accent-darker;
   font-weight: 600;
   position: relative;
   padding: 0;
@@ -301,8 +301,8 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: $accent;
-    color: $accent;
+    background-color: $accent-darker;
+    color: $accent-darker;
     bottom: 0;
     left: 0;
     transform: scaleX(0);
@@ -311,7 +311,7 @@ a:hover {
 
   &:hover {
     &::before {
-      color: $accent;
+      color: $accent-darker;
       height: 2px;
       transition: transform $anim-duration ease-in-out 0ms;
       transform: scaleX(1);

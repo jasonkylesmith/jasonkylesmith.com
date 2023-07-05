@@ -41,10 +41,7 @@ const Layout = ({ children }) => {
           <main className="p-0 container">{children}</main>
         </div>
         {process.env.GATSBY_ENVIRONMENT !== "live" && (
-          <div
-            className="row"
-            style={{ position: "fixed", bottom: 0, width: "100%" }}
-          >
+          <div className="row">
             <Footer version="desktop" />
             <Footer version="mobile" />
           </div>

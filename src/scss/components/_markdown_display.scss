@@ -33,14 +33,14 @@
         color 250ms ease-in-out 0ms;
       border-radius: 0.25rem;
       font-size: 1rem;
-      border: 2px solid $accent;
+      border: 2px solid $accent-darker;
       &::before {
         height: 0;
       }
     }
 
     a:hover {
-      background-color: $accent;
+      background-color: $accent-darker;
       color: $light;
 
       &::before {
