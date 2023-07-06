@@ -73,7 +73,6 @@ const SplitContent = ({ module, parentFullWidth }) => {
     }
 
     if (id === "blockGallery") {
-      console.log("Block Gallery", block)
       if (block.orientation === "row") {
         return <BlockGallery block={block} />
       } else {

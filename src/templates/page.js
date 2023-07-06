@@ -234,7 +234,11 @@ export const query = graphql`
                     url
                   }
                   description
-                  gatsbyImageData(quality: 100)
+                  gatsbyImageData(
+                    quality: 100
+                    resizingBehavior: NO_CHANGE
+                    layout: FULL_WIDTH
+                  )
                   title
                 }
               }

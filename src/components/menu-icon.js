@@ -49,8 +49,17 @@ const MenuIcon = props => {
             modalOpen && "open"
           } d-flex flex-column justify-content-center`}
         >
-          <Navigation version="menu" menuClick={handleMenuClick} />
-          <Footer version="menu" />
+          {props.version === "desktop" ? (
+            <>
+              <Navigation version="menu" menuClick={handleMenuClick} />
+              <Footer version="menu" />
+            </>
+          ) : (
+            <>
+              <Navigation menuClick={handleMenuClick} />
+              <Footer />
+            </>
+          )}
         </div>
       )}
     </>

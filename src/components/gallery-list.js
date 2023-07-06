@@ -18,7 +18,7 @@ const GalleryList = ({ module, category }) => {
     const { gatsbyImageData, title } = featuredImage
 
     let linkTo
-    console.log(id, slug)
+    // console.log(id, slug)
 
     switch (id) {
       case "gallery":

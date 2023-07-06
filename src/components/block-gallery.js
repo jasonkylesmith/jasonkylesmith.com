@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react"
 import Gallery from "react-photo-gallery"
 
 import LightboxContainer from "./lightbox-display"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 /* TODO
 

@@ -74,6 +74,44 @@ const Navigation = props => {
         </ul>
       </nav>
     )
+  } else if (props.version === "menu") {
+    return (
+      <nav className="mobile-nav">
+        <ul>
+          <li>
+            <Link
+              to="/contact"
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              contact
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/blog"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              blog
+            </Link>
+          </li>
+          {/*           <li>
+            <Link
+              to="/clients"
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              clients
+            </Link>
+          </li> */}
+        </ul>
+      </nav>
+    )
   } else {
     return (
       <nav className="mobile-nav">
