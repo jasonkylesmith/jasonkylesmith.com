@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react"
 import Gallery from "react-photo-gallery"
 
 import LightboxContainer from "./lightbox-display"
-import { GatsbyImage } from "gatsby-plugin-image"
+
+import { motion, useScroll } from "framer-motion"
 
 /* TODO
 
@@ -170,12 +171,50 @@ const BlockGallery = props => {
     }
   }
 
+  const ImageRenderer = ({
+    index,
+    left,
+    top,
+    direction,
+    key,
+    photo,
+    margin,
+    onClick,
+  }) => {
+    const cont = { cursor: "pointer", overflow: "hidden", position: "relative" }
+
+    if (direction === "column") {
+      cont.position = "absolute"
+      cont.left = left
+      cont.top = top
+    }
+
+    return (
+      <motion.img
+        key={key}
+        {...photo}
+        alt={photo.alt}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.25 }}
+        viewport={{ once: true }}
+        style={{ ...cont }}
+        onClick={() => {
+          imgIndexRef.current = index
+          setImgIndex(index)
+          setOpenLightbox(true)
+        }}
+      />
+    )
+  }
+
   return (
     <div
       style={{
         margin: "-.5rem",
         overflowX: "hidden",
       }}
+      className={orientation === "row" || !orientation ? "gallery-row" : ""}
     >
       {innerWidth && (
         <>
@@ -206,6 +245,7 @@ const BlockGallery = props => {
 
               setOpenLightbox(true)
             }}
+            renderImage={ImageRenderer}
           />
         </>
       )}

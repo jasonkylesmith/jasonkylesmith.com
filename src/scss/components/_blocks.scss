@@ -144,3 +144,8 @@ div[class^="block-gallery-wrapper-"] {
     border-radius: 0.25rem;
   }
 }
+
+.gallery-row .react-photo-gallery--gallery > div:first-of-type {
+  justify-content: space-between;
+  gap: 20px;
+}
