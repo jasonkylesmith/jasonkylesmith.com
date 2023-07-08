@@ -2,11 +2,12 @@ import React, { useEffect, useMemo, useRef, useState } from "react"
 import Gallery from "react-photo-gallery"
 
 import LightboxContainer from "./lightbox-display"
-import { GatsbyImage } from "gatsby-plugin-image"
+
+import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 
 /* TODO
 
-[ ] Transition for changes of images
+[X] Transition for changes of images
 [X] Left and Right arrow icons in LightboxContainer
 [X] Handle swiping on mobile
 [X] Height of horizontal images should be same as for vertical images
@@ -42,58 +43,6 @@ const BlockGallery = props => {
         window.removeEventListener("resize", () => getInnerWidth(), true)
     }
   }, [])
-
-  /*   const customSizes = ["(min-width: 480px) 10vw,(min-width: 1024px) 10vw,10vw"]
-
-  const altSizes = ["12vw"] */
-
-  /* let maxItems = 5000
-     let columns = 3
-
-  switch (variant) {
-    case "All Small":
-      columns = 6
-      break
-    case "All Medium":
-      break
-    case "Extra Large Portrait":
-      maxItems = 1
-      columns = 1
-      break
-    case "Extra Large Landscape":
-      maxItems = 1
-      columns = 1
-      break
-    case "One Large Left Two Medium":
-      maxItems = 3
-      columns = 2
-      break
-    case "One Large Right Two Medium":
-      maxItems = 3
-      columns = 2
-      break
-    default:
-  } */
-
-  /*   let photoArray = []
-  photoArray = images.map((image, index) => {
-    const { url } = image.file
-    const { height, width } = image.file.details.image
-    const { srcSet, sizes } = image.gatsbyImageData.images.sources[0]
-    const { description } = image
-
-    return {
-      src: `https:${url}`,
-      height: height,
-      width: width,
-      srcSet,
-      sizes,
-      alt: description,
-
-      index,
-      key: `${index}-${url}`,
-    }
-  }) */
 
   const photoArray = useMemo(() => {
     const buildPhotoArray = () => {
@@ -170,12 +119,48 @@ const BlockGallery = props => {
     }
   }
 
+  const ImageRenderer = ({ index, left, top, direction, key, photo }) => {
+    const cont = {
+      cursor: "pointer",
+      overflow: "hidden",
+      position: "relative",
+    }
+
+    if (direction === "column") {
+      cont.position = "absolute"
+      cont.left = left
+      cont.top = top
+    }
+
+    return (
+      <div style={{ ...cont }} key={key}>
+        <motion.img
+          {...photo}
+          alt={photo.alt}
+          initial={{ opacity: 0, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          whileHover={{
+            scale: 1.1,
+            transition: { duration: 0.5 },
+          }}
+          viewport={{ once: true }}
+          onClick={() => {
+            imgIndexRef.current = index
+            setImgIndex(index)
+            setOpenLightbox(true)
+          }}
+        />
+      </div>
+    )
+  }
+
   return (
     <div
       style={{
         margin: "-.5rem",
         overflowX: "hidden",
       }}
+      className={orientation === "row" || !orientation ? "gallery-row" : ""}
     >
       {innerWidth && (
         <>
@@ -206,6 +191,7 @@ const BlockGallery = props => {
 
               setOpenLightbox(true)
             }}
+            renderImage={ImageRenderer}
           />
         </>
       )}

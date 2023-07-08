@@ -117,6 +117,7 @@ const Blog = () => {
                           } ${index === 0 && "blog-list-tag-start"} ${
                             index + 1 === allTags.length && "blog-list-tag-end"
                           }`}
+                          key={tag}
                         >
                           <Tag tag={tag} disabledClass={false} key={tag} />
                         </button>
@@ -140,7 +141,6 @@ const Blog = () => {
                               <GatsbyImage
                                 className=""
                                 imgStyle={{ borderRadius: ".25rem" }}
-                                imgClass="gallery-image"
                                 image={post.node.featuredImage.gatsbyImageData}
                                 alt={post.node.title}
                               />
