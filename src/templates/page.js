@@ -33,6 +33,21 @@ export const query = graphql`
         marginVariant
         fullWidth
         backgroundColor
+        backgroundImage {
+          gatsbyImageData(
+            layout: CONSTRAINED
+
+            quality: 100
+            resizingBehavior: CROP
+            cropFocus: CENTER
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+          file {
+            url
+          }
+          description
+        }
         name
         headline
         module {

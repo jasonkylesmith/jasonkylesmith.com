@@ -8,6 +8,7 @@ import GalleryList from "./gallery-list"
 import Hero from "./hero"
 import IconList from "./icon-list"
 import SplitContent from "./split-content"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const ModuleWrapper = ({ props }) => {
   const {
@@ -17,6 +18,7 @@ const ModuleWrapper = ({ props }) => {
     fullWidth,
     headline,
     backgroundColor,
+    backgroundImage,
   } = props
 
   // console.log("Module", module)
@@ -47,14 +49,24 @@ const ModuleWrapper = ({ props }) => {
       return <></>
     }
 
-    if (!fullWidth) {
+    if (!backgroundImage) {
       return (
         <section
           className={`section__${sectionMargin} ${
             marginVariant && `section__${marginVariant}`
-          } section__${backgroundColor} row px-3 px-md-0`}
+          } section__${backgroundColor} ${
+            fullWidth ? `row px-0` : `row px-3 px-md-0`
+          }`}
         >
-          <div className="col-12 col-md-10 offset-md-1 px-0">{content}</div>
+          <div
+            className={
+              fullWidth
+                ? `col-12 px-0 ${id === "hero" && ""}`
+                : `col-12 col-md-10 offset-md-1 px-0`
+            }
+          >
+            {content}
+          </div>
         </section>
       )
     } else {
@@ -62,9 +74,30 @@ const ModuleWrapper = ({ props }) => {
         <section
           className={`section__${sectionMargin} ${
             marginVariant && `section__${marginVariant}`
-          } section__${backgroundColor} row px-0`}
+          } section__${backgroundColor} ${
+            fullWidth ? `row px-0` : `row px-3 px-md-0`
+          } module-bg-image-container`}
         >
-          <div className={`col-12 px-0 ${id === "hero" && ""}`}>{content}</div>
+          <div
+            className={`module-bg-image-wrapper ${
+              !fullWidth ? "col-12 col-md-10 offset-md-1 px-0" : "col-12 px-0"
+            }`}
+          >
+            <img
+              src={backgroundImage.file.url}
+              alt={backgroundImage.description}
+            />
+          </div>
+          <div
+            className={`${
+              fullWidth
+                ? `col-12 px-0 ${id === "hero" && ""}`
+                : `col-12 col-md-10 offset-md-1 px-0`
+            }`}
+            style={{ zIndex: 2 }}
+          >
+            {content}
+          </div>
         </section>
       )
     }
