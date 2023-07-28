@@ -113,6 +113,8 @@ button:active {
     border: 2px solid $light;
     padding: $btn-padding;
     text-transform: uppercase;
+    transition: background-color 250ms ease-in-out 0ms,
+      color 250ms ease-in-out 0ms, border 250ms ease-in-out 0ms;
 
     &:hover {
       color: $accent-darker;
