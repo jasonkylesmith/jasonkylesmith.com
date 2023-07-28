@@ -188,6 +188,7 @@ a:hover {
 
   &.gallery-link {
     text-decoration: none;
+
     &::before {
       content: "";
       position: absolute;
@@ -203,6 +204,7 @@ a:hover {
 
     &:hover {
       text-decoration: none;
+      font-weight: 700;
       &::before {
         width: 2px;
         transition: transform $anim-duration ease-in-out 0ms;
