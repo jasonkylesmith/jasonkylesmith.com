@@ -40,7 +40,7 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
     if (id === "copy") {
       return (
         <div
-          className={`copy-wrapper d-flex ${
+          className={`copy-wrapper d-flex justify-content-center ${
             verticalAlignment === "center" && "align-items-center"
           } text-md-${textAlign} ${numOfBlocks === 1 && "solo-text px-4"} ${
             numOfBlocks === 1 && ratio === "right-larger"
@@ -50,7 +50,7 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
               : ""
           } ${isHero && "hero-copy"} ${
             side === "right" && "pe-0 ps-0 ps-md-0"
-          } ${parentFullWidth && "pe-3 ps-3"}`}
+          } ${parentFullWidth && "pe-3 ps-0"}`}
           style={block?.textColor === "light" ? { color: "white" } : {}}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
