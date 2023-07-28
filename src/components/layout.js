@@ -22,11 +22,13 @@ const Layout = ({ children, navColor }) => {
       {/* CONTENT WRAPPER*/}
 
       <div
-        className="container-fluid d-flex flex-column justify-content-between"
+        className={`container-fluid d-flex flex-column justify-content-between ${
+          navColor === "light" && "dark-nav-bg"
+        }`}
         style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}
       >
         {process.env.GATSBY_ENVIRONMENT !== "live" ? (
-          <div className="row mb-2" style={{ zIndex: 1 }}>
+          <div className={`row mb-2`} style={{ zIndex: 3 }}>
             <Header version="desktop" navColor={navColor} />
             <Header version="mobile" navColor={navColor} />
           </div>

@@ -97,7 +97,7 @@ const ModuleWrapper = ({ props }) => {
                 ? `col-12 px-0 ${id === "hero" && ""}`
                 : `col-12 col-md-10 offset-md-1 px-0`
             }`}
-            style={{ zIndex: 2, height: "100%" }}
+            style={{ zIndex: 2 }}
           >
             {content}
           </div>

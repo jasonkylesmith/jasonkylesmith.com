@@ -55,6 +55,10 @@
   color: $dark;
 }
 
+.overlap-nav {
+  margin-top: -6rem;
+}
+
 @media (max-width: 767px) {
   .section__xl:first-of-type {
     padding-top: 1.25rem;
@@ -71,10 +75,10 @@
   .section__sm:first-of-type {
     padding-top: 1.25rem;
   }
-}
 
-.overlap-nav {
-  margin-top: -6rem;
+  .overlap-nav {
+    margin-top: 0;
+  }
 }
 
 .module-bg-image-container {
