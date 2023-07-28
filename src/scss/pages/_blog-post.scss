@@ -189,8 +189,9 @@
 
   .selected-tag {
     .blog-tag {
-      border-color: $accent;
-      background: $accent;
+      border-color: $dark;
+      background: white;
+      color: $dark;
     }
   }
 
