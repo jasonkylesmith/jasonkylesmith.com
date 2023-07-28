@@ -44,6 +44,19 @@ nav.desktop-nav {
 
 .light-nav .desktop-nav a {
   color: white;
+
+  &::before {
+    background-color: white;
+  }
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  &:hover::before {
+    background-color: white;
+  }
 }
 
 .standard-container-padding {
@@ -108,6 +121,7 @@ footer {
   a {
     color: white !important;
     font-size: smaller;
+    text-decoration: none;
 
     &.icon {
       color: white;

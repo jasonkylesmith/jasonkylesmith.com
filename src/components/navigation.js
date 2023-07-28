@@ -14,7 +14,7 @@ const Navigation = props => {
 
   if (props.version === "desktop") {
     return (
-      <nav className="d-none d-md-block desktop-nav">
+      <nav className={`d-none d-md-block desktop-nav`}>
         <ul>
           <li>
             <Link to="/" className="">

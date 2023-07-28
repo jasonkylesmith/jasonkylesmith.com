@@ -27,6 +27,8 @@ const MenuIcon = props => {
     }
   }
 
+  console.log("Nav Color", props.navColor)
+
   return (
     <>
       <div
@@ -34,19 +36,50 @@ const MenuIcon = props => {
           handleMenuClick()
         }}
         role="button"
-        style={{ display: "flex", gap: ".25rem" }}
+        style={{
+          display: "flex",
+          gap: ".25rem",
+          background:
+            props.version === "desktop"
+              ? props.navColor === "light"
+                ? "#1f1f1f"
+                : "white"
+              : "transparent",
+          padding: props.version === "desktop" ? ".6rem .9rem" : 0,
+          borderRadius: ".25rem",
+        }}
       >
         <span
           className="d-none d-md-inline"
-          style={{ textTransform: "uppercase", fontWeight: 900 }}
+          style={{
+            textTransform: "uppercase",
+            fontWeight: 900,
+            color: props.navColor === "light" ? "white" : "#1f1f1f",
+          }}
         >
           Menu
         </span>
         <div id="menu-icon" className={`${menuOpen && "open"}`}>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span
+            style={{
+              background: props.navColor === "light" ? "white" : "#1f1f1f",
+            }}
+          ></span>
+          <span
+            style={{
+              background: props.navColor === "light" ? "white" : "#1f1f1f",
+            }}
+          ></span>
+          <span
+            style={{
+              background: props.navColor === "light" ? "white" : "#1f1f1f",
+            }}
+          ></span>
+          <span
+            style={{
+              background: props.navColor === "light" ? "white" : "#1f1f1f",
+            }}
+          ></span>
         </div>
       </div>
       {menuOpen && (

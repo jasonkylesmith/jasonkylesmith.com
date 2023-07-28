@@ -323,9 +323,11 @@ nav {
   a,
   a:visited {
     color: $dark;
+    text-decoration: none;
 
     &:hover {
       color: $accent;
+      font-weight: 700;
     }
   }
 
@@ -403,6 +405,13 @@ blockquote {
   line-height: 1.2;
 }
 
+a.logo-link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 @media (max-width: 342px) {
   .logo {
     display: none;
@@ -449,7 +458,12 @@ blockquote {
 }
 
 a {
+  text-decoration: underline;
+  transition: font-weight 50ms ease-in-out;
+  font-weight: 700;
   &:hover {
+    font-weight: 900;
+    text-decoration: underline;
     img.gallery-image {
       transform: scale(1.1);
       border: 2px solid pink;

@@ -26,6 +26,7 @@
       cursor: pointer;
       width: fit-content;
       text-transform: uppercase;
+      text-decoration: none;
       font-weight: 700;
       text-align: center;
       padding: 2px 6px;
@@ -44,6 +45,7 @@
     a:hover {
       background-color: white;
       color: $accent-darker;
+      text-decoration: none;
 
       &::before {
         height: 0;

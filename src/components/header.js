@@ -31,7 +31,7 @@ const Header = props => {
                       </span>
                     </div>
                   </Link>
-                  <MenuIcon version={"desktop"} />
+                  <MenuIcon version={"desktop"} navColor={props.navColor} />
                 </div>
                 {/* <div className="col-12" style={{ marginTop: "-.5rem" }}>
                   <Navigation version="desktop" />
