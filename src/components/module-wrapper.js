@@ -12,6 +12,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 const ModuleWrapper = ({ props }) => {
   const {
+    overlapNav,
     sectionMargin,
     marginVariant,
     module,
@@ -20,8 +21,6 @@ const ModuleWrapper = ({ props }) => {
     backgroundColor,
     backgroundImage,
   } = props
-
-  // console.log("Module", module)
 
   if (!module) {
     // console.log("Null Module", props)
@@ -57,6 +56,7 @@ const ModuleWrapper = ({ props }) => {
           } section__${backgroundColor} ${
             fullWidth ? `row px-0` : `row px-3 px-md-0`
           }`}
+          style={overlapNav && { marginTop: "-6rem" }}
         >
           <div
             className={
@@ -76,7 +76,10 @@ const ModuleWrapper = ({ props }) => {
             marginVariant && `section__${marginVariant}`
           } section__${backgroundColor} ${
             fullWidth ? `row px-0` : `row px-3 px-md-0`
-          } module-bg-image-container`}
+          } ${overlapNav && "overlap-nav"} module-bg-image-container`}
+          style={{
+            aspectRatio: `${backgroundImage.gatsbyImageData.width}/${backgroundImage.gatsbyImageData.height}`,
+          }}
         >
           <div
             className={`module-bg-image-wrapper ${
@@ -94,7 +97,7 @@ const ModuleWrapper = ({ props }) => {
                 ? `col-12 px-0 ${id === "hero" && ""}`
                 : `col-12 col-md-10 offset-md-1 px-0`
             }`}
-            style={{ zIndex: 2 }}
+            style={{ zIndex: 2, height: "100%" }}
           >
             {content}
           </div>
@@ -124,7 +127,11 @@ const ModuleWrapper = ({ props }) => {
       break
     case "splitContent":
       moduleSection = (
-        <SplitContent module={module} parentFullWidth={fullWidth} />
+        <SplitContent
+          module={module}
+          parentFullWidth={fullWidth}
+          hasBackgroundImage={backgroundImage ? true : false}
+        />
       )
       break
     case "contentPageList":

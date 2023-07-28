@@ -14,7 +14,9 @@ import "../scss/main.scss"
 import Footer from "./footer"
 import { Link } from "gatsby"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, navColor }) => {
+  console.log(navColor)
+
   return (
     <>
       {/* CONTENT WRAPPER*/}
@@ -24,9 +26,9 @@ const Layout = ({ children }) => {
         style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}
       >
         {process.env.GATSBY_ENVIRONMENT !== "live" ? (
-          <div className="row mb-2">
-            <Header version="desktop" />
-            <Header version="mobile" />
+          <div className="row mb-2" style={{ zIndex: 1 }}>
+            <Header version="desktop" navColor={navColor} />
+            <Header version="mobile" navColor={navColor} />
           </div>
         ) : (
           <div className="logo-container col-12">

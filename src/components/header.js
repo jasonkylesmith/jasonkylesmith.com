@@ -17,7 +17,18 @@ const Header = props => {
                 <div className="logo-container col-12">
                   <Link to="/" className="logo-link">
                     <div>
-                      <span className="logo">Jason Kyle Smith</span>
+                      <span
+                        className="logo"
+                        style={
+                          props.navColor === "light"
+                            ? { color: "white" }
+                            : props.navColor === "dark"
+                            ? { color: "#1f1f1f" }
+                            : { color: "#1f1f1f" }
+                        }
+                      >
+                        Jason Kyle Smith
+                      </span>
                     </div>
                   </Link>
                   <MenuIcon version={"desktop"} />
@@ -31,7 +42,12 @@ const Header = props => {
               </div> */}
             </div>
             <div className="row">
-              <div className="col-12 p-0" style={{ marginTop: "-.5rem" }}>
+              <div
+                className={`col-12 p-0 ${
+                  props.navColor === "light" && "light-nav"
+                }`}
+                style={{ marginTop: "-.5rem" }}
+              >
                 <Navigation version="desktop" />
               </div>
             </div>
@@ -46,7 +62,18 @@ const Header = props => {
           <Link to="/" className="logo-link">
             <div>
               {/* <img src={icon} className="logo-icon" alt="Purple Hexagon Icon" /> */}
-              <h1 className="logo">Jason Kyle Smith</h1>
+              <h1
+                className="logo"
+                style={
+                  props.navColor === "light"
+                    ? { color: "white" }
+                    : props.navColor === "dark"
+                    ? { color: "#1f1f1f" }
+                    : { color: "#1f1f1f" }
+                }
+              >
+                Jason Kyle Smith
+              </h1>
             </div>
           </Link>
 

@@ -6,10 +6,10 @@ import ModuleWrapper from "../components/module-wrapper"
 import Seo from "../components/seo"
 
 const Page = ({ data }) => {
-  const { name, modules } = data.contentfulPage
+  const { name, modules, navColor } = data.contentfulPage
 
   return (
-    <Layout>
+    <Layout navColor={navColor}>
       <Seo title={name} />
 
       <div className="">
@@ -28,8 +28,10 @@ export const query = graphql`
     contentfulPage(slug: { eq: $slug }) {
       name
       slug
+      navColor
       modules {
         sectionMargin
+        overlapNav
         marginVariant
         fullWidth
         backgroundColor
@@ -319,6 +321,7 @@ export const query = graphql`
                 }
                 id
                 name
+                textColor
                 textAlign
                 text {
                   text

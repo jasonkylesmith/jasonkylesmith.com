@@ -95,6 +95,14 @@
       &.solo-text {
         width: 100%;
       }
+
+      &.solo-text.solo-small {
+        width: 55%;
+      }
+
+      &.solo-text.solo-medium {
+        width: 70%;
+      }
     }
 
     &.full-width-copy {
@@ -132,4 +140,7 @@
       }
     }
   }
+}
+
+.module-bg-image-container .split-content {
 }

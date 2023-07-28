@@ -5,7 +5,7 @@ import MarkdownDisplay from "./markdown-display"
 import ContactForm from "./contact-form"
 import BlockGallery from "./block-gallery"
 
-const SplitContent = ({ module, parentFullWidth }) => {
+const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
   const { blocks, ratio, verticalAlignment, fullWidth, isHero } = module
 
   const numOfBlocks = blocks.length
@@ -15,7 +15,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
   let soloClasses
 
   if (numOfBlocks === 1) {
-    soloClasses = "col-12 col-md-10 offset-md-1 display-flex"
+    soloClasses = `col-12 display-flex ${!fullWidth && "col-md-10 offset-md-1"}`
   } else {
     if (ratio === "equal") {
       leftClasses = "col-12 col-md-6"
@@ -40,11 +40,18 @@ const SplitContent = ({ module, parentFullWidth }) => {
     if (id === "copy") {
       return (
         <div
-          className={`copy-wrapper text-md-${textAlign} ${
-            numOfBlocks === 1 && "solo-text px-4"
+          className={`copy-wrapper d-flex ${
+            verticalAlignment === "center" && "align-items-center"
+          } text-md-${textAlign} ${numOfBlocks === 1 && "solo-text px-4"} ${
+            numOfBlocks === 1 && ratio === "right-larger"
+              ? "solo-small"
+              : ratio === "left-larger"
+              ? "solo-medium"
+              : ""
           } ${isHero && "hero-copy"} ${
             side === "right" && "pe-0 ps-0 ps-md-0"
           } ${parentFullWidth && "pe-3 ps-3"}`}
+          style={block?.textColor === "light" ? { color: "white" } : {}}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
         </div>
@@ -84,15 +91,22 @@ const SplitContent = ({ module, parentFullWidth }) => {
   }
 
   return (
-    <div className={`col-12`}>
+    <div
+      className={`col-12`}
+      style={hasBackgroundImage ? { height: "100%" } : {}}
+    >
       {/* <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}> */}
       <div
         className={`split-content row gap-4 gap-md-0 mx-0 ${
           verticalAlignment === "center" && "align-center"
         }`}
+        style={hasBackgroundImage ? { height: "100%" } : {}}
       >
         {numOfBlocks === 1 ? (
-          <div className={`${soloClasses} content-container`}>
+          <div
+            className={`${soloClasses} content-container`}
+            style={hasBackgroundImage ? { height: "100%" } : {}}
+          >
             <BlockWrapper block={blocks[0]} side="center" />
           </div>
         ) : (
@@ -101,6 +115,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
               className={`${leftClasses} content-container ${
                 blocks[0].sys.contentType.sys.id === "copy" && "copy-trigger"
               }`}
+              style={hasBackgroundImage ? { height: "100%" } : {}}
             >
               <BlockWrapper block={blocks[0]} side="left" />
             </div>
@@ -108,6 +123,7 @@ const SplitContent = ({ module, parentFullWidth }) => {
               className={`${rightClasses} content-container ${
                 blocks[1].sys.contentType.sys.id === "copy" && "copy-trigger"
               }`}
+              style={hasBackgroundImage ? { height: "100%" } : {}}
             >
               <BlockWrapper block={blocks[1]} side="right" />
             </div>
