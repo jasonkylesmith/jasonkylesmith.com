@@ -105,7 +105,7 @@ const ContactFormPage = () => {
       <Seo title="Contact Me" />
 
       <div className="row mt-4">
-        <div className="col-md-10 offset-md-1">
+        <div className="col-md-10 offset-md-1 px-md-0">
           <h1 className="block__heading">Let's Get In Touch</h1>
           <form
             onSubmit={e => handleSubmit(e)}

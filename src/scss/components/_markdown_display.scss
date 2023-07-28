@@ -34,14 +34,16 @@
       border-radius: 0.25rem;
       font-size: 1rem;
       border: 2px solid $accent-darker;
+      color: $light;
+      background-color: $accent-darker;
       &::before {
         height: 0;
       }
     }
 
     a:hover {
-      background-color: $accent-darker;
-      color: $light;
+      background-color: white;
+      color: $accent-darker;
 
       &::before {
         height: 0;

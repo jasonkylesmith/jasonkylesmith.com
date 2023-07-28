@@ -106,17 +106,17 @@ button,
 button:hover,
 button:active {
   &.button {
-    color: $accent-darker;
+    color: $light;
     border-radius: 0.25rem;
     font-weight: 700;
-    background-color: #ffffff;
+    background-color: $accent-darker;
     border: 2px solid $accent-darker;
     padding: $btn-padding;
     text-transform: uppercase;
 
     &:hover {
-      color: #ffffff;
-      background-color: $accent;
+      color: $accent-darker;
+      background-color: $light;
     }
   }
 

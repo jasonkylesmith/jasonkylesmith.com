@@ -30,17 +30,24 @@ const MenuIcon = props => {
   return (
     <>
       <div
-        id="menu-icon"
-        className={`${menuOpen && "open"}`}
         onClick={() => {
           handleMenuClick()
         }}
         role="button"
+        style={{ display: "flex", gap: ".25rem" }}
       >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span
+          className="d-none d-md-inline"
+          style={{ textTransform: "uppercase", fontWeight: 900 }}
+        >
+          Menu
+        </span>
+        <div id="menu-icon" className={`${menuOpen && "open"}`}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
       {menuOpen && (
         <div
