@@ -56,7 +56,6 @@ const ModuleWrapper = ({ props }) => {
           } section__${backgroundColor} ${
             fullWidth ? `row px-0` : `row px-3 px-md-0`
           }`}
-          style={overlapNav && { marginTop: "-6rem" }}
         >
           <div
             className={
@@ -76,7 +75,7 @@ const ModuleWrapper = ({ props }) => {
             marginVariant && `section__${marginVariant}`
           } section__${backgroundColor} ${
             fullWidth ? `row px-0` : `row px-3 px-md-0`
-          } ${overlapNav && "overlap-nav"} module-bg-image-container`}
+          } ${overlapNav === "yes" && "overlap-nav"} module-bg-image-container`}
           style={{
             aspectRatio: `${backgroundImage.gatsbyImageData.width}/${backgroundImage.gatsbyImageData.height}`,
           }}
