@@ -110,13 +110,14 @@ button:active {
     border-radius: 0.25rem;
     font-weight: 700;
     background-color: $accent-darker;
-    border: 2px solid $accent-darker;
+    border: 2px solid $light;
     padding: $btn-padding;
     text-transform: uppercase;
 
     &:hover {
       color: $accent-darker;
       background-color: $light;
+      border-color: $accent-darker;
     }
   }
 
