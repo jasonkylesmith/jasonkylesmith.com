@@ -77,7 +77,7 @@ const Header = props => {
             </div>
           </Link>
 
-          <MenuIcon />
+          <MenuIcon navColor={props.navColor} />
         </div>
       </header>
     )
