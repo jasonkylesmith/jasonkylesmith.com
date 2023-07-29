@@ -100,7 +100,7 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
         className={`split-content row gap-4 gap-md-0 mx-0 ${
           verticalAlignment === "center" && "align-center"
         }`}
-        style={hasBackgroundImage ? { height: "100%" } : {}}
+        style={hasBackgroundImage ? { height: "100%", padding: "6rem 0" } : {}}
       >
         {numOfBlocks === 1 ? (
           <div
