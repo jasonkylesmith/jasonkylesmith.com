@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allContentfulGallery {
-        distinct(field: category)
+        distinct(field: { category: SELECT })
         edges {
           node {
             slug
