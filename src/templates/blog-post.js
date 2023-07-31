@@ -105,7 +105,7 @@ export const query = graphql`
     }
     allContentfulBlogPost(
       filter: { slug: { ne: "demo-post" } }
-      sort: { fields: publishedDate }
+      sort: { publishedDate: ASC }
     ) {
       edges {
         next {

@@ -8,7 +8,7 @@ import GalleryList from "../components/gallery-list"
 export const query = graphql`
   query ($category: String!) {
     allContentfulGallery(
-      sort: { fields: order }
+      sort: { order: ASC }
       filter: { category: { eq: $category } }
     ) {
       edges {

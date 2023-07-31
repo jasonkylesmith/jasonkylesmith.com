@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick-theme.css"
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
+      allContentfulBlogPost(sort: { publishedDate: DESC }) {
         edges {
           node {
             contentful_id
