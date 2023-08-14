@@ -6,10 +6,12 @@ import ModuleWrapper from "../components/module-wrapper"
 import Seo from "../components/seo"
 
 const Page = ({ data }) => {
-  const { name, modules, navColor } = data.contentfulPage
+  const { name, modules, navColor, nav } = data.contentfulPage
+
+  console.log({ name, modules })
 
   return (
-    <Layout navColor={navColor}>
+    <Layout navColor={navColor} navSettings={nav}>
       <Seo title={name} />
 
       <div className="">
@@ -29,6 +31,13 @@ export const query = graphql`
       name
       slug
       navColor
+      nav {
+        mainLinks {
+          name
+          navLinkText
+          slug
+        }
+      }
       modules {
         sectionMargin
         overlapNav

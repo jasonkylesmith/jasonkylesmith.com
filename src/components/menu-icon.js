@@ -27,7 +27,7 @@ const MenuIcon = props => {
     }
   }
 
-  console.log("Nav Color", props.navColor)
+  const { navSettings } = props
 
   return (
     <>
@@ -91,12 +91,19 @@ const MenuIcon = props => {
         >
           {props.version === "desktop" ? (
             <>
-              <Navigation version="menu" menuClick={handleMenuClick} />
+              <Navigation
+                version="menu"
+                menuClick={handleMenuClick}
+                navSettings={navSettings}
+              />
               <Footer version="menu" />
             </>
           ) : (
             <>
-              <Navigation menuClick={handleMenuClick} />
+              <Navigation
+                menuClick={handleMenuClick}
+                navSettings={navSettings}
+              />
               <Footer />
             </>
           )}

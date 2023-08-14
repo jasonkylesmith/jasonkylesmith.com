@@ -112,7 +112,11 @@ const ModuleWrapper = ({ props }) => {
       moduleSection = <ClientGallery module={module} />
       break
     case "blockGallery":
-      moduleSection = <BlockGallery block={module} />
+      moduleSection = (
+        <div className="ms-lg-4">
+          <BlockGallery block={module} />
+        </div>
+      )
       break
     case "hero":
       moduleSection = <Hero module={module} />

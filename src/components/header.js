@@ -7,6 +7,8 @@ import Navigation from "./navigation"
 import SocialIcons from "./social-icons"
 
 const Header = props => {
+  const { navSettings } = props
+
   if (props.version === "desktop") {
     return (
       <header className="d-none d-md-block">
@@ -31,7 +33,11 @@ const Header = props => {
                       </span>
                     </div>
                   </Link>
-                  <MenuIcon version={"desktop"} navColor={props.navColor} />
+                  <MenuIcon
+                    version={"desktop"}
+                    navColor={props.navColor}
+                    navSettings={navSettings}
+                  />
                 </div>
                 {/* <div className="col-12" style={{ marginTop: "-.5rem" }}>
                   <Navigation version="desktop" />
@@ -48,7 +54,7 @@ const Header = props => {
                 }`}
                 style={{ marginTop: "-.5rem" }}
               >
-                <Navigation version="desktop" />
+                <Navigation version="desktop" navSettings={navSettings} />
               </div>
             </div>
           </div>
@@ -77,7 +83,7 @@ const Header = props => {
             </div>
           </Link>
 
-          <MenuIcon navColor={props.navColor} />
+          <MenuIcon navColor={props.navColor} navSettings={navSettings} />
         </div>
       </header>
     )

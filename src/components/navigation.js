@@ -1,7 +1,10 @@
 import * as React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
+import { Fragment } from "react"
 
 const Navigation = props => {
+  const { navSettings } = props
+
   /*   const data = useStaticQuery(graphql`
     query {
       allContentfulGallery {
@@ -15,48 +18,35 @@ const Navigation = props => {
   if (props.version === "desktop") {
     return (
       <nav className={`d-none d-md-block desktop-nav`}>
-        <ul>
-          <li>
-            <Link to="/" className="">
-              home
-            </Link>
-          </li>
-          <li> - </li>
-          <li>
-            <Link to="/about" className="">
-              about
-            </Link>
-          </li>
+        {navSettings?.mainLinks && (
+          <ul>
+            <li>
+              <Link to="/" className="">
+                home
+              </Link>
+            </li>
 
-          <li> - </li>
-          <li>
-            <Link to="/portrait-photography" className="">
-              portraiture
-            </Link>
-          </li>
+            {navSettings?.mainLinks &&
+              navSettings.mainLinks.map(link => {
+                return (
+                  <Fragment key={`main-${link.slug}`}>
+                    <li> - </li>
+                    <li>
+                      {" "}
+                      <Link to={`/${link.slug}`}>{link.navLinkText}</Link>
+                    </li>
+                  </Fragment>
+                )
+              })}
 
-          <li> - </li>
-          <li>
-            <Link to="/branding-and-headshot-photography" className="">
-              branding
-            </Link>
-          </li>
-
-          <li> - </li>
-          <li>
-            <Link to="/photostories" className="">
-              photo stories
-            </Link>
-          </li>
-
-          {/* <li> - </li>
+            {/* <li> - </li>
           <li>
             <Link to="/contact" className="">
               contact
             </Link>
           </li> */}
 
-          {/*           {distinct?.map((category, index) => {
+            {/*           {distinct?.map((category, index) => {
             return (
               <div
                 key={`${category}${index}-desktop`}
@@ -71,7 +61,8 @@ const Navigation = props => {
               </div>
             )
           })} */}
-        </ul>
+          </ul>
+        )}
       </nav>
     )
   } else if (props.version === "menu") {
@@ -127,50 +118,23 @@ const Navigation = props => {
               home
             </Link>
           </li>
-          <li>
-            <Link
-              to="/about"
-              className=""
-              onClick={() => {
-                props.menuClick()
-              }}
-            >
-              about
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/portrait-photography"
-              className=""
-              onClick={() => {
-                props.menuClick()
-              }}
-            >
-              portraiture
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/branding-and-headshot-photography"
-              className=""
-              onClick={() => {
-                props.menuClick()
-              }}
-            >
-              branding
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/photostories"
-              className=""
-              onClick={() => {
-                props.menuClick()
-              }}
-            >
-              photo stories
-            </Link>
-          </li>
+
+          {navSettings?.mainLinks &&
+            navSettings.mainLinks.map(link => {
+              return (
+                <li key={`mobile-${link.slug}`}>
+                  <Link
+                    to={`/${link.slug}`}
+                    className=""
+                    onClick={() => {
+                      props.menuClick()
+                    }}
+                  >
+                    {link.navLinkText}
+                  </Link>
+                </li>
+              )
+            })}
           {/*           {distinct?.map((category, index) => {
             return (
               <li key={`${category}${index}-mobile`}>
