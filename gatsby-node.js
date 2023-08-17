@@ -56,18 +56,42 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  response.data.allContentfulPage.edges.forEach(edge => {
-    if (process.env.GATSBY_ENVIRONMENT === "live") {
-      createPage({
-        path: "/",
-        component: path.resolve("./src/templates/temp.js"),
-        context: {},
-      })
-    }
+  if (process.env.GATSBY_ENVIRONMENT === "live") {
+    createPage({
+      path: "/",
+      component: path.resolve("./src/templates/page.js"),
+      context: { slug: "home-placeholder" },
+    })
+  } else {
+    createPage({
+      path: "/",
+      component: path.resolve("./src/templates/page.js"),
+      context: { slug: "home" },
+    })
 
+    createPage({
+      path: "/home-placeholder",
+      component: path.resolve("./src/templates/page.js"),
+      context: { slug: "home-placeholder" },
+    })
+  }
+
+  response.data.allContentfulPage.edges.forEach(edge => {
     if (!envExclude.includes(edge.node.envLevel)) {
       if (excludedPages.includes(edge.node.slug)) {
         if (!exclude) {
+          if (!["home", "home-placeholder"].includes(edge.node.slug)) {
+            createPage({
+              path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
+              component: path.resolve("./src/templates/page.js"),
+              context: {
+                slug: edge.node.slug,
+              },
+            })
+          }
+        }
+      } else {
+        if (!["home", "home-placeholder"].includes(edge.node.slug)) {
           createPage({
             path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
             component: path.resolve("./src/templates/page.js"),
@@ -76,14 +100,6 @@ exports.createPages = async ({ graphql, actions }) => {
             },
           })
         }
-      } else {
-        createPage({
-          path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
-          component: path.resolve("./src/templates/page.js"),
-          context: {
-            slug: edge.node.slug,
-          },
-        })
       }
     }
 
