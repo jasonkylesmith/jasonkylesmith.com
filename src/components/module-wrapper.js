@@ -77,7 +77,11 @@ const ModuleWrapper = ({ props }) => {
             fullWidth ? `row px-0` : `row px-3 px-md-0`
           } ${overlapNav === "yes" && "overlap-nav"} module-bg-image-container`}
           style={{
-            aspectRatio: `${backgroundImage.gatsbyImageData.width}/${backgroundImage.gatsbyImageData.height}`,
+            aspectRatio: `${backgroundImage.gatsbyImageData.width}/${
+              backgroundImage.gatsbyImageData.height > 1200
+                ? 1200
+                : backgroundImage.gatsbyImageData.height
+            }`,
           }}
         >
           <div

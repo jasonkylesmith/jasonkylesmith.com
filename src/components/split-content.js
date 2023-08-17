@@ -42,7 +42,7 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
         <div
           className={`copy-wrapper d-flex justify-content-center ${
             verticalAlignment === "center" && "align-items-center"
-          } text-md-${textAlign} ${numOfBlocks === 1 && "solo-text px-4"} ${
+          } text-md-${textAlign} ${numOfBlocks === 1 && "solo-text"} ${
             numOfBlocks === 1 && ratio === "right-larger"
               ? "solo-small"
               : ratio === "left-larger"

@@ -118,7 +118,7 @@ const ContactFormPage = () => {
             <input type="hidden" name="form-name" value="contact" />
             <div className="mb-3">
               <label htmlFor="exampleFormControlInput1" className="form-label">
-                Your Name
+                Your Name*
                 {error && name.length < 3 && (
                   <span style={{ color: "red" }}></span>
                 )}
@@ -138,7 +138,7 @@ const ContactFormPage = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="exampleFormControlInput1" className="form-label">
-                Email address
+                Email address*
               </label>
               <input
                 type="email"
@@ -158,7 +158,7 @@ const ContactFormPage = () => {
                 htmlFor="exampleFormControlTextarea1"
                 className="form-label"
               >
-                Message
+                Message (optional, but helpful!)
               </label>
               <textarea
                 className={`form-control ${
