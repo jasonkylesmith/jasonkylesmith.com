@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Jason Kyle Smith Photography`,
-    description: `Jason Kyle Smith is a creative from the Southeast Michigan area focusing on photography and web development.`,
+    description: `Jason Kyle Smith is a photographer from the Southeast Michigan area specializing in portraiture, branding, and people photography.`,
     author: `Jason Kyle Smith`,
     siteUrl: `https://www.jasonkylesmith.com`,
   },
