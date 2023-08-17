@@ -27,20 +27,60 @@ const MenuIcon = props => {
     }
   }
 
+  const { navSettings } = props
+
   return (
     <>
       <div
-        id="menu-icon"
-        className={`${menuOpen && "open"}`}
         onClick={() => {
           handleMenuClick()
         }}
         role="button"
+        style={{
+          display: "flex",
+          gap: ".25rem",
+          background:
+            props.version === "desktop"
+              ? props.navColor === "light"
+                ? "#1f1f1f"
+                : "white"
+              : "transparent",
+          padding: props.version === "desktop" ? ".6rem .9rem" : 0,
+          borderRadius: ".25rem",
+        }}
       >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span
+          className="d-none d-md-inline"
+          style={{
+            textTransform: "uppercase",
+            fontWeight: 900,
+            color: props.navColor === "light" ? "white" : "#1f1f1f",
+          }}
+        >
+          Menu
+        </span>
+        <div id="menu-icon" className={`${menuOpen && "open"}`}>
+          <span
+            style={{
+              background: props.navColor === "light" ? "white" : "#1f1f1f",
+            }}
+          ></span>
+          <span
+            style={{
+              background: props.navColor === "light" ? "white" : "#1f1f1f",
+            }}
+          ></span>
+          <span
+            style={{
+              background: props.navColor === "light" ? "white" : "#1f1f1f",
+            }}
+          ></span>
+          <span
+            style={{
+              background: props.navColor === "light" ? "white" : "#1f1f1f",
+            }}
+          ></span>
+        </div>
       </div>
       {menuOpen && (
         <div
@@ -49,8 +89,24 @@ const MenuIcon = props => {
             modalOpen && "open"
           } d-flex flex-column justify-content-center`}
         >
-          <Navigation version="menu" menuClick={handleMenuClick} />
-          <Footer version="menu" />
+          {props.version === "desktop" ? (
+            <>
+              <Navigation
+                version="menu"
+                menuClick={handleMenuClick}
+                navSettings={navSettings}
+              />
+              <Footer version="menu" />
+            </>
+          ) : (
+            <>
+              <Navigation
+                menuClick={handleMenuClick}
+                navSettings={navSettings}
+              />
+              <Footer />
+            </>
+          )}
         </div>
       )}
     </>

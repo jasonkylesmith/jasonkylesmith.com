@@ -26,6 +26,7 @@ export const query = graphql`
           id
           name
           columns
+          orientation
           images {
             id
             description
@@ -68,7 +69,7 @@ export const query = graphql`
         gatsbyImageData(
           quality: 100
           layout: CONSTRAINED
-          resizingBehavior: CROP
+          resizingBehavior: NO_CHANGE
           aspectRatio: 2.5
           placeholder: BLURRED
           formats: [AUTO, WEBP, AVIF]
@@ -104,7 +105,7 @@ export const query = graphql`
     }
     allContentfulBlogPost(
       filter: { slug: { ne: "demo-post" } }
-      sort: { fields: publishedDate }
+      sort: { publishedDate: ASC }
     ) {
       edges {
         next {

@@ -1,3 +1,7 @@
+.dark-nav-bg {
+  background-color: #1f1f1f;
+}
+
 header {
   .logo-container {
     display: flex;
@@ -31,6 +35,39 @@ nav.desktop-nav {
 
   ul li {
     display: inline;
+  }
+}
+
+.light-nav .desktop-nav {
+  color: white;
+}
+
+.light-nav .desktop-nav a {
+  color: white;
+
+  &::before {
+    background-color: white;
+  }
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  &:hover::before {
+    background-color: white;
+  }
+}
+
+.standard-container-padding {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+@media (min-width: $max-width-sm) {
+  .standard-container-padding {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -78,10 +115,13 @@ nav.desktop-nav {
 
 footer {
   background-color: $accent;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
 
   a {
     color: white !important;
     font-size: smaller;
+    text-decoration: none;
 
     &.icon {
       color: white;
@@ -107,9 +147,6 @@ footer {
   }
 
   &.menu {
-    position: absolute;
-    bottom: 0;
-
     a,
     a:visited,
     a:active {

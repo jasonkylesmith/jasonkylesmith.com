@@ -74,6 +74,7 @@ export const query = graphql`
           id
           name
           columns
+          orientation
           images {
             id
             description

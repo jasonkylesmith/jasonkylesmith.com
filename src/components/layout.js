@@ -14,26 +14,34 @@ import "../scss/main.scss"
 import Footer from "./footer"
 import { Link } from "gatsby"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
-import Seo from "./seo"
 
 library.add(fab)
 
-const Layout = ({ children }) => {
+const Layout = ({ children, navColor, navSettings }) => {
   return (
     <>
       {/* CONTENT WRAPPER*/}
 
       <div
-        className="container-fluid d-flex flex-column justify-content-between"
+        className={`container-fluid d-flex flex-column justify-content-between ${
+          navColor === "light" && "dark-nav-bg"
+        }`}
         style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}
       >
         {process.env.GATSBY_ENVIRONMENT !== "live" ? (
-          <div className="row mb-2">
-            <Header version="desktop" />
-            <Header version="mobile" />
+          <div className={`row mb-2`} style={{ zIndex: 3 }}>
+            <Header
+              version="desktop"
+              navColor={navColor}
+              navSettings={navSettings}
+            />
+            <Header
+              version="mobile"
+              navColor={navColor}
+              navSettings={navSettings}
+            />
           </div>
         ) : (
           <div className="logo-container col-12">
@@ -48,10 +56,7 @@ const Layout = ({ children }) => {
           <main className="p-0 container">{children}</main>
         </div>
         {process.env.GATSBY_ENVIRONMENT !== "live" && (
-          <div
-            className="row"
-            style={{ position: "fixed", bottom: 0, width: "100%" }}
-          >
+          <div className="row">
             <Footer version="desktop" />
             <Footer version="mobile" />
           </div>

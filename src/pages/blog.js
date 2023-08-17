@@ -1,19 +1,21 @@
 import * as React from "react"
+import { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Tags, { Tag } from "../components/tags"
+import LivePlaceholder from "../components/live-placeholder"
+
 import { GatsbyImage } from "gatsby-plugin-image"
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import Tags from "../components/tags"
-import LivePlaceholder from "../components/live-placeholder"
 
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
+      allContentfulBlogPost(sort: { publishedDate: DESC }) {
         edges {
           node {
             contentful_id
@@ -29,7 +31,7 @@ const Blog = () => {
               gatsbyImageData(
                 layout: FULL_WIDTH
                 quality: 100
-                resizingBehavior: CROP
+                resizingBehavior: NO_CHANGE
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
                 aspectRatio: 2
@@ -48,8 +50,48 @@ const Blog = () => {
 
   const { edges } = data.allContentfulBlogPost
 
-  const filteredEdges = edges.filter(edge => edge.node.slug !== "demo-post")
+  const today = new Date()
+
+  const [filteredEdges, setFilteredEdges] = useState(
+    edges.filter(
+      edge =>
+        edge.node.slug !== "demo-post" && new Date(edge.node.fullDate) <= today
+    )
+  )
+
+  const [selectedTag, setSelectedTag] = useState("all")
+
+  // let filteredEdges = edges.filter(edge => edge.node.slug !== "demo-post")
   // Filter out posts to be published in the future .filter(edge => new Date(edge.node.fullDate) <= new Date())
+
+  const rawEdges = edges.filter(edge => edge.node.slug !== "demo-post")
+
+  let allTags = ["all"]
+
+  rawEdges.forEach(edge => {
+    edge.node.tags.forEach(tag => {
+      if (!allTags.includes(tag)) {
+        allTags.push(tag)
+      }
+    })
+  })
+
+  if (allTags.length === 1) {
+    allTags = []
+  }
+
+  const handleTagClick = tag => {
+    if (tag === "all") {
+      setFilteredEdges(rawEdges)
+    } else {
+      let tempEdges = rawEdges.filter(edge => {
+        return edge.node.tags.includes(tag)
+      })
+
+      setFilteredEdges(tempEdges)
+    }
+    setSelectedTag(tag)
+  }
 
   return process.env.GATSBY_ENVIRONMENT === "live" ? (
     <LivePlaceholder />
@@ -57,13 +99,32 @@ const Blog = () => {
     <Layout>
       <Seo title="Blog" />
       <div className="row mt-4 px-md-2">
-        <div className="col-12 col-lg-12">
-          <div className="row">
-            <div className="col-md-10 offset-md-1">
+        <div className="col-12 col-lg-12 p-md-0">
+          <div className="row mb-0 mb-md-5 p-0">
+            <div className="col-md-10 offset-md-1 standard-container-padding">
               <h1 className="block__heading">Blog Posts</h1>
             </div>
-            <div className="col-md-10 offset-md-1">
+            <div className="col-md-10 offset-md-1 standard-container-padding">
               <div className="row">
+                {allTags.length > 0 && (
+                  <div className="blog-list-tags">
+                    {allTags.map((tag, index) => {
+                      return (
+                        <button
+                          onClick={() => handleTagClick(tag)}
+                          className={`${
+                            selectedTag === tag ? "selected-tag" : null
+                          } ${index === 0 && "blog-list-tag-start"} ${
+                            index + 1 === allTags.length && "blog-list-tag-end"
+                          }`}
+                          key={tag}
+                        >
+                          <Tag tag={tag} disabledClass={false} key={tag} />
+                        </button>
+                      )
+                    })}
+                  </div>
+                )}
                 {filteredEdges.map((post, index) => {
                   return (
                     <div
@@ -80,7 +141,6 @@ const Blog = () => {
                               <GatsbyImage
                                 className=""
                                 imgStyle={{ borderRadius: ".25rem" }}
-                                imgClass="gallery-image"
                                 image={post.node.featuredImage.gatsbyImageData}
                                 alt={post.node.title}
                               />

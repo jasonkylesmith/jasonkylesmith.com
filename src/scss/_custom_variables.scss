@@ -1,16 +1,34 @@
 // COLORS
 
-$purple: #663cf0;
-$accent: #663cf0;
+$purple: #9780a9;
+$accent: #363e47;
+
+/* 
+
+    NEW DARK
+    $purple: #31263B;
+    $purple-darker: #31263B;
+
+    NEW
+    $purple: #9780a9;
+    $purple-overlay: rgba(102, 60, 240, 0.5);
+    $purple-darker: #6c567c;
+
+    OLD
+    $purple: #663cf0;
+    $purple-overlay: rgba(102, 60, 240, 0.5);
+    $purple-darker: #5030b9;
+
+*/
 
 $dark: #1f1f1f;
 $light: #f7f7f7;
 
-$purple-overlay: rgba(102, 60, 240, 0.5);
-$purple-darker: #5030b9;
+$purple-overlay: #1f1f1f80;
+$purple-darker: #1f1f1f;
 
-$accent-overlay: rgba(102, 60, 240, 0.5);
-$accent-darker: #5030b9;
+$accent-overlay: #1f1f1f80;
+$accent-darker: #1f1f1f;
 
 $dark-faded: rgba(31, 31, 31, 0.1);
 $dark-lighter: #505050;

@@ -8,7 +8,7 @@ import GalleryList from "../components/gallery-list"
 export const query = graphql`
   query ($category: String!) {
     allContentfulGallery(
-      sort: { fields: order }
+      sort: { order: ASC }
       filter: { category: { eq: $category } }
     ) {
       edges {
@@ -51,7 +51,7 @@ const GalleryListPage = props => {
       <Seo title={`${category}`} />
 
       <div className="row mt-4">
-        <div className="col-md-10 offset-md-1">
+        <div className="col-md-10 offset-md-1  standard-container-padding">
           {/* <div className="row">
             <div className="col-md-8 offset-md-2">
               <h1 className="block__heading">{category}</h1>

@@ -7,31 +7,54 @@ import Navigation from "./navigation"
 import SocialIcons from "./social-icons"
 
 const Header = props => {
+  const { navSettings } = props
+
   if (props.version === "desktop") {
     return (
       <header className="d-none d-md-block">
         <div className="row justify-space-between">
           <div className="col-md-10 offset-md-1">
             <div className="row">
-              <div className="col-8 p-0">
+              <div className="col-12 p-0">
                 <div className="logo-container col-12">
                   <Link to="/" className="logo-link">
                     <div>
-                      <span className="logo">Jason Kyle Smith</span>
+                      <span
+                        className="logo"
+                        style={
+                          props.navColor === "light"
+                            ? { color: "white" }
+                            : props.navColor === "dark"
+                            ? { color: "#1f1f1f" }
+                            : { color: "#1f1f1f" }
+                        }
+                      >
+                        Jason Kyle Smith
+                      </span>
                     </div>
                   </Link>
+                  <MenuIcon
+                    version={"desktop"}
+                    navColor={props.navColor}
+                    navSettings={navSettings}
+                  />
                 </div>
                 {/* <div className="col-12" style={{ marginTop: "-.5rem" }}>
                   <Navigation version="desktop" />
                 </div> */}
               </div>
-              <div className="col-4 d-flex justify-content-end">
-                {/* <SocialIcons version="desktop" /> */}
-              </div>
+              {/* <div className="col-4 d-flex justify-content-end">
+                <SocialIcons version="desktop" />
+              </div> */}
             </div>
             <div className="row">
-              <div className="col-12 p-0" style={{ marginTop: "-.5rem" }}>
-                <Navigation version="desktop" />
+              <div
+                className={`col-12 p-0 ${
+                  props.navColor === "light" && "light-nav"
+                }`}
+                style={{ marginTop: "-.5rem" }}
+              >
+                <Navigation version="desktop" navSettings={navSettings} />
               </div>
             </div>
           </div>
@@ -45,11 +68,22 @@ const Header = props => {
           <Link to="/" className="logo-link">
             <div>
               {/* <img src={icon} className="logo-icon" alt="Purple Hexagon Icon" /> */}
-              <h1 className="logo">Jason Kyle Smith</h1>
+              <h1
+                className="logo"
+                style={
+                  props.navColor === "light"
+                    ? { color: "white" }
+                    : props.navColor === "dark"
+                    ? { color: "#1f1f1f" }
+                    : { color: "#1f1f1f" }
+                }
+              >
+                Jason Kyle Smith
+              </h1>
             </div>
           </Link>
 
-          <MenuIcon />
+          <MenuIcon navColor={props.navColor} navSettings={navSettings} />
         </div>
       </header>
     )

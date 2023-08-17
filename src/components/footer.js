@@ -55,6 +55,25 @@ const Footer = props => {
         </div>
       </footer>
     )
+  } else if (props.version === "menu") {
+    return (
+      <footer className="d-flex flex-column align-items-center menu">
+        <div>
+          <SocialIcons />
+        </div>
+        <div>
+          <span
+            className="copyright text-white"
+            style={{
+              color: "#FFFFFF",
+              fontWeight: "500",
+            }}
+          >
+            © {new Date().getFullYear()}, Jason Kyle Smith
+          </span>
+        </div>
+      </footer>
+    )
   } else {
     return (
       <footer className="d-flex flex-column align-items-center menu">

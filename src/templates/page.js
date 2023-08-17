@@ -6,13 +6,15 @@ import ModuleWrapper from "../components/module-wrapper"
 import Seo from "../components/seo"
 
 const Page = ({ data }) => {
-  const { name, modules } = data.contentfulPage
+  const { name, modules, navColor, nav } = data.contentfulPage
+
+  console.log({ name, modules })
 
   return (
-    <Layout>
+    <Layout navColor={navColor} navSettings={nav}>
       <Seo title={name} />
 
-      <div className="mb-5">
+      <div className="">
         {modules.map((module, index) => {
           return <ModuleWrapper props={module} key={index} />
         })}
@@ -28,11 +30,35 @@ export const query = graphql`
     contentfulPage(slug: { eq: $slug }) {
       name
       slug
+      navColor
+      nav {
+        mainLinks {
+          name
+          navLinkText
+          slug
+        }
+      }
       modules {
         sectionMargin
+        overlapNav
         marginVariant
         fullWidth
         backgroundColor
+        backgroundImage {
+          gatsbyImageData(
+            layout: CONSTRAINED
+
+            quality: 100
+            resizingBehavior: CROP
+            cropFocus: CENTER
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+          file {
+            url
+          }
+          description
+        }
         name
         headline
         module {
@@ -210,6 +236,38 @@ export const query = graphql`
               }
             }
             blocks {
+              ... on ContentfulBlockGallery {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                id
+                name
+                columns
+                orientation
+                variant
+                images {
+                  file {
+                    details {
+                      image {
+                        height
+                        width
+                      }
+                    }
+                    url
+                  }
+                  description
+                  gatsbyImageData(
+                    quality: 100
+                    resizingBehavior: NO_CHANGE
+                    layout: FULL_WIDTH
+                  )
+                  title
+                }
+              }
               ... on ContentfulContactForm {
                 sys {
                   contentType {
@@ -272,6 +330,7 @@ export const query = graphql`
                 }
                 id
                 name
+                textColor
                 textAlign
                 text {
                   text
@@ -291,7 +350,12 @@ export const query = graphql`
                 id
                 name
                 image {
-                  gatsbyImageData(quality: 100)
+                  gatsbyImageData(
+                    quality: 100
+                    placeholder: BLURRED
+                    layout: FULL_WIDTH
+                    resizingBehavior: NO_CHANGE
+                  )
                   description
                   file {
                     url
@@ -444,6 +508,7 @@ export const query = graphql`
             id
             name
             columns
+            orientation
             variant
             images {
               file {

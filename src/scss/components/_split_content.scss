@@ -5,6 +5,17 @@
     }
   }
 
+  .markdown-display {
+    h1:only-child,
+    h2:only-child,
+    h3:only-child,
+    h4:only-child,
+    h5:only-child,
+    h6:only-child {
+      margin-bottom: 0;
+    }
+  }
+
   .content-container {
     display: flex;
     padding: 0;
@@ -84,6 +95,14 @@
       &.solo-text {
         width: 100%;
       }
+
+      &.solo-text.solo-small {
+        width: 65%;
+      }
+
+      &.solo-text.solo-medium {
+        width: 80%;
+      }
     }
 
     &.full-width-copy {
@@ -121,4 +140,7 @@
       }
     }
   }
+}
+
+.module-bg-image-container .split-content {
 }

@@ -105,7 +105,7 @@ const ContactFormPage = () => {
       <Seo title="Contact Me" />
 
       <div className="row mt-4">
-        <div className="col-md-10 offset-md-1">
+        <div className="col-md-10 offset-md-1 px-md-0">
           <h1 className="block__heading">Let's Get In Touch</h1>
           <form
             onSubmit={e => handleSubmit(e)}
@@ -118,7 +118,7 @@ const ContactFormPage = () => {
             <input type="hidden" name="form-name" value="contact" />
             <div className="mb-3">
               <label htmlFor="exampleFormControlInput1" className="form-label">
-                Your Name
+                Your Name*
                 {error && name.length < 3 && (
                   <span style={{ color: "red" }}></span>
                 )}
@@ -138,7 +138,7 @@ const ContactFormPage = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="exampleFormControlInput1" className="form-label">
-                Email address
+                Email address*
               </label>
               <input
                 type="email"
@@ -158,7 +158,7 @@ const ContactFormPage = () => {
                 htmlFor="exampleFormControlTextarea1"
                 className="form-label"
               >
-                Message
+                Message (optional, but helpful!)
               </label>
               <textarea
                 className={`form-control ${

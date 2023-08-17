@@ -8,16 +8,23 @@ import GalleryList from "./gallery-list"
 import Hero from "./hero"
 import IconList from "./icon-list"
 import SplitContent from "./split-content"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const ModuleWrapper = ({ props }) => {
   const {
+    overlapNav,
     sectionMargin,
     marginVariant,
     module,
     fullWidth,
     headline,
     backgroundColor,
+    backgroundImage,
   } = props
+
+  if (!module) {
+    // console.log("Null Module", props)
+  }
 
   const { id } = module.sys.contentType.sys
 
@@ -41,14 +48,24 @@ const ModuleWrapper = ({ props }) => {
       return <></>
     }
 
-    if (!fullWidth) {
+    if (!backgroundImage) {
       return (
         <section
           className={`section__${sectionMargin} ${
             marginVariant && `section__${marginVariant}`
-          } section__${backgroundColor} row px-3 px-md-0`}
+          } section__${backgroundColor} ${
+            fullWidth ? `row px-0` : `row px-3 px-md-0`
+          }`}
         >
-          <div className="col-12 col-md-10 offset-md-1 px-0">{content}</div>
+          <div
+            className={
+              fullWidth
+                ? `col-12 px-0 ${id === "hero" && ""}`
+                : `col-12 col-md-10 offset-md-1 px-0`
+            }
+          >
+            {content}
+          </div>
         </section>
       )
     } else {
@@ -56,9 +73,37 @@ const ModuleWrapper = ({ props }) => {
         <section
           className={`section__${sectionMargin} ${
             marginVariant && `section__${marginVariant}`
-          } section__${backgroundColor} row px-0`}
+          } section__${backgroundColor} ${
+            fullWidth ? `row px-0` : `row px-3 px-md-0`
+          } ${overlapNav === "yes" && "overlap-nav"} module-bg-image-container`}
+          style={{
+            aspectRatio: `${backgroundImage.gatsbyImageData.width}/${
+              backgroundImage.gatsbyImageData.height > 1200
+                ? 1200
+                : backgroundImage.gatsbyImageData.height
+            }`,
+          }}
         >
-          <div className={`col-12 px-0 ${id === "hero" && ""}`}>{content}</div>
+          <div
+            className={`module-bg-image-wrapper ${
+              !fullWidth ? "col-12 col-md-10 offset-md-1 px-0" : "col-12 px-0"
+            }`}
+          >
+            <img
+              src={backgroundImage.file.url}
+              alt={backgroundImage.description}
+            />
+          </div>
+          <div
+            className={`${
+              fullWidth
+                ? `col-12 px-0 ${id === "hero" && ""}`
+                : `col-12 col-md-10 offset-md-1 px-0`
+            }`}
+            style={{ zIndex: 2 }}
+          >
+            {content}
+          </div>
         </section>
       )
     }
@@ -71,7 +116,11 @@ const ModuleWrapper = ({ props }) => {
       moduleSection = <ClientGallery module={module} />
       break
     case "blockGallery":
-      moduleSection = <BlockGallery block={module} />
+      moduleSection = (
+        <div className="ms-lg-4">
+          <BlockGallery block={module} />
+        </div>
+      )
       break
     case "hero":
       moduleSection = <Hero module={module} />
@@ -85,7 +134,11 @@ const ModuleWrapper = ({ props }) => {
       break
     case "splitContent":
       moduleSection = (
-        <SplitContent module={module} parentFullWidth={fullWidth} />
+        <SplitContent
+          module={module}
+          parentFullWidth={fullWidth}
+          hasBackgroundImage={backgroundImage ? true : false}
+        />
       )
       break
     case "contentPageList":
