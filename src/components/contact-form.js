@@ -116,7 +116,7 @@ const ContactForm = ({ module }) => {
             onSubmit={e => handleSubmit(e)}
             name="contact"
             method="post"
-            action="/thankyou"
+            action="/thank-you"
             netlify-honeypot="honeypot"
             data-netlify="true"
           >
