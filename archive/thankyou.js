@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from "../src/components/layout"
+import Seo from "../src/components/seo"
 
 import { useLocation } from "@reach/router"
 import queryString from "query-string"
@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { Link, navigate } from "gatsby"
-import LivePlaceholder from "../components/live-placeholder"
+import LivePlaceholder from "../src/components/live-placeholder"
 
 library.add(fas)
 
