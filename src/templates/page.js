@@ -8,8 +8,6 @@ import Seo from "../components/seo"
 const Page = ({ data }) => {
   const { name, modules, navColor, nav } = data.contentfulPage
 
-  console.log({ name, modules })
-
   return (
     <Layout navColor={navColor} navSettings={nav}>
       <Seo title={name} />
