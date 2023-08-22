@@ -16,7 +16,7 @@ const LivePlaceholder = () => {
           <h1>Jason Kyle Smith</h1>
           <p>Coming Soon</p>
           <div className="position-absolute" style={{ bottom: "1rem" }}>
-            <a
+            {/* <a
               href="https://www.twitter.com/jasonkylesmith"
               target="_new"
               className="icon"
@@ -26,9 +26,9 @@ const LivePlaceholder = () => {
                 className="mx-1 icon"
                 viewBox="0 0 448 1"
               />
-            </a>
+            </a> */}
             <a
-              href="https://www.instagram.com/jasonkylesmithphoto"
+              href="https://www.instagram.com/jasonkylesmith_"
               target="_new"
               className="icon"
             >
