@@ -95,7 +95,10 @@ function Seo({ description, lang, meta, title, photo, url }) {
         content={`${title} | Jason Kyle Smith Photography`}
       />
 
-      <meta name="robots" content="all" />
+      <meta
+        name="robots"
+        content={process.env.GATSBY_ENVIRONMENT === "live" ? "all" : "none"}
+      />
     </Helmet>
   )
 }
