@@ -95,7 +95,7 @@ function Seo({ description, lang, meta, title, photo, url }) {
         content={`${title} | Jason Kyle Smith Photography`}
       />
 
-      <meta name="robots" content="NOINDEX, NOFOLLOW" />
+      <meta name="robots" content="all" />
     </Helmet>
   )
 }

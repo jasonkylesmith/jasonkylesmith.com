@@ -115,40 +115,40 @@ exports.createPages = async ({ graphql, actions }) => {
     //}
   })
 
+  if (process.env.GATSBY_ENVIRONMENT === "development") {
+    response.data.allContentfulBlogPost.edges.forEach(edge => {
+      if (edge.node.slug !== "demo-post") {
+        createPage({
+          path: `/blog/${edge.node.slug}`,
+          component: path.resolve("./src/templates/blog-post.js"),
+          context: {
+            slug: edge.node.slug,
+          },
+        })
+      }
+    })
+  } else {
+    const today = new Date()
+
+    response.data.allContentfulBlogPost.edges.forEach(edge => {
+      const date = new Date(edge.node.publishedDate)
+
+      if (edge.node.slug !== "demo-post" && date <= today) {
+        createPage({
+          path: `/blog/${edge.node.slug}`,
+          component: path.resolve("./src/templates/blog-post.js"),
+          context: {
+            slug: edge.node.slug,
+          },
+        })
+      }
+    })
+  }
+
   if (process.env.GATSBY_ENVIRONMENT !== "live") {
     /* 
       TEMPORARILY PREVENT FROM APPEARING ON LIVE
     */
-
-    if (process.env.GATSBY_ENVIRONMENT === "development") {
-      response.data.allContentfulBlogPost.edges.forEach(edge => {
-        if (edge.node.slug !== "demo-post") {
-          createPage({
-            path: `/blog/${edge.node.slug}`,
-            component: path.resolve("./src/templates/blog-post.js"),
-            context: {
-              slug: edge.node.slug,
-            },
-          })
-        }
-      })
-    } else {
-      const today = new Date()
-
-      response.data.allContentfulBlogPost.edges.forEach(edge => {
-        const date = new Date(edge.node.publishedDate)
-
-        if (edge.node.slug !== "demo-post" && date <= today) {
-          createPage({
-            path: `/blog/${edge.node.slug}`,
-            component: path.resolve("./src/templates/blog-post.js"),
-            context: {
-              slug: edge.node.slug,
-            },
-          })
-        }
-      })
-    }
 
     response.data.allContentfulGallery.edges.forEach(edge => {
       createPage({
