@@ -20,6 +20,13 @@ export const query = graphql`
       slug
       title
       tags
+      nav {
+        mainLinks {
+          name
+          navLinkText
+          slug
+        }
+      }
       gallery {
         __typename
         ... on ContentfulBlockGallery {
@@ -138,6 +145,7 @@ const BlogPost = props => {
     slug,
     excerpt,
     gallery,
+    nav,
   } = props.data.contentfulBlogPost
 
   const { edges } = props.data.allContentfulBlogPost
@@ -153,7 +161,7 @@ const BlogPost = props => {
   const bodyContent = renderRichText(body, renderOptions)
 
   return (
-    <Layout>
+    <Layout navSettings={nav}>
       <Seo
         title={title}
         url={`https://www.jasonkylesmith.com/blog/${slug}`}
@@ -162,7 +170,7 @@ const BlogPost = props => {
       />
 
       <div className="row mt-4">
-        <div className="col-md-10 offset-md-1 p-0">
+        <div className="col-md-10 offset-md-1 p-2 p-md-0">
           {featuredImage && (
             <div className="w-100 d-flex position-relative">
               <GatsbyImage image={featuredImage.gatsbyImageData} alt={title} />

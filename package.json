@@ -43,7 +43,7 @@
     "react-dom": "^18.0.1",
     "react-helmet": "^6.1.0",
     "react-photo-gallery": "^8.0.0",
-    "react-share": "^4.4.0",
+    "react-share": "^4.4.1",
     "react-slick": "^0.29.0",
     "sass": "^1.47.0",
     "slick-carousel": "^1.8.1"

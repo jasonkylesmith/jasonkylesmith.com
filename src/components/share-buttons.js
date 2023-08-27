@@ -23,7 +23,7 @@ const ShareButtons = props => {
     <div className="share-container">
       {sources.includes("Facebook") && (
         <FacebookShareButton
-          url={`https://www..jasonkylesmith.com/${directory}/${slug}`}
+          url={`https://www.jasonkylesmith.com/${directory}/${slug}`}
 
           /* hashtag="#hashtag" */
         >
