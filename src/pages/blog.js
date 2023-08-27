@@ -15,6 +15,15 @@ import "slick-carousel/slick/slick-theme.css"
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
+      contentfulNavigation(name: { eq: "General Navigation" }) {
+        id
+        mainLinks {
+          navLinkText
+          slug
+          name
+        }
+        name
+      }
       allContentfulBlogPost(sort: { publishedDate: DESC }) {
         edges {
           node {
@@ -96,7 +105,7 @@ const Blog = () => {
   return process.env.GATSBY_ENVIRONMENT === "live" ? (
     <LivePlaceholder />
   ) : (
-    <Layout>
+    <Layout navSettings={data?.contentfulNavigation}>
       <Seo title="Blog" />
       <div className="row mt-4 px-md-2">
         <div className="col-12 col-lg-12 p-md-0">

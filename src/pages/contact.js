@@ -1,6 +1,6 @@
 import { useLocation } from "@reach/router"
 import queryString from "query-string"
-import { navigate } from "gatsby"
+import { navigate, useStaticQuery, graphql } from "gatsby"
 import React, { useState, useEffect } from "react"
 
 import Layout from "../components/layout"
@@ -21,6 +21,20 @@ const ContactFormPage = () => {
   const location = useLocation()
   const urlQuery = queryString.parse(location.search)
   // ?destination=where-did-user-click added to /contact will allow passing of that information to netlify form to better inform context for user's inqiry
+
+  const data = useStaticQuery(graphql`
+    query {
+      contentfulNavigation(name: { eq: "General Navigation" }) {
+        id
+        mainLinks {
+          navLinkText
+          slug
+          name
+        }
+        name
+      }
+    }
+  `)
 
   useEffect(() => {
     if (urlQuery.destination) {
@@ -101,7 +115,7 @@ const ContactFormPage = () => {
   }
 
   return (
-    <Layout>
+    <Layout navSettings={data?.contentfulNavigation}>
       <Seo title="Contact Me" />
 
       <div className="row mt-4">
