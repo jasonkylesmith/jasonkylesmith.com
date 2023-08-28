@@ -37,7 +37,9 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
   }
 
   leftClasses +=
-    blocks[0]?.sys?.contentType?.sys?.id === "image" ? " left" : " pe-md-4 left"
+    blocks[0]?.sys?.contentType?.sys?.id === "image"
+      ? " left"
+      : " pb-4 pb-md-0 pe-md-4 left"
   rightClasses +=
     blocks[1]?.sys?.contentType?.sys?.id === "image"
       ? " pb-4 pb-md-0 right"
