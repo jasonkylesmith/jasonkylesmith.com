@@ -26,6 +26,11 @@ const ModuleWrapper = ({ props }) => {
     // console.log("Null Module", props)
   }
 
+  if (!module?.sys) {
+    console.log(module)
+    console.log(props)
+  }
+
   const { id } = module.sys.contentType.sys
 
   /* console.log("Module Wrapper ID", id) */

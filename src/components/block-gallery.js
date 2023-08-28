@@ -160,7 +160,9 @@ const BlockGallery = props => {
         margin: "-.5rem",
         overflowX: "hidden",
       }}
-      className={orientation === "row" || !orientation ? "gallery-row" : ""}
+      className={
+        orientation === "row" || !orientation ? "gallery-row pe-lg-4" : ""
+      }
     >
       {innerWidth && (
         <>
