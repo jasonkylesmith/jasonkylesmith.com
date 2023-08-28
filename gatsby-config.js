@@ -13,7 +13,8 @@ module.exports = {
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
-    `gatsby-plugin-sitemap``gatsby-plugin-image`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
