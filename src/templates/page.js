@@ -226,6 +226,7 @@ export const query = graphql`
             verticalAlignment
             isHero
             name
+            isMobileReversed
             sys {
               contentType {
                 sys {

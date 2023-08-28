@@ -6,7 +6,14 @@ import ContactForm from "./contact-form"
 import BlockGallery from "./block-gallery"
 
 const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
-  const { blocks, ratio, verticalAlignment, fullWidth, isHero } = module
+  const {
+    blocks,
+    ratio,
+    verticalAlignment,
+    fullWidth,
+    isHero,
+    isMobileReversed,
+  } = module
 
   const numOfBlocks = blocks.length
 
@@ -29,8 +36,12 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
     }
   }
 
-  leftClasses += " pe-md-4 left"
-  rightClasses += " ps-md-4 pb-4 pb-md-0 right"
+  leftClasses +=
+    blocks[0]?.sys?.contentType?.sys?.id === "image" ? " left" : " pe-md-4 left"
+  rightClasses +=
+    blocks[1]?.sys?.contentType?.sys?.id === "image"
+      ? " pb-4 pb-md-0 right"
+      : " ps-md-4 pb-4 pb-md-0 right"
 
   const BlockWrapper = ({ block, side }) => {
     const { id } = block.sys.contentType.sys
@@ -114,7 +125,7 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
             <div
               className={`${leftClasses} content-container ${
                 blocks[0].sys.contentType.sys.id === "copy" && "copy-trigger"
-              }`}
+              } ${isMobileReversed && "order-1 order-md-0"}`}
               style={hasBackgroundImage ? { height: "100%" } : {}}
             >
               <BlockWrapper block={blocks[0]} side="left" />
@@ -122,7 +133,7 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
             <div
               className={`${rightClasses} content-container ${
                 blocks[1].sys.contentType.sys.id === "copy" && "copy-trigger"
-              }`}
+              } ${isMobileReversed && "order-0 order-md-1"}`}
               style={hasBackgroundImage ? { height: "100%" } : {}}
             >
               <BlockWrapper block={blocks[1]} side="right" />
