@@ -117,7 +117,7 @@
   margin-left: 0.5rem;
   padding: 0 0.3rem;
   padding-bottom: 0.1rem;
-  color: white;
+  color: #f7f7f7;
   font-size: $base-font-size-small * 0.8;
   background-color: $dark;
   border: 2px solid $dark;
@@ -191,7 +191,7 @@
   .selected-tag {
     .blog-tag {
       border-color: $dark;
-      background: white;
+      background: #f7f7f7;
       color: $dark;
     }
   }

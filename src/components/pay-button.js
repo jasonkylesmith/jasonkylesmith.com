@@ -81,7 +81,7 @@ const PayButton = props => {
             justifyContent: "flex-end",
             alignItems: "center",
             width: "226px",
-            background: "#FFFFFF",
+            background: "#F7F7F7",
             border: "2px solid rgba(31, 31, 31, .1)",
             boxShadow: "-2px 10px 5px rgba(0, 0, 0, 0)",
             borderRadius: ".25rem",

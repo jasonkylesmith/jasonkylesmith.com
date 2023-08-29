@@ -27,7 +27,7 @@ const Hero = ({ module }) => {
       }}
     >
       <div className="hero-text d-flex flex-row hero-container">
-        <div className="p-4 text-white col-12">
+        <div className="p-4 text-offwhite col-12">
           <h1 className="block__heading on-black pe-4 mb-0">{headline}</h1>
           <div className="pe-2 mb-4">{copy.copy}</div>
           <Link data={ctaButton} className="btn mb-0" />

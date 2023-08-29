@@ -39,23 +39,23 @@ nav.desktop-nav {
 }
 
 .light-nav .desktop-nav {
-  color: white;
+  color: #f7f7f7;
 }
 
 .light-nav .desktop-nav a {
-  color: white;
+  color: #f7f7f7;
 
   &::before {
-    background-color: white;
+    background-color: #f7f7f7;
   }
 
   &:hover {
-    color: white;
+    color: #f7f7f7;
     text-decoration: none;
   }
 
   &:hover::before {
-    background-color: white;
+    background-color: #f7f7f7;
   }
 }
 
@@ -105,7 +105,7 @@ nav.desktop-nav {
   }
 
   .mobile-header {
-    background-color: white;
+    background-color: #f7f7f7;
     border-bottom: 1px solid $dark;
     padding: 0.8rem 1rem;
     -webkit-box-shadow: $shadow-standard;
@@ -119,30 +119,30 @@ footer {
   padding-bottom: 0.5rem;
 
   a {
-    color: white !important;
+    color: #f7f7f7 !important;
     font-size: smaller;
     text-decoration: none;
 
     &.icon {
-      color: white;
+      color: #f7f7f7;
 
       &:hover {
         .icon {
-          color: white !important;
+          color: #f7f7f7 !important;
         }
       }
     }
 
     &:hover {
-      color: white;
+      color: #f7f7f7;
 
       &::before {
-        background-color: white;
+        background-color: #f7f7f7;
       }
     }
 
     &::before {
-      background-color: white;
+      background-color: #f7f7f7;
     }
   }
 
@@ -337,17 +337,17 @@ footer {
 
 .block--accent-background {
   background-color: $accent;
-  color: white;
+  color: #f7f7f7;
 
   .testimonial--left,
   .testimonial--right {
-    border-color: white;
+    border-color: #f7f7f7;
   }
 }
 
 .block--dark-background {
   background-color: $dark;
-  color: white;
+  color: #f7f7f7;
 }
 
 .block__heading {
@@ -381,7 +381,7 @@ footer {
     &::after {
       background-image: linear-gradient(
         rgba($light, 1) 80%,
-        rgba(white, 1) 95%
+        rgba(#f7f7f7, 1) 95%
       );
     }
   }

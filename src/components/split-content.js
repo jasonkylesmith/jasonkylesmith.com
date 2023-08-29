@@ -64,7 +64,7 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
           } ${isHero && "hero-copy"} ${
             side === "right" && "pe-0 ps-0 ps-md-0"
           } ${parentFullWidth && "pe-3 ps-3 ps-md-0"}`}
-          style={block?.textColor === "light" ? { color: "white" } : {}}
+          style={block?.textColor === "light" ? { color: "#f7f7f7" } : {}}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />
         </div>

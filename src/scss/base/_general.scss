@@ -16,6 +16,7 @@ body {
   font-size: $base-font-size;
   font-weight: $base-font-weight;
   color: $dark;
+  background: #f7f7f7;
   overflow-x: hidden;
 }
 
@@ -159,8 +160,8 @@ a:hover {
   position: relative;
 
   &.button-on-black {
-    border: 2px solid white !important;
-    background-color: white;
+    border: 2px solid #f7f7f7 !important;
+    background-color: #f7f7f7;
 
     &:hover {
       transition: border $anim-duration ease-in-out 0ms;
@@ -349,12 +350,12 @@ nav {
 
     a,
     a:visited {
-      color: white;
+      color: #f7f7f7;
 
       &:hover {
         &::after,
         &::before {
-          background-color: white;
+          background-color: #f7f7f7;
         }
       }
     }
@@ -451,6 +452,10 @@ a.logo-link {
 
 .text-dark {
   color: $dark !important;
+}
+
+.text-offwhite {
+  color: #f7f7f7 !important;
 }
 
 .slider-div {

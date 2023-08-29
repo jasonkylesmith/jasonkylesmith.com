@@ -11,7 +11,7 @@ const Footer = props => {
     return (
       <footer className="d-none d-md-flex align-items-center row m-0">
         <div className="col-md-8 offset-md-2 text-center">
-          <div className="text-white d-flex justify-content-center flex-row gap-2">
+          <div className="text-offwhite d-flex justify-content-center flex-row gap-2">
             <div>
               {/* <a href="/clients">clients</a> -  */}
               <a href="/contact">contact</a> - <a href="/blog"> blog</a>
@@ -26,7 +26,7 @@ const Footer = props => {
             className="copyright d-none d-md-block"
             style={{
               marginLeft: "-.5rem",
-              color: "#FFFFFF",
+              color: "#F7F7F7",
               fontWeight: "500",
               textAlign: "center",
             }}
@@ -44,9 +44,9 @@ const Footer = props => {
         </div>
         <div>
           <span
-            className="copyright d-md-none text-white"
+            className="copyright d-md-none text-offwhite"
             style={{
-              color: "#FFFFFF",
+              color: "#F7F7F7",
               fontWeight: "500",
             }}
           >
@@ -63,9 +63,9 @@ const Footer = props => {
         </div>
         <div>
           <span
-            className="copyright text-white"
+            className="copyright text-offwhite"
             style={{
-              color: "#FFFFFF",
+              color: "#F7F7F7",
               fontWeight: "500",
             }}
           >
@@ -82,9 +82,9 @@ const Footer = props => {
         </div>
         <div>
           <span
-            className="copyright d-md-none text-white"
+            className="copyright d-md-none text-offwhite"
             style={{
-              color: "#FFFFFF",
+              color: "#F7F7F7",
               fontWeight: "500",
             }}
           >

@@ -23,7 +23,7 @@ const Header = props => {
                         className="logo"
                         style={
                           props.navColor === "light"
-                            ? { color: "white" }
+                            ? { color: "#f7f7f7" }
                             : props.navColor === "dark"
                             ? { color: "#1f1f1f" }
                             : { color: "#1f1f1f" }
@@ -72,7 +72,7 @@ const Header = props => {
                 className="logo"
                 style={
                   props.navColor === "light"
-                    ? { color: "white" }
+                    ? { color: "#f7f7f7" }
                     : props.navColor === "dark"
                     ? { color: "#1f1f1f" }
                     : { color: "#1f1f1f" }

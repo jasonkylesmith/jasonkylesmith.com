@@ -43,7 +43,7 @@ const MenuIcon = props => {
             props.version === "desktop"
               ? props.navColor === "light"
                 ? "#1f1f1f"
-                : "white"
+                : "#f7f7f7"
               : "transparent",
           padding: props.version === "desktop" ? ".6rem .9rem" : 0,
           borderRadius: ".25rem",
@@ -54,7 +54,7 @@ const MenuIcon = props => {
           style={{
             textTransform: "uppercase",
             fontWeight: 900,
-            color: props.navColor === "light" ? "white" : "#1f1f1f",
+            color: props.navColor === "light" ? "#f7f7f7" : "#1f1f1f",
           }}
         >
           Menu
@@ -62,22 +62,22 @@ const MenuIcon = props => {
         <div id="menu-icon" className={`${menuOpen && "open"}`}>
           <span
             style={{
-              background: props.navColor === "light" ? "white" : "#1f1f1f",
+              background: props.navColor === "light" ? "#f7f7f7" : "#1f1f1f",
             }}
           ></span>
           <span
             style={{
-              background: props.navColor === "light" ? "white" : "#1f1f1f",
+              background: props.navColor === "light" ? "#f7f7f7" : "#1f1f1f",
             }}
           ></span>
           <span
             style={{
-              background: props.navColor === "light" ? "white" : "#1f1f1f",
+              background: props.navColor === "light" ? "#f7f7f7" : "#1f1f1f",
             }}
           ></span>
           <span
             style={{
-              background: props.navColor === "light" ? "white" : "#1f1f1f",
+              background: props.navColor === "light" ? "#f7f7f7" : "#1f1f1f",
             }}
           ></span>
         </div>

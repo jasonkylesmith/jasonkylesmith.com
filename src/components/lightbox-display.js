@@ -151,7 +151,7 @@ const LightboxContainer = props => {
     >
       <span
         style={{
-          color: "white",
+          color: "#f7f7f7",
           cursor: "pointer",
           opacity: imgIndex > 0 ? 1 : 0,
           padding: "1rem",
@@ -236,7 +236,7 @@ const LightboxContainer = props => {
         )}
         {isClient && (
           <div
-            className={`d-flex flex-row w-100 justify-content-between text-white`}
+            className={`d-flex flex-row w-100 justify-content-between text-offwhite`}
           >
             <span>{allImages[imgIndex]?.photoName}</span>
             <div>
@@ -282,7 +282,7 @@ const LightboxContainer = props => {
       <span
         style={{
           cursor: "pointer",
-          color: "white",
+          color: "#f7f7f7",
           opacity: imgIndex !== allImages.length - 1 ? 1 : 0,
           padding: "1rem",
           fontSize: "2rem",
