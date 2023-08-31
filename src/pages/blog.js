@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick-theme.css"
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulNavigation(name: { eq: "General Navigation" }) {
+      contentfulNavigation(name: { eq: "Placeholder Nav" }) {
         id
         mainLinks {
           navLinkText
@@ -102,7 +102,7 @@ const Blog = () => {
     setSelectedTag(tag)
   }
 
-  return process.env.GATSBY_ENVIRONMENT === "live" ? (
+  /*   return process.env.GATSBY_ENVIRONMENT === "live" ? (
     <LivePlaceholder />
   ) : (
     <Layout navSettings={data?.contentfulNavigation}>
@@ -174,6 +174,81 @@ const Blog = () => {
                   )
                 })}
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  ) */
+
+  return (
+    <Layout navSettings={data?.contentfulNavigation}>
+      <Seo title="Blog" />
+      <div className="row mt-4">
+        <div className="col-12 p-0">
+          <div className="col-md-10 offset-md-1 standard-container-padding">
+            <h1 className="block__heading">Blog Posts</h1>
+          </div>
+          <div className="col-md-10 offset-md-1 standard-container-padding">
+            <div className="row">
+              {allTags.length > 0 && (
+                <div className="blog-list-tags">
+                  {allTags.map((tag, index) => {
+                    return (
+                      <button
+                        onClick={() => handleTagClick(tag)}
+                        className={`${
+                          selectedTag === tag ? "selected-tag" : null
+                        } ${index === 0 && "blog-list-tag-start"} ${
+                          index + 1 === allTags.length && "blog-list-tag-end"
+                        }`}
+                        key={tag}
+                      >
+                        <Tag tag={tag} disabledClass={false} key={tag} />
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+              {filteredEdges.map((post, index) => {
+                return (
+                  <div
+                    className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4 mx-0"
+                    key={index}
+                  >
+                    <Link
+                      to={`/blog/${post.node.slug}`}
+                      className="gallery-link"
+                    >
+                      <div className="">
+                        <div className="position-relative">
+                          {post.node.featuredImage && (
+                            <GatsbyImage
+                              className=""
+                              imgStyle={{ borderRadius: ".25rem" }}
+                              image={post.node.featuredImage.gatsbyImageData}
+                              alt={post.node.title}
+                            />
+                          )}
+
+                          <Tags tags={post.node.tags} />
+                        </div>
+                        <div className="">
+                          <h4 className="text-dark mt-1 mb-0">
+                            {post.node.title}
+                          </h4>
+                          <span
+                            className="text-dark small fw-normal"
+                            style={{ fontSize: "14px" }}
+                          >
+                            {post.node.publishedDate}
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>

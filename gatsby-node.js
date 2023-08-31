@@ -37,15 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allContentfulGallery {
-        distinct(field: { category: SELECT })
-        edges {
-          node {
-            slug
-            category
-          }
-        }
-      }
+
       allContentfulClientGallery {
         edges {
           node {
@@ -150,7 +142,7 @@ exports.createPages = async ({ graphql, actions }) => {
       TEMPORARILY PREVENT FROM APPEARING ON LIVE
     */
 
-    response.data.allContentfulGallery.edges.forEach(edge => {
+    /* response.data.allContentfulGallery.edges.forEach(edge => {
       createPage({
         path: `/${edge.node.category.toLowerCase().replace(/\s+/g, "")}/${
           edge.node.slug
@@ -160,7 +152,7 @@ exports.createPages = async ({ graphql, actions }) => {
           slug: edge.node.slug,
         },
       })
-    })
+    }) */
 
     response.data.allContentfulClientGallery.edges.forEach(edge => {
       createPage({
@@ -172,7 +164,7 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
 
-    response.data.allContentfulGallery.distinct.forEach(category => {
+    /* response.data.allContentfulGallery.distinct.forEach(category => {
       const formattedCategory = category.toLowerCase().replace(/\s+/g, "")
 
       createPage({
@@ -182,7 +174,7 @@ exports.createPages = async ({ graphql, actions }) => {
           category: category,
         },
       })
-    })
+    }) */
   }
 
   /* createPage({

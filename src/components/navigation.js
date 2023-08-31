@@ -71,14 +71,33 @@ const Navigation = props => {
         <ul>
           <li>
             <Link
-              to="/contact"
+              to="/"
+              className=""
               onClick={() => {
                 props.menuClick()
               }}
             >
-              contact
+              home
             </Link>
           </li>
+          {navSettings?.mainLinks &&
+            navSettings.mainLinks.map(link => {
+              return (
+                <Fragment key={`main-${link.slug}`}>
+                  <li>
+                    {" "}
+                    <Link
+                      to={`/${link.slug}`}
+                      onClick={() => {
+                        props.menuClick()
+                      }}
+                    >
+                      {link.navLinkText}
+                    </Link>
+                  </li>
+                </Fragment>
+              )
+            })}
           <li>
             <Link
               to="/blog"
@@ -149,16 +168,7 @@ const Navigation = props => {
               </li>
             )
           })} */}
-          <li>
-            <Link
-              to="/contact"
-              onClick={() => {
-                props.menuClick()
-              }}
-            >
-              contact
-            </Link>
-          </li>
+
           <li>
             <Link
               to="/blog"

@@ -13,9 +13,10 @@ const Page = ({ data }) => {
       <Seo title={name} />
 
       <div className="">
-        {modules.map((module, index) => {
-          return <ModuleWrapper props={module} key={index} />
-        })}
+        {modules &&
+          modules.map((module, index) => {
+            return <ModuleWrapper props={module} key={index} />
+          })}
       </div>
     </Layout>
   )

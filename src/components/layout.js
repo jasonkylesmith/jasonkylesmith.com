@@ -30,37 +30,27 @@ const Layout = ({ children, navColor, navSettings }) => {
         }`}
         style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}
       >
-        {process.env.GATSBY_ENVIRONMENT !== "live" ? (
-          <div className={`row mb-2`} style={{ zIndex: 3 }}>
-            <Header
-              version="desktop"
-              navColor={navColor}
-              navSettings={navSettings}
-            />
-            <Header
-              version="mobile"
-              navColor={navColor}
-              navSettings={navSettings}
-            />
-          </div>
-        ) : (
-          <div className="logo-container col-12">
-            <Link to="/" className="logo-link">
-              <div>
-                <span className="logo">Jason Kyle Smith</span>
-              </div>
-            </Link>
-          </div>
-        )}
+        <div className={`row mb-2`} style={{ zIndex: 3 }}>
+          <Header
+            version="desktop"
+            navColor={navColor}
+            navSettings={navSettings}
+          />
+          <Header
+            version="mobile"
+            navColor={navColor}
+            navSettings={navSettings}
+          />
+        </div>
+
         <div className="row flex-fill m-0">
           <main className="p-0 container">{children}</main>
         </div>
-        {process.env.GATSBY_ENVIRONMENT !== "live" && (
-          <div className="row">
-            <Footer version="desktop" />
-            <Footer version="mobile" />
-          </div>
-        )}
+
+        <div className="row">
+          <Footer version="desktop" />
+          <Footer version="mobile" />
+        </div>
       </div>
     </>
   )
