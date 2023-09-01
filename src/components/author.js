@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 import SocialIcons from "./social-icons"
@@ -21,9 +21,10 @@ const Author = props => {
         description
         photo {
           gatsbyImageData(
-            width: 150
             placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
+            layout: CONSTRAINED
+            resizingBehavior: CROP
           )
           description
         }
@@ -37,16 +38,27 @@ const Author = props => {
     <>
       <div className="author-container">
         <div className="author-image-wrapper">
-          <GatsbyImage image={photo.gatsbyImageData} alt={photo.description} />
+          <Link to="about" className="gallery-link">
+            <GatsbyImage
+              image={photo.gatsbyImageData}
+              alt={photo.description}
+            />
+          </Link>
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className="d-flex flex-column">
           <div className="author-name">
             <h6>{name}</h6>
           </div>
           <div className="author-description">
             <p className="small">{description}</p>
-            <div style={{ marginLeft: "-.25rem" }}>
+            <div
+              className="d-flex flex-row gap-2"
+              style={{ marginLeft: "-.25rem" }}
+            >
               <SocialIcons version="author" />
+              <Link to="/about" className="author-link">
+                About Me
+              </Link>
             </div>
           </div>
         </div>

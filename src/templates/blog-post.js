@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Tags from "../components/tags"
@@ -82,6 +82,31 @@ export const query = graphql`
           formats: [AUTO, WEBP, AVIF]
         )
       }
+      recommended {
+        slug
+        id
+        excerpt {
+          childMarkdownRemark {
+            html
+          }
+        }
+        title
+        featuredImage {
+          title
+          file {
+            url
+          }
+          gatsbyImageData(
+            quality: 100
+            layout: CONSTRAINED
+            resizingBehavior: NO_CHANGE
+            aspectRatio: 2.5
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+        }
+      }
+
       body {
         raw
         references {
@@ -127,6 +152,23 @@ export const query = graphql`
         }
         node {
           slug
+          featured
+          title
+          id
+          featuredImage {
+            title
+            file {
+              url
+            }
+            gatsbyImageData(
+              quality: 100
+              layout: CONSTRAINED
+              resizingBehavior: NO_CHANGE
+              aspectRatio: 2.5
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
+          }
           contentful_id
         }
       }
@@ -146,6 +188,7 @@ const BlogPost = props => {
     excerpt,
     gallery,
     nav,
+    recommended,
   } = props.data.contentfulBlogPost
 
   const { edges } = props.data.allContentfulBlogPost
@@ -154,11 +197,20 @@ const BlogPost = props => {
     edge => edge.node.contentful_id === contentful_id
   )
 
+  const featuredEdge = edges.filter(
+    edge =>
+      edge.node.featured === "yes" && edge.node.id !== currentEdge[0].node.id
+  )
+
   const navEdges = { prev: currentEdge[0].previous, next: currentEdge[0].next }
 
   const renderOptions = richTextRenderOptions
 
   const bodyContent = renderRichText(body, renderOptions)
+
+  const filteredRecommended = recommended?.filter(
+    post => post.id !== featuredEdge[0]?.node.id
+  )
 
   return (
     <Layout navSettings={nav}>
@@ -177,30 +229,85 @@ const BlogPost = props => {
             </div>
           )}
           <h1 className="blog-title block__heading">{title}</h1>
-          <div className="d-flex direction-row align-items-center">
-            <span className="blog-date">{publishedDate}</span>
-            <Tags tags={tags} />
+          <div className="d-flex flex-column flex-lg-row gap-lg-5">
+            <div>
+              <div className="d-flex flex-row align-items-center">
+                <span className="blog-date">{publishedDate}</span>
+                <Tags tags={tags} />
 
-            <ShareButtons
-              title={title}
-              slug={slug}
-              directory={"blog"}
-              sources={["Facebook", "Twitter", "Email", "Clipboard"]}
-            />
-          </div>
-
-          <div className="blog-body">
-            {bodyContent}
-            {gallery && gallery.__typename === "ContentfulBlockGallery" && (
-              <div className="my-4">
-                <BlockGallery block={gallery} key={gallery.id} />
+                <ShareButtons
+                  title={title}
+                  slug={slug}
+                  directory={"blog"}
+                  sources={["Facebook", "Twitter", "Email", "Clipboard"]}
+                />
               </div>
-            )}
-            <div className="medium" />
-            <Author />
-            {/* <div className="ending" /> */}
-            <PostNav edges={navEdges} />
+
+              <div className="blog-body">
+                {bodyContent}
+                {gallery && gallery.__typename === "ContentfulBlockGallery" && (
+                  <div className="my-4">
+                    <BlockGallery block={gallery} key={gallery.id} />
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="blog-sidebar">
+              <div className="blog-sidebar-posts">
+                {featuredEdge && featuredEdge.length > 0 && (
+                  <div>
+                    <h3>Featured Post</h3>
+                    <Link
+                      to={`/blog/${featuredEdge[0].node.slug}`}
+                      className="gallery-link"
+                    >
+                      <div>
+                        <GatsbyImage
+                          image={
+                            featuredEdge[0].node.featuredImage.gatsbyImageData
+                          }
+                          alt={featuredEdge[0].node.title}
+                          className="mb-2"
+                        />
+
+                        <h5>{featuredEdge[0].node.title}</h5>
+                      </div>
+                    </Link>
+                  </div>
+                )}
+                {filteredRecommended && filteredRecommended.length > 0 && (
+                  <div>
+                    <h3>Recommended Reading</h3>
+
+                    {filteredRecommended.map(post => {
+                      return (
+                        <Link
+                          to={`/blog/${post.slug}`}
+                          className="gallery-link mb-2"
+                        >
+                          <div>
+                            <GatsbyImage
+                              image={post.featuredImage.gatsbyImageData}
+                              alt={post.title}
+                            />
+
+                            <h5>{post.title}</h5>
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+              <div className="medium" />
+
+              <Author />
+            </div>
           </div>
+          <div className="medium" />
+
+          <PostNav edges={navEdges} />
         </div>
       </div>
     </Layout>

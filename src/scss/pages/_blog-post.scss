@@ -257,3 +257,45 @@
   margin-bottom: 1rem;
   width: 100%;
 }
+
+.blog-sidebar {
+  max-width: 100%;
+}
+
+.blog-sidebar-posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-sidebar-posts > div {
+  flex: 1;
+}
+
+@media (min-width: $max-width-xs) {
+  .blog-sidebar {
+  }
+
+  .blog-sidebar-posts {
+    display: flex;
+    flex-direction: row;
+    column-gap: 4rem;
+  }
+
+  .blog-sidebar-posts > div {
+    max-width: 50%;
+  }
+}
+
+@media (min-width: $max-width-md) {
+  .blog-sidebar {
+    max-width: 25%;
+  }
+
+  .blog-sidebar-posts {
+    flex-direction: column;
+  }
+
+  .blog-sidebar-posts > div {
+    max-width: 100%;
+  }
+}
