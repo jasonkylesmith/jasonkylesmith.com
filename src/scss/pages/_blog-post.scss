@@ -271,8 +271,18 @@
   flex: 1;
 }
 
+.blog-post-container {
+  gap: 2rem;
+}
+
+.blog-sidebar-container {
+  padding-top: 0.5rem;
+}
+
 @media (min-width: $max-width-xs) {
   .blog-sidebar {
+    padding: 1.5rem 2rem;
+    background: $light;
   }
 
   .blog-sidebar-posts {
@@ -287,8 +297,10 @@
 }
 
 @media (min-width: $max-width-md) {
+  .blog-sidebar-container {
+    min-width: 30%;
+  }
   .blog-sidebar {
-    max-width: 25%;
   }
 
   .blog-sidebar-posts {
@@ -297,5 +309,9 @@
 
   .blog-sidebar-posts > div {
     max-width: 100%;
+  }
+
+  .blog-post-container {
+    gap: 5rem;
   }
 }

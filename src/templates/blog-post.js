@@ -229,20 +229,19 @@ const BlogPost = props => {
             </div>
           )}
           <h1 className="blog-title block__heading">{title}</h1>
-          <div className="d-flex flex-column flex-lg-row gap-lg-5">
+          <div className="d-flex flex-row align-items-center">
+            <span className="blog-date">{publishedDate}</span>
+            <Tags tags={tags} />
+
+            <ShareButtons
+              title={title}
+              slug={slug}
+              directory={"blog"}
+              sources={["Facebook", "Twitter", "Email", "Clipboard"]}
+            />
+          </div>
+          <div className="d-flex flex-column flex-lg-row blog-post-container">
             <div>
-              <div className="d-flex flex-row align-items-center">
-                <span className="blog-date">{publishedDate}</span>
-                <Tags tags={tags} />
-
-                <ShareButtons
-                  title={title}
-                  slug={slug}
-                  directory={"blog"}
-                  sources={["Facebook", "Twitter", "Email", "Clipboard"]}
-                />
-              </div>
-
               <div className="blog-body">
                 {bodyContent}
                 {gallery && gallery.__typename === "ContentfulBlockGallery" && (
@@ -252,57 +251,61 @@ const BlogPost = props => {
                 )}
               </div>
             </div>
+            <div className="blog-sidebar-container">
+              <div className="blog-sidebar">
+                <div className="blog-sidebar-posts">
+                  {featuredEdge && featuredEdge.length > 0 && (
+                    <div>
+                      <h3>Featured Post</h3>
+                      <Link
+                        to={`/blog/${featuredEdge[0].node.slug}`}
+                        className="gallery-link"
+                      >
+                        <div>
+                          <GatsbyImage
+                            image={
+                              featuredEdge[0].node.featuredImage.gatsbyImageData
+                            }
+                            alt={featuredEdge[0].node.title}
+                            className="mb-2"
+                          />
 
-            <div className="blog-sidebar">
-              <div className="blog-sidebar-posts">
-                {featuredEdge && featuredEdge.length > 0 && (
-                  <div>
-                    <h3>Featured Post</h3>
-                    <Link
-                      to={`/blog/${featuredEdge[0].node.slug}`}
-                      className="gallery-link"
-                    >
-                      <div>
-                        <GatsbyImage
-                          image={
-                            featuredEdge[0].node.featuredImage.gatsbyImageData
-                          }
-                          alt={featuredEdge[0].node.title}
-                          className="mb-2"
-                        />
+                          <h5>{featuredEdge[0].node.title}</h5>
+                        </div>
+                      </Link>
+                    </div>
+                  )}
+                  {filteredRecommended && filteredRecommended.length > 0 && (
+                    <div>
+                      <h3>Recommended Reading</h3>
 
-                        <h5>{featuredEdge[0].node.title}</h5>
-                      </div>
-                    </Link>
-                  </div>
+                      {filteredRecommended.map(post => {
+                        return (
+                          <Link
+                            to={`/blog/${post.slug}`}
+                            className="gallery-link mb-2"
+                          >
+                            <div>
+                              <GatsbyImage
+                                image={post.featuredImage.gatsbyImageData}
+                                alt={post.title}
+                              />
+
+                              <h5>{post.title}</h5>
+                            </div>
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
+                {((featuredEdge && featuredEdge.length > 0) ||
+                  (filteredRecommended && filteredRecommended.length > 0)) && (
+                  <div className="medium mb-5" />
                 )}
-                {filteredRecommended && filteredRecommended.length > 0 && (
-                  <div>
-                    <h3>Recommended Reading</h3>
 
-                    {filteredRecommended.map(post => {
-                      return (
-                        <Link
-                          to={`/blog/${post.slug}`}
-                          className="gallery-link mb-2"
-                        >
-                          <div>
-                            <GatsbyImage
-                              image={post.featuredImage.gatsbyImageData}
-                              alt={post.title}
-                            />
-
-                            <h5>{post.title}</h5>
-                          </div>
-                        </Link>
-                      )
-                    })}
-                  </div>
-                )}
+                <Author />
               </div>
-              <div className="medium" />
-
-              <Author />
             </div>
           </div>
           <div className="medium" />
