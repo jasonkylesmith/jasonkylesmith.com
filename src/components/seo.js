@@ -49,7 +49,7 @@ function Seo({ description, lang, meta, title, photo, url }) {
       <meta property="og:description" content={metaDescription} />
       <meta
         property="og:url"
-        content={url ? url : `https://www.jasonkylesmith.com`}
+        content={url ? url : `https://jasonkylesmith.com`}
       />
       <meta
         property="og:image"
@@ -87,7 +87,7 @@ function Seo({ description, lang, meta, title, photo, url }) {
       <meta name="twitter:creator" content={"@jasonkylesmith"} />
       <meta
         name="twitter:url"
-        content={url ? url : `https://www.jasonkylesmith.com`}
+        content={url ? url : `https://jasonkylesmith.com`}
       />
 
       <meta

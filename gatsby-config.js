@@ -7,7 +7,7 @@ module.exports = {
     title: `Jason Kyle Smith Photography`,
     description: `Jason Kyle Smith is a photographer from the Southeast Michigan area specializing in portraiture, branding, and people photography.`,
     author: `Jason Kyle Smith`,
-    siteUrl: `https://www.jasonkylesmith.com`,
+    siteUrl: `https://jasonkylesmith.com`,
   },
   plugins: [
     `gatsby-plugin-fontawesome-css`,

@@ -216,7 +216,7 @@ const BlogPost = props => {
     <Layout navSettings={nav}>
       <Seo
         title={title}
-        url={`https://www.jasonkylesmith.com/blog/${slug}`}
+        url={`https://jasonkylesmith.com/blog/${slug}`}
         description={excerpt.excerpt}
         photo={featuredImage?.file?.url}
       />
