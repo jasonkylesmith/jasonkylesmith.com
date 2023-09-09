@@ -90,16 +90,17 @@ const Blog = () => {
   }
 
   const handleTagClick = tag => {
-    if (tag === "all") {
+    if (tag === "all" || tag === selectedTag) {
       setFilteredEdges(rawEdges)
+      setSelectedTag("all")
     } else {
       let tempEdges = rawEdges.filter(edge => {
         return edge.node.tags.includes(tag)
       })
 
       setFilteredEdges(tempEdges)
+      setSelectedTag(tag)
     }
-    setSelectedTag(tag)
   }
 
   /*   return process.env.GATSBY_ENVIRONMENT === "live" ? (

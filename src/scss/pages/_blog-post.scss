@@ -164,6 +164,10 @@
     border: 0;
     padding: 0;
     background: transparent;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
   }
 
   button:focus-visible,
@@ -261,6 +265,11 @@
 .blog-sidebar {
   max-width: 100%;
   position: relative;
+  padding: 0;
+
+  .author-container {
+    margin-bottom: 1.45rem;
+  }
 }
 
 .blog-sidebar-posts {
@@ -282,8 +291,7 @@
 
 @media (min-width: $max-width-xs) {
   .blog-sidebar {
-    padding: 1.5rem 2rem;
-    background: $light;
+    padding: 0;
   }
 
   .blog-sidebar-posts {
@@ -299,9 +307,16 @@
 
 @media (min-width: $max-width-md) {
   .blog-sidebar-container {
-    min-width: 30%;
+    min-width: 25%;
+    max-width: 30%;
   }
   .blog-sidebar {
+    padding: 1.5rem 2.5rem;
+    background: $light;
+
+    .author-container {
+      margin-bottom: 0;
+    }
   }
 
   .blog-sidebar-posts {

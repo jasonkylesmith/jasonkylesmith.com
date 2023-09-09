@@ -31,7 +31,15 @@ const GalleryList = ({ module, category }) => {
         linkTo = `/${slug}`
     }
 
-    const colNum = moduleToUse.length === 2 ? 6 : 4
+    let colNum
+
+    if (moduleToUse.length % 3 === 0) {
+      colNum = 4
+    } else if (moduleToUse.length % 2 === 0) {
+      colNum = 6
+    } else if (moduleToUse.length % 1 === 0) {
+      colNum = 12
+    }
 
     return (
       <div

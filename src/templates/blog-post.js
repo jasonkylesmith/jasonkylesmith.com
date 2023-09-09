@@ -284,6 +284,7 @@ const BlogPost = props => {
                           <Link
                             to={`/blog/${post.slug}`}
                             className="gallery-link mb-2"
+                            key={post.slug}
                           >
                             <div>
                               <GatsbyImage
