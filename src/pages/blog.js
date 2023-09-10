@@ -223,12 +223,22 @@ const Blog = () => {
                     >
                       <div className="">
                         <div className="position-relative">
-                          {post.node.featuredImage && (
+                          {post.node.featuredImage ? (
                             <GatsbyImage
                               className=""
                               imgStyle={{ borderRadius: ".25rem" }}
                               image={post.node.featuredImage.gatsbyImageData}
                               alt={post.node.title}
+                            />
+                          ) : (
+                            <div
+                              style={{
+                                width: "100%",
+                                height: "auto",
+                                aspectRatio: "2",
+                                background: "#1f1f1f",
+                                borderRadius: ".25rem",
+                              }}
                             />
                           )}
 
