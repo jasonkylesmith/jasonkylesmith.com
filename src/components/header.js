@@ -33,11 +33,19 @@ const Header = props => {
                       </span>
                     </div>
                   </Link>
-                  <MenuIcon
-                    version={"desktop"}
-                    navColor={props.navColor}
-                    navSettings={navSettings}
-                  />
+                  <div style={{ display: "flex", gap: "1rem" }}>
+                    <Link
+                      className="btn cta"
+                      to="/contact?destination=mobile-menu"
+                    >
+                      Let's Chat
+                    </Link>
+                    <MenuIcon
+                      version={"desktop"}
+                      navColor={props.navColor}
+                      navSettings={navSettings}
+                    />
+                  </div>
                 </div>
                 {/* <div className="col-12" style={{ marginTop: "-.5rem" }}>
                   <Navigation version="desktop" />

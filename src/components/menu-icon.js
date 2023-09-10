@@ -3,6 +3,7 @@ import { useState } from "react"
 import Footer from "./footer"
 import useScrollBlock from "./helpers/useScrollBlock"
 import Navigation from "./navigation"
+import { Link } from "gatsby"
 
 const MenuIcon = props => {
   const [blockScroll, allowScroll] = useScrollBlock()
@@ -96,14 +97,23 @@ const MenuIcon = props => {
                 menuClick={handleMenuClick}
                 navSettings={navSettings}
               />
+
               <Footer version="menu" />
             </>
           ) : (
             <>
+              <div
+                style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}
+              >
+                <Link className="btn cta" to="/contact?destination=mobile-menu">
+                  Let's Chat
+                </Link>
+              </div>
               <Navigation
                 menuClick={handleMenuClick}
                 navSettings={navSettings}
               />
+
               <Footer />
             </>
           )}

@@ -229,6 +229,20 @@ a:hover {
     transition: background-color $anim-duration ease-in-out 0ms,
       color $anim-duration ease-in-out 0ms;
 
+    &.cta {
+      margin-bottom: 0;
+      color: #f7f7f7;
+      background: #471a5d;
+      border-color: #f7f7f7;
+
+      &:hover {
+        color: $dark;
+        background: #f7f7f7;
+        border-color: #f7f7f7;
+        text-decoration: none;
+      }
+    }
+
     &.scroll {
       border: 2px solid $dark;
       color: $dark;
