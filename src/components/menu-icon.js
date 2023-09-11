@@ -105,8 +105,8 @@ const MenuIcon = props => {
               <div
                 style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}
               >
-                <Link className="btn cta" to="/contact?destination=mobile-menu">
-                  Let's Chat
+                <Link className="btn cta" to="/booking/">
+                  Schedule a Call
                 </Link>
               </div>
               <Navigation

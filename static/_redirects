@@ -1,6 +1,7 @@
 # Redirects from what the browser requests to what we serve
 
-/nft https://www.youtube.com/watch?v=rTgj1HxmUbg
-/bloom https://jasonkylesmithphotography.pixieset.com/bloom/
-/grandeur https://jasonkylesmithphotography.pixieset.com/grandeur/
-/thankyou /thank-you
+/nft/ https://www.youtube.com/watch?v=rTgj1HxmUbg
+/bloom/ https://jasonkylesmithphotography.pixieset.com/bloom/
+/grandeur/ https://jasonkylesmithphotography.pixieset.com/grandeur/
+/thankyou/ /thank-you/
+/booking/ https://jasonkylesmithphotography.pixieset.com/booking/

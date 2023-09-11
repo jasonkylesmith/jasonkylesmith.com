@@ -34,11 +34,8 @@ const Header = props => {
                     </div>
                   </Link>
                   <div style={{ display: "flex", gap: "1rem" }}>
-                    <Link
-                      className="btn cta"
-                      to="/contact?destination=mobile-menu"
-                    >
-                      Let's Chat
+                    <Link className="btn cta" to="/booking/">
+                      Schedule a Call
                     </Link>
                     <MenuIcon
                       version={"desktop"}
