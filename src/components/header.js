@@ -34,9 +34,14 @@ const Header = props => {
                     </div>
                   </Link>
                   <div style={{ display: "flex", gap: "1rem" }}>
-                    <Link className="btn cta" to="/booking/">
+                    <a
+                      className="btn cta"
+                      href="https://jasonkylesmith.com/booking/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
                       Schedule a Call
-                    </Link>
+                    </a>
                     <MenuIcon
                       version={"desktop"}
                       navColor={props.navColor}

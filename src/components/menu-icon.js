@@ -105,9 +105,14 @@ const MenuIcon = props => {
               <div
                 style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}
               >
-                <Link className="btn cta" to="/booking/">
+                <a
+                  className="btn cta"
+                  href="https://jasonkylesmith.com/booking/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   Schedule a Call
-                </Link>
+                </a>
               </div>
               <Navigation
                 menuClick={handleMenuClick}
