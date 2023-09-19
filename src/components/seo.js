@@ -43,6 +43,7 @@ function Seo({ description, lang, meta, title, photo, url }) {
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet"
       /> */}
+      <link rel="canonical" href="https://jasonkylesmith.com" />
       <meta property="og:type" content={"website"} />
       <meta property="og:locale" content="en_US" />
       <meta property="og:title" content={title} />

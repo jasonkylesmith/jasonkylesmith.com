@@ -177,6 +177,7 @@ const BlockGallery = props => {
           <Gallery
             photos={photoArray}
             direction={orientation ? orientation : "row"}
+            targetRowHeight={innerWidth < 600 ? 150 : 350}
             margin={10}
             columns={
               columns
