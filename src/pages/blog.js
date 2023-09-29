@@ -43,7 +43,7 @@ const Blog = () => {
                 resizingBehavior: NO_CHANGE
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
-                aspectRatio: 2
+                aspectRatio: 1.77
               )
             }
             excerpt {
@@ -73,7 +73,10 @@ const Blog = () => {
   // let filteredEdges = edges.filter(edge => edge.node.slug !== "demo-post")
   // Filter out posts to be published in the future .filter(edge => new Date(edge.node.fullDate) <= new Date())
 
-  const rawEdges = edges.filter(edge => edge.node.slug !== "demo-post")
+  const rawEdges = edges.filter(
+    edge =>
+      edge.node.slug !== "demo-post" && new Date(edge.node.fullDate) <= today
+  )
 
   let allTags = ["all"]
 
@@ -235,7 +238,7 @@ const Blog = () => {
                               style={{
                                 width: "100%",
                                 height: "auto",
-                                aspectRatio: "2",
+                                aspectRatio: "1.77",
                                 background: "#1f1f1f",
                                 borderRadius: ".25rem",
                               }}

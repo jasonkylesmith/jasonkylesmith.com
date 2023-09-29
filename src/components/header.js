@@ -50,6 +50,7 @@ const Header = props => {
                       animate={wiggleAnimation}
                       transition={wiggleTransition}
                       whileHover={wiggleInitial}
+                      whileFocus={wiggleInitial}
                     >
                       Schedule a Call
                     </motion.a>

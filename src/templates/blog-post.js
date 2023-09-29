@@ -100,7 +100,7 @@ export const query = graphql`
             quality: 100
             layout: CONSTRAINED
             resizingBehavior: NO_CHANGE
-            aspectRatio: 2.5
+            aspectRatio: 1.77
             placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
           )
@@ -164,7 +164,7 @@ export const query = graphql`
               quality: 100
               layout: CONSTRAINED
               resizingBehavior: NO_CHANGE
-              aspectRatio: 2.5
+              aspectRatio: 1.77
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )

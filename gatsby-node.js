@@ -125,6 +125,14 @@ exports.createPages = async ({ graphql, actions }) => {
     response.data.allContentfulBlogPost.edges.forEach(edge => {
       const date = new Date(edge.node.publishedDate)
 
+      console.log("#####")
+      console.log(
+        edge.node.slug,
+        `Publish Date: ${date}`,
+        `Today: ${today}`,
+        `Create Page?: ${date <= today}`
+      )
+
       if (edge.node.slug !== "demo-post" && date <= today) {
         createPage({
           path: `/blog/${edge.node.slug}`,

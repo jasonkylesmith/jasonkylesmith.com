@@ -154,7 +154,7 @@ export const query = graphql`
                     resizingBehavior: CROP
                     placeholder: BLURRED
                     formats: [AUTO, WEBP, AVIF]
-                    aspectRatio: 2
+                    aspectRatio: 1.77
                   )
                   title
                 }
@@ -185,7 +185,7 @@ export const query = graphql`
                     resizingBehavior: CROP
                     placeholder: BLURRED
                     formats: [AUTO, WEBP, AVIF]
-                    aspectRatio: 2
+                    aspectRatio: 1.77
                   )
                 }
                 excerpt {
@@ -213,7 +213,7 @@ export const query = graphql`
                     quality: 100
                     layout: CONSTRAINED
                     resizingBehavior: FILL
-                    aspectRatio: 2
+                    aspectRatio: 1.77
                     placeholder: BLURRED
                     formats: [AUTO, WEBP, AVIF]
                   )
@@ -422,7 +422,7 @@ export const query = graphql`
                       quality: 100
                       layout: CONSTRAINED
                       resizingBehavior: FILL
-                      aspectRatio: 2
+                      aspectRatio: 1.77
                       placeholder: BLURRED
                       formats: [AUTO, WEBP, AVIF]
                     )
@@ -438,7 +438,7 @@ export const query = graphql`
                       quality: 100
                       layout: CONSTRAINED
                       resizingBehavior: FILL
-                      aspectRatio: 2
+                      aspectRatio: 1.77
                       placeholder: BLURRED
                       formats: [AUTO, WEBP, AVIF]
                     )
