@@ -6,6 +6,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons"
 import { far } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { motion } from "framer-motion"
 import MarkdownDisplay from "./markdown-display"
 
 library.add(fas)
@@ -53,9 +54,12 @@ const IconList = ({ module, isSplitContent }) => {
 
   const ContentWrapper = ({ children, variant, size }) => {
     return (
-      <div className={`iconList__container--wrapper`}>
+      <motion.div
+        className={`iconList__container--wrapper`}
+        variants={itemVariant}
+      >
         <div className={`iconList__container--item ${variant}`}>{children}</div>
-      </div>
+      </motion.div>
     )
   }
 
@@ -64,11 +68,28 @@ const IconList = ({ module, isSplitContent }) => {
   // variant: default, staggered
   // iconSize: lg, sm
 
+  const listVariant = {
+    visible: {
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.3,
+      },
+    },
+    hidden: {},
+  }
+  const itemVariant = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  }
+
   return (
-    <div
+    <motion.div
       className={`iconList__container ${variant} ${iconSize} ${
         isSplitContent && "splitContent"
       }`}
+      initial="hidden"
+      whileInView="visible"
+      variants={listVariant}
     >
       {icons.map((icon, index) => {
         const { image, variant, fontAwesomeIcon, fontAwesomeIconType, text } =
@@ -119,7 +140,7 @@ const IconList = ({ module, isSplitContent }) => {
           }
         }
       })}
-    </div>
+    </motion.div>
   )
 }
 

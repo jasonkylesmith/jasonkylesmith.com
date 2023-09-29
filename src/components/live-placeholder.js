@@ -28,7 +28,7 @@ const LivePlaceholder = () => {
               />
             </a> */}
             <a
-              href="https://www.instagram.com/jasonkylesmith_"
+              href="https://www.instagram.com/jasonthephotog"
               target="_new"
               className="icon"
             >

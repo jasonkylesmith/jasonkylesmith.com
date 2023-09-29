@@ -138,7 +138,11 @@ const BlockGallery = props => {
           {...photo}
           alt={photo.alt}
           initial={{ opacity: 0, scale: 1 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
           whileHover={{
             scale: 1.1,
             transition: { duration: 0.5 },

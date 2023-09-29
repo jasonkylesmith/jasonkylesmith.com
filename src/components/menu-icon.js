@@ -4,6 +4,12 @@ import Footer from "./footer"
 import useScrollBlock from "./helpers/useScrollBlock"
 import Navigation from "./navigation"
 import { Link } from "gatsby"
+import { motion } from "framer-motion"
+import {
+  wiggleAnimation,
+  wiggleInitial,
+  wiggleTransition,
+} from "../helpers/constants"
 
 const MenuIcon = props => {
   const [blockScroll, allowScroll] = useScrollBlock()
@@ -105,14 +111,19 @@ const MenuIcon = props => {
               <div
                 style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}
               >
-                <a
+                <motion.a
                   className="btn cta"
                   href="https://jasonkylesmith.com/booking/"
                   rel="noopener noreferrer"
                   target="_blank"
+                  initial={wiggleInitial}
+                  animate={wiggleAnimation}
+                  transition={wiggleTransition}
+                  whileHover={wiggleInitial}
+                  whileFocus={wiggleInitial}
                 >
                   Schedule a Call
-                </a>
+                </motion.a>
               </div>
               <Navigation
                 menuClick={handleMenuClick}

@@ -4,6 +4,13 @@ import MenuIcon from "./menu-icon"
 import { Link } from "gatsby"
 import Navigation from "./navigation"
 
+import { motion } from "framer-motion"
+import {
+  wiggleAnimation,
+  wiggleInitial,
+  wiggleTransition,
+} from "../helpers/constants"
+
 import SocialIcons from "./social-icons"
 
 const Header = props => {
@@ -34,14 +41,18 @@ const Header = props => {
                     </div>
                   </Link>
                   <div style={{ display: "flex", gap: "1rem" }}>
-                    <a
+                    <motion.a
                       className="btn cta"
                       href="https://jasonkylesmith.com/booking/"
                       rel="noopener noreferrer"
                       target="_blank"
+                      initial={wiggleInitial}
+                      animate={wiggleAnimation}
+                      transition={wiggleTransition}
+                      whileHover={wiggleInitial}
                     >
                       Schedule a Call
-                    </a>
+                    </motion.a>
                     <MenuIcon
                       version={"desktop"}
                       navColor={props.navColor}

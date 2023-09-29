@@ -1,9 +1,19 @@
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
+import { motion } from "framer-motion"
 import IconList from "./icon-list"
 import MarkdownDisplay from "./markdown-display"
 import ContactForm from "./contact-form"
 import BlockGallery from "./block-gallery"
+
+import {
+  initialCenter,
+  initialLeft,
+  initialRight,
+  whileInViewCenter,
+  whileInViewLeft,
+  whileInViewRight,
+} from "../helpers/constants"
 
 const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
   const {
@@ -86,7 +96,11 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
 
     if (id === "contactForm") {
       return (
-        <div className={`ps-md-4 w-100  ${parentFullWidth && "pe-3 ps-3"}`}>
+        <div
+          className={`ps-md-4 w-100 pt-4 pt-lg-0  ${
+            parentFullWidth && "pe-3 ps-3"
+          }`}
+        >
           <ContactForm module={block} />
         </div>
       )
@@ -116,30 +130,36 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
         style={hasBackgroundImage ? { height: "100%", padding: "6rem 0" } : {}}
       >
         {numOfBlocks === 1 ? (
-          <div
+          <motion.div
             className={`${soloClasses} content-container`}
             style={hasBackgroundImage ? { height: "100%" } : {}}
+            initial={initialCenter}
+            whileInView={whileInViewCenter}
           >
             <BlockWrapper block={blocks[0]} side="center" />
-          </div>
+          </motion.div>
         ) : (
           <>
-            <div
+            <motion.div
               className={`${leftClasses} content-container ${
                 blocks[0].sys.contentType.sys.id === "copy" && "copy-trigger"
               } ${isMobileReversed && "order-1 order-md-0"}`}
               style={hasBackgroundImage ? { height: "100%" } : {}}
+              initial={initialLeft}
+              whileInView={whileInViewLeft}
             >
               <BlockWrapper block={blocks[0]} side="left" />
-            </div>
-            <div
+            </motion.div>
+            <motion.div
               className={`${rightClasses} content-container ${
                 blocks[1].sys.contentType.sys.id === "copy" && "copy-trigger"
               } ${isMobileReversed && "order-0 order-md-1"}`}
               style={hasBackgroundImage ? { height: "100%" } : {}}
+              initial={initialRight}
+              whileInView={whileInViewRight}
             >
               <BlockWrapper block={blocks[1]} side="right" />
-            </div>
+            </motion.div>
           </>
         )}
       </div>

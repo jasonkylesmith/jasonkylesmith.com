@@ -231,14 +231,14 @@ a:hover {
 
     &.cta {
       margin-bottom: 0;
-      color: #f7f7f7;
-      background: #471a5d;
-      border-color: #f7f7f7;
+      color: $highlight;
+      background: $seasalt;
+      border-color: $highlight;
 
       &:hover {
         color: $dark;
-        background: #f7f7f7;
-        border-color: #f7f7f7;
+        background: $seasalt;
+        border-color: $seasalt;
         text-decoration: none;
       }
     }
@@ -300,6 +300,25 @@ a:hover {
       &::before {
         height: 0;
         width: 0;
+      }
+    }
+  }
+}
+
+.dark-nav-bg {
+  a,
+  a:active,
+  a:visited {
+    &.cta.btn {
+      color: $highlight-dark-bg;
+      background: $dark;
+      border-color: $highlight-dark-bg;
+
+      &:hover {
+        color: $seasalt;
+        background: $dark;
+        border-color: $dark;
+        text-decoration: none;
       }
     }
   }
