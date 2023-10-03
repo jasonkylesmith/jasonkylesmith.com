@@ -38,7 +38,7 @@ const Author = props => {
     <>
       <div className="author-container">
         <div className="author-image-wrapper">
-          <Link to="about" className="gallery-link">
+          <Link to="/about" className="gallery-link">
             <GatsbyImage
               image={photo.gatsbyImageData}
               alt={photo.description}
