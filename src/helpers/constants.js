@@ -43,3 +43,18 @@ export const wiggleTransition = {
   delay: 4,
   repeatDelay: 6,
 }
+
+export const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]

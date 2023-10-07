@@ -61,6 +61,30 @@ export const query = graphql`
         name
         headline
         module {
+          ... on ContentfulMonthlyClientsData {
+            name
+            year
+            January: isJanFilled
+            February: isFebFilled
+            March: isMarFilled
+            April: isAprFilled
+            May: isMayFilled
+            June: isJunFilled
+            July: isJulFilled
+            August: isAugFilled
+            September: isSepFilled
+            October: isOctFilled
+            November: isNovFilled
+            December: isDecFilled
+            contentful_id
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+          }
           ... on ContentfulAccordion {
             allowMultipleExpanded
             allowZeroExpanded
@@ -402,46 +426,82 @@ export const query = graphql`
                 }
               }
             }
+            variant
             cards {
-              id
-              title
-              body {
-                body
-                childrenMarkdownRemark {
-                  html
-                }
-              }
-              order
-              highlight {
-                ... on ContentfulBlogPost {
-                  id
-                  title
-                  slug
-                  featuredImage {
-                    gatsbyImageData(
-                      quality: 100
-                      layout: CONSTRAINED
-                      resizingBehavior: FILL
-                      aspectRatio: 1.77
-                      placeholder: BLURRED
-                      formats: [AUTO, WEBP, AVIF]
-                    )
+              ... on ContentfulPricingCard {
+                id
+                title
+                includes
+                price
+                discountedPrice
+                discountText
+                category
+                highlightText
+                body {
+                  body
+                  childrenMarkdownRemark {
+                    html
+                  }
+                  childMarkdownRemark {
+                    html
                   }
                 }
-                ... on ContentfulGallery {
-                  id
-                  title: name
-                  slug
-                  category
-                  featuredImage {
-                    gatsbyImageData(
-                      quality: 100
-                      layout: CONSTRAINED
-                      resizingBehavior: FILL
-                      aspectRatio: 1.77
-                      placeholder: BLURRED
-                      formats: [AUTO, WEBP, AVIF]
-                    )
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+              }
+              ... on ContentfulHighlightCard {
+                id
+                title
+                body {
+                  body
+                  childrenMarkdownRemark {
+                    html
+                  }
+                }
+                order
+                highlight {
+                  ... on ContentfulBlogPost {
+                    id
+                    title
+                    slug
+                    featuredImage {
+                      gatsbyImageData(
+                        quality: 100
+                        layout: CONSTRAINED
+                        resizingBehavior: FILL
+                        aspectRatio: 1.77
+                        placeholder: BLURRED
+                        formats: [AUTO, WEBP, AVIF]
+                      )
+                    }
+                  }
+                  ... on ContentfulGallery {
+                    id
+                    title: name
+                    slug
+                    category
+                    featuredImage {
+                      gatsbyImageData(
+                        quality: 100
+                        layout: CONSTRAINED
+                        resizingBehavior: FILL
+                        aspectRatio: 1.77
+                        placeholder: BLURRED
+                        formats: [AUTO, WEBP, AVIF]
+                      )
+                    }
+                  }
+                }
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
                   }
                 }
               }

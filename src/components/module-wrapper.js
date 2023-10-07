@@ -9,6 +9,7 @@ import Hero from "./hero"
 import IconList from "./icon-list"
 import SplitContent from "./split-content"
 import { GatsbyImage } from "gatsby-plugin-image"
+import AvailabilityList from "./availability-list"
 
 const ModuleWrapper = ({ props }) => {
   const {
@@ -154,6 +155,9 @@ const ModuleWrapper = ({ props }) => {
       break
     case "accordion":
       moduleSection = <Accordion module={module} />
+      break
+    case "placeholder1":
+      moduleSection = <AvailabilityList module={module} />
       break
     default:
       moduleSection = <div>{module.name}</div>
