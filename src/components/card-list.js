@@ -26,35 +26,40 @@ const CardList = ({ module }) => {
         {highlightText && (
           <h6 className="pricingCard--highlight">{highlightText}</h6>
         )}
-        {title && <h2 className="pricingCard--title">{title}</h2>}
-        {price && (
-          <h2 className="pricingCard--pricing">
-            <span
-              className={
-                !discountedPrice
-                  ? "pricingCard--price"
-                  : "pricingCard--price pricingCard--strike"
-              }
-            >
-              ${price} {!discountedPrice && <sup>+tax</sup>}
-            </span>
-            {discountedPrice && (
-              <span className="pricingCard--discounted">
-                {" "}
-                ${discountedPrice} <sup>+tax</sup>
-              </span>
+        <div>
+          <div className="pricingCard--header">
+            {title && <h2 className="pricingCard--title">{title}</h2>}
+            {price && (
+              <h2 className="pricingCard--pricing">
+                <span
+                  className={
+                    !discountedPrice
+                      ? "pricingCard--price"
+                      : "pricingCard--price pricingCard--strike"
+                  }
+                >
+                  ${price} {!discountedPrice && <sup>+tax</sup>}
+                </span>
+                {discountedPrice && (
+                  <span className="pricingCard--discounted">
+                    {" "}
+                    ${discountedPrice} <sup>+tax</sup>
+                  </span>
+                )}
+              </h2>
             )}
-          </h2>
-        )}
-        {body && <MarkdownDisplay props={body.childMarkdownRemark} />}
-        {includes && (
-          <ul>
-            {includes.map(text => (
-              <li>{text}</li>
-            ))}
-          </ul>
-        )}
-        <div className="block">BOOK</div>
+          </div>
+          {body && <MarkdownDisplay props={body.childMarkdownRemark} />}
+          {includes && (
+            <ul>
+              {includes.map(text => (
+                <li>{text}</li>
+              ))}
+            </ul>
+          )}
+          {/* <div className="block">BOOK</div> */}
+        </div>
+        <button className="btn button book">BOOK</button>
       </div>
     )
   }

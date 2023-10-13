@@ -8,17 +8,48 @@
   row-gap: 4rem;
 }
 
+.pricingList__container .pricingCard--header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+
 .pricingList__container .block {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   height: 5rem;
   width: 8rem;
-  background: $dark-lighter;
+  background: $dark;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+}
+
+.pricingList__container .book {
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+
+  border-width: 2px 0px 0px;
+  border-bottom-color: $dark;
+  border-left-color: $dark;
+  border-right-color: $dark;
+}
+
+.pricingList__container .book:hover {
+  border-width: 2px;
+  border-radius: 0;
+  border-width: 2px 0px 0px;
+}
+
+.pricingList__container .highlight .book {
+  border-color: $highlight;
+  background: $highlight;
+}
+
+.pricingList__container .highlight .book:hover {
+  border-color: $highlight;
 }
 
 .pricingList__container .highlight .block {
@@ -27,16 +58,22 @@
 
 .pricingList__container .pricingCard {
   position: relative;
-  padding: 0.5rem 9rem 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0;
   flex: 1;
-  border: 2px solid $dark-lighter;
+  border-radius: 4px;
+  border: 2px solid $dark;
+}
+
+.pricingCard > div {
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
 .pricingList__container .pricingCard--title {
   position: relative;
   padding-left: 1rem;
-  background: white;
   z-index: 1;
 }
 
@@ -47,7 +84,7 @@
   left: 0;
   height: 2rem;
   width: calc(10px);
-  background: $dark-lighter;
+  background: $dark;
   z-index: -1;
 }
 
@@ -92,6 +129,9 @@
   left: 1rem;
   margin: 0;
   padding: 0.5rem 1rem;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
   background: $highlight;
   text-transform: uppercase;
   color: white;
@@ -151,7 +191,7 @@
 }
 
 .pricing__price--cross-out {
-  color: $dark-lighter;
+  color: $dark;
   vertical-align: middle;
   transform: scale(0.6);
 

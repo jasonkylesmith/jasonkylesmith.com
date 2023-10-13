@@ -38,11 +38,11 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
       leftClasses = "col-12 col-md-6"
       rightClasses = "col-12 col-md-6"
     } else if (ratio === "left-larger") {
-      leftClasses = "col-12 col-md-8"
-      rightClasses = "col-12 col-md-4"
+      leftClasses = "col-12 col-md-6 col-lg-8"
+      rightClasses = "col-12 col-md-6 col-lg-4"
     } else {
-      leftClasses = "col-12 col-md-4"
-      rightClasses = "col-12 col-md-8"
+      leftClasses = "col-12 col-md-6 col-lg-4"
+      rightClasses = "col-12 col-md-6 col-lg-8"
     }
   }
 
@@ -63,7 +63,9 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
     if (id === "copy") {
       return (
         <div
-          className={`copy-wrapper d-flex justify-content-center ${
+          className={`copy-wrapper d-flex ${
+            numOfBlocks !== 0 && "justify-content-center"
+          } ${
             verticalAlignment === "center" && "align-items-center"
           } text-md-${textAlign} ${numOfBlocks === 1 && "solo-text"} ${
             numOfBlocks === 1 && ratio === "right-larger"
@@ -120,14 +122,13 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
   return (
     <div
       className={`col-12`}
-      style={hasBackgroundImage ? { height: "100%", padding: "1rem 0" } : {}}
+      style={hasBackgroundImage ? { padding: "1rem 0" } : {}}
     >
       {/* <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}> */}
       <div
         className={`split-content row gap-4 gap-md-0 mx-0 ${
           verticalAlignment === "center" && "align-center"
-        }`}
-        style={hasBackgroundImage ? { height: "100%", padding: "6rem 0" } : {}}
+        } ${hasBackgroundImage && "background-image"}`}
       >
         {numOfBlocks === 1 ? (
           <motion.div

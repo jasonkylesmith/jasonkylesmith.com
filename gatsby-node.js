@@ -52,19 +52,19 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: "/",
       component: path.resolve("./src/templates/page.js"),
-      context: { slug: "home-placeholder" },
+      context: { slug: "home-placeholder-future" },
     })
   } else {
     createPage({
-      path: "/",
+      path: "/home-placeholder/",
       component: path.resolve("./src/templates/page.js"),
       context: { slug: "home" },
     })
 
     createPage({
-      path: "/home-placeholder",
+      path: "/",
       component: path.resolve("./src/templates/page.js"),
-      context: { slug: "home-placeholder" },
+      context: { slug: "home-placeholder-future" },
     })
   }
 
@@ -124,14 +124,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
     response.data.allContentfulBlogPost.edges.forEach(edge => {
       const date = new Date(edge.node.publishedDate)
-
-      console.log("#####")
-      console.log(
-        edge.node.slug,
-        `Publish Date: ${date}`,
-        `Today: ${today}`,
-        `Create Page?: ${date <= today}`
-      )
 
       if (edge.node.slug !== "demo-post" && date <= today) {
         createPage({

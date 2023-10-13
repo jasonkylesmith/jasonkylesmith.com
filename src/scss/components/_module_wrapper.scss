@@ -74,6 +74,13 @@
 .module-bg-image-container {
   position: relative;
   height: 100%;
+  min-height: 40vh;
+}
+
+@media (min-width: 767px) {
+  .module-bg-image-container {
+    min-height: 105vh;
+  }
 }
 
 .module-bg-image-wrapper {

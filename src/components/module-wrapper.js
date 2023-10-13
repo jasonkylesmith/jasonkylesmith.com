@@ -82,13 +82,15 @@ const ModuleWrapper = ({ props }) => {
           } section__${backgroundColor} ${
             fullWidth ? `row px-0` : `row px-3 px-md-0`
           } ${overlapNav === "yes" && "overlap-nav"} module-bg-image-container`}
-          style={{
-            aspectRatio: `${backgroundImage.gatsbyImageData.width}/${
+          style={
+            {
+              /* aspectRatio: `${backgroundImage.gatsbyImageData.width}/${
               backgroundImage.gatsbyImageData.height > 1200
                 ? 1200
                 : backgroundImage.gatsbyImageData.height
-            }`,
-          }}
+            }`, */
+            }
+          }
         >
           <div
             className={`module-bg-image-wrapper ${
