@@ -19,6 +19,7 @@
     "fortawesome": "^0.0.1-security",
     "framer-motion": "^10.12.18",
     "gatsby": "^5.0.0",
+    "gatsby-plugin-canonical-urls": "^5.12.0",
     "gatsby-plugin-fontawesome-css": "^1.2.0",
     "gatsby-plugin-gatsby-cloud": "^5.11.0",
     "gatsby-plugin-google-tagmanager": "^5.11.0",

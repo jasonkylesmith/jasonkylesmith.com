@@ -6,8 +6,6 @@ const CardList = ({ module }) => {
   const { cards, variant } = module
 
   const PricingCard = ({ card }) => {
-    console.log("Card", card)
-
     const {
       body,
       category,
@@ -18,8 +16,6 @@ const CardList = ({ module }) => {
       title,
       highlightText,
     } = card
-
-    console.log(body)
 
     return (
       <div className={`pricingCard ${highlightText && "highlight"}`}>

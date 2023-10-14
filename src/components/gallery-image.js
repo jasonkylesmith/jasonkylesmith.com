@@ -3,7 +3,7 @@ import React, { useState } from "react"
 
 const GalleryImage = props => {
   const { gatsbyImageData, file } = props.image
-  // console.log("Gallery Image", props)
+  console.log("Gallery Image", props)
 
   const [checked, setChecked] = useState(false)
 
@@ -24,6 +24,7 @@ const GalleryImage = props => {
       ></div>
       <GatsbyImage
         image={gatsbyImageData}
+        alt=""
         imgStyle={{ padding: checked ? 20 : 0 }}
         onClick={() => {
           setChecked(!checked)

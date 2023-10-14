@@ -2,8 +2,6 @@ import React from "react"
 import { months } from "../helpers/constants"
 
 const AvailabilityList = ({ module }) => {
-  console.log(module)
-
   return (
     <div className="availabilityList">
       {months.map(month => {

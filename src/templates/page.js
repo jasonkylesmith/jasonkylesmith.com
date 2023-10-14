@@ -6,11 +6,11 @@ import ModuleWrapper from "../components/module-wrapper"
 import Seo from "../components/seo"
 
 const Page = ({ data }) => {
-  const { name, modules, navColor, nav } = data.contentfulPage
+  const { name, modules, navColor, nav, excludeRobots } = data.contentfulPage
 
   return (
     <Layout navColor={navColor} navSettings={nav}>
-      <Seo title={name} />
+      <Seo title={name} excludeRobots={excludeRobots} />
 
       <div className="">
         {modules &&
@@ -30,6 +30,7 @@ export const query = graphql`
       name
       slug
       navColor
+      excludeRobots
       nav {
         mainLinks {
           name
