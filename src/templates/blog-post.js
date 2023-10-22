@@ -229,7 +229,7 @@ const BlogPost = props => {
             </div>
           )}
           <h1 className="blog-title block__heading">{title}</h1>
-          <div className="d-flex flex-row align-items-center">
+          <div className="d-flex flex-row flex-wrap align-items-center blog-subhead-section">
             <span className="blog-date">{publishedDate}</span>
             <Tags tags={tags} />
 

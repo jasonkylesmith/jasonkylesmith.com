@@ -139,13 +139,28 @@
 }
 
 .blog-date + .blog-tags {
-  margin-bottom: 1rem;
   margin-left: 1rem;
+  margin-bottom: 0;
   position: relative;
 
   .blog-tag {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+  }
+}
+
+.blog-subhead-section {
+  .blog-date {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 767px) {
+  .blog-subhead-section {
+    .blog-date,
+    .blog-tags {
+      margin-bottom: 1rem;
+    }
   }
 }
 
