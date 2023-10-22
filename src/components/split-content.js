@@ -121,7 +121,7 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
 
   return (
     <div
-      className={`col-12`}
+      className={`col-12 ${isHero && `d-flex align-items-center`}`}
       style={hasBackgroundImage ? { padding: "1rem 0" } : {}}
     >
       {/* <div className={`${parentFullWidth && "col-12 col-md-8 offset-md-2"}`}> */}

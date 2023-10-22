@@ -36,6 +36,8 @@ const ModuleWrapper = ({ props }) => {
 
   /* console.log("Module Wrapper ID", id) */
 
+  let isHero = module?.isHero ?? false
+
   const Container = ({ children }) => {
     let content
 
@@ -66,8 +68,8 @@ const ModuleWrapper = ({ props }) => {
           <div
             className={
               fullWidth
-                ? `col-12 px-0 ${id === "hero" && ""}`
-                : `col-12 col-md-10 offset-md-1 px-0`
+                ? `col-12 ${isHero && "d-flex"} px-0 ${id === "hero" && ""}`
+                : `col-12 ${isHero && "d-flex"} col-md-10 offset-md-1 px-0`
             }
           >
             {content}
@@ -105,8 +107,8 @@ const ModuleWrapper = ({ props }) => {
           <div
             className={`${
               fullWidth
-                ? `col-12 px-0 ${id === "hero" && ""}`
-                : `col-12 col-md-10 offset-md-1 px-0`
+                ? `col-12 ${isHero && "d-flex"} px-0 ${id === "hero" && ""}`
+                : `col-12 ${isHero && "d-flex"} col-md-10 offset-md-1 px-0`
             }`}
             style={{ zIndex: 2 }}
           >
