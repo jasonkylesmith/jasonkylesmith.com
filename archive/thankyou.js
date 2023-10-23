@@ -79,7 +79,11 @@ const Nav = props => {
     <div className="post-nav ">
       <div className="post-nav-wrapper justify-content-end">
         <FontAwesomeIcon icon={["fas", "chevron-left"]} />
-        <button className="btn-link" onClick={() => navigate(-1)}>
+        <button
+          name="go back"
+          className="btn-link"
+          onClick={() => navigate(-1)}
+        >
           Go Back
         </button>
       </div>

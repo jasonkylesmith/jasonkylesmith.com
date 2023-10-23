@@ -231,7 +231,7 @@ const ContactForm = ({ module }) => {
             <label hidden htmlFor="destination">
               Destination
             </label>
-            <button className="btn button" type="submit">
+            <button name="submit" className="btn button" type="submit">
               {buttonText ? buttonText : "Submit"}
             </button>
             {error && (
@@ -246,7 +246,11 @@ const ContactForm = ({ module }) => {
           <h5>Thank you!</h5>
           <p>I'll get back with you as soon as I can!</p>
           <p>
-            <button className="btn button" onClick={resetForm}>
+            <button
+              name="send another message"
+              className="btn button"
+              onClick={resetForm}
+            >
               Send another message?
             </button>
           </p>

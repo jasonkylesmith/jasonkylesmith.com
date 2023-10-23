@@ -200,6 +200,7 @@ const Blog = () => {
                   {allTags.map((tag, index) => {
                     return (
                       <button
+                        name={`filter by ${tag}`}
                         onClick={() => handleTagClick(tag)}
                         className={`${
                           selectedTag === tag ? "selected-tag" : null

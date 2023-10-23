@@ -55,7 +55,9 @@ const CardList = ({ module }) => {
           )}
           {/* <div className="block">BOOK</div> */}
         </div>
-        <button className="btn button book">BOOK</button>
+        <button name="Book" className="btn button book">
+          BOOK
+        </button>
       </div>
     )
   }

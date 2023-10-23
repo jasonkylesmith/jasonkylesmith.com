@@ -43,6 +43,7 @@ const MenuIcon = props => {
           handleMenuClick()
         }}
         role="button"
+        name="menu"
         style={{
           display: "flex",
           gap: ".25rem",
