@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Jason Kyle Smith Photography`,
-    description: `Jason Kyle Smith is a photographer from the Southeast Michigan area specializing in portraiture, branding, and people photography.`,
+    description: `Jason Kyle Smith is a Southeast Michigan-based family photographer dedicated to capturing timeless moments for families, couples, and individuals. Offering personalized consultations and natural editing to ensure your photos are authentic and cherished for generations. Schedule a call to create lasting memories together.`,
     author: `Jason Kyle Smith`,
     siteUrl: `https://jasonkylesmith.com`,
   },

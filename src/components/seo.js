@@ -35,6 +35,7 @@ function Seo({ description, lang, meta, title, photo, url, excludeRobots }) {
       }}
     >
       <title>{`${title} | Jason Kyle Smith Photography`}</title>
+      <meta name="description" content={metaDescription} />
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       {/*       <link rel="preconnect" href="https://fonts.googleapis.com" />
