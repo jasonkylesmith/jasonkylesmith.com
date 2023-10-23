@@ -132,22 +132,28 @@ const BlockGallery = props => {
       cont.top = top
     }
 
+    const delay = direction === "column" ? 0.15 : 0.15 * index
+
     return (
       <div style={{ ...cont }} key={key}>
         <motion.img
           {...photo}
           alt={photo.alt}
           initial={{ opacity: 0, scale: 1 }}
+          viewport={{ amount: 0.0001, once: true }}
           whileInView={{
             opacity: 1,
             scale: 1,
-            transition: { duration: 0.5, ease: "easeInOut" },
+            transition: {
+              duration: 0.5,
+              ease: "easeInOut",
+              opacity: { delay: delay },
+            },
           }}
           whileHover={{
             scale: 1.1,
             transition: { duration: 0.5 },
           }}
-          viewport={{ once: true }}
           onClick={() => {
             imgIndexRef.current = index
             setImgIndex(index)
