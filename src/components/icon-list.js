@@ -78,7 +78,7 @@ const IconList = ({ module, isSplitContent }) => {
     hidden: {},
   }
   const itemVariant = {
-    visible: { opacity: 1 },
+    visible: { opacity: 1, transition: { duration: 0.5 } },
     hidden: { opacity: 0 },
   }
 

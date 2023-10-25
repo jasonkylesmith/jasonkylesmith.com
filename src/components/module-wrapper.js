@@ -83,16 +83,10 @@ const ModuleWrapper = ({ props }) => {
             marginVariant && `section__${marginVariant}`
           } section__${backgroundColor} ${
             fullWidth ? `row px-0` : `row px-3 px-md-0`
-          } ${overlapNav === "yes" && "overlap-nav"} module-bg-image-container`}
-          style={
-            {
-              /* aspectRatio: `${backgroundImage.gatsbyImageData.width}/${
-              backgroundImage.gatsbyImageData.height > 1200
-                ? 1200
-                : backgroundImage.gatsbyImageData.height
-            }`, */
-            }
-          }
+          } ${overlapNav === "yes" && "overlap-nav"} ${
+            !isHero && "non-hero-bg-image-container"
+          } module-bg-image-container`}
+          style={{}}
         >
           <div
             className={`module-bg-image-wrapper ${
@@ -107,8 +101,12 @@ const ModuleWrapper = ({ props }) => {
           <div
             className={`${
               fullWidth
-                ? `col-12 ${isHero && "d-flex"} px-0 ${id === "hero" && ""}`
-                : `col-12 ${isHero && "d-flex"} col-md-10 offset-md-1 px-0`
+                ? `col-12 ${isHero && "d-flex"} d-flex px-0 ${
+                    id === "hero" && ""
+                  }`
+                : `col-12 ${
+                    isHero && "d-flex"
+                  } d-flex col-md-10 offset-md-1 px-0`
             }`}
             style={{ zIndex: 2 }}
           >
