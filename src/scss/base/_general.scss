@@ -110,7 +110,7 @@ button:active {
     color: $light;
     border-radius: 0.25rem;
     font-weight: 700;
-    background-color: $accent-darker;
+    background-color: $accent-dark-darker;
     border: 2px solid $light;
     padding: $btn-padding;
     text-transform: uppercase;
@@ -118,9 +118,9 @@ button:active {
       color 250ms ease-in-out 0ms, border 250ms ease-in-out 0ms;
 
     &:hover {
-      color: $accent-darker;
+      color: $accent-dark-darker;
       background-color: $light;
-      border-color: $accent-darker;
+      border-color: $accent-dark-darker;
     }
   }
 
@@ -141,7 +141,7 @@ button:active {
     &:hover {
       .icon {
         transform: scale(1.3);
-        color: $accent;
+        color: $accent-dark;
       }
       .mobile {
         color: #fff !important;
@@ -155,7 +155,7 @@ a:active,
 a:visited,
 a:hover {
   text-decoration: none;
-  color: $accent-darker;
+  color: $accent-dark-darker;
   font-weight: 600;
   position: relative;
 
@@ -165,7 +165,7 @@ a:hover {
 
     &:hover {
       transition: border $anim-duration ease-in-out 0ms;
-      border: 2px solid $accent-darker !important;
+      border: 2px solid $accent-dark-darker !important;
     }
   }
 
@@ -175,7 +175,7 @@ a:hover {
     width: 100%;
     height: 2px;
     background-color: #f7f7f7;
-    color: $accent;
+    color: $accent-dark;
     bottom: 0;
     left: 0;
     transform: scaleX(0);
@@ -198,8 +198,8 @@ a:hover {
       position: absolute;
       height: 100%;
       width: 2px;
-      background-color: $accent-darker;
-      color: $accent-darker;
+      background-color: $accent-dark-darker;
+      color: $accent-dark-darker;
       bottom: 0;
       left: -0.5rem;
       transform: scaleY(0);
@@ -222,8 +222,8 @@ a:hover {
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
-    color: $accent-darker;
-    border: 2px solid $accent-darker;
+    color: $accent-dark-darker;
+    border: 2px solid $accent-dark-darker;
     margin-bottom: $margins;
     padding: $btn-padding;
     transition: background-color $anim-duration ease-in-out 0ms,
@@ -259,9 +259,9 @@ a:hover {
   }
 
   &.btn:hover {
-    background-color: $accent-darker;
+    background-color: $accent-dark-darker;
     color: $light;
-    border: 2px solid $accent-darker;
+    border: 2px solid $accent-dark-darker;
 
     &.scroll {
       background-color: $dark;
@@ -284,7 +284,7 @@ a:hover {
     &:hover {
       .icon {
         transform: scale(1.3);
-        color: $accent;
+        color: $accent-dark;
       }
     }
   }
@@ -329,7 +329,7 @@ a:hover {
 .btn-link:visited,
 .btn-link:hover {
   text-decoration: none;
-  color: $accent-darker;
+  color: $accent-dark-darker;
   font-weight: 600;
   position: relative;
   padding: 0;
@@ -342,8 +342,8 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: $accent-darker;
-    color: $accent-darker;
+    background-color: $accent-dark-darker;
+    color: $accent-dark-darker;
     bottom: 0;
     left: 0;
     transform: scaleX(0);
@@ -352,7 +352,7 @@ a:hover {
 
   &:hover {
     &::before {
-      color: $accent-darker;
+      color: $accent-dark-darker;
       height: 2px;
       transition: transform $anim-duration ease-in-out 0ms;
       transform: scaleX(1);
@@ -410,7 +410,7 @@ nav {
     &::before,
     &::after {
       position: absolute;
-      color: $accent;
+      color: $accent-dark;
       font-size: $base-font-size * 5;
     }
 

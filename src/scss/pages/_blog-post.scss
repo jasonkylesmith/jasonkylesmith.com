@@ -87,9 +87,9 @@
 }
 
 .blog-body {
-  /* border-top: 4px solid $accent; */
-  /* border-bottom: 4px solid $accent; */
-  /* border-left: 4px solid $accent; */
+  /* border-top: 4px solid $accent-dark; */
+  /* border-bottom: 4px solid $accent-dark; */
+  /* border-left: 4px solid $accent-dark; */
   padding-top: 0.5rem;
   li {
     p {
@@ -190,7 +190,7 @@
     outline: 0;
 
     .blog-tag {
-      border: inset 2px $accent;
+      border: inset 2px $accent-dark;
     }
 
     .selected-tag {

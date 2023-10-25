@@ -3,15 +3,15 @@ input {
 }
 
 .accent-input:checked {
-  background-color: $accent;
-  border-color: $accent;
+  background-color: $accent-dark;
+  border-color: $accent-dark;
 }
 
 .form-check-input:focus {
-  box-shadow: 0 0 0 0.25rem $accent-overlay;
+  box-shadow: 0 0 0 0.25rem $accent-dark-overlay;
 }
 
 .form-control:focus {
-  border-color: $accent;
-  box-shadow: 0 0 0 0.25rem $accent-overlay;
+  border-color: $accent-dark;
+  box-shadow: 0 0 0 0.25rem $accent-dark-overlay;
 }

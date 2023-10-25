@@ -414,6 +414,7 @@ export const query = graphql`
                   placeholder: BLURRED
                   formats: [AUTO, WEBP]
                   quality: 100
+                  layout: CONSTRAINED
                 )
                 description
               }

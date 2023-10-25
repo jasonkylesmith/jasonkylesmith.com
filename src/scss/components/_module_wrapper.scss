@@ -46,13 +46,18 @@
 }
 
 .section__accent {
-  background-color: $accent;
+  background-color: $accent-dark;
   color: #f7f7f7;
 }
 
 .section__light {
   background-color: $light;
   color: $dark;
+}
+
+.section__sand {
+  background-color: $sand;
+  color: $dark !important;
 }
 
 .overlap-nav {
