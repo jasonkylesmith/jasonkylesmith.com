@@ -145,7 +145,7 @@ const Gallery = props => {
     <Layout>
       <Seo
         title={name}
-        url={`https://jasonkylesmith.com/${category}/${slug}`}
+        url={`https://www.jasonkylesmith.com/${category}/${slug}/`}
         photo={featuredImage.file.url}
       />
 

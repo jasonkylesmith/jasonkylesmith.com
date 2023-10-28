@@ -114,7 +114,7 @@ const MenuIcon = props => {
               >
                 <motion.a
                   className="btn cta"
-                  href="https://jasonkylesmith.com/booking/"
+                  href="https://www.jasonkylesmith.com/booking/"
                   rel="noopener noreferrer"
                   target="_blank"
                   initial={wiggleInitial}

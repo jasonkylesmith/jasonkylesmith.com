@@ -199,7 +199,7 @@ const Clients = () => {
     <Layout>
       <Seo
         title={"Clients"}
-        url={`https://jasonkylesmith.com/clients`}
+        url={`https://www.jasonkylesmith.com/clients/`}
         description={"Clients"}
         photo={null}
       />
