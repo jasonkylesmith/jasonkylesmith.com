@@ -91,9 +91,9 @@ const SocialIcons = props => {
       <a href={instagram} target="_new" className="icon" aria-label="Instagram">
         <FontAwesomeIcon icon={["fab", "instagram"]} className="mx-1 icon" />
       </a>
-      {/* <a href={facebook} target="_new" className="icon" aria-label="Facebook">
+      <a href={facebook} target="_new" className="icon" aria-label="Facebook">
         <FontAwesomeIcon icon={["fab", "facebook"]} className="mx-1 icon" />
-      </a> */}
+      </a>
 
       {/* {props?.version !== "author" && (
         <button
