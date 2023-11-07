@@ -3,6 +3,14 @@
 $purple: #9780a9;
 $accent-dark: #363e47;
 
+$accent-linear: linear-gradient(80deg, #363e47 80%, #4b5563 100%);
+// $accent-radial: radial-gradient(circle at center, #4b5563 30%, #363e47 100%);
+$accent-radial: radial-gradient(
+  circle at bottom center,
+  #4b5563 5%,
+  #363e47 50%
+);
+
 $sand: #ebdccb;
 
 $highlight: #1370a9;
@@ -29,6 +37,14 @@ $seasalt70: rgb(247, 247, 247, 0.7);
 */
 
 $dark: #1f1f1f;
+
+$dark-linear: linear-gradient(175deg, #1f1f1f 80%, hsl(0, 0%, 18%) 100%);
+$dark-radial: radial-gradient(
+  circle at bottom center,
+  hsl(0, 0%, 18%) 5%,
+  #1f1f1f 50%
+);
+
 $light: #efefef;
 
 $purple-overlay: #1f1f1f80;

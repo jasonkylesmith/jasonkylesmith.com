@@ -114,7 +114,7 @@ nav.desktop-nav {
 }
 
 footer {
-  background-color: $accent-dark;
+  // background-color: $accent-dark;
   padding-top: 1rem;
   padding-bottom: 0.5rem;
 
@@ -159,6 +159,10 @@ footer {
       }
     }
   }
+}
+
+.page-footer {
+  background: $accent-radial;
 }
 
 .hero {

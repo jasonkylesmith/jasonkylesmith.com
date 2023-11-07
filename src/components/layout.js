@@ -47,7 +47,7 @@ const Layout = ({ children, navColor, navSettings }) => {
           <main className="p-0 container">{children}</main>
         </div>
 
-        <div className="row">
+        <div className="row page-footer">
           <Footer version="desktop" />
           <Footer version="mobile" />
         </div>
