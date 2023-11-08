@@ -63,14 +63,15 @@ const ModuleWrapper = ({ props }) => {
             marginVariant && `section__${marginVariant}`
           } section__${backgroundColor} ${
             fullWidth ? `row px-0` : `row px-3 px-md-0`
-          }`}
+          } ${overlapNav === "yes" && "overlap-nav"}`}
         >
           <div
-            className={
+            className={`${
               fullWidth
                 ? `col-12 ${isHero && "d-flex"} px-0 ${id === "hero" && ""}`
                 : `col-12 ${isHero && "d-flex"} col-md-10 offset-md-1 px-0`
-            }
+            }`}
+            style={{ paddingTop: overlapNav === "yes" ? "6rem" : "unset" }}
           >
             {content}
           </div>
