@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  if (process.env.GATSBY_ENVIRONMENT === "live") {
+  /*   if (process.env.GATSBY_ENVIRONMENT === "live") {
     createPage({
       path: "/",
       component: path.resolve("./src/templates/page.js"),
@@ -66,12 +66,12 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve("./src/templates/page.js"),
       context: { slug: "home-placeholder-future" },
     })
-  }
+  } */
 
   response.data.allContentfulPage.edges.forEach(edge => {
     if (!envExclude.includes(edge.node.envLevel)) {
       if (excludedPages.includes(edge.node.slug)) {
-        if (!exclude) {
+        /* if (!exclude) {
           if (!["home", "home-placeholder"].includes(edge.node.slug)) {
             createPage({
               path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
@@ -81,9 +81,16 @@ exports.createPages = async ({ graphql, actions }) => {
               },
             })
           }
-        }
+        } */
       } else {
-        if (!["home", "home-placeholder"].includes(edge.node.slug)) {
+        createPage({
+          path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
+          component: path.resolve("./src/templates/page.js"),
+          context: {
+            slug: edge.node.slug,
+          },
+        })
+        /* if (!["home", "home-placeholder"].includes(edge.node.slug)) {
           createPage({
             path: edge.node.slug === "home" ? "/" : `/${edge.node.slug}`,
             component: path.resolve("./src/templates/page.js"),
@@ -91,7 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
               slug: edge.node.slug,
             },
           })
-        }
+        } */
       }
     }
 

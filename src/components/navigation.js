@@ -100,6 +100,17 @@ const Navigation = props => {
             })}
           <li>
             <Link
+              to="/contact/"
+              className=""
+              onClick={() => {
+                props.menuClick()
+              }}
+            >
+              contact
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/blog/"
               className=""
               onClick={() => {
