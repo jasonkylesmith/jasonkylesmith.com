@@ -38,6 +38,7 @@ export const query = graphql`
           slug
         }
       }
+
       modules {
         sectionMargin
         overlapNav

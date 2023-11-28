@@ -1,6 +1,11 @@
 import * as React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { Fragment } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+
+library.add(fas)
 
 const Navigation = props => {
   const { navSettings } = props
@@ -15,6 +20,47 @@ const Navigation = props => {
 
   const { distinct } = data.allContentfulGallery */
 
+  const pages = useStaticQuery(graphql`
+    query {
+      allContentfulPage {
+        edges {
+          node {
+            slug
+            name
+            envLevel
+            subPages {
+              ... on ContentfulBlogPost {
+                id
+                slug
+                title
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+              }
+              ... on ContentfulPage {
+                id
+                name
+                slug
+                navLinkText
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
   if (props.version === "desktop") {
     return (
       <nav className={`d-none d-md-block desktop-nav`}>
@@ -28,12 +74,60 @@ const Navigation = props => {
 
             {navSettings?.mainLinks &&
               navSettings.mainLinks.map(link => {
+                const { node: thisPage } = pages.allContentfulPage.edges.find(
+                  ({ node: page }) => page.slug === link.slug
+                )
+
+                const { subPages } = thisPage
+
                 return (
                   <Fragment key={`main-${link.slug}`}>
                     <li> - </li>
-                    <li>
+                    <li
+                      style={{ position: "relative", paddingBottom: ".5rem" }}
+                    >
                       {" "}
                       <Link to={`/${link.slug}`}>{link.navLinkText}</Link>
+                      {subPages && (
+                        <span className={"linkChevron"}>
+                          <FontAwesomeIcon
+                            icon={["fas", "chevron-down"]}
+                            size="2xs"
+                          />
+                        </span>
+                      )}
+                      {subPages && (
+                        <div className={"subpageLink"}>
+                          {subPages.map(subPage => {
+                            const { id } = subPage?.sys?.contentType?.sys
+
+                            return (
+                              <div
+                                key={`subpage-${subPage.id}`}
+                                style={{
+                                  display: "flex",
+                                  flexDirection: "row",
+                                  gap: ".25rem",
+                                }}
+                              >
+                                {"-"}
+
+                                <Link
+                                  to={
+                                    id === "page"
+                                      ? `/${subPage.slug}`
+                                      : `/blog/${subPage.slug}`
+                                  }
+                                >
+                                  <span>
+                                    {subPage.navLinkText || subPage.title}
+                                  </span>
+                                </Link>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )}
                     </li>
                   </Fragment>
                 )
@@ -82,6 +176,12 @@ const Navigation = props => {
           </li>
           {navSettings?.mainLinks &&
             navSettings.mainLinks.map(link => {
+              const { node: thisPage } = pages.allContentfulPage.edges.find(
+                ({ node: page }) => page.slug === link.slug
+              )
+
+              const { subPages } = thisPage
+
               return (
                 <Fragment key={`main-${link.slug}`}>
                   <li>
@@ -95,6 +195,28 @@ const Navigation = props => {
                       {link.navLinkText}
                     </Link>
                   </li>
+                  {subPages &&
+                    subPages.map(sub => {
+                      const { id } = sub?.sys?.contentType?.sys
+
+                      return (
+                        <li style={{ textTransform: "lowercase" }}>
+                          {" "}
+                          <Link
+                            to={
+                              id === "page"
+                                ? `/${sub.slug}`
+                                : `/blog/${sub.slug}`
+                            }
+                            onClick={() => {
+                              props.menuClick()
+                            }}
+                          >
+                            {sub.navLinkText || sub.title}
+                          </Link>
+                        </li>
+                      )
+                    })}
                 </Fragment>
               )
             })}
@@ -151,18 +273,51 @@ const Navigation = props => {
 
           {navSettings?.mainLinks &&
             navSettings.mainLinks.map(link => {
+              const { node: thisPage } = pages.allContentfulPage.edges.find(
+                ({ node: page }) => page.slug === link.slug
+              )
+
+              const { subPages } = thisPage
+
               return (
-                <li key={`mobile-${link.slug}`}>
-                  <Link
-                    to={`/${link.slug}`}
-                    className=""
-                    onClick={() => {
-                      props.menuClick()
-                    }}
-                  >
-                    {link.navLinkText}
-                  </Link>
-                </li>
+                <Fragment key={`mobile-${link.slug}`}>
+                  <li>
+                    <Link
+                      to={`/${link.slug}`}
+                      className=""
+                      onClick={() => {
+                        props.menuClick()
+                      }}
+                    >
+                      {link.navLinkText}
+                    </Link>
+                  </li>
+                  {subPages &&
+                    subPages.map(sub => {
+                      const { id } = sub?.sys?.contentType?.sys
+
+                      return (
+                        <li
+                          style={{ textTransform: "lowercase" }}
+                          key={`mobile-sub-${sub.id}`}
+                        >
+                          {" "}
+                          <Link
+                            to={
+                              id === "page"
+                                ? `/${sub.slug}`
+                                : `/blog/${sub.slug}`
+                            }
+                            onClick={() => {
+                              props.menuClick()
+                            }}
+                          >
+                            {sub.navLinkText || sub.title}
+                          </Link>
+                        </li>
+                      )
+                    })}
+                </Fragment>
               )
             })}
           {/*           {distinct?.map((category, index) => {

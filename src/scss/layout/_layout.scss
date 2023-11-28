@@ -59,6 +59,67 @@ nav.desktop-nav {
   }
 }
 
+.subpageLink {
+  position: absolute;
+  left: -0.25rem;
+  background: #f7f7f7;
+  padding: 0 0.5rem 0.25rem;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  height: 0;
+  font-size: 0.8em;
+}
+
+.subpageLink > div,
+.subpageLink a,
+.subpageLink a span {
+  display: block;
+  height: 0;
+  width: fit-content;
+  color: transparent;
+}
+
+.subpageLink span {
+  text-transform: lowercase;
+  text-wrap: nowrap;
+}
+
+li:hover + .subpageLink,
+li:hover .subpageLink {
+  display: block;
+  height: unset;
+
+  opacity: 1;
+}
+
+li:hover .subpageLink > div,
+li:hover .subpageLink a,
+li:hover .subpageLink a span {
+  height: unset;
+  color: inherit;
+}
+
+.linkChevron {
+  margin-left: 0.25rem;
+}
+
+.linkChevron svg {
+  font-size: 0.7rem;
+  margin-bottom: 0.25rem;
+  /* transform: rotate(0deg);
+  transition: transform 150ms ease-in-out; */
+}
+
+/* li:hover + .linkChevron svg,
+li:hover .linkChevron svg {
+  transform: rotate(-90deg);
+} */
+
+.dark-nav-bg .subpageLink {
+  color: #f7f7f7;
+  background-color: #1f1f1f;
+}
+
 .standard-container-padding {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
