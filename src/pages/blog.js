@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick-theme.css"
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulNavigation(name: { eq: "Placeholder Nav" }) {
+      contentfulNavigation(name: { eq: "General Navigation" }) {
         id
         mainLinks {
           navLinkText

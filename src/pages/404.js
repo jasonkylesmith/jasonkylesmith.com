@@ -13,7 +13,7 @@ library.add(fas)
 const NotFoundPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulNavigation(name: { eq: "Placeholder Nav" }) {
+      contentfulNavigation(name: { eq: "General Navigation" }) {
         id
         mainLinks {
           navLinkText
