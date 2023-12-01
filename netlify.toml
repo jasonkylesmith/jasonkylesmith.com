@@ -1,5 +1,5 @@
 [build]
   publish = "public"
-  functions = "functions"
+  functions = "netlify/functions"
   command = "npm run build"
   environment = { NODE_VERSION = "15.5.0", AWS_LAMBDA_JS_RUNTIME = "15.5.0" }
