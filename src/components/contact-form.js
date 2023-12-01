@@ -17,6 +17,40 @@ const ContactForm = ({ module }) => {
   const [error, setError] = useState(false)
   const [isMessageSent, setIsMessageSent] = useState(false)
 
+  async function encryptData(data) {
+    // Convert text to ArrayBuffer
+    const textEncoder = new TextEncoder()
+    const encodedData = textEncoder.encode(data)
+
+    // Generate a random key and IV
+    const key = await crypto.subtle.importKey(
+      "jwk",
+      JSON.parse(process.env.GATSBY_EXPORTED_KEY),
+      { name: "AES-CBC", length: 256 },
+      true,
+      ["encrypt", "decrypt"]
+    )
+
+    const iv = crypto.getRandomValues(new Uint8Array(16))
+
+    // Encrypt the data
+    const encrypted = await crypto.subtle.encrypt(
+      { name: "AES-CBC", iv },
+      key,
+      encodedData
+    )
+
+    // Convert ArrayBuffer to hex string for IV and encrypted data
+    const ivHex = Array.from(iv)
+      .map(b => b.toString(16).padStart(2, "0"))
+      .join("")
+    const encryptedHex = Array.from(new Uint8Array(encrypted))
+      .map(b => b.toString(16).padStart(2, "0"))
+      .join("")
+
+    return { iv: ivHex, encryptedData: encryptedHex }
+  }
+
   const formValidation = () => {
     return emailState === "valid" && message.length > 3 && name.length > 2
   }
@@ -73,11 +107,16 @@ const ContactForm = ({ module }) => {
       .join("&")
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     if (formValidation()) {
       setError(false)
-      fetch("/", {
+
+      const { encryptedData, iv } = await encryptData(
+        process.env.GATSBY_FUNCTIONS_API_KEY
+      )
+
+      /* fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
@@ -88,6 +127,20 @@ const ContactForm = ({ module }) => {
           destination,
           emailPermissionToUse,
           honeypotChecked,
+        }),
+      }) */
+      fetch("/.netlify/functions/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          name,
+          email,
+          message,
+          destination,
+          emailPermissionToUse,
+          honeypotChecked,
+          apiKey: encryptedData,
+          iv,
         }),
       })
         .then(response => {
