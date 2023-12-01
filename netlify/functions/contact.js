@@ -83,9 +83,8 @@ async function sendEmail(data) {
   // Send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      return console.log(error)
+      return console.log("error with transporter sending mail", error)
     }
-    console.log("Message sent: %s", info.messageId)
   })
 }
 
