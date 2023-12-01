@@ -3,12 +3,6 @@ const { google } = require("googleapis")
 const validator = require("validator")
 const nodemailer = require("nodemailer")
 
-/* TODO */
-/* 
-  - Figure out nodemail to email me when this goes through
-
-*/
-
 const { formatDate } = require("../../src/helpers/helpers")
 
 function queryStringToObject(queryString) {
@@ -88,7 +82,9 @@ async function sendEmail(data) {
   })
 }
 
-exports.handler = async function (event, context) {
+exports.handler = async function (event) {
+  console.log("Is this even running?")
+
   const error = { msg: false }
   let body = {}
   let statusCode = 200

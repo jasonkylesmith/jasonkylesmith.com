@@ -1,22 +1,5 @@
-[[headers]]
-for = "/*"
-[headers.values]
-  Content-Security-Policy = '''
-      "default-src 'self';", "img-src *.ctfassets.net;"
-  '''
-  Permissions-Policy = '''
-      "geolocation=();", "midi=();", "sync-xhr=();", "microphone=();", "camera=();", "magnetometer=();", "gyroscope=();", "fullscreen=(self);", "payment=();"
-  '''
-
-  X-Frame-Options = '''
-        "SAMEORIGIN;"
-  '''
-
-  X-Content-Type-Options = '''
-        "nosniff;"
-  '''
-
-  Referrer-Policy = '''
-        ""
-  '''
-    
+[build]
+  publish = "public"
+  functions = "functions"
+  command = "npm run build"
+  environment = { NODE_VERSION = "15.5.0", AWS_LAMBDA_JS_RUNTIME = "15.5.0" }
