@@ -34,8 +34,11 @@
     "gatsby-source-filesystem": "^5.11.0",
     "gatsby-transformer-remark": "^6.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
+    "googleapis": "^129.0.0",
     "immer": "^9.0.6",
     "lightgallery": "^2.4.0",
+    "netlify-cli": "^17.8.1",
+    "nodemailer": "^6.9.7",
     "prop-types": "^15.8.0",
     "query-string": "^7.1.1",
     "react": "^18.0.1",
@@ -48,7 +51,8 @@
     "react-share": "^4.4.1",
     "react-slick": "^0.29.0",
     "sass": "^1.47.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "prettier": "^2.5.1"
