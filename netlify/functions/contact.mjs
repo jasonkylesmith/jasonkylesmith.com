@@ -126,6 +126,31 @@ async function sendEmail(data) {
   })
 }
 
+function parseBody(request) {
+  try {
+    const symbolKeys = Object.getOwnPropertySymbols(request)
+
+    const stateSymbol = symbolKeys.find(
+      sym => sym.toString() === "Symbol(state)"
+    )
+
+    const requestState = stateSymbol ? request[stateSymbol] : null
+
+    const source = requestState.body.source
+
+    console.log("source", source)
+
+    if (requestState && source) {
+      return source
+    } else {
+      throw "no state symbol"
+    }
+  } catch (error) {
+    console.log("error with parsing source", error)
+    return {}
+  }
+}
+
 export default async function handler(event) {
   console.log("Is this even running?", event)
 
@@ -135,7 +160,7 @@ export default async function handler(event) {
   let statusText = ""
 
   if (event.body) {
-    body = queryStringToObject(event.body)
+    body = queryStringToObject(parseBody(event.body))
   } else {
     error.msg = "No body was passed"
     error.statusCode = 501
