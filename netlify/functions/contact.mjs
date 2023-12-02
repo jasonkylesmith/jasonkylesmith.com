@@ -162,7 +162,7 @@ export default async function handler(event) {
   let statusText = ""
 
   if (event.body) {
-    body = queryStringToObject(parseBody(event.body))
+    body = queryStringToObject(parseBody(event))
   } else {
     error.msg = "No body was passed"
     error.statusCode = 501
