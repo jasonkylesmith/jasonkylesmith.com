@@ -24,10 +24,14 @@ function formatDate(date) {
     "December",
   ]
 
+  // Convert to Eastern Time
+  const offset = date.getTimezoneOffset() + 300 // ET is UTC-5
+  const dateET = new Date(date.getTime() + offset * 60 * 1000)
+
   // Get the day, month, and year
-  const day = date.getDate()
-  const month = months[date.getMonth()]
-  const year = date.getFullYear()
+  const day = dateET.getDate()
+  const month = months[dateET.getMonth()]
+  const year = dateET.getFullYear()
 
   // Add ordinal suffix to the day
   const ordinalSuffixes = ["th", "st", "nd", "rd"]
@@ -36,8 +40,8 @@ function formatDate(date) {
     ordinalSuffixes[(v - 20) % 10] || ordinalSuffixes[v] || ordinalSuffixes[0]
 
   // Get hours and minutes for 12-hour format
-  let hours = date.getHours()
-  const minutes = date.getMinutes()
+  let hours = dateET.getHours()
+  const minutes = dateET.getMinutes()
   const ampm = hours >= 12 ? "pm" : "am"
   hours = hours % 12
   hours = hours ? hours : 12 // the hour '0' should be '12'
