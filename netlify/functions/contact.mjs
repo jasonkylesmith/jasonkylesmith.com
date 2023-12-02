@@ -166,8 +166,6 @@ export default async function handler(event) {
     error.statusCode = 501
   }
 
-  console.log("Body", body)
-
   const decryptedKey = decrypt({ iv: body.iv, encryptedData: body.apiKey })
 
   if (decryptedKey !== process.env.GATSBY_FUNCTIONS_API_KEY) {
