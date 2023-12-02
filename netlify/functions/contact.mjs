@@ -220,11 +220,14 @@ export default async function handler(event) {
   }
 
   if (error.msg) {
-    return { statusCode: error.statusCode, body: JSON.stringify({ error }) }
+    return new Response()
+
+    // return { statusCode: error.statusCode, body: JSON.stringify({ error }) }
   } else {
-    return {
+    return new Response()
+    /* return {
       statusCode: 200,
       body: JSON.stringify({ statusText }),
-    }
+    } */
   }
 }
