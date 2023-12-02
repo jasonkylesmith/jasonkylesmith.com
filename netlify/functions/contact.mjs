@@ -194,7 +194,7 @@ export default async function handler(event) {
       statusText = response.statusText
 
       try {
-        sendEmail({ timestamp, ...body })
+        await sendEmail({ timestamp, ...body })
       } catch (error) {
         console.log("Error sending email", error)
       }
