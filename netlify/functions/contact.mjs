@@ -1,9 +1,53 @@
-const crypto = require("crypto")
+/* const crypto = require("crypto")
 const { google } = require("googleapis")
 const validator = require("validator")
-const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer") */
 
-const { formatDate } = require("../../src/helpers/helpers")
+import crypto from "crypto"
+import validator from "validator"
+import { google } from "googleapis"
+import nodemailer from "nodemailer"
+
+function formatDate(date) {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]
+
+  // Get the day, month, and year
+  const day = date.getDate()
+  const month = months[date.getMonth()]
+  const year = date.getFullYear()
+
+  // Add ordinal suffix to the day
+  const ordinalSuffixes = ["th", "st", "nd", "rd"]
+  const v = day % 100
+  const ordinalSuffix =
+    ordinalSuffixes[(v - 20) % 10] || ordinalSuffixes[v] || ordinalSuffixes[0]
+
+  // Get hours and minutes for 12-hour format
+  let hours = date.getHours()
+  const minutes = date.getMinutes()
+  const ampm = hours >= 12 ? "pm" : "am"
+  hours = hours % 12
+  hours = hours ? hours : 12 // the hour '0' should be '12'
+
+  // Format minutes to always be two digits
+  const formattedMinutes = minutes < 10 ? "0" + minutes : minutes
+
+  // Combine everything into a formatted string
+  return `${month} ${day}${ordinalSuffix}, ${year} ${hours}:${formattedMinutes}${ampm}`
+}
 
 function queryStringToObject(queryString) {
   const params = new URLSearchParams(queryString)
@@ -82,8 +126,8 @@ async function sendEmail(data) {
   })
 }
 
-exports.handler = async function (event) {
-  console.log("Is this even running?")
+export default async function handler(event) {
+  console.log("Is this even running?", event)
 
   const error = { msg: false }
   let body = {}
