@@ -136,11 +136,7 @@ function parseBody(request) {
 
     const requestState = stateSymbol ? request[stateSymbol] : null
 
-    console.log("requestState", requestState)
-
     const source = requestState.body.source
-
-    console.log("source", source)
 
     if (requestState && source) {
       return source
@@ -154,8 +150,6 @@ function parseBody(request) {
 }
 
 export default async function handler(event) {
-  console.log("Is this even running?", event)
-
   const error = { msg: false }
   let body = {}
   let statusCode = 200
@@ -167,6 +161,8 @@ export default async function handler(event) {
     error.msg = "No body was passed"
     error.statusCode = 501
   }
+
+  console.log("Body", body)
 
   const decryptedKey = decrypt({ iv: body.iv, encryptedData: body.apiKey })
 
@@ -220,10 +216,13 @@ export default async function handler(event) {
   }
 
   if (error.msg) {
+    console.log("Returning response, with error")
+
     return new Response()
 
     // return { statusCode: error.statusCode, body: JSON.stringify({ error }) }
   } else {
+    console.log("Returning response, no error")
     return new Response()
     /* return {
       statusCode: 200,
