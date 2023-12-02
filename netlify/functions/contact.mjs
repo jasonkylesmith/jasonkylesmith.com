@@ -136,6 +136,8 @@ function parseBody(request) {
 
     const requestState = stateSymbol ? request[stateSymbol] : null
 
+    console.log("requestState", requestState)
+
     const source = requestState.body.source
 
     console.log("source", source)
