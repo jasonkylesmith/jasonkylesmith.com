@@ -17,6 +17,8 @@ const ContactForm = ({ module }) => {
   const [error, setError] = useState(false)
   const [isMessageSent, setIsMessageSent] = useState(false)
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   async function encryptData(data) {
     // Convert text to ArrayBuffer
     const textEncoder = new TextEncoder()
@@ -110,6 +112,7 @@ const ContactForm = ({ module }) => {
   const handleSubmit = async e => {
     e.preventDefault()
     if (formValidation()) {
+      setIsSubmitting(true)
       setError(false)
 
       const { encryptedData, iv } = await encryptData(
@@ -146,17 +149,20 @@ const ContactForm = ({ module }) => {
         .then(response => {
           if (response.ok) {
             setIsMessageSent(true)
+            setIsSubmitting(false)
           } else {
             throw response
           }
         })
-        .catch(error =>
+        .catch(error => {
           alert("Something went wrong. Please refresh the page and try again.")
-        )
+          setIsSubmitting(false)
+        })
       //submit form
     } else {
       // don't submit form
       setError(true)
+      setIsSubmitting(false)
     }
   }
 
@@ -284,7 +290,12 @@ const ContactForm = ({ module }) => {
             <label hidden htmlFor="destination">
               Destination
             </label>
-            <button name="submit" className="btn button" type="submit">
+            <button
+              name="submit"
+              className="btn button"
+              type="submit"
+              disabled={isSubmitting}
+            >
               {buttonText ? buttonText : "Submit"}
             </button>
             {error && (
