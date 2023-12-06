@@ -72,6 +72,11 @@ export function formatDateForGoogleSheet(date) {
 
   // Get hours and minutes for 12-hour format, manually adjusted to EST
   let hours = date.getUTCHours() + estOffset
+
+  console.log("UTCHours", date.getUTCHours())
+  console.log("estOffset", estOffset)
+  console.log("hours", hours)
+
   const minutes = date.getMinutes()
 
   const ampm = hours >= 12 ? "pm" : "am"
