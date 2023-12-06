@@ -7,37 +7,7 @@ import crypto from "crypto"
 import validator from "validator"
 import { google } from "googleapis"
 import nodemailer from "nodemailer"
-
-function formatDate(date) {
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ]
-
-  // Get the day, month, and year
-  const day = date.getDate()
-  const month = months[date.getMonth()]
-  const year = date.getFullYear()
-
-  // Add ordinal suffix to the day
-  const ordinalSuffixes = ["th", "st", "nd", "rd"]
-  const v = day % 100
-  const ordinalSuffix =
-    ordinalSuffixes[(v - 20) % 10] || ordinalSuffixes[v] || ordinalSuffixes[0]
-
-  // Combine everything into a formatted string
-  return `${month} ${day}${ordinalSuffix}, ${year}`
-}
+import { formatDateForGoogleSheet } from "../../src/helpers/helpers"
 
 function queryStringToObject(queryString) {
   const params = new URLSearchParams(queryString)
@@ -179,7 +149,7 @@ export default async function handler(event) {
         message,
       ])
 
-      const timestamp = formatDate(new Date())
+      const timestamp = formatDateForGoogleSheet(new Date())
 
       const response = await sheets.spreadsheets.values.append({
         spreadsheetId: process.env.GATSBY_GOOGLE_SHEETS_LEAD_SHEET_ID,
