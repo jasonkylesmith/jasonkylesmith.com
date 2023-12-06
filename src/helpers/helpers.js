@@ -74,7 +74,7 @@ export function formatDateForGoogleSheet(date) {
   let hours = date.getUTCHours() + estOffset
 
   if (hours < 1) {
-    hours = 12 - hours
+    hours = 12 + hours
   }
 
   console.log("UTCHours", date.getUTCHours())
