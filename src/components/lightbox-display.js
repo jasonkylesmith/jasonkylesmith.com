@@ -82,6 +82,10 @@ const LightboxContainer = props => {
       }
 
       if (event.type === "click") {
+        console.log("leftRef", leftRef)
+        console.log("rightRef", rightRef)
+        console.log("imgRef", imgRef)
+
         if (leftRef && leftRef?.current?.contains(event.target)) {
           return
         }
@@ -199,19 +203,20 @@ const LightboxContainer = props => {
         style={{}}
         className={`d-flex flex-column position-relative lightbox__transition ${transitionStatus}`}
       >
-        <GatsbyImage
-          image={
-            allImages[imgIndex].gatsbyImageData ||
-            allImages[imgIndex]?.photo?.gatsbyImageData
-          }
-          alt={
-            allImages[imgIndex].alt ||
-            allImages[imgIndex]?.photo?.description ||
-            allImages[imgIndex].description ||
-            ""
-          }
-          ref={imgRef}
-        />
+        <div ref={imgRef}>
+          <GatsbyImage
+            image={
+              allImages[imgIndex].gatsbyImageData ||
+              allImages[imgIndex]?.photo?.gatsbyImageData
+            }
+            alt={
+              allImages[imgIndex].alt ||
+              allImages[imgIndex]?.photo?.description ||
+              allImages[imgIndex].description ||
+              ""
+            }
+          />
+        </div>
 
         {isClient && allImages[imgIndex]?.clientFavorite && (
           <span
