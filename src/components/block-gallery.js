@@ -4,6 +4,7 @@ import Gallery from "react-photo-gallery"
 import LightboxContainer from "./lightbox-display"
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 /* TODO
 
@@ -50,7 +51,7 @@ const BlockGallery = props => {
         const { url } = image.file
         const { height, width } = image.file.details.image
         const { srcSet, sizes } = image.gatsbyImageData.images.sources[0]
-        const { description } = image
+        const { description, gatsbyImageData } = image
 
         return {
           src: `https:${url}`,
@@ -59,7 +60,7 @@ const BlockGallery = props => {
           srcSet,
           sizes,
           alt: description,
-
+          gatsbyImageData,
           index,
           key: `${index}-${url}`,
         }
@@ -136,20 +137,11 @@ const BlockGallery = props => {
 
     return (
       <div style={{ ...cont }} key={key}>
-        <motion.img
+        {/* <motion.img
           {...photo}
           alt={photo.alt}
-          initial={{ /* opacity: 0, */ scale: 1 }}
+          initial={{ scale: 1 }}
           viewport={{ amount: 0.0001, once: true }}
-          /* whileInView={{
-            opacity: 1,
-            scale: 1,
-            transition: {
-              duration: 0.5,
-              ease: "easeInOut",
-              opacity: { delay: delay },
-            },
-          }} */
           whileHover={{
             scale: 1.1,
             transition: { duration: 0.5 },
@@ -159,7 +151,26 @@ const BlockGallery = props => {
             setImgIndex(index)
             setOpenLightbox(true)
           }}
-        />
+        /> */}
+        <motion.div
+          onClick={() => {
+            imgIndexRef.current = index
+            setImgIndex(index)
+            setOpenLightbox(true)
+          }}
+          initial={{ scale: 1 }}
+          viewport={{ amount: 0.0001, once: true }}
+          whileHover={{
+            scale: 1.1,
+            transition: { duration: 0.5 },
+          }}
+        >
+          <GatsbyImage
+            image={photo.gatsbyImageData}
+            alt={photo.alt}
+            style={{ height: `${photo.height}px`, width: `${photo.width}px` }}
+          />
+        </motion.div>
       </div>
     )
   }

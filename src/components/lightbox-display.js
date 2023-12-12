@@ -4,6 +4,7 @@ import Ratings from "./ratings"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { library } from "@fortawesome/fontawesome-svg-core"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 library.add(fas)
 
@@ -171,12 +172,8 @@ const LightboxContainer = props => {
       </span>
 
       {imgIndex > 0 && allImages[imgIndex - 2] && (
-        <img
-          src={
-            allImages[imgIndex - 2].src ||
-            allImages[imgIndex - 2].photo?.file?.url ||
-            allImages[imgIndex - 2].file.url
-          }
+        <GatsbyImage
+          image={allImages[imgIndex - 2].gatsbyImageData}
           style={{ display: "none" }}
           alt={
             allImages[imgIndex - 2].alt ||
@@ -187,37 +184,33 @@ const LightboxContainer = props => {
         />
       )}
       {imgIndex > 0 && allImages[imgIndex - 1] && (
-        <img
-          src={
-            allImages[imgIndex - 1].src ||
-            allImages[imgIndex - 1].photo?.file?.url ||
-            allImages[imgIndex - 1].file.url
-          }
+        <GatsbyImage
+          image={allImages[imgIndex - 1].gatsbyImageData}
           style={{ display: "none" }}
           alt={
             allImages[imgIndex - 1].alt ||
             allImages[imgIndex - 1]?.photo?.description ||
-            allImages[imgIndex - 1]?.description ||
+            allImages[imgIndex - 1].description ||
             ""
           }
         />
       )}
       <div
+        style={{}}
         className={`d-flex flex-column position-relative lightbox__transition ${transitionStatus}`}
       >
-        <img
-          src={
-            allImages[imgIndex].src ||
-            allImages[imgIndex].photo?.file?.url ||
-            allImages[imgIndex].file.url
+        <GatsbyImage
+          image={
+            allImages[imgIndex].gatsbyImageData ||
+            allImages[imgIndex]?.photo?.gatsbyImageData
           }
-          ref={imgRef}
           alt={
             allImages[imgIndex].alt ||
             allImages[imgIndex]?.photo?.description ||
-            allImages[imgIndex]?.description ||
+            allImages[imgIndex].description ||
             ""
           }
+          ref={imgRef}
         />
 
         {isClient && allImages[imgIndex]?.clientFavorite && (
@@ -249,31 +242,25 @@ const LightboxContainer = props => {
         )}
       </div>
       {allImages[imgIndex + 1] && (
-        <img
-          src={
-            allImages[imgIndex + 1].src ||
-            allImages[imgIndex + 1].photo?.file?.url ||
-            allImages[imgIndex + 1].file.url
-          }
+        <GatsbyImage
+          image={allImages[imgIndex + 1].gatsbyImageData}
           style={{ display: "none" }}
           alt={
             allImages[imgIndex + 1].alt ||
             allImages[imgIndex + 1]?.photo?.description ||
+            allImages[imgIndex + 1].description ||
             ""
           }
         />
       )}
       {allImages[imgIndex + 2] && (
-        <img
-          src={
-            allImages[imgIndex + 2].src ||
-            allImages[imgIndex + 2].photo?.file?.url ||
-            allImages[imgIndex + 2].file.url
-          }
+        <GatsbyImage
+          image={allImages[imgIndex + 2].gatsbyImageData}
           style={{ display: "none" }}
           alt={
             allImages[imgIndex + 2].alt ||
             allImages[imgIndex + 2]?.photo?.description ||
+            allImages[imgIndex + 2].description ||
             ""
           }
         />
