@@ -82,10 +82,6 @@ const LightboxContainer = props => {
       }
 
       if (event.type === "click") {
-        console.log("leftRef", leftRef)
-        console.log("rightRef", rightRef)
-        console.log("imgRef", imgRef)
-
         if (leftRef && leftRef?.current?.contains(event.target)) {
           return
         }
