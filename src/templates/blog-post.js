@@ -206,7 +206,7 @@ const BlogPost = props => {
 
   const renderOptions = richTextRenderOptions
 
-  const bodyContent = renderRichText(body, renderOptions)
+  const bodyContent = body ? renderRichText(body, renderOptions) : ""
 
   const filteredRecommended = recommended?.filter(
     post => post.id !== featuredEdge[0]?.node.id
@@ -217,7 +217,7 @@ const BlogPost = props => {
       <Seo
         title={title}
         url={`https://www.jasonkylesmith.com/blog/${slug}/`}
-        description={excerpt.excerpt}
+        description={excerpt?.excerpt ?? ""}
         photo={featuredImage?.file?.url}
       />
 
