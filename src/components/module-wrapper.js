@@ -10,6 +10,8 @@ import IconList from "./icon-list"
 import SplitContent from "./split-content"
 import { GatsbyImage } from "gatsby-plugin-image"
 import AvailabilityList from "./availability-list"
+import LiteYouTubeEmbed from "react-lite-youtube-embed"
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css"
 
 const ModuleWrapper = ({ props }) => {
   const {
@@ -161,6 +163,17 @@ const ModuleWrapper = ({ props }) => {
       break
     case "placeholder1":
       moduleSection = <AvailabilityList module={module} />
+      break
+    case "video":
+      moduleSection = (
+        <div style={{ width: "100%" }}>
+          <LiteYouTubeEmbed
+            id={module?.youtubeId}
+            title="Photobook Teaser"
+            poster="maxresdefault"
+          />
+        </div>
+      )
       break
     default:
       moduleSection = <div>{module.name}</div>
