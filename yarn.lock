@@ -14655,11 +14655,6 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-lite-youtube-embed@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-lite-youtube-embed/-/react-lite-youtube-embed-2.4.0.tgz#1f56a12be1061d50431444d52d836bd09a1283a2"
-  integrity sha512-Xo6cM1zPlROvvM97JkqQIoXstlQDaC4+DawmM7BB7Hh1cXrkBHEGq1iJlQxBTUWAUklmpcC7ph7qg7CztXtABQ==
-
 react-photo-gallery@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/react-photo-gallery/-/react-photo-gallery-8.0.0.tgz#04ff9f902a2342660e63e6817b4f010488db02b8"

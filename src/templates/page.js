@@ -274,6 +274,18 @@ export const query = graphql`
               }
             }
             blocks {
+              ... on ContentfulVideo {
+                id
+                name
+                youtubeId
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+              }
               ... on ContentfulBlockGallery {
                 sys {
                   contentType {
