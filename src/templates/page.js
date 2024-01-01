@@ -63,6 +63,18 @@ export const query = graphql`
         name
         headline
         module {
+          ... on ContentfulVideo {
+            id
+            name
+            youtubeId
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+          }
           ... on ContentfulMonthlyClientsData {
             name
             year
@@ -262,6 +274,18 @@ export const query = graphql`
               }
             }
             blocks {
+              ... on ContentfulVideo {
+                id
+                name
+                youtubeId
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+              }
               ... on ContentfulBlockGallery {
                 sys {
                   contentType {

@@ -14,6 +14,7 @@ import {
   whileInViewLeft,
   whileInViewRight,
 } from "../helpers/constants"
+import YouTubeEmbed from "./youtube-embed"
 
 const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
   const {
@@ -116,6 +117,10 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
       } else {
         return <></>
       }
+    }
+
+    if (id === "video") {
+      return <YouTubeEmbed module={block} />
     }
 
     return <></>

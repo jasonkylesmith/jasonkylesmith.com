@@ -8,8 +8,10 @@ import GalleryList from "./gallery-list"
 import Hero from "./hero"
 import IconList from "./icon-list"
 import SplitContent from "./split-content"
-import { GatsbyImage } from "gatsby-plugin-image"
+
 import AvailabilityList from "./availability-list"
+
+import YouTubeEmbed from "./youtube-embed"
 
 const ModuleWrapper = ({ props }) => {
   const {
@@ -161,6 +163,9 @@ const ModuleWrapper = ({ props }) => {
       break
     case "placeholder1":
       moduleSection = <AvailabilityList module={module} />
+      break
+    case "video":
+      moduleSection = <YouTubeEmbed module={module} />
       break
     default:
       moduleSection = <div>{module.name}</div>
