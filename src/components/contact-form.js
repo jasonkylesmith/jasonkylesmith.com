@@ -3,10 +3,18 @@ import React, { useState } from "react"
 const ContactForm = ({ module }) => {
   const { buttonText, destination: destinationRaw, id, title } = module
 
+  const SUBJECT_LIST = [
+    "I'm interested in booking!",
+    "I have a question...",
+    "Just here to join your newsletter.",
+  ]
+
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   // blank, invalid, valid
   const [emailState, setEmailState] = useState("blank")
+  const [subject, setSubject] = useState(SUBJECT_LIST[0])
+  const [join, setJoin] = useState(true)
   const [message, setMessage] = useState("")
   const [honeypotChecked, setHoneypotChecked] = useState(false)
   const [emailPermissionChecked, setEmailPermissionChecked] = useState(true)
@@ -60,6 +68,8 @@ const ContactForm = ({ module }) => {
   const resetForm = () => {
     setName("")
     setEmail("")
+    setSubject(SUBJECT_LIST[0])
+    setJoin(true)
     setEmailState("blank")
     setMessage("")
     setHoneypotChecked(false)
@@ -86,6 +96,12 @@ const ContactForm = ({ module }) => {
 
       case "email":
         setEmail(value)
+        break
+      case "subject":
+        setSubject(value)
+        break
+      case "join":
+        setJoin(!join)
         break
       case "message":
         setMessage(value)
@@ -119,6 +135,18 @@ const ContactForm = ({ module }) => {
         process.env.GATSBY_FUNCTIONS_API_KEY
       )
 
+      console.log({
+        name,
+        email,
+        message,
+        destination,
+        subject,
+        emailPermissionToUse: join ? "Yes" : "No",
+        honeypotChecked,
+        apiKey: encryptedData,
+        iv,
+      })
+
       /* fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -140,6 +168,8 @@ const ContactForm = ({ module }) => {
           email,
           message,
           destination,
+          subject,
+          join,
           emailPermissionToUse,
           honeypotChecked,
           apiKey: encryptedData,
@@ -218,11 +248,26 @@ const ContactForm = ({ module }) => {
               />
             </div>
             <div className="mb-3">
+              <label className="form-label" htmlFor="subject">
+                Subject*
+              </label>
+              <select
+                className="form-control"
+                onChange={event => handleOnChange(event, "subject")}
+                name="subject"
+                id="subject"
+              >
+                {SUBJECT_LIST.map(option => (
+                  <option key={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-3">
               <label
                 htmlFor="exampleFormControlTextarea1"
                 className="form-label"
               >
-                Message (optional, but helpful!)
+                Message*
               </label>
               <textarea
                 className={`form-control ${
@@ -233,9 +278,26 @@ const ContactForm = ({ module }) => {
                 name="message"
                 value={message}
                 onChange={event => handleOnChange(event, "message")}
+                required
               ></textarea>
             </div>
-
+            <div className="form-check mb-4">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                onChange={event => handleOnChange(event, "join")}
+                id="join"
+                name="join"
+                defaultChecked={join}
+                value={join}
+                style={{ backgroundColor: "#1f1f1f" }}
+              />
+              <label className="form-check-label" htmlFor="flexCheckSaveEmail">
+                Would you like to be added to my email list? I will only use
+                this for communication related to my photography and will never
+                sell or give away any information about you.
+              </label>
+            </div>
             <input
               className="form-check-input"
               type="checkbox"

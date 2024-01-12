@@ -77,9 +77,9 @@ export function formatDateForGoogleSheet(date) {
     hours = 12 + hours
   }
 
-  console.log("UTCHours", date.getUTCHours())
+  /*   console.log("UTCHours", date.getUTCHours())
   console.log("estOffset", estOffset)
-  console.log("hours", hours)
+  console.log("hours", hours) */
 
   const minutes = date.getMinutes()
 

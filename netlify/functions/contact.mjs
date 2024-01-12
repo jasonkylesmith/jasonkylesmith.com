@@ -73,9 +73,9 @@ async function sendEmail(data) {
   let mailOptions = {
     from: `"JasonKyleSmith.com Contact Alert" <${process.env.GATSBY_EMAIL_FROM}>`, // sender address
     to: process.env.GATSBY_EMAIL_TO, // list of receivers
-    subject: `You Have a Website Contact Form Submission! - ${data?.name}`, // Subject line
-    text: `${data?.name}, ${data?.email} \n ${data?.timestamp} \n\n ${data?.message} \n\n\n Google Sheet at ${process.env.GATSBY_GOOGLE_SHEET_LINK}`, // plain text body
-    html: `<b>${data?.name}</b> (<i>${data?.email}</i>) <br /> <i>${data?.timestamp}</i> <br /><br /> ${data?.message} <br /><br /><br /> Access <a href="${process.env.GATSBY_GOOGLE_SHEET_LINK}" target="_BLANK">Google Sheet</a> `, // html body
+    subject: `You Have a Website Contact Form Submission! - ${data?.name} - ${data?.subject}`, // Subject line
+    text: `${data?.name}, ${data?.email} \n ${data?.timestamp} \n ${data?.subject} \n Add to Newsletter?: ${data?.emailPermissionToUse} \n\n ${data?.message} \n\n\n Google Sheet at ${process.env.GATSBY_GOOGLE_SHEET_LINK}`, // plain text body
+    html: `<b>${data?.name}</b> (<i>${data?.email}</i>) <br /> <i>${data?.timestamp}</i> <br /> <i><b>${data?.subject}</b></i> <br /><b>Add to Newsletter?:</b> <i>${data?.emailPermissionToUse}</i> <br /><br /> ${data?.message} <br /><br /><br /> Access <a href="${process.env.GATSBY_GOOGLE_SHEET_LINK}" target="_BLANK">Google Sheet</a> `, // html body
   }
 
   // Send mail with defined transport object
