@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import ModuleWrapper from "../components/module-wrapper"
 import Seo from "../components/seo"
 
-const Page = ({ data }) => {
+const Page = ({ data, location }) => {
   const { name, modules, navColor, nav, excludeRobots } = data.contentfulPage
 
   return (
@@ -15,7 +15,9 @@ const Page = ({ data }) => {
       <div className="">
         {modules &&
           modules.map((module, index) => {
-            return <ModuleWrapper props={module} key={index} />
+            return (
+              <ModuleWrapper props={module} key={index} location={location} />
+            )
           })}
       </div>
     </Layout>

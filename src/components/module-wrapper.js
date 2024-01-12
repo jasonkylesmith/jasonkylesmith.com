@@ -13,7 +13,7 @@ import AvailabilityList from "./availability-list"
 
 import YouTubeEmbed from "./youtube-embed"
 
-const ModuleWrapper = ({ props }) => {
+const ModuleWrapper = ({ props, location }) => {
   const {
     overlapNav,
     sectionMargin,
@@ -149,6 +149,7 @@ const ModuleWrapper = ({ props }) => {
           module={module}
           parentFullWidth={fullWidth}
           hasBackgroundImage={backgroundImage ? true : false}
+          location={location}
         />
       )
       break

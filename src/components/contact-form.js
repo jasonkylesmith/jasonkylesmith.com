@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
-const ContactForm = ({ module }) => {
+const ContactForm = ({ module, location }) => {
   const { buttonText, destination: destinationRaw, id, title } = module
 
   const SUBJECT_LIST = [
@@ -26,6 +26,31 @@ const ContactForm = ({ module }) => {
   const [isMessageSent, setIsMessageSent] = useState(false)
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const [source, setSource] = useState(null)
+
+  useEffect(() => {
+    if (location?.search !== "") {
+      const params = new URLSearchParams(location.search)
+      const newSubject = params.get("s")
+
+      if (newSubject) {
+        switch (newSubject) {
+          case "inquiry":
+            setSubject(SUBJECT_LIST[0])
+            break
+          case "question":
+            setSubject(SUBJECT_LIST[1])
+            break
+          case "newsletter":
+            setSubject(SUBJECT_LIST[2])
+            break
+          default:
+            setSubject(SUBJECT_LIST[0])
+        }
+      }
+    }
+  }, [location])
 
   async function encryptData(data) {
     // Convert text to ArrayBuffer
@@ -135,7 +160,7 @@ const ContactForm = ({ module }) => {
         process.env.GATSBY_FUNCTIONS_API_KEY
       )
 
-      console.log({
+      /* console.log({
         name,
         email,
         message,
@@ -145,7 +170,7 @@ const ContactForm = ({ module }) => {
         honeypotChecked,
         apiKey: encryptedData,
         iv,
-      })
+      }) */
 
       /* fetch("/", {
         method: "POST",
@@ -256,6 +281,7 @@ const ContactForm = ({ module }) => {
                 onChange={event => handleOnChange(event, "subject")}
                 name="subject"
                 id="subject"
+                value={subject}
               >
                 {SUBJECT_LIST.map(option => (
                   <option key={option}>{option}</option>

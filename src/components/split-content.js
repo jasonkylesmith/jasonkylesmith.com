@@ -16,7 +16,12 @@ import {
 } from "../helpers/constants"
 import YouTubeEmbed from "./youtube-embed"
 
-const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
+const SplitContent = ({
+  module,
+  parentFullWidth,
+  hasBackgroundImage,
+  location,
+}) => {
   const {
     blocks,
     ratio,
@@ -106,7 +111,7 @@ const SplitContent = ({ module, parentFullWidth, hasBackgroundImage }) => {
             parentFullWidth && "pe-3 ps-3"
           }`}
         >
-          <ContactForm module={block} />
+          <ContactForm module={block} location={location} />
         </div>
       )
     }
