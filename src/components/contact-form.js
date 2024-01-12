@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 
 const ContactForm = ({ module, location }) => {
-  const { buttonText, destination: destinationRaw, id, title } = module
+  const { buttonText, destination: destinationRaw, title } = module
 
   const SUBJECT_LIST = [
     "I'm interested in booking!",
@@ -26,8 +26,6 @@ const ContactForm = ({ module, location }) => {
   const [isMessageSent, setIsMessageSent] = useState(false)
 
   const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const [source, setSource] = useState(null)
 
   useEffect(() => {
     if (location?.search !== "") {
