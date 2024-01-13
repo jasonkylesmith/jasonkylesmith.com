@@ -318,8 +318,8 @@ const ContactForm = ({ module, location }) => {
               />
               <label className="form-check-label" htmlFor="flexCheckSaveEmail">
                 Would you like to be added to my email list? I will only use
-                this for communication related to my photography and will never
-                sell or give away any information about you.
+                this for communication related to Jason Kyle Smith Photography
+                and will never sell or give away any information about you.
               </label>
             </div>
             <input
