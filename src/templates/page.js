@@ -6,11 +6,18 @@ import ModuleWrapper from "../components/module-wrapper"
 import Seo from "../components/seo"
 
 const Page = ({ data, location }) => {
-  const { name, modules, navColor, nav, excludeRobots } = data.contentfulPage
+  const { name, modules, navColor, nav, excludeRobots, ogImage } =
+    data.contentfulPage
+
+  console.log(ogImage)
 
   return (
     <Layout navColor={navColor} navSettings={nav}>
-      <Seo title={name} excludeRobots={excludeRobots} />
+      <Seo
+        title={name}
+        excludeRobots={excludeRobots}
+        photo={ogImage?.file?.url}
+      />
 
       <div className="">
         {modules &&
@@ -40,7 +47,11 @@ export const query = graphql`
           slug
         }
       }
-
+      ogImage {
+        file {
+          url
+        }
+      }
       modules {
         sectionMargin
         overlapNav
