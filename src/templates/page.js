@@ -138,6 +138,18 @@ export const query = graphql`
                   html
                 }
               }
+              video {
+                id
+                name
+                youtubeId
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+              }
             }
           }
           ... on ContentfulIconList {
