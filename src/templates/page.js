@@ -9,8 +9,6 @@ const Page = ({ data, location }) => {
   const { name, modules, navColor, nav, excludeRobots, ogImage } =
     data.contentfulPage
 
-  console.log(ogImage)
-
   return (
     <Layout navColor={navColor} navSettings={nav}>
       <Seo
