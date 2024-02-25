@@ -36,7 +36,6 @@ const SplitContent = ({
   blocks.forEach(block => {
     const { id } = block.sys.contentType.sys
     if (id === "image") {
-      console.log("True!")
       hasImage = true
     }
   })
