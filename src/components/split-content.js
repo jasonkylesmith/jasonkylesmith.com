@@ -31,6 +31,16 @@ const SplitContent = ({
     isMobileReversed,
   } = module
 
+  let hasImage = false
+
+  blocks.forEach(block => {
+    const { id } = block.sys.contentType.sys
+    if (id === "image") {
+      console.log("True!")
+      hasImage = true
+    }
+  })
+
   const numOfBlocks = blocks.length
 
   let leftClasses
@@ -58,7 +68,7 @@ const SplitContent = ({
       : " pb-4 pb-md-0 pe-md-4 left"
   rightClasses +=
     blocks[1]?.sys?.contentType?.sys?.id === "image"
-      ? " pb-4 pb-md-0 right"
+      ? " pb-md-0 right"
       : " ps-md-4 pb-4 pb-md-0 right"
 
   const BlockWrapper = ({ block, side }) => {
@@ -73,7 +83,9 @@ const SplitContent = ({
             numOfBlocks !== 0 && "justify-content-center"
           } ${
             verticalAlignment === "center" && "align-items-center"
-          } text-md-${textAlign} ${numOfBlocks === 1 && "solo-text"} ${
+          } text-md-${textAlign} ${
+            numOfBlocks === 1 && "solo-text pe-md-0 ps-md-0"
+          } ${
             numOfBlocks === 1 && ratio === "right-larger"
               ? "solo-small"
               : ratio === "left-larger"
@@ -83,7 +95,7 @@ const SplitContent = ({
             side === "right" && "pe-0 ps-0 ps-md-0"
           } ${parentFullWidth && "pe-3 ps-3 ps-md-0"} ${
             hasBackgroundImage && !isHero && "white-background"
-          } ${numOfBlocks === 1 && "pe-md-0 ps-md-0"}`}
+          } ${numOfBlocks > 1 && hasImage && "image-adjacent-copy-block"}`}
           style={block?.textColor === "light" ? { color: "#f7f7f7" } : {}}
         >
           <MarkdownDisplay props={block.text.childrenMarkdownRemark[0]} />

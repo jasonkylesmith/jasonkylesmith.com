@@ -1,6 +1,13 @@
 .split-content {
   width: 100%;
 
+  .align-items-center.image-adjacent-copy-block {
+    padding-left: 4rem !important;
+    padding-right: 6rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
   .copy-trigger + .copy-trigger {
     .copy-wrapper {
       padding-left: 0 !important;
@@ -163,6 +170,13 @@
       &.full-width-copy {
         padding: 0 1.5rem;
       }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .align-items-center.image-adjacent-copy-block {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
     }
   }
 }

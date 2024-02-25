@@ -31,14 +31,14 @@
 }
 
 .section__white {
-  background-color: #f7f7f7;
+  background-color: $seasalt;
   color: $dark;
 }
 
 .section__dark {
   // background-color: $dark;
   background: $dark-radial;
-  color: #f7f7f7;
+  color: $seasalt;
 }
 
 .section__black {
